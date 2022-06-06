@@ -1,6 +1,6 @@
-# Parallélisation du code `R`
+# Parallélisation du code `r fontawesome::fa("r-project")`
 
-## Introduction à l'execution parallèle sous `R`
+## Introduction à l'execution parallèle sous `r fontawesome::fa("r-project")`
 
 En dehors de l'optimisation du code et des algorithmes, une autre façon
 d'obtenir un code performant est de tirer profit des architectures parallèles
@@ -44,14 +44,14 @@ la configuration matérielle.
 Il existe un nombre important de packages et d'initiatives permettant de faire
 du calcul en R. Depuis `R 2.14.0`, le package
 [`parallel`](https://stat.ethz.ch/R-manual/R-devel/library/parallel/doc/parallel.pdf)
-est inclus directement dans `R` et permet de démarrer et d'arrêter un "cluster"
+est inclus directement dans `r fontawesome::fa("r-project")` et permet de démarrer et d'arrêter un "cluster"
 de plusieurs processus travailleur (étape 1 et 6). En plus du package
 `parallel`, on va donc utiliser le package `future` qui permet de gérer les
 processus travailleurs et la communication et l'articulation avec le package
 `future.apply`qui permet lui de gérer le dialogue avec les travailleurs (envois,
 réception et rassemblement des résultats - étapes 2, 3, 4 et 5).
 
-## Première fonction parallèle en `R`
+## Première fonction parallèle en `r fontawesome::fa("r-project")`
 
 > ***À vous de jouer !***
 >
@@ -130,7 +130,7 @@ ggplot(data2plot) + geom_violin(aes(x=Expression, y=Time, fill=Expression), alph
 ```
 
 La version parallèle tourne beaucoup plus lentement... Car en fait, si les
-tâches individuelles sont trop rapides, `R` va passer plus de temps à
+tâches individuelles sont trop rapides, `r fontawesome::fa("r-project")` va passer plus de temps à
 communiquer avec les cœurs, qu'à faire les calculs effectifs.
 
 **Il faut qu'une itération de la boucle soit relativement longue pour que le
@@ -161,7 +161,7 @@ x <- matrix(rnorm(1e6), nrow = 10)
 dim(x)
 ```
 
-Pour un utilisateur averti de `R`, une telle opération se programme facilement 
+Pour un utilisateur averti de `r fontawesome::fa("r-project")`, une telle opération se programme facilement 
 à l'aide de la fonction `apply` :
 
 ```{r}
@@ -247,7 +247,7 @@ ggplot(data2plot) + geom_violin(aes(x=Expression, y=Time, fill=Expression), alph
 
 Le package `itertools` permet de séparer facilement des données ou des 
 taches (étape 3) tout en minimisant les communications avec les différents 
-travailleurs. Il s'appuie sur une implémentation des itérateurs en `R`. 
+travailleurs. Il s'appuie sur une implémentation des itérateurs en `r fontawesome::fa("r-project")`. 
 Son utilisation nécessite néanmoins de vectoriser le code à l'intérieur de
 `future_*apply()`. Expérimentez avec le petit code ci-dessous : 
 

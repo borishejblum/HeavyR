@@ -1,5 +1,5 @@
 
-# Building an `r fontawesome::fa("r-project")` package
+# Building a `r fontawesome::fa("r-project")` package
 
 Here we present how to efficiently create and build a package using Rstudio IDE, and the `devtools` and `usethis` packages.
 
@@ -7,7 +7,7 @@ More details are provided in the reference material on this subject: the book [R
 
 ## Initializing a package
 
-A simple way, built into Rstudio, to **initialize a package** is :
+A simple way, built into *Rstudio*, to **initialize a package** is :
 
   1. create a new project (top left `File` drop down menu in Rstudio)
   
@@ -55,7 +55,7 @@ and we wish to compute all the values of the density evaluated
 at the $n$ points in a single call of the function.
 
 So you need to create a function `mvnpdf()` in a file named `mvnpdf.R`
-in the `R` folder of your package, which :
+in the `r fontawesome::fa("r-project")` folder of your package, which :
 
   - takes as arguments:
   

@@ -1,0 +1,15 @@
+
+# Further reading {-}
+
+  - Hadley Wickham's online books are truly excellent and contain a lot of supplementary informattion to what we have covered in this training:
+  
+    - the website on writing packages [*R packages*](http://r-pkgs.had.co.nz/).
+    
+    - the website [*Advanced R*](http://adv-r.had.co.nz/) for everything regarding optimization, `Rcpp`, or parallel computing.
+    
+    - the website [*R for Data Science*](http://r4ds.had.co.nz/) is also quite comprehensive and includes chapters on data management in `r fontawesome::fa("r-project")`, but also on  structures in `r fontawesome::fa("r-project")`, modeling, as well as elements on graphics and `Rmarkdown`.
+    
+  - the online book [Rcpp for everyone](https://teuder.github.io/rcpp4everyone_en/) by Masaki E. Tsuda is also very good. 
+
+
+

@@ -45,15 +45,15 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Course syllabus</a></li>
-<li><a class="" href="building-an-package.html"><span class="header-section-number">1</span> Building an  package</a></li>
+<li><a class="" href="building-a-package.html"><span class="header-section-number">1</span> Building a  package</a></li>
 <li><a class="" href="contr%C3%B4le-de-version-avec-git-et-github-historique-de-changement-d%C3%A9veloppement-collaboratif-et-int%C3%A9gration-continue.html"><span class="header-section-number">2</span> Contrôle de version avec git et GitHub : historique de changement, développement collaboratif et intégration continue</a></li>
 <li><a class="active" href="mesurer-et-comparer-des-temps-dex%C3%A9cution.html"><span class="header-section-number">3</span> Mesurer et comparer des temps d’exécution</a></li>
 <li><a class="" href="profiler-son-code.html"><span class="header-section-number">4</span> Profiler son code</a></li>
-<li><a class="" href="rcpp-ou-comment-int%C3%A9grer-facilement-du-code-cdans-un-package-r.html"><span class="header-section-number">5</span> Rcpp ou comment intégrer facilement du code C++dans un package R</a></li>
-<li><a class="" href="parall%C3%A9lisation-du-code-r.html"><span class="header-section-number">6</span> Parallélisation du code R</a></li>
+<li><a class="" href="rcpp-ou-comment-int%C3%A9grer-facilement-du-code-cdans-un-package.html"><span class="header-section-number">5</span> Rcpp ou comment intégrer facilement du code C++dans un package </a></li>
+<li><a class="" href="parall%C3%A9lisation-du-code.html"><span class="header-section-number">6</span> Parallélisation du code </a></li>
 <li><a class="" href="misc%C3%A9lan%C3%A9es.html"><span class="header-section-number">7</span> Miscélanées</a></li>
 <li><a class="" href="take-home-message.html"><span class="header-section-number">8</span> Take Home message</a></li>
-<li><a class="" href="r%C3%A9f%C3%A9rences.html">Références</a></li>
+<li><a class="" href="further-reading.html">Further reading</a></li>
 </ul>
 
         <div class="book-extra">
@@ -76,7 +76,7 @@ fonction <code><a href="https://rdrr.io/r/base/system.time.html">system.time()</
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="fu">mvnpdf</span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1.96</span>, <span class="fl">2</span><span class="op">)</span>, nrow<span class="op">=</span><span class="fl">2</span>, ncol<span class="op">=</span><span class="fl">1</span><span class="op">)</span>, Log<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## utilisateur     système      écoulé 
-##       0.001       0.000       0.003</code></pre>
+##       0.001       0.001       0.003</code></pre>
 <p>Le problème qui apparaît sur cet exemple est que l’exécution est tellement
 rapide que <code><a href="https://rdrr.io/r/base/system.time.html">system.time()</a></code> affiche <code>0</code> (ou une valeur très proche).
 De plus, on voit qu’il y a une certaine variabilité quand on relance plusieurs
@@ -86,7 +86,7 @@ on ne peut pas utiliser <code><a href="https://rdrr.io/r/base/system.time.html">
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="fu">mvtnorm</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html">dmvnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1.96</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## utilisateur     système      écoulé 
-##       0.004       0.002       0.007</code></pre>
+##       0.002       0.001       0.006</code></pre>
 <p>On pourrait se dire qu’il faut augmenter la complexité de notre calcul, mais
 il y a mieux : utiliser le package <code>microbenchmark</code> !</p>
 </div>
@@ -105,12 +105,12 @@ commandes et donc va stabiliser le résultat.</p>
                      times<span class="op">=</span><span class="fl">1000L</span><span class="op">)</span>
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: microseconds
-##                                           expr    min      lq     mean  median
-##                 mvtnorm::dmvnorm(rep(1.96, 2)) 36.592 41.5130 55.25668 49.1105
-##  mvnpdf(x = matrix(rep(1.96, 2)), Log = FALSE) 34.971 38.7125 49.25051 44.9550
-##       uq      max neval cld
-##  61.6215 2022.040  1000   b
-##  55.8675  340.364  1000  a</code></pre>
+##                                           expr    min     lq     mean median
+##                 mvtnorm::dmvnorm(rep(1.96, 2)) 30.237 34.058 52.02946 38.833
+##  mvnpdf(x = matrix(rep(1.96, 2)), Log = FALSE) 28.492 31.496 45.28976 34.846
+##      uq      max neval cld
+##  56.644 2486.725  1000   b
+##  52.124  238.796  1000  a</code></pre>
 <pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
 ## use `guide = "none"` instead.</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-13-1.png" width="672"></div>
@@ -125,11 +125,11 @@ cas :</p>
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##                                                       expr     min      lq
-##         mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))  43.438  49.379
-##  mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 443.805 478.972
-##      mean   median      uq     max neval cld
-##   57.1051  54.3335  60.217  128.34   100  a 
-##  526.6651 489.6060 526.676 1031.03   100   b</code></pre>
+##         mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))  76.921 121.900
+##  mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 714.938 965.764
+##      mean    median       uq      max neval cld
+##   252.237  185.1075  340.017  709.690   100  a 
+##  1502.635 1372.2070 1880.828 3639.201   100   b</code></pre>
 <pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
 ## use `guide = "none"` instead.</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-15-1.png" width="672"></div>

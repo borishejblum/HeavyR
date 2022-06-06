@@ -45,15 +45,15 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Course syllabus</a></li>
-<li><a class="" href="building-an-package.html"><span class="header-section-number">1</span> Building an  package</a></li>
+<li><a class="" href="building-a-package.html"><span class="header-section-number">1</span> Building a  package</a></li>
 <li><a class="" href="contr%C3%B4le-de-version-avec-git-et-github-historique-de-changement-d%C3%A9veloppement-collaboratif-et-int%C3%A9gration-continue.html"><span class="header-section-number">2</span> Contrôle de version avec git et GitHub : historique de changement, développement collaboratif et intégration continue</a></li>
 <li><a class="" href="mesurer-et-comparer-des-temps-dex%C3%A9cution.html"><span class="header-section-number">3</span> Mesurer et comparer des temps d’exécution</a></li>
 <li><a class="active" href="profiler-son-code.html"><span class="header-section-number">4</span> Profiler son code</a></li>
-<li><a class="" href="rcpp-ou-comment-int%C3%A9grer-facilement-du-code-cdans-un-package-r.html"><span class="header-section-number">5</span> Rcpp ou comment intégrer facilement du code C++dans un package R</a></li>
-<li><a class="" href="parall%C3%A9lisation-du-code-r.html"><span class="header-section-number">6</span> Parallélisation du code R</a></li>
+<li><a class="" href="rcpp-ou-comment-int%C3%A9grer-facilement-du-code-cdans-un-package.html"><span class="header-section-number">5</span> Rcpp ou comment intégrer facilement du code C++dans un package </a></li>
+<li><a class="" href="parall%C3%A9lisation-du-code.html"><span class="header-section-number">6</span> Parallélisation du code </a></li>
 <li><a class="" href="misc%C3%A9lan%C3%A9es.html"><span class="header-section-number">7</span> Miscélanées</a></li>
 <li><a class="" href="take-home-message.html"><span class="header-section-number">8</span> Take Home message</a></li>
-<li><a class="" href="r%C3%A9f%C3%A9rences.html">Références</a></li>
+<li><a class="" href="further-reading.html">Further reading</a></li>
 </ul>
 
         <div class="book-extra">
@@ -100,11 +100,11 @@ fine ce qui prend du temps dans notre fonction.</p>
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: milliseconds
 ##                                                            expr      min
-##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4.258958
-##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2.972993
+##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4.790313
+##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3.470507
 ##        lq     mean   median       uq      max neval cld
-##  4.978956 7.432787 5.195652 7.161024 40.16088   100   b
-##  3.510111 4.362279 3.671819 3.974285 15.59301   100  a</code></pre>
+##  5.023039 7.941819 5.951086 7.447729 38.57898   100   b
+##  3.736230 4.654822 3.817214 4.203385 13.84234   100  a</code></pre>
 <pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
 ## use `guide = "none"` instead.</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-20-1.png" width="672"></div>
@@ -118,13 +118,13 @@ fine ce qui prend du temps dans notre fonction.</p>
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##                                                            expr      min
-##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   69.129
-##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4194.249
-##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3146.203
-##        lq      mean   median        uq       max neval cld
-##    80.693  118.6093   92.957  116.6295   484.234   100 a  
-##  4983.385 6783.9754 5136.564 6239.0285 30600.450   100   c
-##  3675.590 4470.4921 3740.227 3905.9070 12631.737   100  b</code></pre>
+##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   77.999
+##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4811.461
+##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3690.870
+##        lq      mean    median         uq       max neval cld
+##   113.547   226.023  153.2655   231.1895  1132.803   100 a  
+##  5637.466 10635.644 6557.2955 14264.7220 52341.565   100   c
+##  4137.653  7158.134 4897.3990  9816.1835 43621.789   100  b</code></pre>
 <pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
 ## use `guide = "none"` instead.</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-22-1.png" width="672"></div>
@@ -153,15 +153,15 @@ fonction :</p>
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##                                                            expr      min
-##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   70.831
-##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4126.735
-##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3059.964
-##  mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2289.425
-##        lq      mean    median        uq       max neval  cld
-##    91.444  355.8262  102.0815  126.5175 23124.176   100 a   
-##  5032.841 6955.0715 5258.2890 6593.3120 29123.324   100    d
-##  3667.567 4242.8063 3773.0280 3991.6605 10487.310   100   c 
-##  2750.233 3193.7385 2839.8960 2991.5190  9878.008   100  b</code></pre>
+##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   67.308
+##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4752.076
+##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3542.849
+##  mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2721.043
+##        lq      mean    median       uq       max neval  cld
+##    85.947  121.2509  100.9385  120.221   745.734   100 a   
+##  4984.280 7219.4899 5279.5135 6890.208 28675.782   100    d
+##  3706.249 4697.9993 3771.3055 4015.110 16556.949   100   c 
+##  2826.413 3601.8965 2946.8220 3213.134 12935.049   100  b</code></pre>
 <pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
 ## use `guide = "none"` instead.</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-25-1.png" width="672"></div>
@@ -174,7 +174,7 @@ fonction :</p>
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="mesurer-et-comparer-des-temps-dex%C3%A9cution.html"><span class="header-section-number">3</span> Mesurer et comparer des temps d’exécution</a></div>
-<div class="next"><a href="rcpp-ou-comment-int%C3%A9grer-facilement-du-code-cdans-un-package-r.html"><span class="header-section-number">5</span> Rcpp ou comment intégrer facilement du code C++dans un package R</a></div>
+<div class="next"><a href="rcpp-ou-comment-int%C3%A9grer-facilement-du-code-cdans-un-package.html"><span class="header-section-number">5</span> Rcpp ou comment intégrer facilement du code C++dans un package </a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">

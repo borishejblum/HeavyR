@@ -1,15 +1,13 @@
 
-# Contrôle de version avec `git` et GitHub : historique de changement, développement collaboratif et intégration continue
+# Version control with `git` and *GitHub*: changes history, collaborative development and continuous integration
 
-Nous nous intéressons ici aux solutions proposées par RStudio et GitHub pour 
-l'hébergement et le contrôle de version de projets.
+We are interested here in the solutions offered by *RStudio* and *GitHub* for hosting and version control of projects.
 
-## Principe du contrôle de version
+## Principles of version control
 
-Le principe du contrôle de version est d'enregistrer les changements 
-successifs apportés à des fichiers (notamment des fichiers R).
+The principle of version control is to record the successive changes made to files (especially `.R` files in our case).
 
-RStudio propose 2 solutions intégrées pour le contrôle de version :
+*RStudio* offers 2 integrated solutions for version control:
 
   - `git`
   
@@ -20,36 +18,24 @@ RStudio propose 2 solutions intégrées pour le contrôle de version :
 
 ### `git`
 
-`git` est un logiciel de contrôle de version (c'est-à-dire un outils qui va 
-enregistrer l'histoire des changements successifs de votre code et permettre de 
-partager ces changements avec d'autres personnes). `git` est un logiciel en 
-ligne de commande, et sa prise en main n'est pas nécessairement intuitive. 
+`git` is a version control software (i.e. a tool that will record the history of successive changes to your code and allow you to share these changes with other people). `git` is a command line program, and it is not necessarily very intuitive to use. 
 
-`git` fonctionne de la façon suivante : sur un serveur dans le 'cloud', 
-une version **à jour** du code est disponible. À tout moment il est possible 
-d’accéder à cette version du code en ligne. Chaque contributeur peut télécharger 
-cette dernière version **à jour** (dans une action que l'on dénomme *pull*), 
-avant de l'éditer localement. Une fois ses changements effectués, le 
-contributeur peut alors mettre à jour la version en ligne du code afin que ses 
-changements soient disponibles pour tout le monde (dans une action que l'on 
-dénomme *push*)
+`git` works as follows: on a server in the cloud, an **updated** version of the code is available. At any time it is possible to access this version of the code online. Each contributor can download this last **updated** version (in an action called *pull*), 
+before editing it locally. Once changes are made locally, the 
+contributor can then update the online version of the code, so that his changes become available to everyone (in an action called *push*).
 
-**NB** :  `git` a été pensé pour des fichiers légers (comme par exemple des 
-fichiers texte) et est loin d'être optimisé pour des fichiers trop lourds et/où 
-compressés.
+**NB:** `git` was designed for lightweight files (such as text files) and is far from being optimized for heavy and/or compressed files (e.g. `.RData` files).
 
 
 ### `subversion`
 
-`subversion` est l'autre solution disponible dans RStudio. Elle fonctionne de 
-manière similaire à git, mais avec des fonctionnalités un peu plus réduites
-que nous détaillons pas ici (la différence majeure est que tout les 
-contributeurs travaillent simultanément sur la même version du code).
+`subversion` is the other solution available in *RStudio*. It works in a similar way to git, but with less functionalities that we won't detail here (the major difference is that all 
+contributors work simultaneously on the same version of the code).
 
 
 ## Utiliser `git` localement depuis RStudio
 
-> ***A vous de jouer !***  
+> `r emoji::emoji("point_right")` ***Your turn !***  
 > 
   1. Commencez par activer `git` depuis l'onglet "Git/SVN" de "Project Options" 
   situé dans le menu "Tools" et suivre les instructions. Vous pouvez aussi
@@ -99,7 +85,7 @@ dans le futur lors de la résolution de bug où l'extension de fonctionnalités.
 d'hébergement de code en ligne, et s'appuyant sur `git`. Il existe de nombreux 
 sites web et services (gitlab, bitbucket, ...) permettant d'héberger du code et 
 s'appuyant sur `git`. GitHub est très populaire dans la communauté des 
-développeurs `R`, et est relativement facile à utiliser, même pour un 
+développeurs `r fontawesome::fa("r-project")`, et est relativement facile à utiliser, même pour un 
 utilisateur novice.
 
 Les avantages d'utiliser GitHub :
@@ -115,7 +101,7 @@ Les avantages d'utiliser GitHub :
   - cela facilite grandement le développement collaboratif
   
   
-### Mettre son package `R` sur GitHub
+### Mettre son package `r fontawesome::fa("r-project")` sur GitHub
 
 > ***A vous de jouer !***  
 >
@@ -300,7 +286,7 @@ services proposent une offre limitée gratuite pour les projets open-source.
 
 Une autre raison d'utiliser l'intégration continue est qu'elle permet de tester votre package sur 
 des infrastructures différentes de la votre (e.g. Windows, Ubuntu, Mac OS) et pour différentes 
-versions de `R` (*current*, *devel*...)
+versions de `r fontawesome::fa("r-project")` (*current*, *devel*...)
 
 ### Github actions
 
@@ -379,7 +365,7 @@ N'hésitez pas à consulter la page suivantes qui renseigne sur les différentes
 <!-- ### R-hub -->
 
 <!-- Le *R consortium* met à disposition le [R-hub builder](https://www.r-consortium.org/blog/2016/06/06/first-public-version-of-the-r-hub-builder), -->
-<!-- et a pour ambition de bientôt proposer un service d'intégration continue spécialement dédié aux packages `R`. -->
+<!-- et a pour ambition de bientôt proposer un service d'intégration continue spécialement dédié aux packages `r fontawesome::fa("r-project")`. -->
 
 
 

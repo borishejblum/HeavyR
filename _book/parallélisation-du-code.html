@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 6 Parallélisation du code R | Advanced  course</title>
+<title>Chapter 6 Parallélisation du code  | Advanced  course</title>
 <meta name="author" content="Robin Genuer &amp; Boris Hejblum">
-<meta name="description" content="6.1 Introduction à l’execution parallèle sous R En dehors de l’optimisation du code et des algorithmes, une autre façon d’obtenir un code performant est de tirer profit des architectures...">
+<meta name="description" content="6.1 Introduction à l’execution parallèle sous  En dehors de l’optimisation du code et des algorithmes, une autre façon d’obtenir un code performant est de tirer profit des architectures parallèles...">
 <meta name="generator" content="bookdown 0.26 with bs4_book()">
-<meta property="og:title" content="Chapter 6 Parallélisation du code R | Advanced  course">
+<meta property="og:title" content="Chapter 6 Parallélisation du code  | Advanced  course">
 <meta property="og:type" content="book">
-<meta property="og:description" content="6.1 Introduction à l’execution parallèle sous R En dehors de l’optimisation du code et des algorithmes, une autre façon d’obtenir un code performant est de tirer profit des architectures...">
+<meta property="og:description" content="6.1 Introduction à l’execution parallèle sous  En dehors de l’optimisation du code et des algorithmes, une autre façon d’obtenir un code performant est de tirer profit des architectures parallèles...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 6 Parallélisation du code R | Advanced  course">
-<meta name="twitter:description" content="6.1 Introduction à l’execution parallèle sous R En dehors de l’optimisation du code et des algorithmes, une autre façon d’obtenir un code performant est de tirer profit des architectures...">
+<meta name="twitter:title" content="Chapter 6 Parallélisation du code  | Advanced  course">
+<meta name="twitter:description" content="6.1 Introduction à l’execution parallèle sous  En dehors de l’optimisation du code et des algorithmes, une autre façon d’obtenir un code performant est de tirer profit des architectures parallèles...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -45,15 +45,15 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Course syllabus</a></li>
-<li><a class="" href="building-an-r-packagebuilding-an-package.html"><span class="header-section-number">1</span> [Building an R package]{Building an  package}</a></li>
+<li><a class="" href="building-a-package.html"><span class="header-section-number">1</span> Building a  package</a></li>
 <li><a class="" href="contr%C3%B4le-de-version-avec-git-et-github-historique-de-changement-d%C3%A9veloppement-collaboratif-et-int%C3%A9gration-continue.html"><span class="header-section-number">2</span> Contrôle de version avec git et GitHub : historique de changement, développement collaboratif et intégration continue</a></li>
 <li><a class="" href="mesurer-et-comparer-des-temps-dex%C3%A9cution.html"><span class="header-section-number">3</span> Mesurer et comparer des temps d’exécution</a></li>
 <li><a class="" href="profiler-son-code.html"><span class="header-section-number">4</span> Profiler son code</a></li>
-<li><a class="" href="rcpp-ou-comment-int%C3%A9grer-facilement-du-code-cdans-un-package-r.html"><span class="header-section-number">5</span> Rcpp ou comment intégrer facilement du code C++dans un package R</a></li>
-<li><a class="active" href="parall%C3%A9lisation-du-code-r.html"><span class="header-section-number">6</span> Parallélisation du code R</a></li>
+<li><a class="" href="rcpp-ou-comment-int%C3%A9grer-facilement-du-code-cdans-un-package.html"><span class="header-section-number">5</span> Rcpp ou comment intégrer facilement du code C++dans un package </a></li>
+<li><a class="active" href="parall%C3%A9lisation-du-code.html"><span class="header-section-number">6</span> Parallélisation du code </a></li>
 <li><a class="" href="misc%C3%A9lan%C3%A9es.html"><span class="header-section-number">7</span> Miscélanées</a></li>
 <li><a class="" href="take-home-message.html"><span class="header-section-number">8</span> Take Home message</a></li>
-<li><a class="" href="r%C3%A9f%C3%A9rences.html">Références</a></li>
+<li><a class="" href="further-reading.html">Further reading</a></li>
 </ul>
 
         <div class="book-extra">
@@ -61,13 +61,13 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="parallélisation-du-code-r" class="section level1" number="6">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="parallélisation-du-code" class="section level1" number="6">
 <h1>
-<span class="header-section-number">6</span> Parallélisation du code <code>R</code><a class="anchor" aria-label="anchor" href="#parall%C3%A9lisation-du-code-r"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6</span> Parallélisation du code <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><a class="anchor" aria-label="anchor" href="#parall%C3%A9lisation-du-code"><i class="fas fa-link"></i></a>
 </h1>
-<div id="introduction-à-lexecution-parallèle-sous-r" class="section level2" number="6.1">
+<div id="introduction-à-lexecution-parallèle-sous" class="section level2" number="6.1">
 <h2>
-<span class="header-section-number">6.1</span> Introduction à l’execution parallèle sous <code>R</code><a class="anchor" aria-label="anchor" href="#introduction-%C3%A0-lexecution-parall%C3%A8le-sous-r"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.1</span> Introduction à l’execution parallèle sous <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><a class="anchor" aria-label="anchor" href="#introduction-%C3%A0-lexecution-parall%C3%A8le-sous"><i class="fas fa-link"></i></a>
 </h2>
 <p>En dehors de l’optimisation du code et des algorithmes, une autre façon
 d’obtenir un code performant est de tirer profit des architectures parallèles
@@ -102,16 +102,16 @@ la configuration matérielle.</p>
 <p>Il existe un nombre important de packages et d’initiatives permettant de faire
 du calcul en R. Depuis <code>R 2.14.0</code>, le package
 <a href="https://stat.ethz.ch/R-manual/R-devel/library/parallel/doc/parallel.pdf"><code>parallel</code></a>
-est inclus directement dans <code>R</code> et permet de démarrer et d’arrêter un “cluster”
+est inclus directement dans <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> et permet de démarrer et d’arrêter un “cluster”
 de plusieurs processus travailleur (étape 1 et 6). En plus du package
 <code>parallel</code>, on va donc utiliser le package <code>future</code> qui permet de gérer les
 processus travailleurs et la communication et l’articulation avec le package
 <code>future.apply</code>qui permet lui de gérer le dialogue avec les travailleurs (envois,
 réception et rassemblement des résultats - étapes 2, 3, 4 et 5).</p>
 </div>
-<div id="première-fonction-parallèle-en-r" class="section level2" number="6.2">
+<div id="première-fonction-parallèle-en" class="section level2" number="6.2">
 <h2>
-<span class="header-section-number">6.2</span> Première fonction parallèle en <code>R</code><a class="anchor" aria-label="anchor" href="#premi%C3%A8re-fonction-parall%C3%A8le-en-r"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.2</span> Première fonction parallèle en <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><a class="anchor" aria-label="anchor" href="#premi%C3%A8re-fonction-parall%C3%A8le-en"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
 <p><strong><em>À vous de jouer !</em></strong></p>
@@ -155,7 +155,7 @@ sur les 100 premiers entiers, grâce à la commande :<br><code>microbenchmark(lo
 <span class="va">mb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span><span class="op">(</span><span class="fu">log_par</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">100</span><span class="op">)</span>, <span class="fu">log_seq</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">100</span><span class="op">)</span>, times <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-37-1.png" width="672"></div>
 <p>La version parallèle tourne beaucoup plus lentement… Car en fait, si les
-tâches individuelles sont trop rapides, <code>R</code> va passer plus de temps à
+tâches individuelles sont trop rapides, <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> va passer plus de temps à
 communiquer avec les cœurs, qu’à faire les calculs effectifs.</p>
 <p><strong>Il faut qu’une itération de la boucle soit relativement longue pour que le
 calcul parallèle apporte un gain en temps de calcul !</strong></p>
@@ -180,7 +180,7 @@ médiane pour chacune de ces variables.</p>
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">1e6</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1]     10 100000</code></pre>
-<p>Pour un utilisateur averti de <code>R</code>, une telle opération se programme facilement
+<p>Pour un utilisateur averti de <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg>, une telle opération se programme facilement
 à l’aide de la fonction <code>apply</code> :</p>
 <div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">colmedian_apply</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span>
@@ -188,7 +188,7 @@ médiane pour chacune de ces variables.</p>
 <span class="op">}</span>
 <span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="fu">colmedian_apply</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## utilisateur     système      écoulé 
-##       2.726       0.005       2.733</code></pre>
+##       2.871       0.008       2.883</code></pre>
 <p>En réalité, une boucle <code>for</code> n’est pas plus lente à condition d’être bien
 programmée :</p>
 <div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
@@ -201,7 +201,7 @@ programmée :</p>
 <span class="op">}</span>
 <span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="fu">colmedian_for</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## utilisateur     système      écoulé 
-##       2.612       0.001       2.614</code></pre>
+##       2.895       0.010       2.917</code></pre>
 <blockquote>
 <p><strong><em>À vous de jouer !</em></strong><br>
 Essayez d’améliorer encore ce temps de calcul en parallélisant :</p>
@@ -260,7 +260,7 @@ calcul.</p></li>
 </h3>
 <p>Le package <code>itertools</code> permet de séparer facilement des données ou des
 taches (étape 3) tout en minimisant les communications avec les différents
-travailleurs. Il s’appuie sur une implémentation des itérateurs en <code>R</code>.
+travailleurs. Il s’appuie sur une implémentation des itérateurs en <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg>.
 Son utilisation nécessite néanmoins de vectoriser le code à l’intérieur de
 <code>future_*apply()</code>. Expérimentez avec le petit code ci-dessous :</p>
 <div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
@@ -344,14 +344,14 @@ temps de calcul effectif pour chaque tache.</p>
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="rcpp-ou-comment-int%C3%A9grer-facilement-du-code-cdans-un-package-r.html"><span class="header-section-number">5</span> Rcpp ou comment intégrer facilement du code C++dans un package R</a></div>
+<div class="prev"><a href="rcpp-ou-comment-int%C3%A9grer-facilement-du-code-cdans-un-package.html"><span class="header-section-number">5</span> Rcpp ou comment intégrer facilement du code C++dans un package </a></div>
 <div class="next"><a href="misc%C3%A9lan%C3%A9es.html"><span class="header-section-number">7</span> Miscélanées</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#parall%C3%A9lisation-du-code-r"><span class="header-section-number">6</span> Parallélisation du code R</a></li>
-<li><a class="nav-link" href="#introduction-%C3%A0-lexecution-parall%C3%A8le-sous-r"><span class="header-section-number">6.1</span> Introduction à l’execution parallèle sous R</a></li>
-<li><a class="nav-link" href="#premi%C3%A8re-fonction-parall%C3%A8le-en-r"><span class="header-section-number">6.2</span> Première fonction parallèle en R</a></li>
+<li><a class="nav-link" href="#parall%C3%A9lisation-du-code"><span class="header-section-number">6</span> Parallélisation du code </a></li>
+<li><a class="nav-link" href="#introduction-%C3%A0-lexecution-parall%C3%A8le-sous"><span class="header-section-number">6.1</span> Introduction à l’execution parallèle sous </a></li>
+<li><a class="nav-link" href="#premi%C3%A8re-fonction-parall%C3%A8le-en"><span class="header-section-number">6.2</span> Première fonction parallèle en </a></li>
 <li>
 <a class="nav-link" href="#parall%C3%A9lisation-efficace"><span class="header-section-number">6.3</span> Parallélisation efficace</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#les-it%C3%A9rateurs"><span class="header-section-number">6.3.1</span> Les itérateurs</a></li>

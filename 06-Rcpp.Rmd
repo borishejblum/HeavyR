@@ -1,5 +1,5 @@
 
-# `Rcpp` ou comment intégrer facilement du code `C++`dans un package `R` 
+# `Rcpp` ou comment intégrer facilement du code `C++`dans un package `r fontawesome::fa("r-project")` 
 
 ```{r, echo=FALSE}
 library(mypkgr)
@@ -7,7 +7,7 @@ library(microbenchmark)
 library(ggplot2)
 ```
 
-`Rcpp` (R-C-Plus-Plus) est un package qui facilite l'interface entre `C++` et `R`. `R` est un langage
+`Rcpp` (R-C-Plus-Plus) est un package qui facilite l'interface entre `C++` et `r fontawesome::fa("r-project")`. `r fontawesome::fa("r-project")` est un langage
 interprété, ce qui facilite un certain nombre de choses (notamment nous donne accès à la console 
 dans laquelle on peut évaluer du code à la volée). Néanmoins, cette facilité d'utilisation se 
 compense entre autre par des temps de calcul supérieurs à ceux de langages de plus bas niveau,
@@ -42,9 +42,9 @@ NULL
 Nous allons maintenant créer une première fonction en `Rcpp` permettant d'inverser une matrice.
 Pour cela, nous allons nous appuyer sur la [library C++ `Armadillo`](http://arma.sourceforge.net/docs.html).
 Il s'agit d'une *library* d'algèbre linéaire moderne et simple, hautement optimisée, et interfacée 
-avec `R` via le package `RcppArmadillo`.
+avec `r fontawesome::fa("r-project")` via le package `RcppArmadillo`.
 
-`C++` n'est pas un langage très différent de `R`. Les principales différences qui nous concernent :
+`C++` n'est pas un langage très différent de `r fontawesome::fa("r-project")`. Les principales différences qui nous concernent :
   
   - `C++`est très efficaces pour le boucles *for* (y compris les boucles for emboîtées). Attention : 
   il y a souvent un sens qui est plus rapide que l'autre (ceci est dû à la manière dont C++ attribue
@@ -75,7 +75,7 @@ avec `R` via le package `RcppArmadillo`.
   library [Armadillo](http://arma.sourceforge.net/docs.html), tentez d'écrire une courte fonction 
   `invC` en `C++` calculant l'inverse d'une matrice.
 > 
-  5. Lorsque vous avez réussi à compiler votre fonction `invC` et qu'elle est accèssible depuis `R`
+  5. Lorsque vous avez réussi à compiler votre fonction `invC` et qu'elle est accèssible depuis `r fontawesome::fa("r-project")`
   créer une fonction `mvnpdf_invC()` à partir de l'implémentation de `mvnpdfsmart` en remplaçant 
   uniquement les calculs d'inverse matriciel par un appel à `invC`.
 > 
@@ -112,8 +112,8 @@ profvis::profvis(mvnpdfoptim(x=matrix(1.96,
 
 ## Optimisation grâce à `C++`
 
-En règle générale, on ne gagne pas beaucoup en temps de calcul en remplaçant une fonction `R` 
-optimisée par une fonction en `C++`. En effet, la plupart des fonctions de base de `R` s'appuie en 
+En règle générale, on ne gagne pas beaucoup en temps de calcul en remplaçant une fonction `r fontawesome::fa("r-project")` 
+optimisée par une fonction en `C++`. En effet, la plupart des fonctions de base de `r fontawesome::fa("r-project")` s'appuie en 
 réalité déjà sur des routines `C` ou `Fortran` bien optimisée. Le gain se limite alors simplement
 à la suppression des vérifications des arguments et de la gestion des différents types.
 

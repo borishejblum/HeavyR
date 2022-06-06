@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 5 Rcpp ou comment intégrer facilement du code C++dans un package R | Advanced  course</title>
+<title>Chapter 5 Rcpp ou comment intégrer facilement du code C++dans un package  | Advanced  course</title>
 <meta name="author" content="Robin Genuer &amp; Boris Hejblum">
-<meta name="description" content="Rcpp (R-C-Plus-Plus) est un package qui facilite l’interface entre C++ et R. R est un langage interprété, ce qui facilite un certain nombre de choses (notamment nous donne accès à la console dans...">
+<meta name="description" content="Rcpp (R-C-Plus-Plus) est un package qui facilite l’interface entre C++ et . est un langage interprété, ce qui facilite un certain nombre de choses (notamment nous donne accès à la console dans...">
 <meta name="generator" content="bookdown 0.26 with bs4_book()">
-<meta property="og:title" content="Chapter 5 Rcpp ou comment intégrer facilement du code C++dans un package R | Advanced  course">
+<meta property="og:title" content="Chapter 5 Rcpp ou comment intégrer facilement du code C++dans un package  | Advanced  course">
 <meta property="og:type" content="book">
-<meta property="og:description" content="Rcpp (R-C-Plus-Plus) est un package qui facilite l’interface entre C++ et R. R est un langage interprété, ce qui facilite un certain nombre de choses (notamment nous donne accès à la console dans...">
+<meta property="og:description" content="Rcpp (R-C-Plus-Plus) est un package qui facilite l’interface entre C++ et . est un langage interprété, ce qui facilite un certain nombre de choses (notamment nous donne accès à la console dans...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 5 Rcpp ou comment intégrer facilement du code C++dans un package R | Advanced  course">
-<meta name="twitter:description" content="Rcpp (R-C-Plus-Plus) est un package qui facilite l’interface entre C++ et R. R est un langage interprété, ce qui facilite un certain nombre de choses (notamment nous donne accès à la console dans...">
+<meta name="twitter:title" content="Chapter 5 Rcpp ou comment intégrer facilement du code C++dans un package  | Advanced  course">
+<meta name="twitter:description" content="Rcpp (R-C-Plus-Plus) est un package qui facilite l’interface entre C++ et . est un langage interprété, ce qui facilite un certain nombre de choses (notamment nous donne accès à la console dans...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -45,15 +45,15 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Course syllabus</a></li>
-<li><a class="" href="building-an-package.html"><span class="header-section-number">1</span> Building an  package</a></li>
+<li><a class="" href="building-a-package.html"><span class="header-section-number">1</span> Building a  package</a></li>
 <li><a class="" href="contr%C3%B4le-de-version-avec-git-et-github-historique-de-changement-d%C3%A9veloppement-collaboratif-et-int%C3%A9gration-continue.html"><span class="header-section-number">2</span> Contrôle de version avec git et GitHub : historique de changement, développement collaboratif et intégration continue</a></li>
 <li><a class="" href="mesurer-et-comparer-des-temps-dex%C3%A9cution.html"><span class="header-section-number">3</span> Mesurer et comparer des temps d’exécution</a></li>
 <li><a class="" href="profiler-son-code.html"><span class="header-section-number">4</span> Profiler son code</a></li>
-<li><a class="active" href="rcpp-ou-comment-int%C3%A9grer-facilement-du-code-cdans-un-package-r.html"><span class="header-section-number">5</span> Rcpp ou comment intégrer facilement du code C++dans un package R</a></li>
-<li><a class="" href="parall%C3%A9lisation-du-code-r.html"><span class="header-section-number">6</span> Parallélisation du code R</a></li>
+<li><a class="active" href="rcpp-ou-comment-int%C3%A9grer-facilement-du-code-cdans-un-package.html"><span class="header-section-number">5</span> Rcpp ou comment intégrer facilement du code C++dans un package </a></li>
+<li><a class="" href="parall%C3%A9lisation-du-code.html"><span class="header-section-number">6</span> Parallélisation du code </a></li>
 <li><a class="" href="misc%C3%A9lan%C3%A9es.html"><span class="header-section-number">7</span> Miscélanées</a></li>
 <li><a class="" href="take-home-message.html"><span class="header-section-number">8</span> Take Home message</a></li>
-<li><a class="" href="r%C3%A9f%C3%A9rences.html">Références</a></li>
+<li><a class="" href="further-reading.html">Further reading</a></li>
 </ul>
 
         <div class="book-extra">
@@ -61,11 +61,11 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="rcpp-ou-comment-intégrer-facilement-du-code-cdans-un-package-r" class="section level1" number="5">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="rcpp-ou-comment-intégrer-facilement-du-code-cdans-un-package" class="section level1" number="5">
 <h1>
-<span class="header-section-number">5</span> <code>Rcpp</code> ou comment intégrer facilement du code <code>C++</code>dans un package <code>R</code><a class="anchor" aria-label="anchor" href="#rcpp-ou-comment-int%C3%A9grer-facilement-du-code-cdans-un-package-r"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5</span> <code>Rcpp</code> ou comment intégrer facilement du code <code>C++</code>dans un package <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg><a class="anchor" aria-label="anchor" href="#rcpp-ou-comment-int%C3%A9grer-facilement-du-code-cdans-un-package"><i class="fas fa-link"></i></a>
 </h1>
-<p><code>Rcpp</code> (R-C-Plus-Plus) est un package qui facilite l’interface entre <code>C++</code> et <code>R</code>. <code>R</code> est un langage
+<p><code>Rcpp</code> (R-C-Plus-Plus) est un package qui facilite l’interface entre <code>C++</code> et <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg>. <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> est un langage
 interprété, ce qui facilite un certain nombre de choses (notamment nous donne accès à la console
 dans laquelle on peut évaluer du code à la volée). Néanmoins, cette facilité d’utilisation se
 compense entre autre par des temps de calcul supérieurs à ceux de langages de plus bas niveau,
@@ -102,8 +102,8 @@ package dans son ensemble :</p></li>
 <p>Nous allons maintenant créer une première fonction en <code>Rcpp</code> permettant d’inverser une matrice.
 Pour cela, nous allons nous appuyer sur la <a href="http://arma.sourceforge.net/docs.html">library C++ <code>Armadillo</code></a>.
 Il s’agit d’une <em>library</em> d’algèbre linéaire moderne et simple, hautement optimisée, et interfacée
-avec <code>R</code> via le package <code>RcppArmadillo</code>.</p>
-<p><code>C++</code> n’est pas un langage très différent de <code>R</code>. Les principales différences qui nous concernent :</p>
+avec <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> via le package <code>RcppArmadillo</code>.</p>
+<p><code>C++</code> n’est pas un langage très différent de <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg>. Les principales différences qui nous concernent :</p>
 <ul>
 <li><p><code>C++</code>est très efficaces pour le boucles <em>for</em> (y compris les boucles for emboîtées). Attention :
 il y a souvent un sens qui est plus rapide que l’autre (ceci est dû à la manière dont C++ attribue
@@ -128,7 +128,7 @@ inutiles)</p></li>
 et <a href="http://gallery.rcpp.org/articles/armadillo-eigenvalues/%C3%A0">RcppArmadillo</a> de celle de la
 library <a href="http://arma.sourceforge.net/docs.html">Armadillo</a>, tentez d’écrire une courte fonction
 <code>invC</code> en <code>C++</code> calculant l’inverse d’une matrice.</p></li>
-<li><p>Lorsque vous avez réussi à compiler votre fonction <code>invC</code> et qu’elle est accèssible depuis <code>R</code>
+<li><p>Lorsque vous avez réussi à compiler votre fonction <code>invC</code> et qu’elle est accèssible depuis <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg>
 créer une fonction <code>mvnpdf_invC()</code> à partir de l’implémentation de <code>mvnpdfsmart</code> en remplaçant
 uniquement les calculs d’inverse matriciel par un appel à <code>invC</code>.</p></li>
 <li><p>Evaluer le gain en performance de cette nouvelle implémentation <code>mvnpdf_invC</code></p></li>
@@ -145,17 +145,17 @@ uniquement les calculs d’inverse matriciel par un appel à <code>invC</code>.<
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##                                                            expr      min
-##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   65.252
-##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4087.995
-##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3016.258
-##  mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2361.384
-##  mvnpdf_invC(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3065.582
-##        lq      mean    median        uq       max neval  cld
-##    84.366  108.6245   98.9045  118.1425   415.003   100 a   
-##  4821.649 5861.4324 5049.1305 5645.4125 17565.008   100    d
-##  3669.036 4257.3052 3795.6820 3914.2345 13205.407   100   c 
-##  2759.372 3169.3174 2875.3405 3002.2415 10141.350   100  b  
-##  3650.281 4492.5774 3753.2155 3879.7740 12683.158   100   c</code></pre>
+##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   71.603
+##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4394.718
+##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3055.171
+##  mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2458.297
+##  mvnpdf_invC(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3118.366
+##         lq      mean    median       uq       max neval cld
+##    88.6125  131.0086  106.0255  129.659   732.902   100 a  
+##  5035.0090 6673.3526 5262.9320 6308.673 34971.465   100   c
+##  3790.1275 4599.6529 3920.4310 4241.278 16861.129   100  b 
+##  2893.1235 3942.1172 3062.0920 3566.399 15614.461   100  b 
+##  3753.6965 4687.4476 3889.6020 4412.845 13158.539   100  b</code></pre>
 <pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
 ## use `guide = "none"` instead.</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-31-1.png" width="672"></div>
@@ -169,8 +169,8 @@ uniquement les calculs d’inverse matriciel par un appel à <code>invC</code>.<
 <h2>
 <span class="header-section-number">5.2</span> Optimisation grâce à <code>C++</code><a class="anchor" aria-label="anchor" href="#optimisation-gr%C3%A2ce-%C3%A0-c"><i class="fas fa-link"></i></a>
 </h2>
-<p>En règle générale, on ne gagne pas beaucoup en temps de calcul en remplaçant une fonction <code>R</code>
-optimisée par une fonction en <code>C++</code>. En effet, la plupart des fonctions de base de <code>R</code> s’appuie en
+<p>En règle générale, on ne gagne pas beaucoup en temps de calcul en remplaçant une fonction <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg>
+optimisée par une fonction en <code>C++</code>. En effet, la plupart des fonctions de base de <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> s’appuie en
 réalité déjà sur des routines <code>C</code> ou <code>Fortran</code> bien optimisée. Le gain se limite alors simplement
 à la suppression des vérifications des arguments et de la gestion des différents types.</p>
 <blockquote>
@@ -200,13 +200,13 @@ de densité de la loi Normale multivariée <code>mvnpdfC()</code>.</p></li>
 ##                                        mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE)
 ##                                        mvnpdf_invC(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE)
 ##  mvnpdfC(x = matrix(1.96, nrow = 2, ncol = n), mean = rep(0, 2),      varcovM = diag(2), Log = FALSE)
-##       min        lq       mean    median        uq       max neval cld
-##    64.276   83.3445  111.26024   98.4965  117.0860   615.204   100 a  
-##  4165.509 4588.6115 6488.67102 5221.1780 6348.2835 54856.492   100   c
-##  3041.830 3327.4035 4357.27417 3690.2060 4227.9235 13406.882   100  b 
-##  2260.919 2553.7480 3329.82831 2753.2115 3125.0310 13480.846   100  b 
-##  2992.458 3304.5170 4296.68776 3652.0845 4427.3470 15689.966   100  b 
-##    44.860   54.8060   99.08005   62.2305   74.2415  3149.977   100 a</code></pre>
+##       min        lq      mean    median       uq       max neval  cld
+##    70.314   90.8555  118.7912  111.3245  128.202   403.318   100 a   
+##  4442.162 5034.0980 5806.1428 5218.3360 5723.780 15313.112   100    d
+##  3307.198 3782.3440 4830.3060 3919.2540 4222.309 42014.009   100   c 
+##  2351.875 2831.7825 3329.2880 2997.8205 3220.057  9009.724   100  b  
+##  3218.508 3744.4270 4279.3562 3887.2750 4050.761 13810.887   100   c 
+##    46.554   61.7370   87.4028   70.0115   77.825  1399.844   100 a</code></pre>
 <pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
 ## use `guide = "none"` instead.</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-34-1.png" width="672"></div>
@@ -230,11 +230,11 @@ and often a <strong>substantial amount of programming and debugging</strong> req
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="profiler-son-code.html"><span class="header-section-number">4</span> Profiler son code</a></div>
-<div class="next"><a href="parall%C3%A9lisation-du-code-r.html"><span class="header-section-number">6</span> Parallélisation du code R</a></div>
+<div class="next"><a href="parall%C3%A9lisation-du-code.html"><span class="header-section-number">6</span> Parallélisation du code </a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#rcpp-ou-comment-int%C3%A9grer-facilement-du-code-cdans-un-package-r"><span class="header-section-number">5</span> Rcpp ou comment intégrer facilement du code C++dans un package R</a></li>
+<li><a class="nav-link" href="#rcpp-ou-comment-int%C3%A9grer-facilement-du-code-cdans-un-package"><span class="header-section-number">5</span> Rcpp ou comment intégrer facilement du code C++dans un package </a></li>
 <li><a class="nav-link" href="#premi%C3%A8re-fonction-en-rcpp"><span class="header-section-number">5.1</span> Première fonction en Rcpp</a></li>
 <li><a class="nav-link" href="#optimisation-gr%C3%A2ce-%C3%A0-c"><span class="header-section-number">5.2</span> Optimisation grâce à C++</a></li>
 <li><a class="nav-link" href="#annexe-5.1-loptimisation-pr%C3%A9matur%C3%A9e-nest-pas-une-bonne-id%C3%A9e"><span class="header-section-number">5.3</span> Annexe 5.1 : l’optimisation prématurée n’est pas une bonne idée</a></li>

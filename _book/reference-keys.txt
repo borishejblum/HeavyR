@@ -1,4 +1,4 @@
-building-an-package
+building-a-package
 initializing-a-package
 adding-a-function-common-theme-example
 documenting-a-function
@@ -15,7 +15,7 @@ subversion
 utiliser-git-localement-depuis-rstudio
 bonnes-pratiques-du-commit
 github
-mettre-son-package-r-sur-github
+mettre-son-package-sur-github
 collaboration-pour-la-production-du-code
 branches
 merge
@@ -32,13 +32,13 @@ comparer-des-temps-dexécution-avec-microbenchmark
 profiler-son-code
 comparaison-avec-une-version-plus-habile-de-mnvpdf
 comparaison-avec-une-version-optimisée-dans-r
-rcpp-ou-comment-intégrer-facilement-du-code-cdans-un-package-r
+rcpp-ou-comment-intégrer-facilement-du-code-cdans-un-package
 première-fonction-en-rcpp
 optimisation-grâce-à-c
 annexe-5.1-loptimisation-prématurée-nest-pas-une-bonne-idée
-parallélisation-du-code-r
-introduction-à-lexecution-parallèle-sous-r
-première-fonction-parallèle-en-r
+parallélisation-du-code
+introduction-à-lexecution-parallèle-sous
+première-fonction-parallèle-en
 parallélisation-efficace
 les-itérateurs
 les-autres-plans-de-calculs-parallèle
