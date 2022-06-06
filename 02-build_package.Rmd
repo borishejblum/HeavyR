@@ -1,0 +1,275 @@
+
+# Building an `r fontawesome::fa("r-project")` package
+
+Here we present how to efficiently create and build a package using Rstudio IDE, and the `devtools` and `usethis` packages.
+
+More details are provided in the reference material on this subject: the book [R packages](https://r-pkgs.org/) by Hadley Wickham, freely available online.
+
+## Initializing a package
+
+A simple way, built into Rstudio, to **initialize a package** is :
+
+  1. create a new project (top left `File` drop down menu in Rstudio)
+  
+  2. choose "*New Directory*"
+  
+  3. choose "*R package using devtools*" (if it is not available, choose "*R
+  package*", the difference being that with "*R package*" you will have to delete unnecessary files that are automatically created but not useful)
+  
+  4. give a name to your package, for example `mypkgr`.
+  
+  
+From that, we get the **minimal structure for an** `r fontawesome::fa("r-project")` package, namely:
+
+  - a **DESCRIPTION** file whose `Title`, `Version`, `Authors@R` and
+  `Description` are to be edited (other parts can be edited or even added automatically, see
+  even added automatically, see below)
+  
+  - a **NAMESPACE** file which will be **later** edited automatically  
+  (so hands off for now)
+  
+  - a folder **R** in which we will add `.R` script files
+  
+  
+`devtools` also adds three **optional files**:
+
+  - `.gitignore`, relative to `git`, a version control tool that we will see in detail 
+  in the section on GitHub
+  
+  - `mypkgr.Rproj` which is a specific file of Rstudio, and allows to define
+  the characteristics and preferences of the project we just created
+  
+  - `.Rbuildignore` which allows to ignore some files when we build the package a down the road (for example, the `mypkgr.Rproj` file should not be included in the package)
+  
+
+
+## Adding a function: common theme example
+
+We first invite you to code the following function, which we will use throughout the course:
+
+We want to compute the value of the density of a multivariate normal distribution
+on $\mathbb{R}^p$ at $n$ points. Our function must be applicable for
+any multivariate normal distribution (i.e. any mean vector in
+$\mathbb{R}^p$ and variance-covariance matrix of any order of $p$),
+and we wish to compute all the values of the density evaluated
+at the $n$ points in a single call of the function.
+
+So you need to create a function `mvnpdf()` in a file named `mvnpdf.R`
+in the `R` folder of your package, which :
+
+  - takes as arguments:
+  
+      - `x` a matrix, with $n$ columns (the observations) and $p$ rows
+      
+      - `mean` a vector of means
+      
+      - `varcovM` a variance-covariance matrix
+      
+      - `Log` a logical parameter, with default value to `TRUE`.
+      
+  - returns a list containing the matrix `x`, and a vector of length $n$
+  of the multivariate normal distribution density values at those points.
+
+> `r emoji::emoji("point_right")` Your turn !  
+
+`r emoji::emoji("warning")` **WARNING ! if you click too quickly on the link below, it will invalidate your participation in the class !
+
+Here is a function proposal that you can download
+[here](https://r-dev-perf.borishejblum.science/FormationRavancee_dev_perf_files/mvnpdfRAW.R).
+
+For advice on writing code, see the 
+[R code](https://r-pkgs.org/r.html) section from Hadley Wickam *R packages* online book.
+
+
+
+## Documenting a function
+
+It is important to properly document your code. Every project has at least 2 
+developers:
+
+  - yourself,
+    
+  - and you in 6 months.
+  
+For the sake of your future self, do yourself a favor and take the time to document 
+your code !
+
+We strongly advise you to use the `roxygen2` package to document
+your packages. The main advantage being to have the help of a function in
+the same file as the code defining this function.
+
+> `r emoji::emoji("point_right")` ***Your turn!***  
+>
+  1. Start by inserting the skeleton of the helper with "Insert Roxygen
+  Skeleton" located in the "Code" menu or the *Magic Wand* sub-menu in
+  the script window.
+>  
+  2. Complete the documentation by filling in:
+> 
+      - the title of the function (first line)
+>      
+      - the description of what the function does (second paragraph)
+>      
+      - if you fill in a third paragraph, this part will go in the "Details" section of the
+      help page
+ >     
+      - the meaning of the parameters
+ >     
+      - the output, after the `@return` tag
+ >     
+  3. Generate the documentation using "Document" in the "More" menu of the
+  Build" tab (or Ctrl+Shift+D or `devtools::document()`). The effect of
+  this command is multiple:
+>
+    - a `man` folder is created and inside it, a `mvnpdf.Rd` file contains the help information about the function
+>      
+    - the `NAMESPACE` file is modified
+      
+**In case of problems OR out of curiosity but only once you are done**, you can have a look at this
+[proposal](https://r-dev-perf.borishejblum.science/FormationRavancee_dev_perf_files/mvnpdfRox.R).
+      
+For more details on package documentation and
+`roxygen2` tags, see the
+[Object documentation](https://r-pkgs.org/man.html) secttion from Hadley Wickam *R packages* online book.
+
+Let's finish by mentioning a function from the `usethis` package which initializes a
+home help page for the whole package:
+
+```{r, eval=FALSE}
+usethis::use_package_doc()
+```
+
+The generated help page will then be accessible, once the package is installed,
+with the following command:
+
+```{r, eval=FALSE}
+?mypkgr
+```
+
+## Interactively test the package
+
+To test the package, you have to load it in R using "Load All" (or Ctrl+Shift+L) in the
+"More" menu from the "Build" tab, or alternatively `devtools::load_all()`).
+
+You can then use your package directly in R: see
+the help of the function with `?mvnpdf` and for example execute the commands given in the example section of this help page.
+
+```{r, eval=FALSE}
+?mvndpf
+```
+ 
+During code development, you can thus:
+
+  - Add/Modify the `r fontawesome::fa("r-project")` code
+  
+  - Re-load the package `Ctrl+Shift+L`
+  
+  - Experiment it in the console
+  
+  - And so on...
+  
+## *Automatically* test your package
+
+To initialize automatic testing capabilities in your package, execute the following command:
+
+```{r, eval=FALSE}
+usethis::use_testthat()
+```
+
+This command creates a `tests` folder which includes a `testthat.R` file -- not to be modified -- and a `testthat` folder in which we will add our automated tests. This tool is based on the theory of `unit tests`.
+
+For example, here is the content of a file that we will call `test-univariate.R` to be put into the `testthat` folder:
+
+```{r, eval=FALSE}
+context("Univariate gaussian test")
+
+test_that("correct result for univariate gaussian", {
+  expect_equal(mvnpdf(x=matrix(1.96), Log=FALSE)$y, dnorm(1.96))
+  expect_equal(mvnpdf(x=matrix(c(1.96, -0.5), ncol = 2), Log=FALSE)$y,
+               dnorm(c(1.96, -0.5)))
+})
+```
+
+And a second one named `test-bivariate.R` :
+
+```{r, eval=FALSE}
+context("Bivariate gaussian test")
+
+test_that("correct results for bivariate gaussian", {
+  expect_equal(mvnpdf(x=matrix(rep(1.96,2), nrow=2, ncol=1), Log=FALSE)$y,
+               mvtnorm::dmvnorm(rep(1.96, 2)))
+})
+```
+
+To execute these tests, you can click on "Test package" (`Ctrl+Shift+T`) in the "More" menu from the "Build" tab, or run `devtools::test()`
+
+The advantage of these automatic tests is that they will be run every time you *check* the package.
+
+A good practice is to add a unit test each time a bug is identified and fixed,
+so that we can immediately identify and prevent the same error from happening again in 
+the future.
+
+
+## *Checking* your package
+
+Ruunning a *check* means ensuring tthat everything in your package is correct and will work as expected, and that it can be installed properly.
+"Passing `R CMD CHECK`" is **mandatory** for successfully uploading your package on CRAN.
+
+To perform `R CMD CHECK` on your package, you can click on "Check" (`Ctrl+Shift+E`) from the "Build" tab, or run `devtools::check()`.
+
+During the *check*, the automated unitt tests that we have developed previously are
+executed. This is the advantage of having written these tests, we don't need to worry about it, simply react and adjust the code when errors are returned and flagged.
+
+## Install your package
+
+For the moment, the package exists only in the environment associated with the *Rstudio* project that we have created. To be able to use it anywhere (on your computer) in `r fontawesome::fa("r-project")`  in a general way, you have to install it (like a CRAN package for example).
+
+To do this, click on "Install and Restart" (`Ctrl+Shift+B`) from the "Build" tab, or alternatively you can run `devtools::install()`.
+
+And finally, you can configure *Rstudio*'s behavior so that at the time of installation, it simultaneously documents the package: go to the "More" menu from the "Build" tab, then "Configure Build Tools". Then click on "Configure" and check the box at the bottom "Install and Restart".
+
+
+
+
+## Appendix 1.1: add an `S3 method`
+
+In most packages, we oftten have to implement so called `S3 methods` so that, from a result object `res`, one can run `print(res)`, `summary(res)`, `plot(res)`...
+
+Here is an example of a `plot()` method that we can add to our package:
+
+```{r, eval=FALSE}
+#' Plot of the mvnpdf function
+#'
+#' @param x an object of class \code{mvnpdf} resulting from a call of
+#' \code{mnvpdf()} function.
+#' @param ... graphical parameters passed to \code{plot()} function.
+#'
+#' @return Nothing is returned, only a plot is given.
+#' @export
+#'
+#' @examples
+#' pdfvalues <- mvnpdf(x=matrix(seq(-3, 3, by = 0.1), nrow = 1), Log=FALSE)
+#' plot(pdfvalues)
+plot.mvnpdf <- function(x, ...) {
+  plot(x$x, x$y, type = "l", ...)
+}
+```
+
+`r emoji::emoji("warning")` *Warning !* 
+
+In order for this *S3 method* to do what we want it to do when we apply it to the
+result of our function `mvnpdf()`, we have to declare `mvnpdf()` returns a result of class `mvnpdf`.
+
+Test this function, by executing the example.\
+*Don't forget to reinstall the package ("Install and Restart" or `Ctrl+Shift+B`).
+
+Look at the contents of the `man` folder and the changes that have been made to `NAMESPACE`.
+
+*Here is a proposed solution*: the [file](https://r-dev-perf.borishejblum.science/FormationRavancee_dev_perf_files/mvnpdf.R)
+contains the complete code of the `mvnpdf()` function and the associated `plot()` method.
+
+
+## Appendix 1.2: submit one's package on [CRAN](https://cran.r-project.org/web/packages/available_packages_by_name.html)
+
+Run the two following commands: `devtools::check()` followed `devtools::submit_cran()`.
+For more details, see Hadley Wickham's recommanded pipeline in his book [*R packages*](https://r-pkgs.org/release.html#release-process)

@@ -1,62 +1,52 @@
 --- 
-title: 'Formation R avancée'
-subtitle: '*Outils de développement et de performance*'
-author: "[Robin Genuer](https://robin.genuer.fr/) et [Boris Hejblum](https://borishejblum.science/)"
+title: 'Advanced `r fontawesome::fa("r-project")` course'
+subtitle: '*Tools for software development and performance*'
+author: "[Robin Genuer](https://robin.genuer.fr/) & [Boris Hejblum](https://borishejblum.science/)"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-description: "Outils de développement et de performance"
+description: "Tools for software development and performance"
 ---
 
-# Présentation de la formation {-}
+# Course syllabus {-}
 
-Le but principal de cette formation est de vous donner des outils pour
-faciliter le développement de code (performant) avec `R`. L'aspect "performance"
-arrivera dans un deuxième temps, et les premiers outils présentés sont
-également très utiles dans des situations ne faisant pas intervenir de temps
-de calculs importants.
+The main goal of this course is to give you tools that ease (high-performing and effcient) code development with `r fontawesome::fa("r-project")`. The *performance* side will come as a second part, and the initial tools introduced are also very useful in situations that do not require
+important computation times.
 
-Nous allons centrer la présentation de ces outils de développement autour
-de la notion de package. Vous connaissez déjà cette notion, car vous avez
-déjà installer des packages depuis le CRAN par exemple. Vous savez également
-que c'est le moyen le plus standard dans `R` pour mettre à disposition du code.
-Nous allons vous montrer que le package est également un excellent outil pour
-développer le code.
+We will focus the presentation of these development tools focuusing on the notion of **package**. *You are already familiar with this notion*, as you have already
+already installed packages from the CRAN for example ! You also know that it is the most standard way in `r fontawesome::fa("r-project")` to distribuute code and make it available.
+We will show you that the package is also an excellent tool for developing code.
 
 
-Nous allons adopter le plan suivant :
+We will follow the outline below:
 
-1. Construire un package
+ 1. Build a package
 
-2. Tracer les changements, partager son code, développement collaboratif et automatiser les tests dans un package
+ 2. **Tracking** changes, **sharing** code, **collaborative** development and automating tests in a package
 
-3. Mesurer le temps de calcul
+ 3. **Measure** computation time
 
-4. *Profiler* le code
+ 4. **Profile** the code
 
-5. Utiliser *Rcpp* pour optimiser ce qui doit l'être
+ 5. Use `Rcpp` to **optimize** what needs to be optimized
 
-6. Paralléliser facilement le code
+ 6. **Parallelize** the code easily
 
 
-Afin de suivre cette formation, il est nécessaire de disposer des logiciels suivants :  
+To take this course, you will need to have the following softwares installed:
 
-  - la dernière version de *R* (https://cloud.r-project.org/)
+  - the latest version of `r fontawesome::fa("r-project")` (https://cloud.r-project.org/)
 
-  - la dernière version de *RStudio* (https://www.rstudio.com/products/rstudio/download/#download)
+  - the latest version of `RStudio` (https://www.rstudio.com/products/rstudio/download/#download)
 
-  - un *compilateur `C++`* (tel que `gcc` ou `clang` - natif sous les système UNIX, 
-	pour les utilisateurs Windows nous recommandons l’installation de 
-	[Rtools](https://cran.r-project.org/bin/windows/Rtools/), pour les 
-	utilisateurs Mac il peut être nécessaire d'installer les outils de 
-	développement Apple comme suggéré 
-	[ici](http://thecoatlessprofessor.com/programming/r-compiler-tools-for-rcpp-on-os-x/))
+  - a *C++ compiler* (such as `gcc` or `clang` - native on UNIX systems, 
+	for Windows users we recommend installing 
+	[Rtools](https://cran.r-project.org/bin/windows/Rtools/), for 
+	Mac users it may be necessary to install the macOS tool chain (namely Xcode Command Line Tools  and gfortran) used by `r fontawesome::fa("r-project")` as detailed  [here](http://thecoatlessprofessor.com/programming/r-compiler-tools-for-rcpp-on-os-x/))
 
-  - les packages `R` suivants : *devtools*, *future.apply*, *itertools*, *microbenchmark*, *mvtnorm*, *profvis*, *Rcpp*, *RcppArmadillo*, *roxygen2*, *testthat*, *usethis*
+  - the following `r fontawesome::fa("r-project")` packages: `devtools`, `future.apply`, `itertools`, `microbenchmark`, `mvtnorm`, `profvis`, `Rcpp`, `RcppArmadillo`, `roxygen2`, `testthat`, `usethis`
 
-  - le client [*GitHub Desktop*](https://desktop.github.com/)
-
-  - le logiciel [*git*](https://git-scm.com/)
+  - the software [*git*](https://git-scm.com/)
