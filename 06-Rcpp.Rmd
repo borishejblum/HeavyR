@@ -21,7 +21,7 @@ Wickham.
 
 ## Première fonction en Rcpp
 
-> ***A vous de jouer !***  
+> `r emoji::emoji("point_right")` ***Your turn !*** 
 >
   1. Afin de rendre votre package prêt pour l'utilisation avec Rcpp, commencez par executer la commande
 suivante :
@@ -56,7 +56,7 @@ avec `r fontawesome::fa("r-project")` via le package `RcppArmadillo`.
   l'utiliser.
 
 
-> ***A vous de jouer !***  
+> `r emoji::emoji("point_right")` ***Your turn !*** 
 >
   1. Créez un nouveau fichier `C++` depuis RStudio (via le menu `File` > `New File` > `C++ File`), 
   et enregistrez le dans le dossier `src`. Prenez le temps de le lire et essayez de comprendre 
@@ -117,7 +117,7 @@ optimisée par une fonction en `C++`. En effet, la plupart des fonctions de base
 réalité déjà sur des routines `C` ou `Fortran` bien optimisée. Le gain se limite alors simplement
 à la suppression des vérifications des arguments et de la gestion des différents types.
 
-> ***A vous de jouer !***  
+> `r emoji::emoji("point_right")` ***Your turn !*** 
 >
   1. À partir de `mvnpdfsmart`, proposez une implémentation completement en `C++` du calcul
   de densité de la loi Normale multivariée `mvnpdfC()`.

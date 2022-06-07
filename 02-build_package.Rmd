@@ -72,7 +72,7 @@ in the `r fontawesome::fa("r-project")` folder of your package, which :
 
 > `r emoji::emoji("point_right")` Your turn !  
 
-`r emoji::emoji("warning")` **WARNING ! if you click too quickly on the link below, it will invalidate your participation in the class !
+`r emoji::emoji("warning")` *WARNING !* if you click too quickly on the link below, it will invalidate your participation in the class !
 
 Here is a function proposal that you can download
 [here](https://r-dev-perf.borishejblum.science/FormationRavancee_dev_perf_files/mvnpdfRAW.R).
@@ -255,13 +255,13 @@ plot.mvnpdf <- function(x, ...) {
 }
 ```
 
-`r emoji::emoji("warning")` *Warning !* 
+`r emoji::emoji("warning")` *WARNING !* 
 
 In order for this *S3 method* to do what we want it to do when we apply it to the
 result of our function `mvnpdf()`, we have to declare `mvnpdf()` returns a result of class `mvnpdf`.
 
 Test this function, by executing the example.\
-*Don't forget to reinstall the package ("Install and Restart" or `Ctrl+Shift+B`).
+*Don't forget to re-install the package ("Install and Restart" or `Ctrl+Shift+B`)*.
 
 Look at the contents of the `man` folder and the changes that have been made to `NAMESPACE`.
 

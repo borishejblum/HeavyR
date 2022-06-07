@@ -1,7 +1,7 @@
 
-# Version control with `git` and *GitHub*: changes history, collaborative development and continuous integration
+# Version control with `git` and *GitHub* 
 
-We are interested here in the solutions offered by *RStudio* and *GitHub* for hosting and version control of projects.
+We are interested here in the solutions offered by *RStudio* and *GitHub* for hosting and version control of projects. THis allows to monitor changes history, to help collaborative development and to facilitate continuous integration.
 
 ## Principles of version control
 
@@ -33,236 +33,165 @@ contributor can then update the online version of the code, so that his changes 
 contributors work simultaneously on the same version of the code).
 
 
-## Utiliser `git` localement depuis RStudio
+## Use `git` locally within *RStudio*
 
 > `r emoji::emoji("point_right")` ***Your turn !***  
 > 
-  1. Commencez par activer `git` depuis l'onglet "Git/SVN" de "Project Options" 
-  situé dans le menu "Tools" et suivre les instructions. Vous pouvez aussi
-  utilisé `usethis::use_git()`
+  1. Start by enabling `git` from the "Git/SVN" tab of "Project Options" located in the "Tools" menu and follow the instructions. You can also use `usethis::use_git()`.
 >  
-  2. À partir de l'onglet "Git" maintenant apparu à côté de l'onglet "Build", 
-  enregistrer l'état actuel de votre package en réalisant votre premier "commit" :
+  2. From the "Git" tab that now appears next to the "Build" tab, 
+  register the current state of your package by making your first commit:
  >     
-      - 2a. sélectionner les fichiers à suivre (ne pas sélectionner le fichier .Rproj)
+      - 2a. Select the files to track (do not select the `.Rproj` file)
  >     
-      - 2b. écrire un message informatif (pour vos collaborateurs - ce qui inclut votre futur vous)
+      - 2b. write an informative message (for your collaborators -- this includes your future self)
  >     
-      - 2c. cliquer sur "Commit"
+      - 2c. click on "Commit" >
 >     
-  3. Ajouter une ligne "*.Rproj" au fichier ".gitignore" et effectuez un nouveau commit
+  3. Add a "*.Rproj" line to the ".gitignore" file and make a new commit
 >  
-  4. Visualiser les changements et leur historique à l'aide des outils de visualisation 
-  "Diff" et "History" accessible depuis l'onglet "Git"
+  4. Visualize the changes and their history using the visualization tools 
+  "Diff" and "History" tools accessible from the "Git" tab
   
   
-### Bonnes pratiques du *commit*
+### Good *commit* practices
 
-Idéalement, chaque commit ne devrait régler qu'un seul problème. Il devrait le régler dans 
-son intégralité (être **complet**) et ne contenir des changements relatifs qu'uniquement à 
-ce problème (être **minimal**). Il est alors important d'écrire des message de commit 
-**informatifs** (pensez à vos collaborateur, qui incluent votre **futur vous**).
-Il faut également être concis, et décrire les raisons des changements plutôt que 
-les changements eux-mêmes (visibles dans le *Diff*). Il est parfois difficile de 
-respecter ces directives à la lettre, et celles-ci ne sont qu'un guide et ne 
-doivent pas vous empêcher d'effectuer des *commits* réguliers. 
+Ideally, each commit should solve only one problem. It should fix it in its entirety (be **complete**), and contain only changes related to that very problem (be **minimal**). It is especially useful to write **informative** commit messages (be kind and help your collaborators, which includes your **future self**). You should also be concise, and describe the reasons for the changes rather than the the changes themselves (visible in the *Diff*). **NB:** it is sometimes difficult to follow these guidelines to the letter, and they are merely an ideal guide. They certainly should not prevent you from should from regularly making *commits*. 
 
-Par ailleurs, la tentation d'avoir un historique de changements "propre" et bien
-ordonné est naturelle, mais se révèle une source de problèmes inutiles. Elle 
-entre en contradiction avec l'objectif de traçabilité du contrôle de version. 
-Le développement de code étant généralement un processus intellectuel complexe 
-et non linéaire, il est normal que l'enregistrement des changements reflète ce 
-cheminement. En pratique, votre futur-vous sera le premier utilisateur de votre 
-historique de changements et la priorité est donc de vous faciliter la tache 
-dans le futur lors de la résolution de bug où l'extension de fonctionnalités.
+On the other hand, the temptation to have a *"clean" and tidy* change-history is natural, but it is a source of unnecessary problems. It contradicts the traceability goal of version control. Since code development is generally a complex, messy, and non-linear intellectual process, it is normal that the recording of changes reflects this path. In practice, your future self will be the first user of your change history, so the priority is to make it easier for you in the future when solving bugs or extending functionality.
 
 
 
 
 ## GitHub
 
-[GitHub](https://github.com/) est un site internet proposant une solution 
-d'hébergement de code en ligne, et s'appuyant sur `git`. Il existe de nombreux 
-sites web et services (gitlab, bitbucket, ...) permettant d'héberger du code et 
-s'appuyant sur `git`. GitHub est très populaire dans la communauté des 
-développeurs `r fontawesome::fa("r-project")`, et est relativement facile à utiliser, même pour un 
-utilisateur novice.
+[GitHub](https://github.com/) is a website offering an online code hosting solution, and is based on `git`. There are many alternative websites and services (gitlab, bitbucket, ...) allowing to host code and also based on `git`. GitHub is very popular in the `r fontawesome::fa("r-project")` community, and is relatively easy to use, even for a novice user.
 
-Les avantages d'utiliser GitHub :
+Advantages of using GitHub:
  
-  - une interface graphique simple pour suivre l'historique des changements de votre code
+  - a simple and user-friendly graphical interface to track the history of changes to your code
   
-  - la dernière version de développement de votre code est disponible en ligne et vous pouvez la 
-  référencer (on peut même référencer un numéro de commit précis pour geler une version spécifique
-  du code)
+  - the latest development version of your code is available online and you can reference it (you can even reference a specific commit number to freeze a specific version of the code)
   
-  - les utilisateurs disposent d'un canal clair et transparent pour signaler les bugs/difficultés
+  - users have a clear and transparent channel to report bugs/difficulties
   
-  - cela facilite grandement le développement collaboratif
+  - it greatly facilitates collaborative development
   
   
-### Mettre son package `r fontawesome::fa("r-project")` sur GitHub
+### Upload one's package `r fontawesome::fa("r-project")` onto GitHub
 
-> ***A vous de jouer !***  
+> `r emoji::emoji("point_right")` ***Your turn !*** 
 >
-  1. Rendez-vous sur le site [https://github.com/](https://github.com/) et créez vous un compte
-  GitHub (si vous hésitez, une convention courante est d'utiliser *prénomnom* comme nom d'utilisateur)
+  1. Go to [https://github.com/](https://github.com/) and create a GitHub account (if you hesitate, a common convention is to use your *firstnamelastname* as username)
 >  
-  2. Vous pouvez ensuite soit utiliser le client "GitHub desktop" installé sur votre machine en vous connectant au compte GitHub et en suivant les instructions 3 et 4 suivantes, soit utiliser `usethis::use_github()` et vous laisser guider.
+  2. Use `usethis::use_github()` and follow the instructions.
 >  
-  3. Ajouter un nouveau projet local en cliquant sur l'icone "+" en haut à gauche de 
-  la fenêtre du client, puis en choississant "Add" et en rentrant le chemin du dossier 
-  où se trouve le code de votre package.
+  3. Add a "README.Rmd" file to your package in order to have a nice home page on GitHub 
+  page on GitHub:
 >  
-  4. Une fois le repertoire créer en local, publiez le sur GitHub en cliquant sur "Publish"
-  en haut à droite de la fenêtre du client. Vérifiez sur le site de GitHub que votre 
-  code à bien été *uploadé* avec les 2 commits précédents.
+    - 3a. In *RStudio*, run the command `usethis::use_readme_rmd()`
 >  
-  5. Ajouter un fichier "README.Rmd" à votre package afin de disposer d'une belle page 
-  d'accueil sur GitHub :
->  
-    - 5a. dans RStudio, executez la commande `usethis::use_readme_rmd()`
->  
-    - 5b. à l'aide de l'outilds "Diff" de l'onglet "Git" de RStudio, étudier
-    les changements opérer par la commande précédente
+    - 3b. using the "Diff" tool in the "Git" tab of *RStudio*, review the changes made by the previous command
  >   
-    - 5c. éditez le fichier "README.Rmd" créé, puis créer le fichier README.md 
-    correspondant en executant `knitr` (cliquer su la pelotte de laine "Knit" 
-    en haut à gauche dans Rstudio), avant d'effectuer un 3^e^ commit contenant ces 
-    changements
+    - 3c. edit the created "README.Rmd" file, then create the corresponding README.md  file by running `knitr` (click on the wool ball "Knit" at the top left in *RStudio*), before making a 3^rd^ commit containing these changes
 >    
-    - 5d. à ce stade, si vous visitez la page de votre répertoire sur GitHub,
-    votre 3^e^ commit n'apparait pour l'instant pas. Il faut synchroniser
-    le répertoire GitHub en ligne avec votre dossier local. Pour cela, vous 
-    avez 2 solutions : soit utiliser le bouton "Sync" en haut à droit de la 
-    fenêtre du client GitHub desktop ; soit directement depuis RStudio en cliquant
-    sur "Push" depuis l'onglet "Git". Maintenant, les changements du 3^e^ commit sont 
-    visibles en ligne dur GitHub.
+    - 3d. At this point, if you visit your directory page on GitHub, your 3^rd^ commit does not appear for the moment. You have to synchronize the online GitHub directory with your local folder. To do this, you have to click on "Push" from the "Git" tab. Now, the changes of this 3^rd^ commit should be visible online on GitHub.
       
     
     
 
-## Collaboration pour la production du code
+## Collaborative code production
 
-`git` et GitHub sont particulièrement efficaces lorsque plusieurs personnes collaborent pour 
-développer un code. En effet, chacun peut effectuer des *pull* et *push* successifs pour
-apporter des changements au code, de manière simultanée et en étant sûr de toujours travailler
-sur la dernière version. Nous allons voir différents concepts utiles dans le cas d'un tel travail
-collaboratif.
+`git` and GitHub are particularly useful and efficient when several people collaborate to develop code together. Indeed, everyone can *pull* and *push* successive changes to the code, simultaneously, while endusing to always be working on the latest version of the code. We will see different concepts useful in the case of such a collaborative work.
 
-> ***A vous de jouer !***  
+> `r emoji::emoji("point_right")` ***Your turn !*** 
 >
-  1. En formant des groupes de 2, vous allez chacun ajouter votre binome comme "collaborator" 
-  à votre repertoire GitHub à partir de l'onglet "Settings" (sur GitHub).
+1. By pairing-up with another participant, you will each add your new buddy as a "collaborator" to your GitHub directory from the **"Settings" tab on GitHub**.
 >
-  2. Quelques instants plus tard le collaborateur ainsi ajouté reçoit un email l'invitant à 
-  accepter l'ajout. Cliquer sur le lien et accepter.
+  2. A few moments later, the added collaborator receives an email inviting him to accept the addition (check your spam folder). Click on the link and accept.
 >
-  3. Dans le client "GitHub desktop", ajouter le répertoire de votre binôme en cliquant sur 
-  l'icone "+" en haut à gauche et en selectionnant "Clone", ce qui fait apparaitre la liste 
-  des repertoires associés à votre compte GitHub non liés à  un dossier local. 
-  Sélectionner le projet de votre binome.
-
-  
+  3. In *RStudio*, create a new project form `git` using the url of your buddy's project.
+   
 ### *Branches*
 
-Une des fonctionnalités assez utile de git est les *branches*. Cela permet d'opérer des changements 
-importants dans le code sans perturber le fonctionnement actuel. C’est notamment utile pour explorer 
-une piste de développement dont on ne sait pas si elle sera concluante au final.
+One of the most useful features of git is *branches*. This allows you to make important changes in the changes in the code without disrupting the current operation. It is particularly useful to explore a development path that you don't know if it will be successful in the end.
 
-D'ailleurs, vous utilisez déjà les branches depuis le depuis de cette partie. En effet, la branche
-par défaut est appelé "master".
+By the way, you have already been using branches since the beginning of this part. Indeed, the default branch is called "*master*" (or sometimes "*main*").
 
-Grâce à ce système de branches, on obtient un arbre des différents *commits* au cours du temps (où
-les nœuds correspondent à la séparations des branches).
+Thanks to this system of branches, we obtain a tree of the different *commits* over time (where the nodes correspond to the separation of the branches).
 
 
 ### *Merge*
   
-Un *pull* se décompose en 2 actions de la part de `git` : 
+A so-called "*pull*" can be decomposed into 2 actions made by `git`: 
   
-  1. tout d'abord un *fetch*, qui correspond au téléchargement du code en ligne
+  1. first a *fetch*, which corresponds to downloading the online code
   
-  2. suivi d'un *merge* qui fusionne la version locale avec les changements.
+  2. immediately followed by a *merge*, which merges the local version with the downloaded changes.
   
-Après avoir conduit un développement expérimental dans une branche, on peut vouloir *merger* ces 
-changements dans la branche "master" par exemple, après que l'expérience se soit révélée 
-concluante.
+After conducting experimental development in one branch one may want to *merge* these changes into the "master" branch for example, once the experiment has proved successful.
   
-Si un les changements concernent des parties distinctes du code, alors le *merge* peut 
-s'effectuer sans problème. En revanche si les 2 versions à *merger* comportent des changements 
-depuis leur dernier *commit* commun qui concerne les mêmes lignes de codes, alors on va rencontrer 
-un (ou des ) conflit(s), qu'il va falloir résoudre.
+If the changes concern separate parts of the code, then *merging* can be done without any problem. On the other hand, if the two versions to be *merged* both contain changes which concern the **same lines of code** since their last **common** *commit* , then we will encounter one (or more) **conflicts**, which we will have to be manually resolved.
   
 
-### Les conflits
+### Conflicts
 
-Prenons l'exemple suivant : le développeur $D_1$ et le développeur $D_2$ on tous les 2 *pullé* la 
-version v0.1 du code à l'instant $t$ sur leur machine respective. Ils travaillent chacun 
-indépendamment pour apporter des changements au code. Au moment de *pusher* ses changements, 
-le développeur $D_2$ reçoit un message d'erreur : 
+Let's take the following example: the developer $D_1$ and the developer $D_2$ have both *pulled* the version v0.1 of the code at time $t$ on their respective machines. They each work independently to make changes to the code. When *pushing* his/her changes, developer $D_2$ receives an error message: 
 
-"Sync Error.  
-Please resolve all conflicted files, commit, then try syncing again."
+`"Sync Error.`  
+`Please resolve all conflicted files, commit, then try syncing again."`
 
 Chaque fichier étant source de conflit a alors été automatiquement édité comme suit :
 ```{git, eval = FALSE}
 <<<<<<< HEAD
-code dans votre version local
+local code
 =======
-code en ligne
+online code
 >>>>>>> remote
 ```
 
-Pour résoudre le conflit, il faut alors éditer chaque fichier un à un en choisissant s'il faut 
-conserver la version locale ou bien celle en ligne, avant de pouvoir *commiter* à nouveau et enfin 
-de *pusher* vos changements avec succès.
+In order to solve the conflict, you have to manually and carefully edit each file one by one, choosing whether to keep the local or the online version of the code, before you can *commit* again, and finally successfully *push* your changes online.
 
-> ***A vous de jouer !***  
+> `r emoji::emoji("point_right")` ***Your turn !*** 
 >
-  1. Modifiez le fichier `README.Rmd` de votre binome, puis *commitez* votre changement et *pushez*
-  le.
+  1. Edit the `README.Rmd` file of your paired buddy, then *commit* your change, and finally *push* them.
 >
-  2. une fois que votre binôme a modifié votre `README.Rmd`, modifiez à votre tour le fichier
-  à la même ligne, **SANS** *puller* les changements de votre binôme au préalable ! *Commitez* et 
-  essayez de *pusher* ces changements.
+  2. Once your buddy has modified your own `README.Rmd` modify the file on the same line (make sure by discussing it together), **WITHOUT* *pulling* your buddy's changes first! *Comment* and try to *push* these changes.
 >
-  3. Résolvez le conflit.
+  3. Resolve the conflict.
+
+**NB:** In real life you want to avoid this situation and always *pull* before *pushing*, here we purposedly do the opposite for the sake of providing an example and demystifying conflicts.
 
 
 ### *Fork*
 
-L'action *fork* permet de créer une copie qui vous appartient à partir d'un code disponible. Ainsi 
-le code original ne sera pas impacté par vos changements. Cela revient à créer une branche, et la
-séparer de l'arbre pour pouvoir en assumer la propriété.
+A *fork* allows you to create a copy of your own from an available code repository. Thus the original code will not be impacted by your changes. This is like creating a branch, and severing it from the tree, so you can assume ownership of it. It could also have been called a "cutting" to continue the metaphor...
 
-Cette action est principalement utile dans le cadre des *pull requests*.
+This action is mainly useful for *pull requests* (see next).
+
 
 
 ### *Pull request*
 
-Il s’agit du moyen le plus facile de proposer des changements dans un code dont vous n'êtes pas 
-collaborateur. GitHub propose une interface graphique facilitant leur traitement.
+*Pull requests* are the easiest way to propose changes in a code project which you are not a contributor of. GitHub provides a graphical interface that makes this easy to do so.
 
-> ***A vous de jouer !***  
+> `r emoji::emoji("point_right")` ***Your turn !*** 
 >
-  1. Modifiez le `README.Rmd` de votre voisin qui n'est pas votre binôme après avoir *forké* son 
-  package.
+  1. Modify the `README.Rmd` of your neighbor who is **NOT** your paired-buddy after *forking* his package.
 >
-  2. Proposez votre changement sous la forme d'une *pull request*.
+  2. Propose your change in the form of a *pull request* from their GitHub repository webpage ("Pull request"s tab).
 >
-  3. Acceptez la *pull request* sur le site de GitHub et faire le *merge*.
+  3. Accept your own neighbor *pull request* on your repository GitHub website, and then *merge* it.
+
+
 
 ### *Issues*
 
-Pour n'importe quel répertoire GitHub, vous pouvez poster un commentaire sous forme d'*issue* 
-afin d'alerter les développeurs sur un éventuel bug, ou une question sur l'utilisation du package,
-ou encore demander une fonctionnalité supplémentaire...
+Pour n'importe quel répertoire GitHub, vous pouvez poster un commentaire sous forme d'*issue* afin d'alerter les développeurs sur un éventuel bug, ou une question sur l'utilisation du package, ou encore demander une fonctionnalité supplémentaire...
 
-L'idéal est de proposer vous-même une *pull request* qui résout votre *issue* lorsque vous 
-le pouvez (i.e. en avez les capacités et le temps).
+L'idéal est de proposer vous-même une *pull request* qui résout votre *issue* lorsque vous le pouvez (i.e. en avez les capacités et le temps).
 
-> ***A vous de jouer !***  
+> `r emoji::emoji("point_right")` ***Your turn !*** 
 >
   1. Utilisez `usethis::use_github_links()` afin d'ajouter les 2 lignes suivantes au fichier `DESCRIPTION` de votre package  
 `URL: http://github.com/*prenom.nom*/mypkg`  
@@ -274,98 +203,31 @@ le pouvez (i.e. en avez les capacités et le temps).
 
 ## Intégration continue
 
-À chaque changement, à chaque *commit* donc, il y a la possibilité d'introduire 1 (ou plusieurs)
-bugs qui vont empêcher le package de passer le *CRAN check*. Si l'on accumule trop de ces bugs,
-au moment de soumettre la nouvelle version, il peut y avoir beaucoup de corrections à apporter. 
-C'est d'autant plus frustrant si le package passait le *CRAN check* auparavant... 
+À chaque changement, à chaque *commit* donc, il y a la possibilité d'introduire 1 (ou plusieurs) bugs qui vont empêcher le package de passer le *CRAN check*. Si l'on accumule trop de ces bugs, au moment de soumettre la nouvelle version, il peut y avoir beaucoup de corrections à apporter. C'est d'autant plus frustrant si le package passait le *CRAN check* auparavant... 
 
 
-Les services d'intégration continue permettent de *checker* votre package **automatiquement** après 
-chaque *commit* ! En cas d'échec, vous recevez un mail qui vous en informe. Un certain nombre de ces 
-services proposent une offre limitée gratuite pour les projets open-source. 
+Les services d'intégration continue permettent de *checker* votre package **automatiquement** après chaque *commit* ! En cas d'échec, vous recevez un mail qui vous en informe. Un certain nombre de ces services proposent une offre limitée gratuite pour les projets open-source. 
 
-Une autre raison d'utiliser l'intégration continue est qu'elle permet de tester votre package sur 
-des infrastructures différentes de la votre (e.g. Windows, Ubuntu, Mac OS) et pour différentes 
-versions de `r fontawesome::fa("r-project")` (*current*, *devel*...)
+Une autre raison d'utiliser l'intégration continue est qu'elle permet de tester votre package sur des infrastructures différentes de la votre (e.g. Windows, Ubuntu, Mac OS) et pour différentes versions de `r fontawesome::fa("r-project")` (*current*, *devel*...)
 
-### Github actions
+### *GitHub Actions*
 
-Les Github actions permettent de lancer des actions automatiquement à chaque fois que vous pushez sur github. La commande `usethis::use_github_action_check_standard()` permet d'initialiser les Github actions et d'ajouter l'action de check du package.
+Les Github actions permettent de lancer des actions automatiquement à chaque fois que vous pushez sur GitHub La commande `usethis::use_github_action_check_standard()` permet d'initialiser les *Github Actions*, et d'ajouter l'action `R CMD CHECK` du package.
 
 > ***A vous de jouer !***
 >
-  1. Executez la commande `usethis::use_github_action_check_standard()` et *commitez* les changements et regardez ce
-  qu'il se passe sur page github
+  1. Executez la commande `usethis::use_github_action_check_standard()` et *commitez* les changements et regardez ce qu'il se passe sur la page GitHub
 >
-  2. Ajouter un badge à votre README.md grâce au code obtenu dans la console R
-et *commitez les changements*
+  2. Ajouter un badge à votre README.md grâce au code obtenu dans la console R et *commitez ces changements*
 
 
-N'hésitez pas à consulter la page suivantes qui renseigne sur les différentes github actions pour les pacakges : [https://github.com/r-lib/actions/blob/v1/examples/README.md](https://github.com/r-lib/actions/blob/v1/examples/README.md)
-
-<!-- ### Travis CI -->
-
-<!-- Travis est un service d'intégration continue (*Continuous Integration*), qui permet de *checker* -->
-<!-- votre package à chaque *commit* sous Ubuntu. La commande `devtools::use_travis()` initialise  -->
-<!-- le fichier de configuration `.travis.yml` nécessaire. -->
-
-<!-- > ***A vous de jouer !***   -->
-<!-- > -->
-<!--   1. Rendez vous sur le site [https://travis-ci.org/](https://travis-ci.org/) et créez vous un compte -->
-<!--   associé à votre GitHub en cliquant sur le bouton "SignIn with GitHub" en haut à droite. -->
-<!-- > -->
-<!--   2. Activez votre repertoire `mypkg` sur Travis  -->
-<!-- > -->
-<!--   3. Executez la commande `usethis::use_travis()` et *commitez* les changements et regardez ce  -->
-<!--   qu'il se passe sur votre page Travis -->
-<!-- >  -->
-<!--   4. ajouter un joli badge à votre README.md grâce au code suivant (obtenu dans la console R) :   -->
-<!-- `[![Travis-CI Build Status](https://travis-ci.org/*prenomnom*/mypkgr.svg?branch=master)](https://travis-ci.org/*prenomnom*/mypkgr)`   -->
-<!-- et *commitez les changements* -->
-
-<!-- Travis permet également de tester votre package sous Mac OS (même si ce service est parfois moins  -->
-<!-- stable).   -->
-
-<!-- >  -->
-<!--   5. Ajoutez les lignes suivantes dans le fichier de configuration `.travis.yml` :   -->
-<!-- ```{r eval=FALSE} -->
-<!-- r:  -->
-<!--  - release -->
-<!--  - devel -->
-<!-- os: -->
-<!--  - linux -->
-<!--  - osx -->
-<!-- ``` -->
-
-<!-- N'hésitez pas à aller visiter les pages de packages connus sur GitHub pour observer comment ils -->
-<!-- configurent leur fichier `.travis.yml`. -->
-
-
-<!-- ### Appveyor -->
-
-<!-- Appveyor est l'analogue de Travis CI mais pour Windows. -->
-
-<!-- > ***A vous de jouer !***   -->
-<!-- > -->
-<!--   1. Rendez vous sur le site [https://ci.appveyor.com/](https://ci.appveyor.com/) et créez vous un compte -->
-<!--   associé à votre GitHub en cliquant sur le bouton "GitHub" pour le *Login* -->
-<!-- > -->
-<!--   2. Ajoutez votre repertoire `mypkgr` sur Appveyor en cliquant sur "+ New project" en haut à gauche, -->
-<!--   puis en selectionnant GitHub et mypkgr dans le menu. -->
-<!-- > -->
-<!--   3. Executez la commande `devtools::use_appveyor()` et *commitez* les changements et regardez ce  -->
-<!--   qu'il se passe sur votre page Appveyor -->
-<!-- >  -->
-<!--   4. ajouter un joli badge à votre README.md grâce au code suivant (obtenu dans la console R) :   -->
-<!-- `[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/*prenomnom*/mypkgr?branch=master&svg=true)](https://ci.appveyor.com/project/*prenomnom*/mypkgr)` -->
-<!-- et *commitez les changements* -->
+N'hésitez pas à consulter la page suivantes qui renseigne sur les différentes *GitHub Actions* disponibles pour les pacakges `r fontawesome::fa("r-project")` : [https://github.com/r-lib/actions/blob/v1/examples/README.md](https://github.com/r-lib/actions/blob/v1/examples/README.md)
 
 
 
-<!-- ### R-hub -->
+### R-hub
 
-<!-- Le *R consortium* met à disposition le [R-hub builder](https://www.r-consortium.org/blog/2016/06/06/first-public-version-of-the-r-hub-builder), -->
-<!-- et a pour ambition de bientôt proposer un service d'intégration continue spécialement dédié aux packages `r fontawesome::fa("r-project")`. -->
+Le *R consortium* met à disposition le [R-hub builder](https://www.r-consortium.org/blog/2016/06/06/first-public-version-of-the-r-hub-builder), et a pour ambition de bientôt proposer un service d'intégration continue spécialement dédié aux packages `r fontawesome::fa("r-project")`.
 
 
 
@@ -376,7 +238,7 @@ package. La couverture de test détermine la proportion du code source qui est e
 lors de l’exécution des tests unitaires. La mesure de la couverture du code renforce la fiabilité
 d'un code et donne confiance à ses utilisateurs potentiels.
 
-> ***A vous de jouer !***  
+> `r emoji::emoji("point_right")` ***Your turn !*** 
 >
   1. Executez la commande `usethis::use_coverage()`,  ajouter un joli badge à votre README.md grâce au code obtenu dans la console R
 

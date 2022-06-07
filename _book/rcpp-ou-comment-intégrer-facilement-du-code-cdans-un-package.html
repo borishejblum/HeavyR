@@ -46,7 +46,7 @@
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Course syllabus</a></li>
 <li><a class="" href="building-a-package.html"><span class="header-section-number">1</span> Building a  package</a></li>
-<li><a class="" href="contr%C3%B4le-de-version-avec-git-et-github-historique-de-changement-d%C3%A9veloppement-collaboratif-et-int%C3%A9gration-continue.html"><span class="header-section-number">2</span> Contrôle de version avec git et GitHub : historique de changement, développement collaboratif et intégration continue</a></li>
+<li><a class="" href="version-control-with-git-and-github.html"><span class="header-section-number">2</span> Version control with git and GitHub</a></li>
 <li><a class="" href="mesurer-et-comparer-des-temps-dex%C3%A9cution.html"><span class="header-section-number">3</span> Mesurer et comparer des temps d’exécution</a></li>
 <li><a class="" href="profiler-son-code.html"><span class="header-section-number">4</span> Profiler son code</a></li>
 <li><a class="active" href="rcpp-ou-comment-int%C3%A9grer-facilement-du-code-cdans-un-package.html"><span class="header-section-number">5</span> Rcpp ou comment intégrer facilement du code C++dans un package </a></li>
@@ -80,7 +80,7 @@ Wickham.</p>
 <span class="header-section-number">5.1</span> Première fonction en Rcpp<a class="anchor" aria-label="anchor" href="#premi%C3%A8re-fonction-en-rcpp"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
-<p><strong><em>A vous de jouer !</em></strong></p>
+<p>👉 <strong><em>Your turn !</em></strong></p>
 <ol style="list-style-type: decimal">
 <li>Afin de rendre votre package prêt pour l’utilisation avec Rcpp, commencez par executer la commande
 suivante :</li>
@@ -113,7 +113,7 @@ et parcours la mémoire).</p></li>
 l’utiliser.</p></li>
 </ul>
 <blockquote>
-<p><strong><em>A vous de jouer !</em></strong></p>
+<p>👉 <strong><em>Your turn !</em></strong></p>
 <ol style="list-style-type: decimal">
 <li><p>Créez un nouveau fichier <code>C++</code> depuis RStudio (via le menu <code>File</code> &gt; <code>New File</code> &gt; <code>C++ File</code>),
 et enregistrez le dans le dossier <code>src</code>. Prenez le temps de le lire et essayez de comprendre
@@ -145,17 +145,17 @@ uniquement les calculs d’inverse matriciel par un appel à <code>invC</code>.<
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##                                                            expr      min
-##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   71.603
-##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4394.718
-##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3055.171
-##  mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2458.297
-##  mvnpdf_invC(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3118.366
-##         lq      mean    median       uq       max neval cld
-##    88.6125  131.0086  106.0255  129.659   732.902   100 a  
-##  5035.0090 6673.3526 5262.9320 6308.673 34971.465   100   c
-##  3790.1275 4599.6529 3920.4310 4241.278 16861.129   100  b 
-##  2893.1235 3942.1172 3062.0920 3566.399 15614.461   100  b 
-##  3753.6965 4687.4476 3889.6020 4412.845 13158.539   100  b</code></pre>
+##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   61.731
+##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4226.294
+##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3064.404
+##  mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2334.026
+##  mvnpdf_invC(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3063.960
+##        lq      mean   median        uq       max neval  cld
+##    81.190  104.2798   96.408  120.7435   187.498   100 a   
+##  4756.917 5665.1925 5276.181 5839.6015 15564.478   100    d
+##  3388.568 3903.7812 3736.994 3953.9710 19647.240   100   c 
+##  2683.711 2892.3208 2833.730 3013.5195  4981.218   100  b  
+##  3362.913 4082.9118 3788.060 4063.2620 12980.483   100   c</code></pre>
 <pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
 ## use `guide = "none"` instead.</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-31-1.png" width="672"></div>
@@ -174,7 +174,7 @@ optimisée par une fonction en <code>C++</code>. En effet, la plupart des foncti
 réalité déjà sur des routines <code>C</code> ou <code>Fortran</code> bien optimisée. Le gain se limite alors simplement
 à la suppression des vérifications des arguments et de la gestion des différents types.</p>
 <blockquote>
-<p><strong><em>A vous de jouer !</em></strong></p>
+<p>👉 <strong><em>Your turn !</em></strong></p>
 <ol style="list-style-type: decimal">
 <li><p>À partir de <code>mvnpdfsmart</code>, proposez une implémentation completement en <code>C++</code> du calcul
 de densité de la loi Normale multivariée <code>mvnpdfC()</code>.</p></li>
@@ -200,13 +200,13 @@ de densité de la loi Normale multivariée <code>mvnpdfC()</code>.</p></li>
 ##                                        mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE)
 ##                                        mvnpdf_invC(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE)
 ##  mvnpdfC(x = matrix(1.96, nrow = 2, ncol = n), mean = rep(0, 2),      varcovM = diag(2), Log = FALSE)
-##       min        lq      mean    median       uq       max neval  cld
-##    70.314   90.8555  118.7912  111.3245  128.202   403.318   100 a   
-##  4442.162 5034.0980 5806.1428 5218.3360 5723.780 15313.112   100    d
-##  3307.198 3782.3440 4830.3060 3919.2540 4222.309 42014.009   100   c 
-##  2351.875 2831.7825 3329.2880 2997.8205 3220.057  9009.724   100  b  
-##  3218.508 3744.4270 4279.3562 3887.2750 4050.761 13810.887   100   c 
-##    46.554   61.7370   87.4028   70.0115   77.825  1399.844   100 a</code></pre>
+##       min        lq      mean   median       uq       max neval  cld
+##    59.883   85.4200  105.7108  101.046  119.937   202.355   100 a   
+##  4203.017 5072.0300 5673.5019 5233.625 5905.197 16022.190   100    d
+##  3130.917 3670.8495 3907.5514 3833.266 4043.173  8379.676   100   c 
+##  2319.709 2670.8975 3199.6512 2888.841 3073.635 15140.461   100  b  
+##  3091.832 3495.4075 3820.0285 3794.576 3929.374  9455.060   100   c 
+##    46.544   57.2045  216.8077   64.184   75.152 15022.347   100 a</code></pre>
 <pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
 ## use `guide = "none"` instead.</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-34-1.png" width="672"></div>
@@ -254,7 +254,7 @@ and often a <strong>substantial amount of programming and debugging</strong> req
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Advanced <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> course</strong>: <em>Tools for software development and performance</em>" was written by <a href="https://robin.genuer.fr/">Robin Genuer</a> &amp; <a href="https://borishejblum.science/">Boris Hejblum</a>. It was last built on 2022-06-06.</p>
+    <p>"<strong>Advanced <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> course</strong>: <em>Tools for software development and performance</em>" was written by <a href="https://robin.genuer.fr/">Robin Genuer</a> &amp; <a href="https://borishejblum.science/">Boris Hejblum</a>. It was last built on 2022-06-07.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
