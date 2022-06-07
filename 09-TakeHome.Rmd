@@ -1,5 +1,5 @@
 
-# *Take Home message*
+# *Take-home message(s)*
 
  1. **MAKE PACKAGES**
  

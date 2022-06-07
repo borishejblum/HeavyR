@@ -17,7 +17,9 @@
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/d3-3.5.6/d3.min.js"></script><link href="libs/profvis-0.3.6.9000/profvis.css" rel="stylesheet">
+<script src="libs/profvis-0.3.6.9000/profvis.js"></script><script src="libs/profvis-0.3.6.9000/scroll.js"></script><link href="libs/highlight-6.2.0/textmate.css" rel="stylesheet">
+<script src="libs/highlight-6.2.0/highlight.js"></script><script src="libs/profvis-binding-0.3.7/profvis.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
@@ -47,11 +49,11 @@
 <li><a class="" href="index.html">Course syllabus</a></li>
 <li><a class="" href="building-a-package.html"><span class="header-section-number">1</span> Building a  package</a></li>
 <li><a class="" href="version-control-with-git-and-github.html"><span class="header-section-number">2</span> Version control with git and GitHub</a></li>
-<li><a class="" href="mesurer-et-comparer-des-temps-dex%C3%A9cution.html"><span class="header-section-number">3</span> Mesurer et comparer des temps d’exécution</a></li>
-<li><a class="" href="profiler-son-code.html"><span class="header-section-number">4</span> Profiler son code</a></li>
+<li><a class="" href="measuring-and-comparing-execution-times.html"><span class="header-section-number">3</span> Measuring and comparing execution times</a></li>
+<li><a class="" href="profiling-code.html"><span class="header-section-number">4</span> Profiling code</a></li>
 <li><a class="active" href="rcpp-ou-comment-int%C3%A9grer-facilement-du-code-cdans-un-package.html"><span class="header-section-number">5</span> Rcpp ou comment intégrer facilement du code C++dans un package </a></li>
 <li><a class="" href="parall%C3%A9lisation-du-code.html"><span class="header-section-number">6</span> Parallélisation du code </a></li>
-<li><a class="" href="take-home-message.html"><span class="header-section-number">7</span> Take Home message</a></li>
+<li><a class="" href="take-home-messages.html"><span class="header-section-number">7</span> Take-home message(s)</a></li>
 <li><a class="" href="further-reading.html">Further reading</a></li>
 </ul>
 
@@ -144,17 +146,17 @@ uniquement les calculs d’inverse matriciel par un appel à <code>invC</code>.<
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##                                                            expr      min
-##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   66.104
-##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4079.348
-##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3043.689
-##  mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2266.037
-##  mvnpdf_invC(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3079.326
-##         lq      mean   median       uq       max neval  cld
-##    84.7355  125.9898   94.905  110.662   596.595   100 a   
-##  4395.3735 5562.8388 4630.090 5351.625 15502.043   100    d
-##  3334.4845 4111.8908 3484.031 3650.970 17202.647   100   c 
-##  2571.6695 3287.0106 2689.866 2904.803 10982.333   100  b  
-##  3289.5125 3900.9194 3433.972 3661.645 11309.891   100  bc</code></pre>
+##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   73.350
+##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4537.066
+##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3316.329
+##  mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2371.876
+##  mvnpdf_invC(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3294.380
+##         lq      mean    median        uq       max neval  cld
+##    91.0085  140.6725  116.3235  144.8285   840.354   100 a   
+##  5172.9925 6117.7867 5358.0320 6094.8425 20088.040   100    d
+##  3829.9460 5046.6542 4020.2215 4664.7590 19038.745   100   c 
+##  2807.9425 3589.7226 3081.6070 3370.4580 13010.752   100  b  
+##  3813.9825 4804.5403 3998.3340 4676.6105 15775.908   100   c</code></pre>
 <pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
 ## use `guide = "none"` instead.</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-31-1.png" width="672"></div>
@@ -199,13 +201,13 @@ de densité de la loi Normale multivariée <code>mvnpdfC()</code>.</p></li>
 ##                                        mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE)
 ##                                        mvnpdf_invC(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE)
 ##  mvnpdfC(x = matrix(1.96, nrow = 2, ncol = n), mean = rep(0, 2),      varcovM = diag(2), Log = FALSE)
-##       min        lq       mean    median        uq       max neval cld
-##    64.580   84.5755  114.62152  102.1695  130.3510   439.806   100 a  
-##  4351.809 4915.6780 6160.64048 5183.7355 6281.2320 18577.531   100   c
-##  3250.110 3622.0315 4225.03603 3763.3820 3921.8545 13521.439   100  b 
-##  2409.754 2773.6885 3772.93162 2904.2110 3186.9730 13551.527   100  b 
-##  3175.598 3641.6280 4292.75754 3777.0575 3971.1125 11087.238   100  b 
-##    45.834   61.2690   91.26435   67.9665   77.4345  1225.825   100 a</code></pre>
+##       min        lq      mean    median        uq        max neval cld
+##    66.980   96.8655  121.2253  119.0995  135.4695    284.554   100  a 
+##  4474.177 5106.3410 8677.5799 5292.7310 6257.9910 271954.974   100   b
+##  3252.339 3813.7005 4352.9768 3875.9435 4282.8120  12205.556   100  ab
+##  2380.119 2808.0465 3331.5087 2926.5275 3258.2925  10768.994   100  a 
+##  3262.301 3807.0920 4358.0938 3889.9355 4610.1665  11193.144   100  ab
+##    47.196   60.8080  209.2473   71.9855   82.2605  13396.796   100  a</code></pre>
 <pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
 ## use `guide = "none"` instead.</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-34-1.png" width="672"></div>
@@ -228,7 +230,7 @@ and often a <strong>substantial amount of programming and debugging</strong> req
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="profiler-son-code.html"><span class="header-section-number">4</span> Profiler son code</a></div>
+<div class="prev"><a href="profiling-code.html"><span class="header-section-number">4</span> Profiling code</a></div>
 <div class="next"><a href="parall%C3%A9lisation-du-code.html"><span class="header-section-number">6</span> Parallélisation du code </a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>

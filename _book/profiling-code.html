@@ -4,20 +4,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 4 Profiler son code | Advanced  course</title>
+<title>Chapter 4 Profiling code | Advanced  course</title>
 <meta name="author" content="Robin Genuer &amp; Boris Hejblum">
-<meta name="description" content="On parle de profiling en anglais. Il s’agit de déterminer ce qui prend du temps dans un code. Le but étant une fois trouvé le bloc de code qui prend le plus de temps dans l’exécution d’optimiser...">
+<meta name="description" content="Profiling is about determining which part of the code take the most time to compute (and also memory-wise). Once you have found the block of code that takes the longest time to execute, our goal...">
 <meta name="generator" content="bookdown 0.26 with bs4_book()">
-<meta property="og:title" content="Chapter 4 Profiler son code | Advanced  course">
+<meta property="og:title" content="Chapter 4 Profiling code | Advanced  course">
 <meta property="og:type" content="book">
-<meta property="og:description" content="On parle de profiling en anglais. Il s’agit de déterminer ce qui prend du temps dans un code. Le but étant une fois trouvé le bloc de code qui prend le plus de temps dans l’exécution d’optimiser...">
+<meta property="og:description" content="Profiling is about determining which part of the code take the most time to compute (and also memory-wise). Once you have found the block of code that takes the longest time to execute, our goal...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 4 Profiler son code | Advanced  course">
-<meta name="twitter:description" content="On parle de profiling en anglais. Il s’agit de déterminer ce qui prend du temps dans un code. Le but étant une fois trouvé le bloc de code qui prend le plus de temps dans l’exécution d’optimiser...">
+<meta name="twitter:title" content="Chapter 4 Profiling code | Advanced  course">
+<meta name="twitter:description" content="Profiling is about determining which part of the code take the most time to compute (and also memory-wise). Once you have found the block of code that takes the longest time to execute, our goal...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/d3-3.5.6/d3.min.js"></script><link href="libs/profvis-0.3.6.9000/profvis.css" rel="stylesheet">
+<script src="libs/profvis-0.3.6.9000/profvis.js"></script><script src="libs/profvis-0.3.6.9000/scroll.js"></script><link href="libs/highlight-6.2.0/textmate.css" rel="stylesheet">
+<script src="libs/highlight-6.2.0/highlight.js"></script><script src="libs/profvis-binding-0.3.7/profvis.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
@@ -48,7 +50,7 @@
 <li><a class="" href="building-a-package.html"><span class="header-section-number">1</span> Building a  package</a></li>
 <li><a class="" href="version-control-with-git-and-github.html"><span class="header-section-number">2</span> Version control with git and GitHub</a></li>
 <li><a class="" href="measuring-and-comparing-execution-times.html"><span class="header-section-number">3</span> Measuring and comparing execution times</a></li>
-<li><a class="active" href="profiler-son-code.html"><span class="header-section-number">4</span> Profiler son code</a></li>
+<li><a class="active" href="profiling-code.html"><span class="header-section-number">4</span> Profiling code</a></li>
 <li><a class="" href="rcpp-ou-comment-int%C3%A9grer-facilement-du-code-cdans-un-package.html"><span class="header-section-number">5</span> Rcpp ou comment intégrer facilement du code C++dans un package </a></li>
 <li><a class="" href="parall%C3%A9lisation-du-code.html"><span class="header-section-number">6</span> Parallélisation du code </a></li>
 <li><a class="" href="take-home-messages.html"><span class="header-section-number">7</span> Take-home message(s)</a></li>
@@ -60,54 +62,46 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="profiler-son-code" class="section level1" number="4">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="profiling-code" class="section level1" number="4">
 <h1>
-<span class="header-section-number">4</span> <em>Profiler</em> son code<a class="anchor" aria-label="anchor" href="#profiler-son-code"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4</span> <em>Profiling</em> code<a class="anchor" aria-label="anchor" href="#profiling-code"><i class="fas fa-link"></i></a>
 </h1>
-<p>On parle de <em>profiling</em> en anglais. Il s’agit de déterminer ce qui prend
-du temps dans un code. Le but étant une fois trouvé le bloc de code qui prend
-le plus de temps dans l’exécution d’optimiser uniquement cette brique.</p>
-<p>Pour obtenir un <em>profiling</em> du code ci-dessous, sélectionner les lignes de code
-d’intérêt et aller dans le menu “Profile” puis “Profile Selected Lines” (ou
-Ctrl+Alt+Shift P).</p>
+<p><em>Profiling</em> is about determining which part of the code take the most time to compute (and also memory-wise). Once you have found the block of code that takes the longest time to execute, our goal is only to optimize that small part of the code.</p>
+<p>To get a <em>profiling</em> of the code below, select the lines of code of interest and go to the “Profile” menu then “Profile Selected Lines”. It uses the package <code>profis</code>, and it particular its <code><a href="https://rdrr.io/pkg/profvis/man/profvis.html">profvis()</a></code> function.</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10e4</span>
 <span class="va">pdfval</span> <span class="op">&lt;-</span> <span class="fu">mvnpdf</span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, nrow <span class="op">=</span> <span class="fl">2</span>, ncol <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, Log<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
-<p><em>OK, we get it !</em> Concaténer un vecteur au fur et à mesure dans une boucle
-n’est vraiment pas une bonne idée.</p>
-<div id="comparaison-avec-une-version-plus-habile-de-mnvpdf" class="section level2" number="4.1">
+<p><em>OK, OK, we get it !</em> Concatenating a vector as you go in a loop is really not a good idea.</p>
+<div id="comparison-with-an-improved-implementtation-of-mnvpdf." class="section level2" number="4.1">
 <h2>
-<span class="header-section-number">4.1</span> Comparaison avec une version plus habile de <code>mnvpdf()</code><a class="anchor" aria-label="anchor" href="#comparaison-avec-une-version-plus-habile-de-mnvpdf"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.1</span> Comparison with an improved implementtation of <code>mnvpdf()</code>.<a class="anchor" aria-label="anchor" href="#comparison-with-an-improved-implementtation-of-mnvpdf."><i class="fas fa-link"></i></a>
 </h2>
-<p>Considérons une nouvelle version de <code>mvnpdf()</code>, appelée <code>mvnpdfsmart()</code>.
-Télécharger le
-<a href="ttps://r-dev-perf.borishejblum.science/FormationRavancee_dev_perf_files/mvnpdfsmart.R">fichier</a> puis
-l’inclure dans le package.</p>
-<p>Profiler la commande suivante :</p>
+<p>Consider a new version of <code>mvnpdf()</code>, called <code>mvnpdfsmart()</code>. Download the <a href="ttps://r-dev-perf.borishejblum.science/FormationRavancee_dev_perf_files/mvnpdfsmart.R">file</a>, and then include it in the package.</p>
+<p>Now profile the following command:</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10e4</span>
 <span class="va">pdfval</span> <span class="op">&lt;-</span> <span class="fu">mvnpdfsmart</span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, nrow <span class="op">=</span> <span class="fl">2</span>, ncol <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, Log<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
-<p>On a effectivement résolu le problème et on apprend maintenant de manière plus
-fine ce qui prend du temps dans notre fonction.</p>
-<p>Pour confirmer que <code>mvnpdfsmart()</code> est effectivement bien plus rapide que
-<code>mvnpdf()</code> on peut re-faire une comparaison avec <code><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark()</a></code> :</p>
+<p>We have indeed removed the main computational bottleneck, and we can now learn in a more detailed way what takes time in our function.</p>
+<p>To confirm that <code>mvnpdfsmart()</code> is indeed much faster than <code>mvnpdf()</code> we can make a comparison using <code><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark()</a></code>:</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">1000</span>
-<span class="va">mb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span><span class="op">(</span><span class="fu">mvnpdf</span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, nrow <span class="op">=</span> <span class="fl">2</span>, ncol <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, Log<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>,
-                     <span class="fu">mvnpdfsmart</span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, nrow <span class="op">=</span> <span class="fl">2</span>, ncol <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, Log<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>,
+<span class="va">mb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span><span class="op">(</span><span class="fu">mvnpdf</span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, nrow <span class="op">=</span> <span class="fl">2</span>, ncol <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, 
+                            Log <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,
+                     <span class="fu">mvnpdfsmart</span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, nrow <span class="op">=</span> <span class="fl">2</span>, ncol <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, 
+                                 Log <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,
                      times<span class="op">=</span><span class="fl">100L</span><span class="op">)</span>
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: milliseconds
 ##                                                            expr      min
-##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4.292875
-##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3.027505
-##        lq     mean   median       uq      max neval cld
-##  4.951178 7.130027 5.202141 7.218025 21.22923   100   b
-##  3.641939 4.582304 3.753356 4.137100 12.02383   100  a</code></pre>
+##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4.512043
+##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3.212029
+##       lq     mean   median       uq      max neval cld
+##  5.28752 7.822055 6.007203 7.921473 47.75387   100   b
+##  3.84389 5.191446 4.023195 4.973563 13.75164   100  a</code></pre>
 <pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
 ## use `guide = "none"` instead.</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-20-1.png" width="672"></div>
-<p>Et on peut également voir si on devient compétitif avec <code>dmvnorm()</code> :</p>
+<p>We can also check whether <code>mvnpdfsmart</code> becomes competitive with <code>dmvnorm()</code>:</p>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">1000</span>
 <span class="va">mb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span><span class="op">(</span><span class="fu">mvtnorm</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html">dmvnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, nrow <span class="op">=</span> <span class="va">n</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span>,
@@ -117,31 +111,29 @@ fine ce qui prend du temps dans notre fonction.</p>
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##                                                            expr      min
-##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   64.278
-##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4224.713
-##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3043.630
-##         lq      mean   median       uq       max neval cld
-##    78.7585  122.6959   96.218  130.381   475.062   100 a  
-##  4968.1290 6779.8697 5159.131 6470.897 29040.797   100   c
-##  3595.7800 4325.6625 3723.711 4016.991 10852.301   100  b</code></pre>
+##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   66.772
+##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4451.803
+##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3245.470
+##         lq      mean   median       uq      max neval cld
+##    90.1505  140.3221  113.451  135.037   773.34   100 a  
+##  5196.1990 7645.0758 5478.178 7966.116 30683.92   100   c
+##  3834.4485 5080.4739 3961.678 4882.122 16087.62   100  b</code></pre>
 <pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
 ## use `guide = "none"` instead.</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-22-1.png" width="672"></div>
-<p>Il y a encore du travail…</p>
+<p>There is still work to be done…</p>
 </div>
-<div id="comparaison-avec-une-version-optimisée-dans-r" class="section level2" number="4.2">
+<div id="comparison-with-an-optimized-pure-r-implementation" class="section level2" number="4.2">
 <h2>
-<span class="header-section-number">4.2</span> Comparaison avec une version optimisée dans R<a class="anchor" aria-label="anchor" href="#comparaison-avec-une-version-optimis%C3%A9e-dans-r"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.2</span> Comparison with an optimized pure <code>R</code> implementation<a class="anchor" aria-label="anchor" href="#comparison-with-an-optimized-pure-r-implementation"><i class="fas fa-link"></i></a>
 </h2>
-<p>Boris est arrivée après plusieurs recherches et tests à une
-<a href="ttps://r-dev-perf.borishejblum.science/FormationRavancee_dev_perf_files/mvnpdfoptim.R">version optimisée</a>
-avec les outils de R.</p>
-<p>Inclure la fonction <code>mvnpdfoptim()</code> dans le package, puis profiler cette
-fonction :</p>
+<p>After several research and test and trials and errors, Boris arrived at an <a href="ttps://r-dev-perf.borishejblum.science/FormationRavancee_dev_perf_files/mvnpdfoptim.R">optimized version</a> using <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> capabilities.</p>
+<p>Include this <code>mvnpdfoptim()</code> function in your package, and then profile it:</p>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10e4</span>
-<span class="va">pdfval</span> <span class="op">&lt;-</span> <span class="fu">mvnpdfoptim</span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, nrow <span class="op">=</span> <span class="fl">2</span>, ncol <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, Log<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
-<p>Et un petit <code><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark()</a></code> :</p>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rstudio.github.io/profvis/">profvis</a></span><span class="op">)</span>
+<span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10e4</span>
+<span class="fu"><a href="https://rdrr.io/pkg/profvis/man/profvis.html">profvis</a></span><span class="op">(</span><span class="fu">mvnpdfoptim</span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, nrow <span class="op">=</span> <span class="fl">2</span>, ncol <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, Log<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p>And the <code><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark()</a></code> that goes with it:</p>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">1000</span>
 <span class="va">mb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span><span class="op">(</span><span class="fu">mvtnorm</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html">dmvnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, nrow <span class="op">=</span> <span class="va">n</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span>,
@@ -152,23 +144,24 @@ fonction :</p>
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##                                                            expr      min
-##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   64.407
-##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4139.747
-##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3061.713
-##  mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2270.660
-##        lq      mean   median       uq       max neval cld
-##    81.512  108.9614   95.605  114.365   369.119   100 a  
-##  4930.252 6923.7573 5089.474 6180.385 48077.461   100   c
-##  3594.521 4062.2633 3743.914 3859.881  9603.121   100  b 
-##  2615.742 3255.7697 2781.029 2973.623  9096.815   100  b</code></pre>
+##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   71.968
+##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4903.148
+##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3405.682
+##  mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2545.071
+##        lq      mean    median       uq       max neval  cld
+##    99.109  140.2309  117.0485  143.964   624.929   100 a   
+##  5281.762 7629.0000 5516.2605 7144.706 40278.009   100    d
+##  3874.457 4815.6618 4007.9940 5002.559 12327.873   100   c 
+##  2863.110 3564.3823 3075.0830 3527.599 12357.218   100  b</code></pre>
 <pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
 ## use `guide = "none"` instead.</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-25-1.png" width="672"></div>
-<p>Pour finir on peut profiler la fonction <code>dmvnorm()</code> :</p>
+<p>Finally, we can profile tthe <code>dmvnorm()</code> function:</p>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10e5</span>
-<span class="va">pdfval</span> <span class="op">&lt;-</span> <span class="fu">mvtnorm</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html">dmvnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, nrow <span class="op">=</span> <span class="va">n</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-
+<span class="fu">profvis</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/profvis/man/profvis.html">profvis</a></span><span class="op">(</span><span class="fu">mvtnorm</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html">dmvnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, nrow <span class="op">=</span> <span class="va">n</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div id="htmlwidget-0c4ac8757f386fc04d9d" style="width:100%;height:600px;" class="profvis html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0c4ac8757f386fc04d9d">{"x":{"message":{"prof":{"time":[1,1,1,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,6,6,6,6,7,7,7,7,8,8,8,8,9,9,9,9,10,10,10,10,11,11,11,11,12,12,12,12,13,13,13,13,14,14,14,14,15,15,15,16,16,16,17,17,17,17,18,18,18,19,19,20,20],"depth":[3,2,1,3,2,1,4,3,2,1,4,3,2,1,4,3,2,1,4,3,2,1,4,3,2,1,4,3,2,1,4,3,2,1,4,3,2,1,4,3,2,1,4,3,2,1,4,3,2,1,4,3,2,1,3,2,1,3,2,1,4,3,2,1,3,2,1,2,1,2,1],"label":["t.default","mvtnorm::dmvnorm","rmarkdown::render_site","backsolve","mvtnorm::dmvnorm","rmarkdown::render_site","<GC>","backsolve","mvtnorm::dmvnorm","rmarkdown::render_site","<GC>","backsolve","mvtnorm::dmvnorm","rmarkdown::render_site","<GC>","backsolve","mvtnorm::dmvnorm","rmarkdown::render_site","<GC>","backsolve","mvtnorm::dmvnorm","rmarkdown::render_site","<GC>","backsolve","mvtnorm::dmvnorm","rmarkdown::render_site","<GC>","backsolve","mvtnorm::dmvnorm","rmarkdown::render_site","<GC>","backsolve","mvtnorm::dmvnorm","rmarkdown::render_site","<GC>","backsolve","mvtnorm::dmvnorm","rmarkdown::render_site","<GC>","backsolve","mvtnorm::dmvnorm","rmarkdown::render_site","<GC>","backsolve","mvtnorm::dmvnorm","rmarkdown::render_site","<GC>","backsolve","mvtnorm::dmvnorm","rmarkdown::render_site","<GC>","backsolve","mvtnorm::dmvnorm","rmarkdown::render_site","backsolve","mvtnorm::dmvnorm","rmarkdown::render_site","backsolve","mvtnorm::dmvnorm","rmarkdown::render_site","is.data.frame","colSums","mvtnorm::dmvnorm","rmarkdown::render_site","colSums","mvtnorm::dmvnorm","rmarkdown::render_site","mvtnorm::dmvnorm","rmarkdown::render_site","mvtnorm::dmvnorm","rmarkdown::render_site"],"filenum":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"linenum":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"memalloc":[62.8308334350586,62.8308334350586,62.8308334350586,62.8308563232422,62.8308563232422,62.8308563232422,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8208923339844,62.8208923339844,62.8208923339844,62.8208923339844,62.8208923339844,62.8208923339844,62.8208923339844,62.8208923339844,62.8208923339844,62.8208923339844,62.8208923339844,62.8208923339844,62.8208923339844,62.8208923339844,62.8208923339844,62.8208923339844,78.0796890258789,78.0796890258789,78.0796890258789,78.0796890258789,78.0796890258789,78.0796890258789,93.3384857177734,93.3384857177734,93.3384857177734,93.3384857177734,100.96800994873,100.96800994873,100.96800994873,108.59757232666,108.59757232666,100.967872619629,100.967872619629],"meminc":[0,0,0,2.288818359375e-05,0,0,-0.00980377197265625,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-0.00016021728515625,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15.2587966918945,0,0,0,0,0,15.2587966918945,0,0,0,7.62952423095703,0,0,7.62956237792969,0,-7.62969970703125,0],"filename":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]},"interval":10,"files":[],"prof_output":"/var/folders/nj/n_rwfm5j3rv74jf744gsl0nm0000gn/T//RtmpnkET7G/file1340054bb9d02.prof","highlight":{"output":["^output\\$"],"gc":["^<GC>$"],"stacktrace":["^\\.\\.stacktraceo(n|ff)\\.\\.$"]},"split":"h"}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
   <div class="chapter-nav">
@@ -177,9 +170,9 @@ fonction :</p>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#profiler-son-code"><span class="header-section-number">4</span> Profiler son code</a></li>
-<li><a class="nav-link" href="#comparaison-avec-une-version-plus-habile-de-mnvpdf"><span class="header-section-number">4.1</span> Comparaison avec une version plus habile de mnvpdf()</a></li>
-<li><a class="nav-link" href="#comparaison-avec-une-version-optimis%C3%A9e-dans-r"><span class="header-section-number">4.2</span> Comparaison avec une version optimisée dans R</a></li>
+<li><a class="nav-link" href="#profiling-code"><span class="header-section-number">4</span> Profiling code</a></li>
+<li><a class="nav-link" href="#comparison-with-an-improved-implementtation-of-mnvpdf."><span class="header-section-number">4.1</span> Comparison with an improved implementtation of mnvpdf().</a></li>
+<li><a class="nav-link" href="#comparison-with-an-optimized-pure-r-implementation"><span class="header-section-number">4.2</span> Comparison with an optimized pure R implementation</a></li>
 </ul>
 
       <div class="book-extra">

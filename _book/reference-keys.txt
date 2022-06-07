@@ -27,12 +27,12 @@ continuous-integration-ci
 github-actions
 r-hub
 appendix-2.1-code-coverage
-mesurer-et-comparer-des-temps-dexécution
-mesurer-des-temps-dexécution-avec-system.time
-comparer-des-temps-dexécution-avec-microbenchmark
-profiler-son-code
-comparaison-avec-une-version-plus-habile-de-mnvpdf
-comparaison-avec-une-version-optimisée-dans-r
+measuring-and-comparing-execution-times
+measuring-execution-times-with-system.time
+compare-execution-timings-with-microbenchmark.
+profiling-code
+comparison-with-an-improved-implementtation-of-mnvpdf.
+comparison-with-an-optimized-pure-r-implementation
 rcpp-ou-comment-intégrer-facilement-du-code-cdans-un-package
 première-fonction-en-rcpp
 optimisation-grâce-à-c
@@ -45,4 +45,4 @@ les-itérateurs
 les-autres-plans-de-calculs-parallèle
 parallélisation-dans-notre-exemple-fil-rouge
 conclusion
-take-home-message
+take-home-messages
