@@ -100,11 +100,11 @@ fine ce qui prend du temps dans notre fonction.</p>
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: milliseconds
 ##                                                            expr      min
-##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4.235730
-##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3.122263
-##        lq     mean   median       uq       max neval cld
-##  5.052135 6.279625 5.388119 6.380593 16.632960   100   b
-##  3.743697 3.914552 3.838882 4.007186  5.719845   100  a</code></pre>
+##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4.176674
+##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3.209152
+##        lq     mean   median       uq      max neval cld
+##  5.068853 6.310017 5.323596 6.988962 16.61308   100   b
+##  3.735152 4.063631 3.833840 4.046176 16.61640   100  a</code></pre>
 <pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
 ## use `guide = "none"` instead.</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-20-1.png" width="672"></div>
@@ -118,13 +118,13 @@ fine ce qui prend du temps dans notre fonction.</p>
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##                                                            expr      min
-##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   61.277
-##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4134.396
-##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3075.373
-##         lq      mean   median        uq       max neval cld
-##    80.2725  109.7691   99.026  128.5865   359.273   100 a  
-##  5132.7790 6232.2966 5273.088 6026.8395 29528.029   100   c
-##  3699.8830 4101.5044 3791.994 3900.5220 15518.027   100  b</code></pre>
+##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   59.742
+##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4179.846
+##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3008.074
+##        lq      mean   median       uq       max neval cld
+##    90.848  128.5344  118.886  150.955   461.532   100 a  
+##  5108.045 6261.0634 5259.697 6300.493 15378.970   100   c
+##  3653.584 3924.2745 3789.556 4232.635  6213.149   100  b</code></pre>
 <pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
 ## use `guide = "none"` instead.</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-22-1.png" width="672"></div>
@@ -153,15 +153,15 @@ fonction :</p>
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##                                                            expr      min
-##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   61.295
-##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4380.288
-##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3069.845
-##  mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2354.750
-##        lq      mean    median         uq       max neval cld
-##    83.245  133.0176  115.2695   185.4555   322.911   100 a  
-##  5202.335 8123.8251 6202.3235 10320.3775 19514.227   100   c
-##  3770.703 4829.7615 3922.0195  5655.3490 10894.795   100  b 
-##  2849.423 4265.1346 3215.1475  5343.0220 29845.590   100  b</code></pre>
+##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   64.534
+##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4417.014
+##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3180.625
+##  mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2462.845
+##         lq      mean   median       uq       max neval  cld
+##    95.5495  123.8366  114.894  135.465   432.822   100 a   
+##  5075.7400 6338.6837 5284.085 6305.418 15820.175   100    d
+##  3745.4875 4057.6349 3885.347 4234.683  5613.732   100   c 
+##  2802.8665 3102.5479 2944.287 3210.158  5002.538   100  b</code></pre>
 <pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
 ## use `guide = "none"` instead.</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-25-1.png" width="672"></div>

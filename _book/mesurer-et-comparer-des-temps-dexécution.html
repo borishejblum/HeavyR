@@ -76,7 +76,7 @@ fonction <code><a href="https://rdrr.io/r/base/system.time.html">system.time()</
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="fu">mvnpdf</span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1.96</span>, <span class="fl">2</span><span class="op">)</span>, nrow<span class="op">=</span><span class="fl">2</span>, ncol<span class="op">=</span><span class="fl">1</span><span class="op">)</span>, Log<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## utilisateur     système      écoulé 
-##       0.001       0.005       0.274</code></pre>
+##       0.001       0.001       0.004</code></pre>
 <p>Le problème qui apparaît sur cet exemple est que l’exécution est tellement
 rapide que <code><a href="https://rdrr.io/r/base/system.time.html">system.time()</a></code> affiche <code>0</code> (ou une valeur très proche).
 De plus, on voit qu’il y a une certaine variabilité quand on relance plusieurs
@@ -86,7 +86,7 @@ on ne peut pas utiliser <code><a href="https://rdrr.io/r/base/system.time.html">
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="fu">mvtnorm</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html">dmvnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1.96</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## utilisateur     système      écoulé 
-##       0.003       0.003       0.012</code></pre>
+##       0.005       0.003       0.011</code></pre>
 <p>On pourrait se dire qu’il faut augmenter la complexité de notre calcul, mais
 il y a mieux : utiliser le package <code>microbenchmark</code> !</p>
 </div>
@@ -105,12 +105,12 @@ commandes et donc va stabiliser le résultat.</p>
                      times<span class="op">=</span><span class="fl">1000L</span><span class="op">)</span>
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: microseconds
-##                                           expr    min     lq     mean  median
-##                 mvtnorm::dmvnorm(rep(1.96, 2)) 37.992 48.225 53.62446 51.9660
-##  mvnpdf(x = matrix(rep(1.96, 2)), Log = FALSE) 34.459 43.943 51.95954 47.4235
+##                                           expr    min      lq     mean  median
+##                 mvtnorm::dmvnorm(rep(1.96, 2)) 45.398 51.2140 64.71446 57.3345
+##  mvnpdf(x = matrix(rep(1.96, 2)), Log = FALSE) 41.832 47.9075 63.47425 53.9155
 ##       uq      max neval cld
-##  58.0795  114.905  1000   a
-##  53.2850 2702.526  1000   a</code></pre>
+##  76.7170  229.021  1000   a
+##  70.4265 2810.826  1000   a</code></pre>
 <pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
 ## use `guide = "none"` instead.</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-13-1.png" width="672"></div>
@@ -125,11 +125,11 @@ cas :</p>
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##                                                       expr     min       lq
-##         mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))  45.042  51.5415
-##  mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 462.125 495.6480
+##         mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))  44.177  51.2470
+##  mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 460.699 483.9095
 ##       mean   median       uq     max neval cld
-##   58.31799  55.9475  62.3065 120.529   100  a 
-##  527.60622 527.1020 552.7785 698.661   100   b</code></pre>
+##   66.20254  58.0975  67.9205 268.421   100  a 
+##  546.82233 534.4805 581.7460 849.937   100   b</code></pre>
 <pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
 ## use `guide = "none"` instead.</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-15-1.png" width="672"></div>

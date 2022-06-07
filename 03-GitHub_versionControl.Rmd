@@ -200,6 +200,9 @@ L'idéal est de proposer vous-même une *pull request* qui résout votre *issue*
   2. Visualisez les nouveau changements, puis *commitez* les.
 >
   3. Créez une *issue* sur le projet de votre binome
+  
+  
+  
 
 ## Intégration continue
 
