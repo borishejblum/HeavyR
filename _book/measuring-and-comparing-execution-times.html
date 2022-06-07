@@ -73,13 +73,13 @@
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="fu">mvnpdf</span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1.96</span>, <span class="fl">2</span><span class="op">)</span>, nrow<span class="op">=</span><span class="fl">2</span>, ncol<span class="op">=</span><span class="fl">1</span><span class="op">)</span>, Log<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## utilisateur     système      écoulé 
-##       0.002       0.001       0.005</code></pre>
+##       0.001       0.001       0.002</code></pre>
 <p>The problem that appears in this example is that the execution is so fast that <code><a href="https://rdrr.io/r/base/system.time.html">system.time()</a></code> displays <code>0</code> (or a very close value) that will be impossible to marginally compare to a hopefully faster implementation. Also, we see that there is some variability when we run the command several times.</p>
 <p>Thus if we want to compare our code with the <code><a href="https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html">mvtnorm::dmvnorm()</a></code> function, we can’t use <code><a href="https://rdrr.io/r/base/system.time.html">system.time()</a></code> :</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="fu">mvtnorm</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html">dmvnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1.96</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## utilisateur     système      écoulé 
-##       0.005       0.003       0.014</code></pre>
+##       0.007       0.003       0.012</code></pre>
 <p>We could say that we have to increase the complexity of our calculation, but there is a better way: use the <code>microbenchmark</code> package !</p>
 </div>
 <div id="compare-execution-timings-with-microbenchmark." class="section level2" number="3.2">
@@ -96,11 +96,11 @@
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##                                           expr    min      lq     mean  median
-##                 mvtnorm::dmvnorm(rep(1.96, 2)) 37.379 42.9355 52.54257 51.6715
-##  mvnpdf(x = matrix(rep(1.96, 2)), Log = FALSE) 34.862 39.2890 50.39530 47.7425
-##       uq      max neval cld
-##  57.6005  125.814  1000   a
-##  52.9835 2247.580  1000   a</code></pre>
+##                 mvtnorm::dmvnorm(rep(1.96, 2)) 37.212 41.0765 48.52838 45.5785
+##  mvnpdf(x = matrix(rep(1.96, 2)), Log = FALSE) 34.953 38.5725 43.30504 42.3910
+##       uq     max neval cld
+##  50.4445 2112.30  1000   b
+##  47.2630   87.98  1000  a</code></pre>
 <pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
 ## use `guide = "none"` instead.</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-13-1.png" width="672"></div>
@@ -114,11 +114,11 @@
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##                                                       expr     min       lq
-##         mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))  55.462  65.4315
-##  mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 564.333 603.6595
-##      mean  median       uq      max neval cld
-##  107.7748  75.168 121.3215  482.759   100  a 
-##  731.2279 642.987 802.1805 1972.382   100   b</code></pre>
+##         mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))  44.854  56.9330
+##  mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 457.563 496.8785
+##       mean   median      uq     max neval cld
+##   65.35828  63.1275  68.297 157.015   100  a 
+##  536.09738 543.1960 567.687 644.379   100   b</code></pre>
 <pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
 ## use `guide = "none"` instead.</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-15-1.png" width="672"></div>
