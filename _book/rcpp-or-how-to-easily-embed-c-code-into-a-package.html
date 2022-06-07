@@ -118,17 +118,17 @@ package:</p></li>
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##                                                            expr      min
-##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   71.903
-##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4660.118
-##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3501.964
-##  mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2450.540
-##  mvnpdf_invC(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3496.559
-##        lq      mean    median       uq      max neval  cld
-##    93.697  139.7697  115.1095  138.761   665.37   100 a   
-##  5286.468 6647.0127 5440.9940 6056.923 22394.48   100    d
-##  3840.041 4448.5238 3957.7385 4089.873 14479.64   100   c 
-##  2818.175 3318.1564 2993.4515 3183.845 10171.79   100  b  
-##  3794.712 4705.1024 4026.7285 4393.464 12797.37   100   c</code></pre>
+##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   66.853
+##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4453.579
+##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3339.296
+##  mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2649.912
+##  mvnpdf_invC(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3667.544
+##        lq      mean   median       uq       max neval  cld
+##    91.959  135.9596  122.343  137.717   917.823   100 a   
+##  5205.447 6551.9141 5375.918 6164.699 24142.182   100    d
+##  3876.379 4360.7355 4012.051 4225.577 11916.075   100   c 
+##  2926.358 3482.9645 3056.748 3267.166  9220.991   100  b  
+##  3872.009 4404.3342 4003.054 4248.977 10356.483   100   c</code></pre>
 <pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
 ## use `guide = "none"` instead.</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-31-1.png" width="672"></div>
@@ -169,13 +169,13 @@ package:</p></li>
 ##                                        mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE)
 ##                                        mvnpdf_invC(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE)
 ##  mvnpdfC(x = matrix(1.96, nrow = 2, ncol = n), mean = rep(0, 2),      varcovM = diag(2), Log = FALSE)
-##       min        lq       mean    median        uq        max neval cld
-##    65.527   84.7005  113.77114  102.2925  121.8295    457.601   100  a 
-##  4309.584 5172.4725 8885.24298 5337.0300 5823.8105 292162.922   100   b
-##  3110.772 3759.4605 3995.16740 3878.6925 4187.4430   8313.514   100  a 
-##  2363.635 2722.5210 3129.31672 2940.3390 3218.6490   7345.156   100  a 
-##  3094.325 3765.3730 4093.91387 3924.2225 4171.6830   7475.869   100  a 
-##    48.062   61.3955   82.25502   68.5495   79.9210   1027.528   100  a</code></pre>
+##       min        lq       mean    median       uq        max neval cld
+##    66.595   96.8665  142.64039  116.3345  141.830    619.280   100 a  
+##  4408.196 5170.2495 8709.83017 5359.0350 6253.693 237641.973   100   c
+##  3342.163 3826.8865 4762.60495 4051.9470 4659.051  11606.771   100  b 
+##  2413.594 2910.6695 3567.61437 3123.5340 3600.155   9033.500   100 ab 
+##  3365.410 3815.1960 4508.30489 3983.9165 4435.009   9872.198   100  b 
+##    46.337   63.5985   95.70038   73.4080   89.778   1168.544   100 a</code></pre>
 <pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
 ## use `guide = "none"` instead.</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-34-1.png" width="672"></div>
@@ -218,7 +218,7 @@ package:</p></li>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Advanced <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> course</strong>: <em>Tools for software development and performance</em>" was written by <a href="https://robin.genuer.fr/">Robin Genuer</a> &amp; <a href="https://borishejblum.science/">Boris Hejblum</a>. It was last built on 2022-06-07.</p>
+    <p>"<strong>Advanced <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> course</strong>: <em>Tools for software development and performance</em>" was written by <a href="https://robin.genuer.fr/">Robin Genuer</a> &amp; <a href="https://borishejblum.science/">Boris Hejblum</a>. It was last built on 2022-06-08.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

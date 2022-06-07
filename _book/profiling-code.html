@@ -91,11 +91,11 @@
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: milliseconds
 ##                                                            expr      min
-##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4.454149
-##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3.291758
+##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4.972413
+##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3.718212
 ##        lq     mean   median       uq      max neval cld
-##  5.145682 7.325117 5.352884 6.849139 35.23747   100   b
-##  3.659468 4.438570 3.784020 4.074305 11.25193   100  a</code></pre>
+##  5.454381 7.413385 6.179187 7.618442 27.80248   100   b
+##  3.885952 4.608430 4.049288 5.027731 10.58655   100  a</code></pre>
 <pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
 ## use `guide = "none"` instead.</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-20-1.png" width="672"></div>
@@ -109,13 +109,13 @@
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##                                                            expr      min
-##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   70.876
-##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4276.171
-##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3133.057
-##        lq      mean    median       uq      max neval cld
-##    85.571  132.8253  110.2945  130.487   553.18   100 a  
-##  5122.852 7005.7685 5316.8730 5927.232 27737.52   100   c
-##  3779.495 4753.9606 3860.1465 4400.905 14043.27   100  b</code></pre>
+##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   66.072
+##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4006.436
+##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3041.654
+##         lq     mean    median        uq       max neval cld
+##    88.5875  129.627  119.5615  149.5165   391.576   100 a  
+##  5121.4265 6827.480 5580.9280 6877.8830 20684.964   100   c
+##  3705.3660 4183.261 3818.8540 4297.5775  8208.904   100  b</code></pre>
 <pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
 ## use `guide = "none"` instead.</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-22-1.png" width="672"></div>
@@ -142,15 +142,15 @@
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##                                                            expr      min
-##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   62.772
-##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4483.272
-##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3350.199
-##  mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2447.691
-##         lq      mean    median       uq       max neval cld
-##    81.1535  111.3941   99.5265  119.008   497.723   100 a  
-##  5146.9310 7438.3823 5272.9880 6427.271 55320.227   100   c
-##  3749.3335 4564.9959 3868.7135 4241.724 14803.500   100  b 
-##  2776.2885 3344.4064 2879.6605 3148.970 10332.517   100  b</code></pre>
+##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   71.656
+##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4453.270
+##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3233.124
+##  mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2492.681
+##         lq      mean    median        uq       max neval  cld
+##    91.7325  129.7508  109.4885  136.9845   429.569   100 a   
+##  5048.5425 6377.8830 5215.0350 6682.7495 15303.974   100    d
+##  3747.9180 4348.4901 3868.8620 4170.4580 18169.319   100   c 
+##  2796.7570 3362.5523 2946.2360 3386.3420 12699.268   100  b</code></pre>
 <pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
 ## use `guide = "none"` instead.</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-25-1.png" width="672"></div>
@@ -186,7 +186,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Advanced <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> course</strong>: <em>Tools for software development and performance</em>" was written by <a href="https://robin.genuer.fr/">Robin Genuer</a> &amp; <a href="https://borishejblum.science/">Boris Hejblum</a>. It was last built on 2022-06-07.</p>
+    <p>"<strong>Advanced <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> course</strong>: <em>Tools for software development and performance</em>" was written by <a href="https://robin.genuer.fr/">Robin Genuer</a> &amp; <a href="https://borishejblum.science/">Boris Hejblum</a>. It was last built on 2022-06-08.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
