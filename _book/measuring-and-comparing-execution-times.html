@@ -50,7 +50,7 @@
 <li><a class="active" href="measuring-and-comparing-execution-times.html"><span class="header-section-number">3</span> Measuring and comparing execution times</a></li>
 <li><a class="" href="profiling-code.html"><span class="header-section-number">4</span> Profiling code</a></li>
 <li><a class="" href="rcpp-or-how-to-easily-embed-c-code-into-a-package.html"><span class="header-section-number">5</span> Rcpp or how to easily embed C++ code into a  package</a></li>
-<li><a class="" href="parall%C3%A9lisation-du-code.html"><span class="header-section-number">6</span> Parallélisation du code </a></li>
+<li><a class="" href="code-parallelization.html"><span class="header-section-number">6</span>  code Parallelization</a></li>
 <li><a class="" href="take-home-messages.html"><span class="header-section-number">7</span> Take-home message(s)</a></li>
 <li><a class="" href="further-reading.html">Further reading</a></li>
 </ul>
@@ -73,13 +73,13 @@
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="fu">mvnpdf</span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1.96</span>, <span class="fl">2</span><span class="op">)</span>, nrow<span class="op">=</span><span class="fl">2</span>, ncol<span class="op">=</span><span class="fl">1</span><span class="op">)</span>, Log<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## utilisateur     système      écoulé 
-##       0.001       0.000       0.003</code></pre>
+##       0.001       0.001       0.003</code></pre>
 <p>The problem that appears in this example is that the execution is so fast that <code><a href="https://rdrr.io/r/base/system.time.html">system.time()</a></code> displays <code>0</code> (or a very close value) that will be impossible to marginally compare to a hopefully faster implementation. Also, we see that there is some variability when we run the command several times.</p>
 <p>Thus if we want to compare our code with the <code><a href="https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html">mvtnorm::dmvnorm()</a></code> function, we can’t use <code><a href="https://rdrr.io/r/base/system.time.html">system.time()</a></code> :</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="fu">mvtnorm</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html">dmvnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1.96</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## utilisateur     système      écoulé 
-##       0.002       0.002       0.007</code></pre>
+##       0.006       0.003       0.014</code></pre>
 <p>We could say that we have to increase the complexity of our calculation, but there is a better way: use the <code>microbenchmark</code> package !</p>
 </div>
 <div id="compare-execution-timings-with-microbenchmark." class="section level2" number="3.2">
@@ -95,12 +95,12 @@
                      times <span class="op">=</span> <span class="fl">1000L</span><span class="op">)</span>
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: microseconds
-##                                           expr    min      lq     mean median
-##                 mvtnorm::dmvnorm(rep(1.96, 2)) 31.132 34.4040 45.15137 36.346
-##  mvnpdf(x = matrix(rep(1.96, 2)), Log = FALSE) 29.277 32.1055 43.11789 34.236
-##       uq      max neval cld
-##  47.4615  255.448  1000   a
-##  43.5565 2136.091  1000   a</code></pre>
+##                                           expr    min      lq     mean  median
+##                 mvtnorm::dmvnorm(rep(1.96, 2)) 37.808 42.2135 61.07677 54.1675
+##  mvnpdf(x = matrix(rep(1.96, 2)), Log = FALSE) 35.555 39.4025 54.41783 50.3735
+##      uq      max neval cld
+##  64.854 2040.729  1000   b
+##  59.966  236.444  1000  a</code></pre>
 <pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
 ## use `guide = "none"` instead.</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-13-1.png" width="672"></div>
@@ -113,12 +113,12 @@
                      times<span class="op">=</span><span class="fl">100L</span><span class="op">)</span>
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: microseconds
-##                                                       expr     min       lq
-##         mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))  45.700  62.7180
-##  mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 486.363 590.4345
-##       mean   median       uq      max neval cld
-##   89.30183  74.8555  95.2575  286.301   100  a 
-##  691.97587 667.9025 741.4410 1712.514   100   b</code></pre>
+##                                                       expr     min      lq
+##         mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))  58.788  84.058
+##  mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 493.605 811.590
+##       mean  median      uq      max neval cld
+##   95.84951  90.074 103.494  278.326   100  a 
+##  843.85842 859.757 881.789 1211.209   100   b</code></pre>
 <pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
 ## use `guide = "none"` instead.</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-15-1.png" width="672"></div>

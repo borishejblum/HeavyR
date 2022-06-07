@@ -75,7 +75,7 @@ in the `r fontawesome::fa("r-project")` folder of your package, which :
 `r emoji::emoji("warning")` *WARNING !* if you click too quickly on the link below, it will invalidate your participation in the class !
 
 Here is a function proposal that you can download
-[here](https://r-dev-perf.borishejblum.science/FormationRavancee_dev_perf_files/mvnpdfRAW.R).
+[here](https://heavyr.borishejblum.science/AdvancedRcourse_dev_perf_files/mvnpdfRAW.R).
 
 For advice on writing code, see the 
 [R code](https://r-pkgs.org/r.html) section from Hadley Wickam *R packages* online book.
@@ -126,7 +126,7 @@ the same file as the code defining this function.
     - the `NAMESPACE` file is modified
       
 **In case of problems OR out of curiosity but only once you are done**, you can have a look at this
-[proposal](https://r-dev-perf.borishejblum.science/FormationRavancee_dev_perf_files/mvnpdfRox.R).
+[proposal](https://heavyr.borishejblum.science/AdvancedRcourse_dev_perf_files/mvnpdfRox.R).
       
 For more details on package documentation and
 `roxygen2` tags, see the
@@ -265,7 +265,7 @@ Test this function, by executing the example.\
 
 Look at the contents of the `man` folder and the changes that have been made to `NAMESPACE`.
 
-*Here is a proposed solution*: the [file](https://r-dev-perf.borishejblum.science/FormationRavancee_dev_perf_files/mvnpdf.R)
+*Here is a proposed solution*: the [file](https://heavyr.borishejblum.science/AdvancedRcourse_dev_perf_files/mvnpdf.R)
 contains the complete code of the `mvnpdf()` function and the associated `plot()` method.
 
 

@@ -50,7 +50,7 @@
 <li><a class="" href="measuring-and-comparing-execution-times.html"><span class="header-section-number">3</span> Measuring and comparing execution times</a></li>
 <li><a class="" href="profiling-code.html"><span class="header-section-number">4</span> Profiling code</a></li>
 <li><a class="active" href="rcpp-or-how-to-easily-embed-c-code-into-a-package.html"><span class="header-section-number">5</span> Rcpp or how to easily embed C++ code into a  package</a></li>
-<li><a class="" href="parall%C3%A9lisation-du-code.html"><span class="header-section-number">6</span> Parallélisation du code </a></li>
+<li><a class="" href="code-parallelization.html"><span class="header-section-number">6</span>  code Parallelization</a></li>
 <li><a class="" href="take-home-messages.html"><span class="header-section-number">7</span> Take-home message(s)</a></li>
 <li><a class="" href="further-reading.html">Further reading</a></li>
 </ul>
@@ -118,17 +118,17 @@ package:</p></li>
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##                                                            expr      min
-##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   70.061
-##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4360.663
-##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3285.206
-##  mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2412.656
-##  mvnpdf_invC(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3301.352
-##         lq      mean   median        uq       max neval  cld
-##   103.6755  122.2515  113.486  128.2495   339.326   100 a   
-##  5073.5000 6799.3807 5287.657 6224.2815 33867.602   100    d
-##  3750.4580 4450.2504 3858.553 4488.1780 10524.715   100   c 
-##  2788.8530 3401.5412 2909.936 3272.4500 11832.162   100  b  
-##  3703.9090 4295.2976 3834.174 4010.0905 10585.426   100   c</code></pre>
+##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   65.277
+##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4776.539
+##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3584.796
+##  mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2413.233
+##  mvnpdf_invC(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3245.948
+##        lq      mean   median       uq       max neval  cld
+##   114.642  160.0351  133.386  163.154   936.136   100 a   
+##  5240.599 6871.1702 5459.852 6558.235 30502.844   100    d
+##  3834.671 4536.3429 3938.327 4399.782 11566.302   100   c 
+##  2858.371 3431.4853 3048.123 3408.756  9233.907   100  b  
+##  3774.597 4204.1832 3851.329 4039.721 10281.333   100   c</code></pre>
 <pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
 ## use `guide = "none"` instead.</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-31-1.png" width="672"></div>
@@ -150,7 +150,7 @@ package:</p></li>
 <li><p>Evaluate the performance gain of this new implementation <code>mvnpdfC</code>.</p></li>
 </ol>
 </blockquote>
-<p>You can download our proposal for <code>mvnpdfC.cpp</code> <a href="https://r-dev-perf.borishejblum.science/FormationRavancee_dev_perf_files/mvnpdfC.cpp">here</a>.</p>
+<p>You can download our proposal for <code>mvnpdfC.cpp</code> <a href="https://heavyr.borishejblum.science/AdvancedRcourse_dev_perf_files/mvnpdfC.cpp">here</a>.</p>
 <div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">1000</span>
 <span class="va">mb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span><span class="op">(</span><span class="fu">mvtnorm</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html">dmvnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, nrow <span class="op">=</span> <span class="va">n</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span>,
@@ -169,13 +169,13 @@ package:</p></li>
 ##                                        mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE)
 ##                                        mvnpdf_invC(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE)
 ##  mvnpdfC(x = matrix(1.96, nrow = 2, ncol = n), mean = rep(0, 2),      varcovM = diag(2), Log = FALSE)
-##       min        lq      mean    median       uq        max neval cld
-##    68.169   92.7815  132.0139  109.1365  133.381    720.060   100 a  
-##  4455.430 5170.2455 7594.6194 5485.3355 6469.305 100891.560   100   c
-##  3308.605 3807.9300 4580.4296 3973.6660 4563.582  11084.677   100  bc
-##  2427.316 2834.0735 3304.9132 3020.1695 3328.876   8184.967   100 ab 
-##  3176.958 3764.1085 6214.5535 3992.0610 4616.583 169173.391   100  bc
-##    51.657   63.8400  178.5113   71.6910   89.025   9826.808   100 a</code></pre>
+##       min        lq       mean    median        uq        max neval cld
+##    71.892   91.7510  133.84346  116.6040  138.5720    649.959   100 a  
+##  4372.254 5014.9945 7833.95297 5239.9690 6114.8900 151265.565   100   c
+##  3215.510 3770.1800 4456.70620 3941.0185 4350.6165  11264.253   100  b 
+##  2357.718 2760.5140 3497.98924 2885.9165 3361.5650  10979.782   100  b 
+##  3200.297 3716.4875 4162.15007 3832.2425 4156.0180  10151.775   100  b 
+##    48.402   60.7095   88.47014   72.0825   82.8135   1004.352   100 a</code></pre>
 <pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
 ## use `guide = "none"` instead.</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-34-1.png" width="672"></div>
@@ -194,7 +194,7 @@ package:</p></li>
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="profiling-code.html"><span class="header-section-number">4</span> Profiling code</a></div>
-<div class="next"><a href="parall%C3%A9lisation-du-code.html"><span class="header-section-number">6</span> Parallélisation du code </a></div>
+<div class="next"><a href="code-parallelization.html"><span class="header-section-number">6</span>  code Parallelization</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">

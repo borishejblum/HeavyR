@@ -20,7 +20,7 @@ pdfval <- mvnpdf(x=matrix(1.96, nrow = 2, ncol = n), Log=FALSE)
 
 ## Comparison with an improved implementtation of `mnvpdf()`.
 
-Consider a new version of `mvnpdf()`, called `mvnpdfsmart()`. Download the [file](ttps://r-dev-perf.borishejblum.science/FormationRavancee_dev_perf_files/mvnpdfsmart.R), and then include it in the package.
+Consider a new version of `mvnpdf()`, called `mvnpdfsmart()`. Download the [file](https://heavyr.borishejblum.science/AdvancedRcourse_dev_perf_files/mvnpdfsmart.R), and then include it in the package.
 
 Now profile the following command:
 
@@ -93,7 +93,7 @@ There is still work to be done...
 
 ## Comparison with an optimized pure `R` implementation
 
-After several research and test and trials and errors, Boris arrived at an [optimized version ](ttps://r-dev-perf.borishejblum.science/FormationRavancee_dev_perf_files/mvnpdfoptim.R) using `r fontawesome::fa("r-project")` capabilities.
+After several research and test and trials and errors, Boris arrived at an [optimized version ](https://heavyr.borishejblum.science/AdvancedRcourse_dev_perf_files/mvnpdfoptim.R) using `r fontawesome::fa("r-project")` capabilities.
 
 Include this `mvnpdfoptim()` function in your package, and then profile it:
 
