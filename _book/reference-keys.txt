@@ -23,10 +23,10 @@ conflicts
 fork
 pull-request
 issues
-intégration-continue
+continuous-integration-ci
 github-actions
 r-hub
-annexe-2.1-couverture-du-code
+appendix-2.1-code-coverage
 mesurer-et-comparer-des-temps-dexécution
 mesurer-des-temps-dexécution-avec-system.time
 comparer-des-temps-dexécution-avec-microbenchmark

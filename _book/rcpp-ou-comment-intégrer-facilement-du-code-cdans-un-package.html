@@ -145,17 +145,17 @@ uniquement les calculs d’inverse matriciel par un appel à <code>invC</code>.<
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##                                                            expr      min
-##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   65.495
-##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4308.619
-##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3274.853
-##  mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2479.931
-##  mvnpdf_invC(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3095.663
+##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   76.398
+##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4810.770
+##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3638.329
+##  mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2738.181
+##  mvnpdf_invC(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3691.153
 ##        lq      mean   median       uq       max neval  cld
-##    91.236  116.2199  118.449  132.081   218.632   100 a   
-##  5036.363 5718.8885 5239.233 5615.760 14230.121   100    d
-##  3766.895 3917.2765 3848.121 3994.213  5259.445   100   c 
-##  2856.784 3099.5732 2964.369 3163.305  9240.294   100  b  
-##  3717.025 4056.2482 3851.596 4014.794 12374.808   100   c</code></pre>
+##    95.759  130.6805  120.019  141.129   410.009   100 a   
+##  5174.573 6235.1089 5374.033 6243.951 21236.215   100    d
+##  3872.526 4539.3020 3981.622 4590.054 14544.819   100   c 
+##  2916.426 3275.8180 3028.481 3360.345  6782.041   100  b  
+##  3856.302 4445.7602 4001.709 4847.660  8746.889   100   c</code></pre>
 <pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
 ## use `guide = "none"` instead.</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-31-1.png" width="672"></div>
@@ -200,13 +200,13 @@ de densité de la loi Normale multivariée <code>mvnpdfC()</code>.</p></li>
 ##                                        mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE)
 ##                                        mvnpdf_invC(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE)
 ##  mvnpdfC(x = matrix(1.96, nrow = 2, ncol = n), mean = rep(0, 2),      varcovM = diag(2), Log = FALSE)
-##       min        lq       mean    median        uq       max neval  cld
-##    66.434   83.4995  124.87542  117.7775  140.6925   339.456   100 a   
-##  4130.253 5052.0940 5920.27972 5320.7840 6026.3910 16604.560   100    d
-##  3067.362 3714.9875 4109.58383 3863.7535 4190.1640  8684.367   100   c 
-##  2321.332 2806.3075 3401.44994 2988.2830 3205.6120 12693.115   100  b  
-##  3141.884 3726.0465 4340.75585 3868.9200 4144.7310 11892.813   100   c 
-##    46.559   60.0250   96.81958   69.5445   78.5320  2433.048   100 a</code></pre>
+##       min        lq      mean    median        uq      max neval cld
+##    74.633   95.8425  117.0936  108.6525  128.0905   298.52   100 a  
+##  4772.592 5126.0895 5743.2069 5316.7645 6036.4835 10129.11   100   c
+##  3458.758 3790.8560 4242.3173 3911.2290 4129.1520 13760.54   100  b 
+##  2493.451 2810.5325 3736.4967 2954.6190 3145.4215 42243.87   100  b 
+##  3432.292 3793.1365 4311.1678 3935.4360 4129.2115 14267.45   100  b 
+##    52.579   64.0865  172.8158   69.1650   76.8035 10149.12   100 a</code></pre>
 <pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
 ## use `guide = "none"` instead.</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-34-1.png" width="672"></div>

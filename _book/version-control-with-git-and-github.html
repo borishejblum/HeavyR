@@ -238,67 +238,68 @@ online code
 <h3>
 <span class="header-section-number">2.4.6</span> <em>Issues</em><a class="anchor" aria-label="anchor" href="#issues"><i class="fas fa-link"></i></a>
 </h3>
-<p>Pour n’importe quel répertoire GitHub, vous pouvez poster un commentaire sous forme d’<em>issue</em> afin d’alerter les développeurs sur un éventuel bug, ou une question sur l’utilisation du package, ou encore demander une fonctionnalité supplémentaire…</p>
-<p>L’idéal est de proposer vous-même une <em>pull request</em> qui résout votre <em>issue</em> lorsque vous le pouvez (i.e. en avez les capacités et le temps).</p>
+<p>For any GitHub repository, you can post a comment, in the form of an <em>issue</em>, to alert the developers about a possible bug (providing a minimally reproducible example of the bug), or a question about the use of the package, or ask for an additional feature…</p>
+<p>Ideally, you should propose a <em>pull request</em> that solves your <em>issue</em> when you can (i.e. when you have both the ability and time).</p>
 <blockquote>
 <p>👉 <strong><em>Your turn !</em></strong></p>
 <ol style="list-style-type: decimal">
-<li><p>Utilisez <code><a href="https://usethis.r-lib.org/reference/use_github_links.html">usethis::use_github_links()</a></code> afin d’ajouter les 2 lignes suivantes au fichier <code>DESCRIPTION</code> de votre package<br><code>URL: http://github.com/*prenom.nom*/mypkg</code><br><code>BugReports: http://github.com/*prenom.nom*/mypkg/issues</code></p></li>
-<li><p>Visualisez les nouveau changements, puis <em>commitez</em> les.</p></li>
-<li><p>Créez une <em>issue</em> sur le projet de votre binome</p></li>
+<li><p>Use <code><a href="https://usethis.r-lib.org/reference/use_github_links.html">usethis::use_github_links()</a></code> to add the following 2 lines to your package <code>DESCRIPTION</code> file<br>
+URL: <a href="http://github.com/*username*/mypkg" class="uri">http://github.com/*username*/mypkg</a><code>BugReports: http://github.com/*username*/mypkg/issues</code></p></li>
+<li><p>View the new changes, then <em>commit</em> them.</p></li>
+<li><p>Create an <em>output</em> on your buddy’s project</p></li>
 </ol>
 </blockquote>
 </div>
 </div>
-<div id="intégration-continue" class="section level2" number="2.5">
+<div id="continuous-integration-ci" class="section level2" number="2.5">
 <h2>
-<span class="header-section-number">2.5</span> Intégration continue<a class="anchor" aria-label="anchor" href="#int%C3%A9gration-continue"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.5</span> Continuous Integration (CI)<a class="anchor" aria-label="anchor" href="#continuous-integration-ci"><i class="fas fa-link"></i></a>
 </h2>
-<p>À chaque changement, à chaque <em>commit</em> donc, il y a la possibilité d’introduire 1 (ou plusieurs) bugs qui vont empêcher le package de passer le <em>CRAN check</em>. Si l’on accumule trop de ces bugs, au moment de soumettre la nouvelle version, il peut y avoir beaucoup de corrections à apporter. C’est d’autant plus frustrant si le package passait le <em>CRAN check</em> auparavant…</p>
-<p>Les services d’intégration continue permettent de <em>checker</em> votre package <strong>automatiquement</strong> après chaque <em>commit</em> ! En cas d’échec, vous recevez un mail qui vous en informe. Un certain nombre de ces services proposent une offre limitée gratuite pour les projets open-source.</p>
-<p>Une autre raison d’utiliser l’intégration continue est qu’elle permet de tester votre package sur des infrastructures différentes de la votre (e.g. Windows, Ubuntu, Mac OS) et pour différentes versions de <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> (<em>current</em>, <em>devel</em>…)</p>
+<p>With each change, with each <em>commit</em>, there is the possibility to introduce 1 (or more) bugs that will prevent the package from passing the <em>CRAN</em> <code>R CMD CHECK</code>. If you accumulate too many of these bugs, at the time of submitting the new version to <em>CRAN</em> there could be many corrections to make. It is even more frustrating if the package passed the <code>R CMD CHECK</code> before…</p>
+<p>Continuous integration services allow you to <em>check</em> and test your package <strong>automatically</strong> after each <em>commit</em> ! In case of failure, you will receive an email informing you. A number of these services offer a (limited) free package for open-source projects.</p>
+<p>Another reason to use continuous integration is that it allows you to test your package on different infrastructures than yours (e.g. Windows, Ubuntu, Mac OS) and for different versions of <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> (<em>current</em>, <em>devel</em>…)</p>
 <div id="github-actions" class="section level3" number="2.5.1">
 <h3>
 <span class="header-section-number">2.5.1</span> <em>GitHub Actions</em><a class="anchor" aria-label="anchor" href="#github-actions"><i class="fas fa-link"></i></a>
 </h3>
-<p>Les Github actions permettent de lancer des actions automatiquement à chaque fois que vous pushez sur GitHub La commande <code><a href="https://usethis.r-lib.org/reference/github_actions.html">usethis::use_github_action_check_standard()</a></code> permet d’initialiser les <em>Github Actions</em>, et d’ajouter l’action <code>R CMD CHECK</code> du package.</p>
+<p><em>GitHub Actions</em> let you launch “actions” automatically, every time you push to GitHub. The <code><a href="https://usethis.r-lib.org/reference/github_actions.html">usethis::use_github_action_check_standard()</a></code> command allows you to initialize <em>Github Actions</em> to add the <code>R CMD CHECK</code> action to your package.</p>
 <blockquote>
-<p><strong><em>A vous de jouer !</em></strong></p>
-<ol style="list-style-type: decimal">
-<li><p>Executez la commande <code><a href="https://usethis.r-lib.org/reference/github_actions.html">usethis::use_github_action_check_standard()</a></code> et <em>commitez</em> les changements et regardez ce qu’il se passe sur la page GitHub</p></li>
-<li><p>Ajouter un badge à votre README.md grâce au code obtenu dans la console R et <em>commitez ces changements</em></p></li>
+<p>👉 <strong><em>Your turn !</em></strong>
+1. Run the command <code><a href="https://usethis.r-lib.org/reference/github_actions.html">usethis::use_github_action_check_standard()</a></code>, then <em>commit</em> and <em>push</em> the changes. See what happens on the GitHub webpage under the “Actions” tab.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Add a badge to your README.Rmd (do nott forget to <code>knit</code> it) with the code obtained in the 👉 console and <em>commit</em> (and <em>push</em>) those changes.</li>
 </ol>
 </blockquote>
-<p>N’hésitez pas à consulter la page suivantes qui renseigne sur les différentes <em>GitHub Actions</em> disponibles pour les pacakges <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> : <a href="https://github.com/r-lib/actions/blob/v1/examples/README.md">https://github.com/r-lib/actions/blob/v1/examples/README.md</a></p>
+<p>Have a look at the following webpage which informs about the different <em>GitHub Actions</em> available for <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> packages: <a href="https://github.com/r-lib/actions/blob/v1/examples/README.md">https://github.com/r-lib/actions/blob/v1/examples/README.md</a></p>
 </div>
 <div id="r-hub" class="section level3" number="2.5.2">
 <h3>
 <span class="header-section-number">2.5.2</span> R-hub<a class="anchor" aria-label="anchor" href="#r-hub"><i class="fas fa-link"></i></a>
 </h3>
-<p>Le <em>R consortium</em> met à disposition le <a href="https://www.r-consortium.org/blog/2016/06/06/first-public-version-of-the-r-hub-builder">R-hub builder</a>, et a pour ambition de bientôt proposer un service d’intégration continue spécialement dédié aux packages <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg>.</p>
+<p>The <em>R consortium</em> provides the <a href="https://www.r-consortium.org/blog/2016/06/06/first-public-version-of-the-r-hub-builder">R-hub builder</a>, and has the ambition to soon provide a continuous integration service especially dedicated to <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> packages.</p>
+<p>It has the advantage to use the exact same infrastructure as the <code>CRAN</code> make the <em>check</em> of your package foolproof. You can use it through the <code><a href="https://devtools.r-lib.org/reference/check_rhub.html">devtools::check_rhub()</a></code> fucntion.</p>
 </div>
 </div>
-<div id="annexe-2.1-couverture-du-code" class="section level2" number="2.6">
+<div id="appendix-2.1-code-coverage" class="section level2" number="2.6">
 <h2>
-<span class="header-section-number">2.6</span> Annexe 2.1 : couverture du code<a class="anchor" aria-label="anchor" href="#annexe-2.1-couverture-du-code"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.6</span> Appendix 2.1: Code coverage<a class="anchor" aria-label="anchor" href="#appendix-2.1-code-coverage"><i class="fas fa-link"></i></a>
 </h2>
-<p>Le package <code>covr</code> propose une solution pour mesurer la couverture des tests unitaires associés à un
-package. La couverture de test détermine la proportion du code source qui est effectivement utilisée
-lors de l’exécution des tests unitaires. La mesure de la couverture du code renforce la fiabilité
-d’un code et donne confiance à ses utilisateurs potentiels.</p>
+<p>The <code>covr</code> package proposes a solution to measure the coverage of unit tests associated to a
+package. The test coverage determines the proportion of the source code that is actually used
+during the execution of unit tests. Measuring the coverage of the code reinforces the reliability of a code and gives more confidence to its potential users.</p>
 <blockquote>
 <p>👉 <strong><em>Your turn !</em></strong></p>
 <ol style="list-style-type: decimal">
-<li>Executez la commande <code><a href="https://usethis.r-lib.org/reference/use_coverage.html">usethis::use_coverage()</a></code>, ajouter un joli badge à votre README.md grâce au code obtenu dans la console R</li>
+<li>Run the command <code><a href="https://usethis.r-lib.org/reference/use_coverage.html">usethis::use_coverage()</a></code>, add a nice badge to your README.md with the code you got in the R console</li>
 </ol>
 </blockquote>
 <blockquote>
 <ol start="2" style="list-style-type: decimal">
 <li>
-<em>Commitez</em> ces changements.</li>
+<em>Commit</em> and <em>push</em> these changes.</li>
 </ol>
 </blockquote>
-<p>Pour plus d’information n’hésitez pas à consulter la <a href="https://cran.r-project.org/web/packages/covr/vignettes/how_it_works.html">vignette</a> de <code>covr</code>.</p>
+<p>For more information feel free to look at the <a href="https://cran.r-project.org/web/packages/covr/vignettes/how_it_works.html"><code>covr</code> vignette</a>.</p>
 
 </div>
 </div>
@@ -332,12 +333,12 @@ d’un code et donne confiance à ses utilisateurs potentiels.</p>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#int%C3%A9gration-continue"><span class="header-section-number">2.5</span> Intégration continue</a><ul class="nav navbar-nav">
+<a class="nav-link" href="#continuous-integration-ci"><span class="header-section-number">2.5</span> Continuous Integration (CI)</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#github-actions"><span class="header-section-number">2.5.1</span> GitHub Actions</a></li>
 <li><a class="nav-link" href="#r-hub"><span class="header-section-number">2.5.2</span> R-hub</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#annexe-2.1-couverture-du-code"><span class="header-section-number">2.6</span> Annexe 2.1 : couverture du code</a></li>
+<li><a class="nav-link" href="#appendix-2.1-code-coverage"><span class="header-section-number">2.6</span> Appendix 2.1: Code coverage</a></li>
 </ul>
 
       <div class="book-extra">

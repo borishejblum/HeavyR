@@ -187,66 +187,64 @@ This action is mainly useful for *pull requests* (see next).
 
 ### *Issues*
 
-Pour n'importe quel répertoire GitHub, vous pouvez poster un commentaire sous forme d'*issue* afin d'alerter les développeurs sur un éventuel bug, ou une question sur l'utilisation du package, ou encore demander une fonctionnalité supplémentaire...
+For any GitHub repository, you can post a comment, in the form of an *issue*, to alert the developers about a possible bug (providing a minimally reproducible example of the bug), or a question about the use of the package, or ask for an additional feature...
 
-L'idéal est de proposer vous-même une *pull request* qui résout votre *issue* lorsque vous le pouvez (i.e. en avez les capacités et le temps).
+Ideally, you should propose a *pull request* that solves your *issue* when you can (i.e. when you have both the ability and time).
 
 > `r emoji::emoji("point_right")` ***Your turn !*** 
 >
-  1. Utilisez `usethis::use_github_links()` afin d'ajouter les 2 lignes suivantes au fichier `DESCRIPTION` de votre package  
-`URL: http://github.com/*prenom.nom*/mypkg`  
-`BugReports: http://github.com/*prenom.nom*/mypkg/issues`
+  1. Use `usethis::use_github_links()` to add the following 2 lines to your package `DESCRIPTION` file  
+URL: http://github.com/*username*/mypkg`  
+BugReports: http://github.com/*username*/mypkg/issues`
 >
-  2. Visualisez les nouveau changements, puis *commitez* les.
+  2. View the new changes, then *commit* them.
 >
-  3. Créez une *issue* sur le projet de votre binome
+  3. Create an *output* on your buddy's project
   
   
   
 
-## Intégration continue
+## Continuous Integration (CI)
 
-À chaque changement, à chaque *commit* donc, il y a la possibilité d'introduire 1 (ou plusieurs) bugs qui vont empêcher le package de passer le *CRAN check*. Si l'on accumule trop de ces bugs, au moment de soumettre la nouvelle version, il peut y avoir beaucoup de corrections à apporter. C'est d'autant plus frustrant si le package passait le *CRAN check* auparavant... 
+With each change, with each *commit*, there is the possibility to introduce 1 (or more) bugs that will prevent the package from passing the *CRAN* `R CMD CHECK`. If you accumulate too many of these bugs, at the time of submitting the new version to *CRAN* there could be many corrections to make. It is even more frustrating if the package passed the `R CMD CHECK` before... 
 
+Continuous integration services allow you to *check* and test your package **automatically** after each *commit* ! In case of failure, you will receive an email informing you. A number of these services offer a (limited) free package for open-source projects. 
 
-Les services d'intégration continue permettent de *checker* votre package **automatiquement** après chaque *commit* ! En cas d'échec, vous recevez un mail qui vous en informe. Un certain nombre de ces services proposent une offre limitée gratuite pour les projets open-source. 
-
-Une autre raison d'utiliser l'intégration continue est qu'elle permet de tester votre package sur des infrastructures différentes de la votre (e.g. Windows, Ubuntu, Mac OS) et pour différentes versions de `r fontawesome::fa("r-project")` (*current*, *devel*...)
+Another reason to use continuous integration is that it allows you to test your package on different infrastructures than yours (e.g. Windows, Ubuntu, Mac OS) and for different versions of `r fontawesome::fa("r-project")` (*current*, *devel*...)
 
 ### *GitHub Actions*
 
-Les Github actions permettent de lancer des actions automatiquement à chaque fois que vous pushez sur GitHub La commande `usethis::use_github_action_check_standard()` permet d'initialiser les *Github Actions*, et d'ajouter l'action `R CMD CHECK` du package.
+*GitHub Actions* let you launch "actions" automatically, every time you push to GitHub. The `usethis::use_github_action_check_standard()` command allows you to initialize *Github Actions* to add the `R CMD CHECK` action to your package.
 
-> ***A vous de jouer !***
+> `r emoji::emoji("point_right")` ***Your turn !*** 
+  1. Run the command `usethis::use_github_action_check_standard()`, then *commit* and *push* the changes. See what happens on the GitHub webpage under the "Actions" tab.
 >
-  1. Executez la commande `usethis::use_github_action_check_standard()` et *commitez* les changements et regardez ce qu'il se passe sur la page GitHub
->
-  2. Ajouter un badge à votre README.md grâce au code obtenu dans la console R et *commitez ces changements*
+  2. Add a badge to your README.Rmd (do nott forget to `knit` it) with the code obtained in the `r emoji::emoji("point_right")` console and *commit* (and *push*) those changes.
 
 
-N'hésitez pas à consulter la page suivantes qui renseigne sur les différentes *GitHub Actions* disponibles pour les pacakges `r fontawesome::fa("r-project")` : [https://github.com/r-lib/actions/blob/v1/examples/README.md](https://github.com/r-lib/actions/blob/v1/examples/README.md)
+Have a look at the following webpage which informs about the different *GitHub Actions* available for `r fontawesome::fa("r-project")` packages: [https://github.com/r-lib/actions/blob/v1/examples/README.md](https://github.com/r-lib/actions/blob/v1/examples/README.md)
 
 
 
 ### R-hub
 
-Le *R consortium* met à disposition le [R-hub builder](https://www.r-consortium.org/blog/2016/06/06/first-public-version-of-the-r-hub-builder), et a pour ambition de bientôt proposer un service d'intégration continue spécialement dédié aux packages `r fontawesome::fa("r-project")`.
+The *R consortium* provides the [R-hub builder](https://www.r-consortium.org/blog/2016/06/06/first-public-version-of-the-r-hub-builder), and has the ambition to soon provide a continuous integration service especially dedicated to `r fontawesome::fa("r-project")` packages.
+
+It has the advantage to use the exact same infrastructure as the `CRAN` make the *check* of your package foolproof. You can use it through the `devtools::check_rhub()` fucntion.
 
 
+## Appendix 2.1: Code coverage
 
-## Annexe 2.1 : couverture du code
-
-Le package `covr` propose une solution pour mesurer la couverture des tests unitaires associés à un 
-package. La couverture de test détermine la proportion du code source qui est effectivement utilisée
-lors de l’exécution des tests unitaires. La mesure de la couverture du code renforce la fiabilité
-d'un code et donne confiance à ses utilisateurs potentiels.
+The `covr` package proposes a solution to measure the coverage of unit tests associated to a 
+package. The test coverage determines the proportion of the source code that is actually used
+during the execution of unit tests. Measuring the coverage of the code reinforces the reliability of a code and gives more confidence to its potential users.
 
 > `r emoji::emoji("point_right")` ***Your turn !*** 
 >
-  1. Executez la commande `usethis::use_coverage()`,  ajouter un joli badge à votre README.md grâce au code obtenu dans la console R
+  1. Run the command `usethis::use_coverage()`, add a nice badge to your README.md with the code you got in the R console
 
 >  
-  2. *Commitez* ces changements.
+  2. *Commit* and *push* these changes.
 
-Pour plus d'information n'hésitez pas à consulter la [vignette](https://cran.r-project.org/web/packages/covr/vignettes/how_it_works.html) de `covr`.
+For more information feel free to look at the [`covr` vignette](https://cran.r-project.org/web/packages/covr/vignettes/how_it_works.html).
 
