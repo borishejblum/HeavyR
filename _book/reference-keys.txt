@@ -33,10 +33,10 @@ compare-execution-timings-with-microbenchmark.
 profiling-code
 comparison-with-an-improved-implementtation-of-mnvpdf.
 comparison-with-an-optimized-pure-r-implementation
-rcpp-ou-comment-intégrer-facilement-du-code-cdans-un-package
-première-fonction-en-rcpp
-optimisation-grâce-à-c
-annexe-5.1-loptimisation-prématurée-nest-pas-une-bonne-idée
+rcpp-or-how-to-easily-embed-c-code-into-a-package
+first-function-in-rcpp
+optimize-thanks-to-c
+annexe-5.1-premature-optimization-is-a-bad-idea
 parallélisation-du-code
 introduction-à-lexecution-parallèle-sous
 première-fonction-parallèle-en

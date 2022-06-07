@@ -1,5 +1,5 @@
 
-# `Rcpp` ou comment intégrer facilement du code `C++`dans un package `r fontawesome::fa("r-project")` 
+# `Rcpp` or how to easily embed `C++` code into a `r fontawesome::fa("r-project")` package
 
 ```{r, echo=FALSE}
 library(mypkgr)
@@ -7,79 +7,54 @@ library(microbenchmark)
 library(ggplot2)
 ```
 
-`Rcpp` (R-C-Plus-Plus) est un package qui facilite l'interface entre `C++` et `r fontawesome::fa("r-project")`. `r fontawesome::fa("r-project")` est un langage
-interprété, ce qui facilite un certain nombre de choses (notamment nous donne accès à la console 
-dans laquelle on peut évaluer du code à la volée). Néanmoins, cette facilité d'utilisation se 
-compense entre autre par des temps de calcul supérieurs à ceux de langages de plus bas niveau,
-tels que `C`, `Fortran` et `C++` (mais qui nécessitent eux une compilation).
+`Rcpp` ("*R-C-Plus-Plus*") is a package which facilitates the interface between `C++` and `r fontawesome::fa("r-project")`. `r fontawesome::fa("r-project")` is an interpreted language, a feature that makes a number of things easy (including giving us access to the console in which we can evaluate code and variables on the fly). Nevertheless, this ease of use is counterbalanced by larger computation times comapred to lower level languages such as `C`, `Fortran` and `C++` (but which require compilation).
 
-On dirigera le lecteur curieux vers le livre en ligne 
-[*Rcpp for everyone*](https://teuder.github.io/rcpp4everyone_en/) de Masaki E. Tsuda, qui
-constitue une ressource très complète pour comprendre l'utilisation de Rcpp en plus de 
-l'introduction que l'on peut trouver dans le livre [*Advanced R*](http://adv-r.had.co.nz/) d'Hadley 
-Wickham.
+The curious reader is directed towards the online book [*Rcpp for everyone*](https://teuder.github.io/rcpp4everyone_en/) by Masaki E. Tsuda, which is a very thorough and complete resource for understanding how to use `Rcpp`, in complement to the introduction that can be found in the "Rcpp" section of Hadley Wickham's book [*Advanced R*](http://adv-r.had.co.nz/Rcpp.html).
 
-## Première fonction en Rcpp
+
+## First function in `Rcpp`
 
 > `r emoji::emoji("point_right")` ***Your turn !*** 
 >
-  1. Afin de rendre votre package prêt pour l'utilisation avec Rcpp, commencez par executer la commande
-suivante :
+  1. To make your package ready for use with `Rcpp`, start by running the following command:
 ```{r, eval=FALSE}
 devtools::use_rcpp()
 ```
 >
-  2. Constatez les changements apportés 
+  2. See the changes made 
 >
-  3. il faut également ajouter les 2 commentaires roxygen suivants dans la page d’aide du
-package dans son ensemble :
+  3. you should also add the following 2 roxygen comments in the general help page of the
+package:
 ```{r, eval=FALSE}
 #' @useDynLib mypkgr
 #' @importFrom Rcpp sourceCpp, .registration = TRUE
 NULL
 ```
 
-Nous allons maintenant créer une première fonction en `Rcpp` permettant d'inverser une matrice.
-Pour cela, nous allons nous appuyer sur la [library C++ `Armadillo`](http://arma.sourceforge.net/docs.html).
-Il s'agit d'une *library* d'algèbre linéaire moderne et simple, hautement optimisée, et interfacée 
-avec `r fontawesome::fa("r-project")` via le package `RcppArmadillo`.
+We are now going to create a first function in `Rcpp` to invert a matrix. For this, we will use the [C++ library `Armadillo`](http://arma.sourceforge.net/docs.html). It is a modern and simple linear algebra *library*, highly optimized, and interfaced with `r fontawesome::fa("r-project")` via the `RcppArmadillo` package.
 
-`C++` n'est pas un langage très différent de `r fontawesome::fa("r-project")`. Les principales différences qui nous concernent :
+`C++` is not a very different language from `r fontawesome::fa("r-project")`. The main differences that will have an impact for us:
   
-  - `C++`est très efficaces pour le boucles *for* (y compris les boucles for emboîtées). Attention : 
-  il y a souvent un sens qui est plus rapide que l'autre (ceci est dû à la manière dont C++ attribue
-  et parcours la mémoire).
+  - `C++` is very efficient for *for* loops (including nested for loops -- `r emoji::emoji("warning")` there is often one order that is faster than the other, due to the way C++ allocates and walks through memory).
   
-  - Chaque commande doit se terminer par un point virgule ';'
+  - Each command must end with a semicolon ';'.
   
-  - `C++`est un langage typé : il faut déclarer le type de chaque variable avant de pouvoir 
-  l'utiliser.
+  - C++ is a **typed** language: you must **declare** the type of **each variable** before you can use it in the code.
 
 
 > `r emoji::emoji("point_right")` ***Your turn !*** 
 >
-  1. Créez un nouveau fichier `C++` depuis RStudio (via le menu `File` > `New File` > `C++ File`), 
-  et enregistrez le dans le dossier `src`. Prenez le temps de le lire et essayez de comprendre 
-  chaque ligne.
+  1. Create a new `C++` file from *RStudio* (via the `File` > `New File` > `C++ File` menu), and save it in the `src` folder. Take the time to read it and try to understand each line.
 >
-  2. Compilez et chargez votre package (via le bouton "Install and Restart") et essayez d'utiliser 
-  la fonction `timesTwo()` depuis la console.
+  2. Compile and load your package (via the "Install and Restart" button) and try using the `timesTwo()` function from the console.
 >
-  3. Installez le package RcppArmadillo, et n'oubliez pas de faire les ajouts nécessaires dans 
-  `DESCRIPTION` (cf. Rcpp précédement - vous pouvez expérimentez avec la fonction 
-  `RcppArmadillo::RcppArmadillo.package.skeleton()` qui a le désavantage de créer beaucoup de fichiers 
-  inutiles)
+  3. Install the `RcppArmadillo` `r emoji::emoji("point_right")` package, and don't forget to make the necessary additions to `DESCRIPTION` (use `usethis::use_rcpp_armadillo()`)
 >
-  4. À l'aide de la documentation des [packages Rcpp](http://adv-r.had.co.nz/Rcpp.html#rcpp-intro) 
-  et [RcppArmadillo](http://gallery.rcpp.org/articles/armadillo-eigenvalues/à) de celle de la 
-  library [Armadillo](http://arma.sourceforge.net/docs.html), tentez d'écrire une courte fonction 
-  `invC` en `C++` calculant l'inverse d'une matrice.
+  4. Using Hadley Wickham's [introduction to `Rcpp`]](http://adv-r.had.co.nz/Rcpp.html#rcpp-intro) in his book *Advanced R*, as well as the documentation for the [`RcppArmadillo` package](http://gallery.rcpp.org/articles/armadillo-eigenvalues/) and for the `C++` library [Armadillo](http://arma.sourceforge.net/docs.html), try to write a short function `invC()` in `C++` that computes the inverse of a matrix.
 > 
-  5. Lorsque vous avez réussi à compiler votre fonction `invC` et qu'elle est accèssible depuis `r fontawesome::fa("r-project")`
-  créer une fonction `mvnpdf_invC()` à partir de l'implémentation de `mvnpdfsmart` en remplaçant 
-  uniquement les calculs d'inverse matriciel par un appel à `invC`.
+  5. When you have successfully compiled your `invC` function and it is accessible from `r fontawesome::fa("r-project")`, create a `mvnpdf_invC()` function from the `mvnpdfsmart` implementation replacing only the matrix inverse calculations with a call to `invC`.
 > 
-  5. Evaluer le gain en performance de cette nouvelle implémentation `mvnpdf_invC`
+  6. Evaluate the performance gain of this new implementation `mvnpdf_invC`.
 
 ```{r, echo=TRUE, eval=TRUE}
 n <- 1000
@@ -98,8 +73,9 @@ levels(data2plot$Expression) <- gsub("mvtnorm::", "", sapply(strsplit(levels(dat
 ggplot(data2plot) + geom_violin(aes(x=Expression, y=Time, fill=Expression), alpha=0.8)  +
   scale_fill_manual(guide=FALSE, values=viridis::viridis(6)[1:5]) + 
   scale_y_log10(minor_breaks=c(seq(from=1, to=10, by=1), seq(from=10, to=100, by=10))) + 
-  ylab("Temps de calcul (milli-sec)") +
-  xlab("Expression évaluée") +
+  ylab("Execution timings (milli-sec)") +
+  xlab("Computed expression") +
+  annotation_logticks(sides="l") +
   theme_bw()
 ```
 
@@ -110,23 +86,18 @@ profvis::profvis(mvnpdfoptim(x=matrix(1.96,
     nrow = 100, ncol = 1000), Log=FALSE))
 ```
 
-## Optimisation grâce à `C++`
+## Optimize thanks to `C++`
 
-En règle générale, on ne gagne pas beaucoup en temps de calcul en remplaçant une fonction `r fontawesome::fa("r-project")` 
-optimisée par une fonction en `C++`. En effet, la plupart des fonctions de base de `r fontawesome::fa("r-project")` s'appuie en 
-réalité déjà sur des routines `C` ou `Fortran` bien optimisée. Le gain se limite alors simplement
-à la suppression des vérifications des arguments et de la gestion des différents types.
+As a general rule, not much computational time is gained by replacing an optimized `r fontawesome::fa("r-project")` function with a `C++` function. Indeed, most of the `base` `r fontawesome::fa("r-project")` fuunctions are in fact already wrappers around well optimized `C` or `Fortran` routines. The gain is then limited to the suppression of argument checking and type management (which is there for a reason!).
 
 > `r emoji::emoji("point_right")` ***Your turn !*** 
 >
-  1. À partir de `mvnpdfsmart`, proposez une implémentation completement en `C++` du calcul
-  de densité de la loi Normale multivariée `mvnpdfC()`.
+1. From `mvnpdfsmart`, propose a complete implementation in `C++` for computating the density of the multivariate Normal distribution `mvnpdfC()`.
 > 
-  2. Evaluer le gain en performance de cette nouvelle implémentation `mvnpdf_invC`
+  2. Evaluate the performance gain of this new implementation `mvnpdfC`.
 
 
-
-Vous pouvez télécharger notre proposition de `mvnpdfC.cpp` [ici](https://r-dev-perf.borishejblum.science/FormationRavancee_dev_perf_files/mvnpdfC.cpp).
+You can download our proposal for `mvnpdfC.cpp` [here](https://r-dev-perf.borishejblum.science/FormationRavancee_dev_perf_files/mvnpdfC.cpp).
 
 ```{r, echo=TRUE, eval=TRUE}
 n <- 1000
@@ -151,20 +122,16 @@ for(i in rangeTime){
 ggplot(data2plot) + geom_violin(aes(x=Expression, y=Time, fill=Expression), alpha=0.8)  +
   viridis::scale_fill_viridis(guide=FALSE, discrete=TRUE) + 
   scale_y_log10(minor_breaks=brk) + 
-  ylab("Log-temps de calcul (milli-sec)") +
-  xlab("Expression évaluée") +
+  ylab("Execution timings (milli-sec)") +
+  xlab("Computed expression") +
+  annotation_logticks(sides="l") +
   theme_bw()
 ```
 
-À noter que vous pouvez utiliser des fonctions Rcpp en dehors de l'architecture 
-d'un package grâce à la fonction `Rcpp::sourceCpp()`. Mais comme nous avons 
-qu'il est préférable de gérer tous ces code sous la forme de package, il est 
-peu probable que vous en ayez besoin !
+Note that `Rcpp` functions can be used outside of a package architecture thanks to the `Rcpp::sourceCpp()` function. But, as we have seen that it is always desirable to manage all of one's code inside a package, it is unlikely that you will need this !
 
-## Annexe 5.1 : l'optimisation prématurée n'est pas une bonne idée
+## Annexe 5.1: premature optimization is a bad idea
 
-Chambers, *Software for Data Analysis: Programming with R*, Springer, 2008 :
+Chambers, *Software for Data Analysis: Programming with R*, Springer, 2008:
 
-> *Including additional C code is a serious step, with **some added dangers**
-and often a **substantial amount of programming and debugging** required. 
-**You should have a good reason.***
+> *Including additional C code is a serious step, with **some added dangers** and often a **substantial amount of programming and debugging** required. **You should have a good reason.***

@@ -17,9 +17,7 @@
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/d3-3.5.6/d3.min.js"></script><link href="libs/profvis-0.3.6.9000/profvis.css" rel="stylesheet">
-<script src="libs/profvis-0.3.6.9000/profvis.js"></script><script src="libs/profvis-0.3.6.9000/scroll.js"></script><link href="libs/highlight-6.2.0/textmate.css" rel="stylesheet">
-<script src="libs/highlight-6.2.0/highlight.js"></script><script src="libs/profvis-binding-0.3.7/profvis.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
@@ -51,7 +49,7 @@
 <li><a class="" href="version-control-with-git-and-github.html"><span class="header-section-number">2</span> Version control with git and GitHub</a></li>
 <li><a class="" href="measuring-and-comparing-execution-times.html"><span class="header-section-number">3</span> Measuring and comparing execution times</a></li>
 <li><a class="active" href="profiling-code.html"><span class="header-section-number">4</span> Profiling code</a></li>
-<li><a class="" href="rcpp-ou-comment-int%C3%A9grer-facilement-du-code-cdans-un-package.html"><span class="header-section-number">5</span> Rcpp ou comment intégrer facilement du code C++dans un package </a></li>
+<li><a class="" href="rcpp-or-how-to-easily-embed-c-code-into-a-package.html"><span class="header-section-number">5</span> Rcpp or how to easily embed C++ code into a  package</a></li>
 <li><a class="" href="parall%C3%A9lisation-du-code.html"><span class="header-section-number">6</span> Parallélisation du code </a></li>
 <li><a class="" href="take-home-messages.html"><span class="header-section-number">7</span> Take-home message(s)</a></li>
 <li><a class="" href="further-reading.html">Further reading</a></li>
@@ -93,11 +91,11 @@
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: milliseconds
 ##                                                            expr      min
-##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4.512043
-##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3.212029
-##       lq     mean   median       uq      max neval cld
-##  5.28752 7.822055 6.007203 7.921473 47.75387   100   b
-##  3.84389 5.191446 4.023195 4.973563 13.75164   100  a</code></pre>
+##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4.974712
+##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3.670987
+##        lq     mean   median       uq      max neval cld
+##  5.293857 8.380654 6.161142 7.602295 35.56240   100   b
+##  3.889760 5.201170 4.007321 4.784496 17.15205   100  a</code></pre>
 <pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
 ## use `guide = "none"` instead.</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-20-1.png" width="672"></div>
@@ -111,13 +109,13 @@
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##                                                            expr      min
-##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   66.772
-##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4451.803
-##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3245.470
-##         lq      mean   median       uq      max neval cld
-##    90.1505  140.3221  113.451  135.037   773.34   100 a  
-##  5196.1990 7645.0758 5478.178 7966.116 30683.92   100   c
-##  3834.4485 5080.4739 3961.678 4882.122 16087.62   100  b</code></pre>
+##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   64.037
+##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4341.153
+##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3163.358
+##         lq      mean    median       uq       max neval cld
+##    90.6655  132.9889  119.6955  148.050   337.604   100 a  
+##  5164.5850 6850.1368 5759.8890 6661.545 25042.327   100   c
+##  3781.5850 4284.8126 3995.1785 4665.938 10197.571   100  b</code></pre>
 <pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
 ## use `guide = "none"` instead.</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-22-1.png" width="672"></div>
@@ -144,15 +142,15 @@
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##                                                            expr      min
-##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   71.968
-##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4903.148
-##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3405.682
-##  mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2545.071
-##        lq      mean    median       uq       max neval  cld
-##    99.109  140.2309  117.0485  143.964   624.929   100 a   
-##  5281.762 7629.0000 5516.2605 7144.706 40278.009   100    d
-##  3874.457 4815.6618 4007.9940 5002.559 12327.873   100   c 
-##  2863.110 3564.3823 3075.0830 3527.599 12357.218   100  b</code></pre>
+##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   73.885
+##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4546.998
+##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3139.270
+##  mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2460.157
+##        lq     mean   median       uq       max neval  cld
+##    96.020  134.194  114.822  145.382   474.306   100 a   
+##  5152.023 7409.471 5530.275 8083.681 24706.223   100    d
+##  3824.629 4332.647 3985.867 4608.326  8069.540   100   c 
+##  2832.988 3412.666 2957.332 3482.244  9328.457   100  b</code></pre>
 <pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
 ## use `guide = "none"` instead.</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-25-1.png" width="672"></div>
@@ -160,13 +158,12 @@
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10e5</span>
 <span class="fu">profvis</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/profvis/man/profvis.html">profvis</a></span><span class="op">(</span><span class="fu">mvtnorm</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html">dmvnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, nrow <span class="op">=</span> <span class="va">n</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-0c4ac8757f386fc04d9d" style="width:100%;height:600px;" class="profvis html-widget"></div>
-<script type="application/json" data-for="htmlwidget-0c4ac8757f386fc04d9d">{"x":{"message":{"prof":{"time":[1,1,1,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,6,6,6,6,7,7,7,7,8,8,8,8,9,9,9,9,10,10,10,10,11,11,11,11,12,12,12,12,13,13,13,13,14,14,14,14,15,15,15,16,16,16,17,17,17,17,18,18,18,19,19,20,20],"depth":[3,2,1,3,2,1,4,3,2,1,4,3,2,1,4,3,2,1,4,3,2,1,4,3,2,1,4,3,2,1,4,3,2,1,4,3,2,1,4,3,2,1,4,3,2,1,4,3,2,1,4,3,2,1,3,2,1,3,2,1,4,3,2,1,3,2,1,2,1,2,1],"label":["t.default","mvtnorm::dmvnorm","rmarkdown::render_site","backsolve","mvtnorm::dmvnorm","rmarkdown::render_site","<GC>","backsolve","mvtnorm::dmvnorm","rmarkdown::render_site","<GC>","backsolve","mvtnorm::dmvnorm","rmarkdown::render_site","<GC>","backsolve","mvtnorm::dmvnorm","rmarkdown::render_site","<GC>","backsolve","mvtnorm::dmvnorm","rmarkdown::render_site","<GC>","backsolve","mvtnorm::dmvnorm","rmarkdown::render_site","<GC>","backsolve","mvtnorm::dmvnorm","rmarkdown::render_site","<GC>","backsolve","mvtnorm::dmvnorm","rmarkdown::render_site","<GC>","backsolve","mvtnorm::dmvnorm","rmarkdown::render_site","<GC>","backsolve","mvtnorm::dmvnorm","rmarkdown::render_site","<GC>","backsolve","mvtnorm::dmvnorm","rmarkdown::render_site","<GC>","backsolve","mvtnorm::dmvnorm","rmarkdown::render_site","<GC>","backsolve","mvtnorm::dmvnorm","rmarkdown::render_site","backsolve","mvtnorm::dmvnorm","rmarkdown::render_site","backsolve","mvtnorm::dmvnorm","rmarkdown::render_site","is.data.frame","colSums","mvtnorm::dmvnorm","rmarkdown::render_site","colSums","mvtnorm::dmvnorm","rmarkdown::render_site","mvtnorm::dmvnorm","rmarkdown::render_site","mvtnorm::dmvnorm","rmarkdown::render_site"],"filenum":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"linenum":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"memalloc":[62.8308334350586,62.8308334350586,62.8308334350586,62.8308563232422,62.8308563232422,62.8308563232422,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8210525512695,62.8208923339844,62.8208923339844,62.8208923339844,62.8208923339844,62.8208923339844,62.8208923339844,62.8208923339844,62.8208923339844,62.8208923339844,62.8208923339844,62.8208923339844,62.8208923339844,62.8208923339844,62.8208923339844,62.8208923339844,62.8208923339844,78.0796890258789,78.0796890258789,78.0796890258789,78.0796890258789,78.0796890258789,78.0796890258789,93.3384857177734,93.3384857177734,93.3384857177734,93.3384857177734,100.96800994873,100.96800994873,100.96800994873,108.59757232666,108.59757232666,100.967872619629,100.967872619629],"meminc":[0,0,0,2.288818359375e-05,0,0,-0.00980377197265625,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-0.00016021728515625,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15.2587966918945,0,0,0,0,0,15.2587966918945,0,0,0,7.62952423095703,0,0,7.62956237792969,0,-7.62969970703125,0],"filename":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]},"interval":10,"files":[],"prof_output":"/var/folders/nj/n_rwfm5j3rv74jf744gsl0nm0000gn/T//RtmpnkET7G/file1340054bb9d02.prof","highlight":{"output":["^output\\$"],"gc":["^<GC>$"],"stacktrace":["^\\.\\.stacktraceo(n|ff)\\.\\.$"]},"split":"h"}},"evals":[],"jsHooks":[]}</script>
+
 </div>
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="measuring-and-comparing-execution-times.html"><span class="header-section-number">3</span> Measuring and comparing execution times</a></div>
-<div class="next"><a href="rcpp-ou-comment-int%C3%A9grer-facilement-du-code-cdans-un-package.html"><span class="header-section-number">5</span> Rcpp ou comment intégrer facilement du code C++dans un package </a></div>
+<div class="next"><a href="rcpp-or-how-to-easily-embed-c-code-into-a-package.html"><span class="header-section-number">5</span> Rcpp or how to easily embed C++ code into a  package</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">

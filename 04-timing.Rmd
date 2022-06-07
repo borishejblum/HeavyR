@@ -52,8 +52,9 @@ for(i in rangeTime){
 ggplot(data2plot) + geom_violin(aes(x=Expression, y=Time, fill=Expression), alpha=0.8) + 
   scale_fill_manual(guide=FALSE, values=viridis::viridis(6)[1:2]) + 
   scale_y_log10(minor_breaks=brk) + 
-  ylab("Log-timings (milli-sec)") +
+  ylab("Execution timings (milli-sec)") +
   xlab("Computed expression") +
+  annotation_logticks(sides="l") +
   theme_bw()
 ```
 
@@ -81,8 +82,9 @@ for(i in rangeTime){
 ggplot(data2plot) + geom_violin(aes(x=Expression, y=Time, fill=Expression), alpha=0.8)  +
   scale_fill_manual(guide=FALSE, values=viridis::viridis(6)[1:2]) + 
   scale_y_log10(minor_breaks=brk) + 
-  ylab("Log-timings (milli-sec)") +
+  ylab("Execution timings (milli-sec)") +
   xlab("Computed expression") +
+  annotation_logticks(sides="l") +
   theme_bw()
 ```
 
