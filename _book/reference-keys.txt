@@ -43,6 +43,6 @@ first-parallel-function
 efficient-parallelization
 iterators
 other-plans-for-parallel-computations
-parallélisation-dans-notre-exemple-fil-rouge
+parallelization-in-our-common-theme-example
 conclusion
 take-home-messages

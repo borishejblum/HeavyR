@@ -141,7 +141,7 @@
 <span class="op">}</span>
 <span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="fu">colmedian_apply</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## utilisateur     système      écoulé 
-##       3.244       0.017       3.282</code></pre>
+##       2.994       0.028       3.041</code></pre>
 <p>In reality, a (good) <code>for</code> loop is no slower – provided it is nicely programmed:</p>
 <div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">colmedian_for</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span>
@@ -153,7 +153,7 @@
 <span class="op">}</span>
 <span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="fu">colmedian_for</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## utilisateur     système      écoulé 
-##       3.324       0.018       3.366</code></pre>
+##       3.579       0.017       3.612</code></pre>
 <blockquote>
 <p>👉 <strong><em>Your turn !</em></strong>
 Try to further improve this computation time through parallelizing your code:</p>
@@ -237,9 +237,9 @@ Try to further improve this computation time through parallelizing your code:</p
 </ul>
 </div>
 </div>
-<div id="parallélisation-dans-notre-exemple-fil-rouge" class="section level2" number="6.4">
+<div id="parallelization-in-our-common-theme-example" class="section level2" number="6.4">
 <h2>
-<span class="header-section-number">6.4</span> Parallélisation dans notre exemple fil rouge<a class="anchor" aria-label="anchor" href="#parall%C3%A9lisation-dans-notre-exemple-fil-rouge"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.4</span> Parallelization in our common theme example<a class="anchor" aria-label="anchor" href="#parallelization-in-our-common-theme-example"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
 <p>👉 <strong><em>Your turn !</em></strong></p>
@@ -270,6 +270,7 @@ Try to further improve this computation time through parallelizing your code:</p
 ##  21117.246 24406.5590 25520.3099 25217.5930 26919.3365  28695.41    20  ab
 ##  20026.677 22529.1105 40802.1316 25208.0950 26377.1595 349567.61    20   b</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-45-1.png" width="672"></div>
+<p>You can download our proposed implementation for <code>mvnpdfoptim_par</code> <a href="https://heavyr.borishejblum.science/AdvancedRcourse_dev_perf_files/mvnpdfoptim_par.R">here</a>.</p>
 </div>
 <div id="conclusion" class="section level2" number="6.5">
 <h2>
@@ -312,7 +313,7 @@ Try to further improve this computation time through parallelizing your code:</p
 <li><a class="nav-link" href="#other-plans-for-parallel-computations"><span class="header-section-number">6.3.2</span> Other “plans” for parallel computations</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#parall%C3%A9lisation-dans-notre-exemple-fil-rouge"><span class="header-section-number">6.4</span> Parallélisation dans notre exemple fil rouge</a></li>
+<li><a class="nav-link" href="#parallelization-in-our-common-theme-example"><span class="header-section-number">6.4</span> Parallelization in our common theme example</a></li>
 <li><a class="nav-link" href="#conclusion"><span class="header-section-number">6.5</span> Conclusion</a></li>
 </ul>
 

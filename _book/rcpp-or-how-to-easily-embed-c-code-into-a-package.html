@@ -118,17 +118,17 @@ package:</p></li>
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##                                                            expr      min
-##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   65.277
-##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4776.539
-##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3584.796
-##  mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2413.233
-##  mvnpdf_invC(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3245.948
-##        lq      mean   median       uq       max neval  cld
-##   114.642  160.0351  133.386  163.154   936.136   100 a   
-##  5240.599 6871.1702 5459.852 6558.235 30502.844   100    d
-##  3834.671 4536.3429 3938.327 4399.782 11566.302   100   c 
-##  2858.371 3431.4853 3048.123 3408.756  9233.907   100  b  
-##  3774.597 4204.1832 3851.329 4039.721 10281.333   100   c</code></pre>
+##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   71.903
+##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4660.118
+##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3501.964
+##  mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2450.540
+##  mvnpdf_invC(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3496.559
+##        lq      mean    median       uq      max neval  cld
+##    93.697  139.7697  115.1095  138.761   665.37   100 a   
+##  5286.468 6647.0127 5440.9940 6056.923 22394.48   100    d
+##  3840.041 4448.5238 3957.7385 4089.873 14479.64   100   c 
+##  2818.175 3318.1564 2993.4515 3183.845 10171.79   100  b  
+##  3794.712 4705.1024 4026.7285 4393.464 12797.37   100   c</code></pre>
 <pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
 ## use `guide = "none"` instead.</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-31-1.png" width="672"></div>
@@ -170,12 +170,12 @@ package:</p></li>
 ##                                        mvnpdf_invC(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE)
 ##  mvnpdfC(x = matrix(1.96, nrow = 2, ncol = n), mean = rep(0, 2),      varcovM = diag(2), Log = FALSE)
 ##       min        lq       mean    median        uq        max neval cld
-##    71.892   91.7510  133.84346  116.6040  138.5720    649.959   100 a  
-##  4372.254 5014.9945 7833.95297 5239.9690 6114.8900 151265.565   100   c
-##  3215.510 3770.1800 4456.70620 3941.0185 4350.6165  11264.253   100  b 
-##  2357.718 2760.5140 3497.98924 2885.9165 3361.5650  10979.782   100  b 
-##  3200.297 3716.4875 4162.15007 3832.2425 4156.0180  10151.775   100  b 
-##    48.402   60.7095   88.47014   72.0825   82.8135   1004.352   100 a</code></pre>
+##    65.527   84.7005  113.77114  102.2925  121.8295    457.601   100  a 
+##  4309.584 5172.4725 8885.24298 5337.0300 5823.8105 292162.922   100   b
+##  3110.772 3759.4605 3995.16740 3878.6925 4187.4430   8313.514   100  a 
+##  2363.635 2722.5210 3129.31672 2940.3390 3218.6490   7345.156   100  a 
+##  3094.325 3765.3730 4093.91387 3924.2225 4171.6830   7475.869   100  a 
+##    48.062   61.3955   82.25502   68.5495   79.9210   1027.528   100  a</code></pre>
 <pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
 ## use `guide = "none"` instead.</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-34-1.png" width="672"></div>

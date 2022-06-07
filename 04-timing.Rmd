@@ -89,4 +89,4 @@ ggplot(data2plot) + geom_violin(aes(x=Expression, y=Time, fill=Expression), alph
 ```
 
 
-Something happened... And we willfind outt what is the issue exactly in what comes next.
+Something happened... And we will find out what exactly is causing this issue in what comes next.

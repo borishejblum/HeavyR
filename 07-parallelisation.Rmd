@@ -221,7 +221,7 @@ To run your code (exactly the same code, this is one of the advantages of the `f
 
 
 
-## Parallélisation dans notre exemple fil rouge
+## Parallelization in our common theme example
 
 > `r emoji::emoji("point_right")` ***Your turn !*** 
 >
@@ -260,6 +260,8 @@ ggplot(data2plot) + geom_violin(aes(x=Expression, y=Time, fill=Expression), alph
   theme_bw() +
   ggtitle("Spoiler alert 2")
 ```
+
+You can download our proposed implementation for `mvnpdfoptim_par` [here](https://heavyr.borishejblum.science/AdvancedRcourse_dev_perf_files/mvnpdfoptim_par.R).
 
 
 ## Conclusion
