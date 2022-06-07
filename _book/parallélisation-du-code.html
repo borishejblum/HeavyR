@@ -51,8 +51,7 @@
 <li><a class="" href="profiler-son-code.html"><span class="header-section-number">4</span> Profiler son code</a></li>
 <li><a class="" href="rcpp-ou-comment-int%C3%A9grer-facilement-du-code-cdans-un-package.html"><span class="header-section-number">5</span> Rcpp ou comment intégrer facilement du code C++dans un package </a></li>
 <li><a class="active" href="parall%C3%A9lisation-du-code.html"><span class="header-section-number">6</span> Parallélisation du code </a></li>
-<li><a class="" href="misc%C3%A9lan%C3%A9es.html"><span class="header-section-number">7</span> Miscélanées</a></li>
-<li><a class="" href="take-home-message.html"><span class="header-section-number">8</span> Take Home message</a></li>
+<li><a class="" href="take-home-message.html"><span class="header-section-number">7</span> Take Home message</a></li>
 <li><a class="" href="further-reading.html">Further reading</a></li>
 </ul>
 
@@ -188,7 +187,7 @@ médiane pour chacune de ces variables.</p>
 <span class="op">}</span>
 <span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="fu">colmedian_apply</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## utilisateur     système      écoulé 
-##       2.814       0.005       2.823</code></pre>
+##       3.012       0.011       3.029</code></pre>
 <p>En réalité, une boucle <code>for</code> n’est pas plus lente à condition d’être bien
 programmée :</p>
 <div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
@@ -201,7 +200,7 @@ programmée :</p>
 <span class="op">}</span>
 <span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="fu">colmedian_for</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## utilisateur     système      écoulé 
-##       2.741       0.005       2.751</code></pre>
+##       2.730       0.024       2.760</code></pre>
 <blockquote>
 <p><strong><em>À vous de jouer !</em></strong><br>
 Essayez d’améliorer encore ce temps de calcul en parallélisant :</p>
@@ -341,11 +340,29 @@ optimiser son code. Quand on parallélise un code, le gain sur la durée
 d’exécution dépend avant tout du ratio entre le temps de communication et le
 temps de calcul effectif pour chaque tache.</p>
 
+<!--
+# Miscelaneouus
+
+## Debugging with `browser()`
+
+## `attach`
+
+## memory management
+
+## copies and local/global variables in functions
+
+## naming
+
+## `gpplot2`
+
+
+-->
+
 </div>
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="rcpp-ou-comment-int%C3%A9grer-facilement-du-code-cdans-un-package.html"><span class="header-section-number">5</span> Rcpp ou comment intégrer facilement du code C++dans un package </a></div>
-<div class="next"><a href="misc%C3%A9lan%C3%A9es.html"><span class="header-section-number">7</span> Miscélanées</a></div>
+<div class="next"><a href="take-home-message.html"><span class="header-section-number">7</span> Take Home message</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">

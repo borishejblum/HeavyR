@@ -1,16 +1,17 @@
+<!--
+# Miscelaneouus
 
-# Miscélanées
-
-## Debugging avec `browser()`
+## Debugging with `browser()`
 
 ## `attach`
 
-## gestion mémoire
+## memory management
 
-## copies et variables locales/globales dans les fonctions
+## copies and local/global variables in functions
 
 ## naming
 
 ## `gpplot2`
 
 
+-->
