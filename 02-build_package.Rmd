@@ -1,22 +1,23 @@
 
 # Building a `r fontawesome::fa("r-project")` package
 
-Here we present how to efficiently create and build a package using Rstudio IDE, and the `devtools` and `usethis` packages.
+Here we present how to efficiently create and build a package using *RStudio* IDE, and the `devtools` and `usethis` packages.
 
 More details are provided in the reference material on this subject: the book [R packages](https://r-pkgs.org/) by Hadley Wickham, freely available online.
 
 ## Initializing a package
 
-A simple way, built into *Rstudio*, to **initialize a package** is :
+A simple way, built into *RStudio*, to **initialize a package** is to follow those steps:
 
-  1. create a new project (top left `File` drop down menu in Rstudio)
-  
-  2. choose "*New Directory*"
-  
-  3. choose "*R package using devtools*" (if it is not available, choose "*R
-  package*", the difference being that with "*R package*" you will have to delete unnecessary files that are automatically created but not useful)
-  
-  4. give a name to your package, for example `mypkgr`.
+> `r emoji::emoji("point_right")` Your turn (already)!
+>
+>  1. create a new project (top left `File` drop down menu in *RStudio*)
+>  
+>  2. choose "*New Directory*"
+>  
+>  3. choose "*R package using devtools*" (if it is not available, choose "*R package*", the difference being that with "*R package*" you will have to delete unnecessary files that are automatically created but not useful)
+>  
+>  4. give a name to your package, for example `mypkgr`.
   
   
 From that, we get the **minimal structure for an** `r fontawesome::fa("r-project")` package, namely:
@@ -33,11 +34,9 @@ From that, we get the **minimal structure for an** `r fontawesome::fa("r-project
   
 `devtools` also adds three **optional files**:
 
-  - `.gitignore`, relative to `git`, a version control tool that we will see in detail 
-  in the section on GitHub
+  - `.gitignore`, relative to `git`, a version control tool that we will see in detail in the section on GitHub
   
-  - `mypkgr.Rproj` which is a specific file of Rstudio, and allows to define
-  the characteristics and preferences of the project we just created
+  - `mypkgr.Rproj` which is a specific file of *RStudio*, and allows to define the characteristics and preferences of the project we just created
   
   - `.Rbuildignore` which allows to ignore some files when we build the package a down the road (for example, the `mypkgr.Rproj` file should not be included in the package)
   
@@ -47,12 +46,7 @@ From that, we get the **minimal structure for an** `r fontawesome::fa("r-project
 
 We first invite you to code the following function, which we will use throughout the course:
 
-We want to compute the value of the density of a multivariate normal distribution
-on $\mathbb{R}^p$ at $n$ points. Our function must be applicable for
-any multivariate normal distribution (i.e. any mean vector in
-$\mathbb{R}^p$ and variance-covariance matrix of any order of $p$),
-and we wish to compute all the values of the density evaluated
-at the $n$ points in a single call of the function.
+We want to compute the value of the density of a multivariate normal distribution on $\mathbb{R}^p$ at $n$ points. Our function must be applicable for any multivariate normal distribution (i.e. any mean vector in $\mathbb{R}^p$ and variance-covariance matrix of any order of $p$), and we wish to compute all the values of the density evaluated at the $n$ points in a single call of the function.
 
 So you need to create a function `mvnpdf()` in a file named `mvnpdf.R`
 in the `r fontawesome::fa("r-project")` folder of your package, which :
@@ -67,15 +61,14 @@ in the `r fontawesome::fa("r-project")` folder of your package, which :
       
       - `Log` a logical parameter, with default value to `TRUE`.
       
-  - returns a list containing the matrix `x`, and a vector of length $n$
-  of the multivariate normal distribution density values at those points.
+  - returns a list containing the matrix `x`, and a vector of length $n$ of the multivariate normal distribution density values at those points.
 
 > `r emoji::emoji("point_right")` Your turn !  
 
-`r emoji::emoji("warning")` *WARNING !* if you click too quickly on the link below, it will invalidate your participation in the class !
+
 
 Here is a function proposal that you can download
-[here](https://heavyr.borishejblum.science/AdvancedRcourse_dev_perf_files/mvnpdfRAW.R).
+[here](https://heavyr.borishejblum.science/AdvancedRcourse_dev_perf_files/mvnpdfRAW.R). `r emoji::emoji("warning")` *WARNING !* if you click too quickly on this link, it will invalidate your participation in the class !
 
 For advice on writing code, see the 
 [R code](https://r-pkgs.org/r.html) section from Hadley Wickam *R packages* online book.
@@ -222,11 +215,11 @@ executed. This is the advantage of having written these tests, we don't need to 
 
 ## Install your package
 
-For the moment, the package exists only in the environment associated with the *Rstudio* project that we have created. To be able to use it anywhere (on your computer) in `r fontawesome::fa("r-project")`  in a general way, you have to install it (like a CRAN package for example).
+For the moment, the package exists only in the environment associated with the *RStudio* project that we have created. To be able to use it anywhere (on your computer) in `r fontawesome::fa("r-project")`  in a general way, you have to install it (like a CRAN package for example).
 
 To do this, click on "Install and Restart" (`Ctrl+Shift+B`) from the "Build" tab, or alternatively you can run `devtools::install()`.
 
-And finally, you can configure *Rstudio*'s behavior so that at the time of installation, it simultaneously documents the package: go to the "More" menu from the "Build" tab, then "Configure Build Tools". Then click on "Configure" and check the box at the bottom "Install and Restart".
+And finally, you can configure *RStudio*'s behavior so that at the time of installation, it simultaneously documents the package: go to the "More" menu from the "Build" tab, then "Configure Build Tools". Then click on "Configure" and check the box at the bottom "Install and Restart".
 
 
 
