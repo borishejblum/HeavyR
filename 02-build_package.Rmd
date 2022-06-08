@@ -98,32 +98,26 @@ the same file as the code defining this function.
   the script window.
 >  
   2. Complete the documentation by filling in:
-> 
-      - the title of the function (first line)
->      
-      - the description of what the function does (second paragraph)
->      
-      - if you fill in a third paragraph, this part will go in the "Details" section of the
-      help page
- >     
-      - the meaning of the parameters
- >     
-      - the output, after the `@return` tag
- >     
-  3. Generate the documentation using "Document" in the "More" menu of the
-  Build" tab (or Ctrl+Shift+D or `devtools::document()`). The effect of
-  this command is multiple:
 >
-    - a `man` folder is created and inside it, a `mvnpdf.Rd` file contains the help information about the function
+>      - the title of the function (first line)
 >      
-    - the `NAMESPACE` file is modified
+>      - the description of what the function does (second paragraph)
+>      
+>      - if you fill in a third paragraph, this part will go in the "Details" section of the help page
+ >     
+ >     - the meaning of the parameters
+ >     
+ >     - the output, after the `@return` tag
+ >     
+  3. Generate the documentation using "Document" in the "More" menu of the "Build" tab (or alternatively run `devtools::document()` or use `Ctrl+Shift+D`). The effect of this command is multiple:
+>
+>      - a `man` folder is created and inside it, a `mvnpdf.Rd` file contains the help information about the function
+>      
+>      - the `NAMESPACE` file is modified
       
-**In case of problems OR out of curiosity but only once you are done**, you can have a look at this
-[proposal](https://heavyr.borishejblum.science/AdvancedRcourse_dev_perf_files/mvnpdfRox.R).
+**In case of problems OR out of curiosity but only once you are done**, you can have a look at this [proposal](https://heavyr.borishejblum.science/AdvancedRcourse_dev_perf_files/mvnpdfRox.R).
       
-For more details on package documentation and
-`roxygen2` tags, see the
-[Object documentation](https://r-pkgs.org/man.html) secttion from Hadley Wickam *R packages* online book.
+For more details on package documentation and `roxygen2` tags, see the [Object documentation](https://r-pkgs.org/man.html) secttion from Hadley Wickam *R packages* online book.
 
 Let's finish by mentioning a function from the `usethis` package which initializes a
 home help page for the whole package:
@@ -174,8 +168,6 @@ This command creates a `tests` folder which includes a `testthat.R` file -- not 
 For example, here is the content of a file that we will call `test-univariate.R` to be put into the `testthat` folder:
 
 ```{r, eval=FALSE}
-context("Univariate gaussian test")
-
 test_that("correct result for univariate gaussian", {
   expect_equal(mvnpdf(x=matrix(1.96), Log=FALSE)$y, dnorm(1.96))
   expect_equal(mvnpdf(x=matrix(c(1.96, -0.5), ncol = 2), Log=FALSE)$y,
@@ -186,8 +178,6 @@ test_that("correct result for univariate gaussian", {
 And a second one named `test-bivariate.R` :
 
 ```{r, eval=FALSE}
-context("Bivariate gaussian test")
-
 test_that("correct results for bivariate gaussian", {
   expect_equal(mvnpdf(x=matrix(rep(1.96,2), nrow=2, ncol=1), Log=FALSE)$y,
                mvtnorm::dmvnorm(rep(1.96, 2)))

@@ -145,31 +145,27 @@ the same file as the code defining this function.</p>
 <li><p>Start by inserting the skeleton of the helper with “Insert Roxygen
 Skeleton” located in the “Code” menu or the <em>Magic Wand</em> sub-menu in
 the script window.</p></li>
-<li><p>Complete the documentation by filling in:</p></li>
-</ol>
+<li>
+<p>Complete the documentation by filling in:</p>
 <ul>
 <li><p>the title of the function (first line)</p></li>
 <li><p>the description of what the function does (second paragraph)</p></li>
-<li><p>if you fill in a third paragraph, this part will go in the “Details” section of the
-help page</p></li>
+<li><p>if you fill in a third paragraph, this part will go in the “Details” section of the help page</p></li>
 <li><p>the meaning of the parameters</p></li>
 <li><p>the output, after the <code>@return</code> tag</p></li>
 </ul>
-<ol start="3" style="list-style-type: decimal">
-<li>Generate the documentation using “Document” in the “More” menu of the
-Build” tab (or Ctrl+Shift+D or <code><a href="https://devtools.r-lib.org/reference/document.html">devtools::document()</a></code>). The effect of
-this command is multiple:</li>
-</ol>
+</li>
+<li>
+<p>Generate the documentation using “Document” in the “More” menu of the “Build” tab (or alternatively run <code><a href="https://devtools.r-lib.org/reference/document.html">devtools::document()</a></code> or use <code>Ctrl+Shift+D</code>). The effect of this command is multiple:</p>
 <ul>
 <li><p>a <code>man</code> folder is created and inside it, a <code>mvnpdf.Rd</code> file contains the help information about the function</p></li>
 <li><p>the <code>NAMESPACE</code> file is modified</p></li>
 </ul>
+</li>
+</ol>
 </blockquote>
-<p><strong>In case of problems OR out of curiosity but only once you are done</strong>, you can have a look at this
-<a href="https://heavyr.borishejblum.science/AdvancedRcourse_dev_perf_files/mvnpdfRox.R">proposal</a>.</p>
-<p>For more details on package documentation and
-<code>roxygen2</code> tags, see the
-<a href="https://r-pkgs.org/man.html">Object documentation</a> secttion from Hadley Wickam <em>R packages</em> online book.</p>
+<p><strong>In case of problems OR out of curiosity but only once you are done</strong>, you can have a look at this <a href="https://heavyr.borishejblum.science/AdvancedRcourse_dev_perf_files/mvnpdfRox.R">proposal</a>.</p>
+<p>For more details on package documentation and <code>roxygen2</code> tags, see the <a href="https://r-pkgs.org/man.html">Object documentation</a> secttion from Hadley Wickam <em>R packages</em> online book.</p>
 <p>Let’s finish by mentioning a function from the <code>usethis</code> package which initializes a
 home help page for the whole package:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
@@ -207,18 +203,14 @@ the help of the function with <code>?mvnpdf</code> and for example execute the c
 <p>This command creates a <code>tests</code> folder which includes a <code>testthat.R</code> file – not to be modified – and a <code>testthat</code> folder in which we will add our automated tests. This tool is based on the theory of <code>unit tests</code>.</p>
 <p>For example, here is the content of a file that we will call <code>test-univariate.R</code> to be put into the <code>testthat</code> folder:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">context</span><span class="op">(</span><span class="st">"Univariate gaussian test"</span><span class="op">)</span>
-
-<span class="fu">test_that</span><span class="op">(</span><span class="st">"correct result for univariate gaussian"</span>, <span class="op">{</span>
+<code class="sourceCode R"><span class="fu">test_that</span><span class="op">(</span><span class="st">"correct result for univariate gaussian"</span>, <span class="op">{</span>
   <span class="fu">expect_equal</span><span class="op">(</span><span class="fu">mvnpdf</span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span><span class="op">)</span>, Log<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">$</span><span class="va">y</span>, <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="fl">1.96</span><span class="op">)</span><span class="op">)</span>
   <span class="fu">expect_equal</span><span class="op">(</span><span class="fu">mvnpdf</span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1.96</span>, <span class="op">-</span><span class="fl">0.5</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>, Log<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">$</span><span class="va">y</span>,
                <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1.96</span>, <span class="op">-</span><span class="fl">0.5</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span></code></pre></div>
 <p>And a second one named <code>test-bivariate.R</code> :</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">context</span><span class="op">(</span><span class="st">"Bivariate gaussian test"</span><span class="op">)</span>
-
-<span class="fu">test_that</span><span class="op">(</span><span class="st">"correct results for bivariate gaussian"</span>, <span class="op">{</span>
+<code class="sourceCode R"><span class="fu">test_that</span><span class="op">(</span><span class="st">"correct results for bivariate gaussian"</span>, <span class="op">{</span>
   <span class="fu">expect_equal</span><span class="op">(</span><span class="fu">mvnpdf</span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1.96</span>,<span class="fl">2</span><span class="op">)</span>, nrow<span class="op">=</span><span class="fl">2</span>, ncol<span class="op">=</span><span class="fl">1</span><span class="op">)</span>, Log<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">$</span><span class="va">y</span>,
                <span class="fu">mvtnorm</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html">dmvnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1.96</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span></code></pre></div>
