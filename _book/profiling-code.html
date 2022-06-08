@@ -91,11 +91,11 @@
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: milliseconds
 ##                                                            expr      min
-##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4.578608
-##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3.592389
-##        lq      mean   median       uq      max neval
-##  6.002822 12.582167 12.05727 16.79692 41.68235   100
-##  3.942234  7.364379  6.25176 10.30462 16.76826   100</code></pre>
+##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4.280427
+##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3.114666
+##        lq     mean   median       uq      max neval
+##  4.969066 5.674356 5.162567 5.819197 14.28417   100
+##  3.607490 4.105162 3.698770 3.874817 12.50094   100</code></pre>
 <pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
 ## use `guide = "none"` instead.</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-20-1.png" width="672"></div>
@@ -109,13 +109,13 @@
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##                                                            expr      min
-##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   67.170
-##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4617.927
-##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3073.983
-##         lq      mean   median         uq       max neval
-##    91.6015  179.3669  116.965   170.1595   923.474   100
-##  5109.9580 9235.0413 6352.342 10640.2555 42304.306   100
-##  3656.8890 5655.7538 4312.346  6359.9255 16719.819   100</code></pre>
+##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   65.018
+##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3986.711
+##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2896.633
+##         lq      mean    median       uq       max neval
+##    80.2055  107.1762   99.1725  122.511   254.276   100
+##  4612.2245 5995.2719 5051.4000 5923.892 31314.933   100
+##  3299.3640 3806.7368 3584.0975 3752.918 13493.164   100</code></pre>
 <pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
 ## use `guide = "none"` instead.</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-22-1.png" width="672"></div>
@@ -142,15 +142,15 @@
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##                                                            expr      min
-##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   71.708
-##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4179.818
-##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2982.477
-##  mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2342.160
-##        lq      mean   median        uq       max neval
-##    90.361  136.0151  108.007  128.2675   942.385   100
-##  4922.019 6170.5302 5046.102 5294.0945 18958.337   100
-##  3525.505 4850.6530 3638.481 4150.1640 41888.220   100
-##  2775.838 3373.6705 2880.588 2983.7595 11679.778   100</code></pre>
+##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   64.497
+##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4062.412
+##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2945.913
+##  mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2297.153
+##         lq      mean    median       uq       max neval
+##    83.5275  101.6763   97.3915  111.317   158.478   100
+##  4713.3465 5305.3115 4922.2375 5086.133 14832.647   100
+##  3324.2160 3675.8343 3518.3205 3621.965 11251.428   100
+##  2562.9490 2958.5768 2789.9440 2869.463 10243.966   100</code></pre>
 <pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
 ## use `guide = "none"` instead.</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-25-1.png" width="672"></div>

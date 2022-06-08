@@ -200,13 +200,13 @@ Ideally, you should propose a *pull request* that solves your *issue* when you c
 
 > `r emoji::emoji("point_right")` ***Your turn !*** 
 >
-  1. Use `usethis::use_github_links()` to add the following 2 lines to your package `DESCRIPTION` file  
-URL: http://github.com/*username*/mypkg`  
-BugReports: http://github.com/*username*/mypkg/issues`
+>  1. Use `usethis::use_github_links()` to add the following 2 lines to your package `DESCRIPTION` file:  
+> `URL: http://github.com/*username*/mypkg`  
+> `BugReports: http://github.com/*username*/mypkg/issues`
 >
-  2. View the new changes, then *commit* them.
+>  2. View the new changes, then *commit* them.
 >
-  3. Create an *output* on your buddy's project
+>  3. Create an *issue* on your paired buddy's project
   
   
   
@@ -223,10 +223,10 @@ Another reason to use continuous integration is that it allows you to test your 
 
 *GitHub Actions* let you launch "actions" automatically, every time you push to GitHub. The `usethis::use_github_action_check_standard()` command allows you to initialize *Github Actions* to add the `R CMD CHECK` action to your package.
 
-> `r emoji::emoji("point_right")` ***Your turn !*** 
-  1. Run the command `usethis::use_github_action_check_standard()`, then *commit* and *push* the changes. See what happens on the GitHub webpage under the "Actions" tab.
+> `r emoji::emoji("point_right")` ***Your turn !***  
+>  1. Run the command `usethis::use_github_action_check_standard()`, then *commit* and *push* the changes. See what happens on the GitHub webpage under the "Actions" tab.
 >
-  2. Add a badge to your README.Rmd (do nott forget to `knit` it) with the code obtained in the `r emoji::emoji("point_right")` console and *commit* (and *push*) those changes.
+>  2. Add a badge to your README.Rmd (do nott forget to `knit` it) with the code obtained in the console and *commit* (and *push*) those changes.
 
 
 Have a look at the following webpage which informs about the different *GitHub Actions* available for `r fontawesome::fa("r-project")` packages: [https://github.com/r-lib/actions/blob/v1/examples/README.md](https://github.com/r-lib/actions/blob/v1/examples/README.md)
@@ -246,9 +246,7 @@ It has the advantage to use the exact same infrastructure as the `CRAN` make the
 
 ## Appendix 2.1: Code coverage
 
-The `covr` package proposes a solution to measure the coverage of unit tests associated to a 
-package. The test coverage determines the proportion of the source code that is actually used
-during the execution of unit tests. Measuring the coverage of the code reinforces the reliability of a code and gives more confidence to its potential users.
+The `covr` package proposes a solution to measure the coverage of unit tests associated to a package. The test coverage determines the proportion of the source code that is actually used during the execution of unit tests. Measuring the coverage of the code reinforces the reliability of a code and gives more confidence to its potential users.
 
 > `r emoji::emoji("point_right")` ***Your turn !*** 
 >
