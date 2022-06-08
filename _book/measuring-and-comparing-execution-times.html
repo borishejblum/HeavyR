@@ -71,15 +71,17 @@
 </h2>
 <p>To measure the execution time of an R command, you can use the native <code><a href="https://rdrr.io/r/base/system.time.html">system.time()</a></code> function like this:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="fu">mvnpdf</span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1.96</span>, <span class="fl">2</span><span class="op">)</span>, nrow<span class="op">=</span><span class="fl">2</span>, ncol<span class="op">=</span><span class="fl">1</span><span class="op">)</span>, Log<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">obs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1.96</span>, <span class="fl">2</span><span class="op">)</span>, nrow<span class="op">=</span><span class="fl">2</span>, ncol<span class="op">=</span><span class="fl">1</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="fu">mvnpdf</span><span class="op">(</span>x<span class="op">=</span><span class="va">obs</span>, Log<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## utilisateur     système      écoulé 
-##       0.001       0.001       0.004</code></pre>
+##       0.002       0.001       0.003</code></pre>
 <p>The problem that appears in this example is that the execution is so fast that <code><a href="https://rdrr.io/r/base/system.time.html">system.time()</a></code> displays <code>0</code> (or a very close value) that will be impossible to marginally compare to a hopefully faster implementation. Also, we see that there is some variability when we run the command several times.</p>
-<p>Thus if we want to compare our code with the <code><a href="https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html">mvtnorm::dmvnorm()</a></code> function, we can’t use <code><a href="https://rdrr.io/r/base/system.time.html">system.time()</a></code> :</p>
+<p>Thus if we want to compare our code with the <code><a href="https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html">mvtnorm::dmvnorm()</a></code> function, we can’t use <code><a href="https://rdrr.io/r/base/system.time.html">system.time()</a></code>:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="fu">mvtnorm</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html">dmvnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1.96</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">obs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1.96</span>, <span class="fl">2</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="fu">mvtnorm</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html">dmvnorm</a></span><span class="op">(</span><span class="va">obs</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## utilisateur     système      écoulé 
-##       0.004       0.002       0.011</code></pre>
+##       0.005       0.003       0.011</code></pre>
 <p>We could say that we have to increase the complexity of our calculation, but there is a better way: use the <code>microbenchmark</code> package !</p>
 </div>
 <div id="compare-execution-timings-with-microbenchmark." class="section level2" number="3.2">
@@ -92,35 +94,31 @@
 <span class="va">mb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span><span class="op">(</span><span class="fu">mvtnorm</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html">dmvnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1.96</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span>,
                      <span class="fu">mvnpdf</span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1.96</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span>, 
                             Log <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,
-                     times <span class="op">=</span> <span class="fl">1000L</span><span class="op">)</span>
+                     times <span class="op">=</span> <span class="fl">1000</span><span class="op">)</span>
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##                                           expr    min      lq     mean  median
-##                 mvtnorm::dmvnorm(rep(1.96, 2)) 37.434 43.0050 51.60793 47.0180
-##  mvnpdf(x = matrix(rep(1.96, 2)), Log = FALSE) 35.109 39.2085 45.68348 43.1955
+##                 mvtnorm::dmvnorm(rep(1.96, 2)) 37.572 50.2770 61.73371 55.3395
+##  mvnpdf(x = matrix(rep(1.96, 2)), Log = FALSE) 35.493 46.2905 54.95766 51.3455
 ##       uq      max neval
-##  52.5965 2311.936  1000
-##  49.0090  150.400  1000</code></pre>
-<pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
-## use `guide = "none"` instead.</code></pre>
+##  66.1915 2590.361  1000
+##  59.1720  197.410  1000</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-13-1.png" width="672"></div>
 <p>Botth <code>mvnpdf()</code> and <code>dmnvorm()</code> functions being able to take a matrix as input, we can also compare their timings in this setting:</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">100</span>
 <span class="va">mb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span><span class="op">(</span><span class="fu">mvtnorm</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html">dmvnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, nrow <span class="op">=</span> <span class="va">n</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span>,
                      <span class="fu">mvnpdf</span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, nrow <span class="op">=</span> <span class="fl">2</span>, ncol <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, 
                             Log<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>,
-                     times<span class="op">=</span><span class="fl">100L</span><span class="op">)</span>
+                     times<span class="op">=</span><span class="fl">100</span><span class="op">)</span>
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##                                                       expr     min      lq
-##         mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))  44.623  56.074
-##  mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 463.145 518.987
-##       mean   median       uq     max neval
-##   66.81994  60.2245  72.1665 136.874   100
-##  549.14824 550.6985 567.1540 718.388   100</code></pre>
-<pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
-## use `guide = "none"` instead.</code></pre>
+##         mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))  51.612  62.200
+##  mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 521.395 587.507
+##       mean  median       uq     max neval
+##   74.61388  70.893  84.9525 116.128   100
+##  613.05475 607.751 636.8105 725.737   100</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-15-1.png" width="672"></div>
 <p>Something happened… And we will find out what exactly is causing this issue in what comes next.</p>
 

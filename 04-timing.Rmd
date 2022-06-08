@@ -13,15 +13,17 @@ library(mypkgr)
 ```
 
 ```{r}
-system.time(mvnpdf(x=matrix(rep(1.96, 2), nrow=2, ncol=1), Log=FALSE))
+obs <- matrix(rep(1.96, 2), nrow=2, ncol=1)
+system.time(mvnpdf(x=obs, Log=FALSE))
 ```
 
 The problem that appears in this example is that the execution is so fast that `system.time()` displays `0` (or a very close value) that will be impossible to marginally compare to a hopefully faster implementation. Also, we see that there is some variability when we run the command several times.
 
-Thus if we want to compare our code with the `mvtnorm::dmvnorm()` function, we can't use `system.time()` :
+Thus if we want to compare our code with the `mvtnorm::dmvnorm()` function, we can't use `system.time()`:
 
 ```{r}
-system.time(mvtnorm::dmvnorm(rep(1.96, 2)))
+obs <- rep(1.96, 2)
+system.time(mvtnorm::dmvnorm(obs))
 ```
 
 We could say that we have to increase the complexity of our calculation, but there is a better way: use the `microbenchmark` package !
@@ -36,7 +38,7 @@ library(microbenchmark)
 mb <- microbenchmark(mvtnorm::dmvnorm(rep(1.96, 2)),
                      mvnpdf(x = matrix(rep(1.96,2)), 
                             Log = FALSE),
-                     times = 1000L)
+                     times = 1000)
 mb
 ```
 
@@ -50,7 +52,7 @@ for(i in rangeTime){
     brk <- c(brk, seq(from = 10^i, to = 10^(i+1), by=10^i))
 }
 ggplot(data2plot) + geom_violin(aes(x=Expression, y=Time, fill=Expression), alpha=0.8) + 
-  scale_fill_manual(guide=FALSE, values=viridis::viridis(6)[1:2]) + 
+  scale_fill_manual(guide="none", values=viridis::viridis(6)[1:2]) + 
   scale_y_log10(minor_breaks=brk) + 
   ylab("Execution timings (milli-sec)") +
   xlab("Computed expression") +
@@ -66,7 +68,7 @@ n <- 100
 mb <- microbenchmark(mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2)),
                      mvnpdf(x=matrix(1.96, nrow = 2, ncol = n), 
                             Log=FALSE),
-                     times=100L)
+                     times=100)
 mb
 ```
 
@@ -80,7 +82,7 @@ for(i in rangeTime){
     brk <- c(brk, seq(from = 10^i, to = 10^(i+1), by=10^i))
 }
 ggplot(data2plot) + geom_violin(aes(x=Expression, y=Time, fill=Expression), alpha=0.8)  +
-  scale_fill_manual(guide=FALSE, values=viridis::viridis(6)[1:2]) + 
+  scale_fill_manual(guide="none", values=viridis::viridis(6)[1:2]) + 
   scale_y_log10(minor_breaks=brk) + 
   ylab("Execution timings (milli-sec)") +
   xlab("Computed expression") +

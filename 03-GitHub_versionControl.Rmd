@@ -223,7 +223,8 @@ Another reason to use continuous integration is that it allows you to test your 
 
 *GitHub Actions* let you launch "actions" automatically, every time you push to GitHub. The `usethis::use_github_action_check_standard()` command allows you to initialize *Github Actions* to add the `R CMD CHECK` action to your package.
 
-> `r emoji::emoji("point_right")` ***Your turn !***  
+> `r emoji::emoji("point_right")` ***Your turn !***
+>
 >  1. Run the command `usethis::use_github_action_check_standard()`, then *commit* and *push* the changes. See what happens on the GitHub webpage under the "Actions" tab.
 >
 >  2. Add a badge to your README.Rmd (do nott forget to `knit` it) with the code obtained in the console and *commit* (and *push*) those changes.
@@ -250,10 +251,10 @@ The `covr` package proposes a solution to measure the coverage of unit tests ass
 
 > `r emoji::emoji("point_right")` ***Your turn !*** 
 >
-  1. Run the command `usethis::use_coverage()`, add a nice badge to your README.md with the code you got in the R console
+>  1. Run the command `usethis::use_coverage()`, add a nice badge to your README.md with the code you got in the R console
 
 >  
-  2. *Commit* and *push* these changes.
+>  2. *Commit* and *push* these changes.
 
 For more information feel free to look at the [`covr` vignette](https://cran.r-project.org/web/packages/covr/vignettes/how_it_works.html).
 

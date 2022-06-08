@@ -67,18 +67,6 @@ mb <- microbenchmark(log_par(1:100), log_seq(1:100), times = 50)
 ```
 
 
-```{r, echo=FALSE, eval =FALSE}
-log_parIter <- function(x, ncores = 1){
-  iter <- itertools::isplitIndices(n=length(x), chunks=ncores)
-  res <- future_sapply(iter, FUN = function(i) {
-    log(x[i])
-  })
-  return(unlist(res))
-}
-mb <- microbenchmark(log_par(1:100), log_parIter(1:100), times=50)
-```
-
-
 ```{r, echo=FALSE}
 library(ggplot2)
 data2plot <- cbind.data.frame("Time" = mb$time/10^6, "Expression" = mb$expr)
@@ -103,7 +91,7 @@ The parallel version runs much slower... Because in fact, if the individual task
 
 By increasing $n$, we observe a reduction in the difference between the 2 implementations (the parallel computation time increases very slowly compared to the increase of the sequential function).
 
-**NB:** the iterators of the `itertools` package are very efficient to minimize the number of communications between cores, but can only be used when the code inside `future_*apply()` is vectorized (it is always possible to vectorize the code inside, for example with a function of type `apply`).
+<!--**NB:** the iterators of the `itertools` package are very efficient to minimize the number of communications between cores, but can only be used when the code inside `future_*apply()` is vectorized (it is always possible to vectorize the code inside, for example with a function of type `apply`).-->
 
 
 
@@ -142,11 +130,10 @@ system.time(colmedian_for(x))
 
 
 > `r emoji::emoji("point_right")` ***Your turn !*** 
-> Try to further improve this computation time through parallelizing your code:
->
->  1. Parallelize the median computation for each of the 100,000 variables. Is there a gain in computation time?
->  
-> 2. Propose an alternative implementation using the `itertools::isplitIndices()` function which allows you to separate your data (the $n$ numbers) into as many groups (or batchs) as you have cores. Compare again the computation times.
+> Try to further improve this computation time through parallelizing your code for each of the 100,000 variables. Is there a gain in computation time?
+
+<!-- 2. Propose an alternative implementation using the `itertools::isplitIndices()` function which allows you to separate your data (the $n$ numbers) into as many groups (or batchs) as you have cores. Compare again the computation times.
+-->
 
 ```{r, error=TRUE, cache=TRUE}
 colmedian_par <- function(x){
@@ -158,19 +145,10 @@ colmedian_par <- function(x){
 plan(multisession(workers = 3))
 system.time(colmedian_par(x))
 
-colmedian_parIter <- function(x, ncores = 1){
-  iter <- itertools::isplitIndices(n = ncol(x), chunks = ncores)
-  res <- future_sapply(iter, FUN = function(i) {
-          apply(x[, i], 2, median)
-    })
-  return(unlist(res))
-}
-system.time(colmedian_parIter(x, ncores = 3))
-
 mb <- microbenchmark(colmedian_apply(x), 
                      colmedian_for(x),
-                     colmedian_par(x),
-                     colmedian_parIter(x, ncores = 3), times = 10)
+                     colmedian_par(x), 
+                     times = 10)
 mb
 ```
 
@@ -193,6 +171,7 @@ ggplot(data2plot) + geom_violin(aes(x=Expression, y=Time, fill=Expression), alph
   ggtitle("Parallelizing works! 3 cores used for parallle computations")
 ```
 
+<!--
 ###  Iterators
 
 The `itertools` package allows to easily split data or tasks (step 3) while minimizing communication with different workers. It is based on an implementation of iterators in `r fontawesome::fa("r-project")`. However, its use requires vectorizing the code inside `future_*apply()`. Experiment with the small code below: 
@@ -209,7 +188,7 @@ iterators::nextElem(myiter)
 # again ?
 iterators::nextElem(myiter)
 ```
-
+-->
 
 ### Other "plans" for parallel computations
 
@@ -237,8 +216,7 @@ mb <- microbenchmark::microbenchmark(
   mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2)),
   mypkgr::mvnpdfoptim(x=matrix(1.96, nrow = 2, ncol = n), Log=FALSE),
   mypkgr::mvnpdfoptim_par(x=matrix(1.96, nrow = 2, ncol = n), Log=FALSE),
-  mypkgr::mvnpdfoptim_parIter(x=matrix(1.96, nrow = 2, ncol = n), Log=FALSE, ncores = 3),
-  times=20L)
+  times=20)
 mb
 ```
 

@@ -42,7 +42,6 @@ code-parallelization
 introduction-to-parallel-execution-in
 first-parallel-function
 efficient-parallelization
-iterators
 other-plans-for-parallel-computations
 parallelization-in-our-common-theme-example
 conclusion

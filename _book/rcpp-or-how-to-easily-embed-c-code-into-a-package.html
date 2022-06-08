@@ -76,7 +76,7 @@
 <li>To make your package ready for use with <code>Rcpp</code>, start by running the following command:</li>
 </ol>
 </blockquote>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu">use_rcpp</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <blockquote>
 <ol start="2" style="list-style-type: decimal">
@@ -85,7 +85,7 @@
 package:</p></li>
 </ol>
 </blockquote>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#' @useDynLib mypkgr</span>
 <span class="co">#' @importFrom Rcpp sourceCpp, .registration = TRUE</span>
 <span class="cn">NULL</span></code></pre></div>
@@ -107,7 +107,7 @@ package:</p></li>
 <li><p>Evaluate the performance gain of this new implementation <code>mvnpdf_invC</code>.</p></li>
 </ol>
 </blockquote>
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">1000</span>
 <span class="va">mb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span><span class="op">(</span><span class="fu">mvtnorm</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html">dmvnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, nrow <span class="op">=</span> <span class="va">n</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span>,
                      <span class="fu">mvnpdf</span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, nrow <span class="op">=</span> <span class="fl">2</span>, ncol <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, Log<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>,
@@ -118,21 +118,19 @@ package:</p></li>
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##                                                            expr      min
-##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   65.638
-##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4371.617
-##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3385.167
-##  mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2518.846
-##  mvnpdf_invC(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3250.055
-##         lq      mean   median       uq       max neval
-##    95.2435  136.5842  116.328  180.173   258.593   100
-##  4993.0050 6747.5117 5118.584 6291.226 23330.774   100
-##  3623.7170 4686.5952 3751.372 4043.729 20881.565   100
-##  2922.2405 3843.7165 3033.806 4151.256 10885.581   100
-##  3671.3205 4602.7272 3799.534 4171.996 12901.034   100</code></pre>
-<pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
-## use `guide = "none"` instead.</code></pre>
+##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   70.780
+##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4582.082
+##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3455.209
+##  mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2821.328
+##  mvnpdf_invC(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3500.765
+##        lq      mean    median        uq       max neval
+##    94.455  112.9585  109.0895  128.3335   203.233   100
+##  4951.737 5648.6614 5150.3880 5515.0040 16555.548   100
+##  3739.691 4102.9370 3828.5530 4037.9570 11782.020   100
+##  2971.279 3455.9374 3080.3770 3273.3855 11620.044   100
+##  3728.302 4078.5288 3834.9825 4056.8505  9674.702   100</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-31-1.png" width="672"></div>
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">profvis</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/profvis/man/profvis.html">profvis</a></span><span class="op">(</span><span class="fu">mvnpdfoptim</span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, 
     nrow <span class="op">=</span> <span class="fl">2</span>, ncol <span class="op">=</span> <span class="fl">1000</span><span class="op">)</span>, Log<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span>
 <span class="fu">profvis</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/profvis/man/profvis.html">profvis</a></span><span class="op">(</span><span class="fu">mvnpdfoptim</span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, 
@@ -151,7 +149,7 @@ package:</p></li>
 </ol>
 </blockquote>
 <p>You can download our proposal for <code>mvnpdfC.cpp</code> <a href="https://heavyr.borishejblum.science/AdvancedRcourse_dev_perf_files/mvnpdfC.cpp">here</a>.</p>
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">1000</span>
 <span class="va">mb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span><span class="op">(</span><span class="fu">mvtnorm</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html">dmvnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, nrow <span class="op">=</span> <span class="va">n</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span>,
                      <span class="fu">mvnpdf</span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, nrow <span class="op">=</span> <span class="fl">2</span>, ncol <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, Log<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>,
@@ -170,14 +168,12 @@ package:</p></li>
 ##                                        mvnpdf_invC(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE)
 ##  mvnpdfC(x = matrix(1.96, nrow = 2, ncol = n), mean = rep(0, 2),      varcovM = diag(2), Log = FALSE)
 ##       min        lq       mean    median        uq       max neval
-##    62.239   86.3495  103.25240  100.2645  110.8870   188.698   100
-##  3923.547 4725.2680 5139.67132 4911.2735 5067.2065 12082.782   100
-##  2927.000 3467.8310 3713.98045 3627.1780 3780.3935  9790.278   100
-##  2285.075 2589.7205 3793.15061 2839.6660 3062.7555 72105.691   100
-##  2890.258 3188.0395 3612.34574 3544.2275 3768.9245  9620.398   100
-##    45.070   55.7510   67.37264   64.5370   70.5215   171.449   100</code></pre>
-<pre><code>## Warning: It is deprecated to specify `guide = FALSE` to remove a guide. Please
-## use `guide = "none"` instead.</code></pre>
+##    73.002   88.6810  116.43121  111.6035  136.6405   206.761   100
+##  4502.013 5025.2120 5761.87892 5176.3445 5772.5290 13724.987   100
+##  3432.103 3714.8170 4248.82783 3823.1720 4256.7675 15591.582   100
+##  2679.836 2919.9560 4142.55809 3054.3270 3342.4805 76412.611   100
+##  3250.644 3716.4205 4262.68288 3863.1480 4500.2675  8898.137   100
+##    55.839   63.5895   77.29298   71.2860   81.7235   174.767   100</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-34-1.png" width="672"></div>
 <p>Note that <code>Rcpp</code> functions can be used outside of a package architecture thanks to the <code><a href="https://rdrr.io/pkg/Rcpp/man/sourceCpp.html">Rcpp::sourceCpp()</a></code> function. But, as we have seen that it is always desirable to manage all of one’s code inside a package, it is unlikely that you will need this !</p>
 </div>
