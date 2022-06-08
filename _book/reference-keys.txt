@@ -26,6 +26,7 @@ issues
 continuous-integration-ci
 github-actions
 r-hub
+additional-references
 appendix-2.1-code-coverage
 measuring-and-comparing-execution-times
 measuring-execution-times-with-system.time

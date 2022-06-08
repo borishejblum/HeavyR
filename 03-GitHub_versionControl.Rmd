@@ -240,6 +240,10 @@ The *R consortium* provides the [R-hub builder](https://www.r-consortium.org/blo
 It has the advantage to use the exact same infrastructure as the `CRAN` make the *check* of your package foolproof. You can use it through the `devtools::check_rhub()` fucntion.
 
 
+## Additional References
+
+ - [*Happy Git With R*](https://happygitwithr.com/) by Jenny Bryan.
+
 ## Appendix 2.1: Code coverage
 
 The `covr` package proposes a solution to measure the coverage of unit tests associated to a 
