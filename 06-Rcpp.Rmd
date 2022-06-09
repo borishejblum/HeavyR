@@ -37,7 +37,7 @@ We are now going to create a first function in `Rcpp` to invert a matrix. For th
   
   - `C++` is very efficient for *for* loops (including nested for loops -- `r emoji::emoji("warning")` there is often one order that is faster than the other, due to the way C++ allocates and walks through memory).
   
-  - Each command must end with a semicolon ';'.
+  - Each command must end with a semicolon `;`.
   
   - C++ is a **typed** language: you must **declare** the type of **each variable** before you can use it in the code.
 
@@ -92,12 +92,14 @@ As a general rule, not much computational time is gained by replacing an optimiz
 
 > `r emoji::emoji("point_right")` ***Your turn !*** 
 >
-1. From `mvnpdfsmart`, propose a complete implementation in `C++` for computating the density of the multivariate Normal distribution `mvnpdfC()`.
+>  1. From `mvnpdfsmart`, propose a complete implementation in `C++` for computating the density of the multivariate Normal distribution `mvnpdfsmartC()`.
 > 
-  2. Evaluate the performance gain of this new implementation `mvnpdfC`.
+>  2. Evaluate the performance gain of this new implementation `mvnpdfsmartC`.
 
 
-You can download our proposal for `mvnpdfC.cpp` [here](https://heavyr.borishejblum.science/AdvancedRcourse_dev_perf_files/mvnpdfC.cpp).
+You can download our proposal for `mvnpdfsmartC.cpp` [here](https://heavyr.borishejblum.science/AdvancedRcourse_dev_perf_files/mvnpdfsmartC.cpp).
+
+For additional (at the cost of code readability), you can have a look at our optimized Armadillo C++ implementation in [`mvnpdfoptimC.cpp`](https://heavyr.borishejblum.science/AdvancedRcourse_dev_perf_files/mvnpdfoptimC.cpp).
 
 ```{r, echo=TRUE, eval=TRUE}
 n <- 1000
@@ -106,7 +108,8 @@ mb <- microbenchmark(mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2)),
                      mvnpdfsmart(x=matrix(1.96, nrow = 2, ncol = n), Log=FALSE),
                      mvnpdfoptim(x=matrix(1.96, nrow = 2, ncol = n), Log=FALSE),
                      mvnpdf_invC(x=matrix(1.96, nrow = 2, ncol = n), Log=FALSE),
-                     mvnpdfC(x=matrix(1.96, nrow = 2, ncol = n), mean = rep(0, 2), varcovM = diag(2), Log=FALSE),
+                     mvnpdfsmartC(x=matrix(1.96, nrow = 2, ncol = n), mean = rep(0, 2), varcovM = diag(2), Log=FALSE),
+                     mvnpdfoptimC(x=matrix(1.96, nrow = 2, ncol = n), mean = rep(0, 2), varcovM = diag(2), Log=FALSE),
                      times=100L)
 mb
 ```

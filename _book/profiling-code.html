@@ -91,11 +91,11 @@
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: milliseconds
 ##                                                            expr      min
-##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4.845550
-##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3.599505
+##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4.978296
+##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3.632696
 ##        lq     mean   median       uq      max neval
-##  5.142760 6.055649 5.327784 6.212088 16.71266   100
-##  3.778189 4.163521 3.909528 4.105548 10.72688   100</code></pre>
+##  5.326261 7.820097 5.985543 7.523787 53.29416   100
+##  3.836824 5.104701 3.947392 4.695637 19.00220   100</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-20-1.png" width="672"></div>
 <p>We can also check whether <code>mvnpdfsmart</code> becomes competitive with <code><a href="https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html">dmvnorm()</a></code>:</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
@@ -107,13 +107,13 @@
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##                                                            expr      min
-##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   69.716
-##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4840.386
-##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3526.033
+##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   74.973
+##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4903.411
+##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3579.980
 ##        lq      mean    median       uq       max neval
-##    87.182  114.9128  114.7975  137.475   231.798   100
-##  5030.731 6139.2480 5202.8720 5672.869 25546.232   100
-##  3659.269 3903.8097 3755.5935 3964.489  7056.973   100</code></pre>
+##    95.867  133.5852  118.2385  146.085   531.132   100
+##  5142.553 7894.8026 5439.2860 6427.504 45985.044   100
+##  3703.761 4560.7816 3817.9840 4396.846 29383.089   100</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-22-1.png" width="672"></div>
 <p>There is still work to be done…</p>
 </div>
@@ -138,15 +138,15 @@
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##                                                            expr      min
-##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   69.632
-##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4836.061
-##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3563.900
-##  mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2805.886
-##         lq      mean   median        uq       max neval
-##    94.8515  123.0524  119.906  144.9835   311.573   100
-##  5017.5645 5612.7945 5205.633 5893.0975 11394.929   100
-##  3686.8070 4452.5442 3817.304 4423.6895 11966.054   100
-##  2894.0945 3283.3472 3016.630 3337.9690  9904.099   100</code></pre>
+##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   73.215
+##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4947.441
+##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3641.029
+##  mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2865.195
+##        lq      mean    median        uq       max neval
+##   112.040  159.5284  131.6665   152.115   802.477   100
+##  5292.811 9082.1799 5899.0315 10619.879 29989.205   100
+##  3790.613 5902.9247 3975.2385  5122.364 33229.950   100
+##  3025.960 5268.3439 3242.9435  4918.802 35166.196   100</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-25-1.png" width="672"></div>
 <p>Finally, we can profile tthe <code><a href="https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html">dmvnorm()</a></code> function:</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">

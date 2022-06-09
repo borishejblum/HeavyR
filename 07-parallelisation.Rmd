@@ -163,7 +163,7 @@ for(i in rangeTime){
 ggplot(data2plot) + geom_violin(aes(x=Expression, y=Time, fill=Expression), alpha=0.8)  +
   scale_fill_manual(guide="none", values=viridis::viridis(6)[1:4]) + 
   #scale_y_log10(minor_breaks=brk) + 
-  ylab("Execution timings (milli-sec)") +
+  ylab("Execution timings (sec)") +
   xlab("Computed expression") +
   #annotation_logticks(sides="l") +
   theme_bw() +
@@ -196,7 +196,7 @@ To run your code (exactly the same code, this is one of the advantages of the `f
 
 - On a computer (or a single computer server) under Unix (Linux, Mac OS), you can use `plan(multicore(workers = XX))` which is often more efficient. The multisession plan always works.
 
-- on a HPC cluster (like Avakas in Bordeaux), we refer to the package [`future.batchtools`](https://cran.r-project.org/web/packages/future.batchtools/vignettes/future.batchtools.html)
+- on a HPC cluster (like CURTA in Bordeaux), we refer to the package [`future.batchtools`](https://cran.r-project.org/web/packages/future.batchtools/vignettes/future.batchtools.html)
 
 
 

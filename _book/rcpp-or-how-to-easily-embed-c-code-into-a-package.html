@@ -93,7 +93,7 @@ package:</p></li>
 <p><code>C++</code> is not a very different language from <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg>. The main differences that will have an impact for us:</p>
 <ul>
 <li><p><code>C++</code> is very efficient for <em>for</em> loops (including nested for loops – ⚠️ there is often one order that is faster than the other, due to the way C++ allocates and walks through memory).</p></li>
-<li><p>Each command must end with a semicolon ‘;’.</p></li>
+<li><p>Each command must end with a semicolon <code>;</code>.</p></li>
 <li><p>C++ is a <strong>typed</strong> language: you must <strong>declare</strong> the type of <strong>each variable</strong> before you can use it in the code.</p></li>
 </ul>
 <blockquote>
@@ -118,17 +118,17 @@ package:</p></li>
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##                                                            expr      min
-##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   74.957
-##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4830.366
-##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3566.319
-##  mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2849.916
-##  mvnpdf_invC(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3520.409
-##        lq      mean   median        uq       max neval
-##    95.956  116.6394  112.770  129.8925   245.621   100
-##  5028.893 5440.8102 5115.710 5253.5005 12246.132   100
-##  3740.764 4149.7088 3818.528 3925.8840 12905.508   100
-##  2983.660 3190.1240 3098.000 3235.1300  7986.497   100
-##  3739.808 4111.9413 3826.202 4015.9635  8826.675   100</code></pre>
+##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   65.124
+##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4385.828
+##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3123.313
+##  mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2505.921
+##  mvnpdf_invC(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3199.622
+##         lq      mean    median        uq       max neval
+##    99.4615  194.6067  118.7655   155.223  1212.833   100
+##  5086.8085 8445.4008 5312.9740  6765.887 34013.310   100
+##  3719.0570 5773.8675 3936.7650  4319.208 41610.932   100
+##  3025.0395 5381.2065 3247.7600  7305.590 19374.333   100
+##  3766.4930 6749.5553 3953.5380 10025.012 20069.787   100</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-31-1.png" width="672"></div>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">profvis</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/profvis/man/profvis.html">profvis</a></span><span class="op">(</span><span class="fu">mvnpdfoptim</span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, 
@@ -144,11 +144,12 @@ package:</p></li>
 <blockquote>
 <p>👉 <strong><em>Your turn !</em></strong></p>
 <ol style="list-style-type: decimal">
-<li><p>From <code>mvnpdfsmart</code>, propose a complete implementation in <code>C++</code> for computating the density of the multivariate Normal distribution <code>mvnpdfC()</code>.</p></li>
-<li><p>Evaluate the performance gain of this new implementation <code>mvnpdfC</code>.</p></li>
+<li><p>From <code>mvnpdfsmart</code>, propose a complete implementation in <code>C++</code> for computating the density of the multivariate Normal distribution <code>mvnpdfsmartC()</code>.</p></li>
+<li><p>Evaluate the performance gain of this new implementation <code>mvnpdfsmartC</code>.</p></li>
 </ol>
 </blockquote>
-<p>You can download our proposal for <code>mvnpdfC.cpp</code> <a href="https://heavyr.borishejblum.science/AdvancedRcourse_dev_perf_files/mvnpdfC.cpp">here</a>.</p>
+<p>You can download our proposal for <code>mvnpdfsmartC.cpp</code> <a href="https://heavyr.borishejblum.science/AdvancedRcourse_dev_perf_files/mvnpdfsmartC.cpp">here</a>.</p>
+<p>For additional (at the cost of code readability), you can have a look at our optimized Armadillo C++ implementation in <a href="https://heavyr.borishejblum.science/AdvancedRcourse_dev_perf_files/mvnpdfoptimC.cpp"><code>mvnpdfoptimC.cpp</code></a>.</p>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">1000</span>
 <span class="va">mb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span><span class="op">(</span><span class="fu">mvtnorm</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html">dmvnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, nrow <span class="op">=</span> <span class="va">n</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span>,
@@ -156,24 +157,27 @@ package:</p></li>
                      <span class="fu">mvnpdfsmart</span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, nrow <span class="op">=</span> <span class="fl">2</span>, ncol <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, Log<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>,
                      <span class="fu">mvnpdfoptim</span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, nrow <span class="op">=</span> <span class="fl">2</span>, ncol <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, Log<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>,
                      <span class="fu">mvnpdf_invC</span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, nrow <span class="op">=</span> <span class="fl">2</span>, ncol <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, Log<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>,
-                     <span class="fu">mvnpdfC</span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, nrow <span class="op">=</span> <span class="fl">2</span>, ncol <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">2</span><span class="op">)</span>, varcovM <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>, Log<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>,
+                     <span class="fu">mvnpdfsmartC</span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, nrow <span class="op">=</span> <span class="fl">2</span>, ncol <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">2</span><span class="op">)</span>, varcovM <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>, Log<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>,
+                     <span class="fu">mvnpdfoptimC</span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, nrow <span class="op">=</span> <span class="fl">2</span>, ncol <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">2</span><span class="op">)</span>, varcovM <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>, Log<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>,
                      times<span class="op">=</span><span class="fl">100L</span><span class="op">)</span>
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: microseconds
-##                                                                                                  expr
-##                                                    mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))
-##                                             mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE)
-##                                        mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE)
-##                                        mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE)
-##                                        mvnpdf_invC(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE)
-##  mvnpdfC(x = matrix(1.96, nrow = 2, ncol = n), mean = rep(0, 2),      varcovM = diag(2), Log = FALSE)
-##       min        lq       mean    median        uq       max neval
-##    74.961   92.5515  143.71050  109.1830  124.7385  3312.536   100
-##  4991.796 5245.8765 6438.73775 5360.7095 5542.4040 83071.440   100
-##  3749.164 3877.8145 4102.79395 3969.5850 4056.4780 11712.550   100
-##  2916.814 3100.8705 3361.40040 3180.0270 3319.2945  7913.995   100
-##  3745.999 3863.5620 4172.19477 3986.3905 4050.4545  9298.978   100
-##    57.855   67.0110   79.95266   72.1185   77.0905   727.795   100</code></pre>
+##                                                                                                       expr
+##                                                         mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))
+##                                                  mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE)
+##                                             mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE)
+##                                             mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE)
+##                                             mvnpdf_invC(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE)
+##  mvnpdfsmartC(x = matrix(1.96, nrow = 2, ncol = n), mean = rep(0,      2), varcovM = diag(2), Log = FALSE)
+##  mvnpdfoptimC(x = matrix(1.96, nrow = 2, ncol = n), mean = rep(0,      2), varcovM = diag(2), Log = FALSE)
+##       min       lq      mean    median        uq       max neval
+##    75.917  110.387  197.9245  124.1960  157.4325  1256.935   100
+##  4931.640 5188.288 9275.1514 5373.7055 7844.4305 77858.099   100
+##  3612.515 3777.602 5501.5053 3972.8825 4712.0445 19561.479   100
+##  2826.213 3020.449 4884.5568 3207.6715 5140.8520 15737.090   100
+##  3607.748 3752.820 5388.6261 3994.1985 4849.5315 23388.501   100
+##    70.730   82.846  124.5476   90.8290  130.6830   691.755   100
+##    58.110   69.123  150.0763   78.3205  109.9820  4509.591   100</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-34-1.png" width="672"></div>
 <p>Note that <code>Rcpp</code> functions can be used outside of a package architecture thanks to the <code><a href="https://rdrr.io/pkg/Rcpp/man/sourceCpp.html">Rcpp::sourceCpp()</a></code> function. But, as we have seen that it is always desirable to manage all of one’s code inside a package, it is unlikely that you will need this !</p>
 </div>
