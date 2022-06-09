@@ -50,7 +50,7 @@ We are now going to create a first function in `Rcpp` to invert a matrix. For th
 >
   3. Install the `RcppArmadillo` `r emoji::emoji("point_right")` package, and don't forget to make the necessary additions to `DESCRIPTION` (use `usethis::use_rcpp_armadillo()`)
 >
-  4. Using Hadley Wickham's [introduction to `Rcpp`]](http://adv-r.had.co.nz/Rcpp.html#rcpp-intro) in his book *Advanced R*, as well as the documentation for the [`RcppArmadillo` package](http://gallery.rcpp.org/articles/armadillo-eigenvalues/) and for the `C++` library [Armadillo](http://arma.sourceforge.net/docs.html), try to write a short function `invC()` in `C++` that computes the inverse of a matrix.
+  4. Using Hadley Wickham's [introduction to `Rcpp`](http://adv-r.had.co.nz/Rcpp.html#rcpp-intro) in his book *Advanced R*, as well as the documentation for the [`RcppArmadillo` package](http://gallery.rcpp.org/articles/armadillo-eigenvalues/) and for the `C++` library [Armadillo](http://arma.sourceforge.net/docs.html), try to write a short function `invC()` in `C++` that computes the inverse of a matrix.
 > 
   5. When you have successfully compiled your `invC` function and it is accessible from `r fontawesome::fa("r-project")`, create a `mvnpdf_invC()` function from the `mvnpdfsmart` implementation replacing only the matrix inverse calculations with a call to `invC`.
 > 

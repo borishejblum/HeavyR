@@ -74,14 +74,14 @@
 <code class="sourceCode R"><span class="va">obs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1.96</span>, <span class="fl">2</span><span class="op">)</span>, nrow<span class="op">=</span><span class="fl">2</span>, ncol<span class="op">=</span><span class="fl">1</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="fu">mvnpdf</span><span class="op">(</span>x<span class="op">=</span><span class="va">obs</span>, Log<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## utilisateur     système      écoulé 
-##       0.001       0.001       0.003</code></pre>
+##       0.001       0.000       0.002</code></pre>
 <p>The problem that appears in this example is that the execution is so fast that <code><a href="https://rdrr.io/r/base/system.time.html">system.time()</a></code> displays <code>0</code> (or a very close value) that will be impossible to marginally compare to a hopefully faster implementation. Also, we see that there is some variability when we run the command several times.</p>
 <p>Thus if we want to compare our code with the <code><a href="https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html">mvtnorm::dmvnorm()</a></code> function, we can’t use <code><a href="https://rdrr.io/r/base/system.time.html">system.time()</a></code>:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">obs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1.96</span>, <span class="fl">2</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="fu">mvtnorm</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html">dmvnorm</a></span><span class="op">(</span><span class="va">obs</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## utilisateur     système      écoulé 
-##       0.004       0.003       0.011</code></pre>
+##       0.005       0.003       0.012</code></pre>
 <p>We could say that we have to increase the complexity of our calculation, but there is a better way: use the <code>microbenchmark</code> package !</p>
 </div>
 <div id="compare-execution-timings-with-microbenchmark." class="section level2" number="3.2">
@@ -97,12 +97,12 @@
                      times <span class="op">=</span> <span class="fl">1000</span><span class="op">)</span>
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: microseconds
-##                                           expr    min     lq     mean median
-##                 mvtnorm::dmvnorm(rep(1.96, 2)) 38.066 43.595 50.37445 49.119
-##  mvnpdf(x = matrix(rep(1.96, 2)), Log = FALSE) 35.025 40.444 49.04525 45.304
+##                                           expr    min     lq     mean  median
+##                 mvtnorm::dmvnorm(rep(1.96, 2)) 37.335 42.323 51.91160 48.3660
+##  mvnpdf(x = matrix(rep(1.96, 2)), Log = FALSE) 34.741 39.266 50.35336 44.4625
 ##       uq      max neval
-##  53.6075  135.831  1000
-##  49.4970 2632.936  1000</code></pre>
+##  57.5255  170.798  1000
+##  52.4980 2389.274  1000</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-13-1.png" width="672"></div>
 <p>Both <code>mvnpdf()</code> and <code>dmnvorm()</code> functions being able to take a matrix as input, we can also compare their timings in this setting:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
@@ -114,11 +114,11 @@
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##                                                       expr     min       lq
-##         mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))  49.591  59.9405
-##  mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 485.371 546.5430
-##       mean  median      uq     max neval
-##   68.67111  64.826  72.471 174.057   100
-##  572.04338 572.378 591.084 670.790   100</code></pre>
+##         mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))  48.941  58.8965
+##  mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 489.989 527.7485
+##       mean   median      uq     max neval
+##   74.39789  65.3415  79.394 190.473   100
+##  569.71950 563.8125 590.484 882.932   100</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-15-1.png" width="672"></div>
 <p>Something happened… And we will find out what exactly is causing this issue in what comes next.</p>
 
