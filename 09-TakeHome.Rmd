@@ -1,8 +1,8 @@
 
 # *Take-home message(s)*
 
- 1. **MAKE PACKAGES**
+ 1. **MAKE PACKAGES!**
  
  2. use `git`, at least locally for yourself
  
- 3. **if needed** (i.e. after optimization of `r fontawesome::fa("r-project")` code itself), do not be afraid of using `Rcpp` and/or of parallelizing tour code
+ 3. **if needed** (i.e. after optimization of `r fontawesome::fa("r-project")` code itself), do not be afraid of using `Rcpp` and/or of parallelizing your code

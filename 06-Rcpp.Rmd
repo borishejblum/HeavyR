@@ -99,7 +99,7 @@ As a general rule, not much computational time is gained by replacing an optimiz
 
 You can download our proposal for `mvnpdfsmartC.cpp` [here](https://heavyr.borishejblum.science/AdvancedRcourse_dev_perf_files/mvnpdfsmartC.cpp).
 
-For additional (at the cost of code readability), you can have a look at our optimized Armadillo C++ implementation in [`mvnpdfoptimC.cpp`](https://heavyr.borishejblum.science/AdvancedRcourse_dev_perf_files/mvnpdfoptimC.cpp).
+For (relatively small) additional speed gain (at the cost of code readability!), you can have a look at our optimized Armadillo C++ implementation in [`mvnpdfoptimC.cpp`](https://heavyr.borishejblum.science/AdvancedRcourse_dev_perf_files/mvnpdfoptimC.cpp).
 
 ```{r, echo=TRUE, eval=TRUE}
 n <- 1000

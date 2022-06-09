@@ -118,17 +118,17 @@ package:</p></li>
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##                                                            expr      min
-##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   65.124
-##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4385.828
-##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3123.313
-##  mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2505.921
-##  mvnpdf_invC(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3199.622
-##         lq      mean    median        uq       max neval
-##    99.4615  194.6067  118.7655   155.223  1212.833   100
-##  5086.8085 8445.4008 5312.9740  6765.887 34013.310   100
-##  3719.0570 5773.8675 3936.7650  4319.208 41610.932   100
-##  3025.0395 5381.2065 3247.7600  7305.590 19374.333   100
-##  3766.4930 6749.5553 3953.5380 10025.012 20069.787   100</code></pre>
+##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   71.118
+##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4753.473
+##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3181.776
+##  mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2617.668
+##  mvnpdf_invC(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3181.072
+##        lq      mean   median        uq       max neval
+##    86.828  114.8744  100.802  114.7005   438.543   100
+##  5005.557 6122.8779 5102.894 5871.4550 25992.031   100
+##  3689.941 4477.3166 3745.430 3927.6450 13121.594   100
+##  2895.649 3303.7776 2956.511 3096.8575  8617.597   100
+##  3696.435 4223.8946 3771.915 3870.8330 16088.644   100</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-31-1.png" width="672"></div>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">profvis</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/profvis/man/profvis.html">profvis</a></span><span class="op">(</span><span class="fu">mvnpdfoptim</span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, 
@@ -149,7 +149,7 @@ package:</p></li>
 </ol>
 </blockquote>
 <p>You can download our proposal for <code>mvnpdfsmartC.cpp</code> <a href="https://heavyr.borishejblum.science/AdvancedRcourse_dev_perf_files/mvnpdfsmartC.cpp">here</a>.</p>
-<p>For additional (at the cost of code readability), you can have a look at our optimized Armadillo C++ implementation in <a href="https://heavyr.borishejblum.science/AdvancedRcourse_dev_perf_files/mvnpdfoptimC.cpp"><code>mvnpdfoptimC.cpp</code></a>.</p>
+<p>For (relatively small) additional speed gain (at the cost of code readability!), you can have a look at our optimized Armadillo C++ implementation in <a href="https://heavyr.borishejblum.science/AdvancedRcourse_dev_perf_files/mvnpdfoptimC.cpp"><code>mvnpdfoptimC.cpp</code></a>.</p>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">1000</span>
 <span class="va">mb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span><span class="op">(</span><span class="fu">mvtnorm</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html">dmvnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, nrow <span class="op">=</span> <span class="va">n</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span>,
@@ -170,14 +170,14 @@ package:</p></li>
 ##                                             mvnpdf_invC(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE)
 ##  mvnpdfsmartC(x = matrix(1.96, nrow = 2, ncol = n), mean = rep(0,      2), varcovM = diag(2), Log = FALSE)
 ##  mvnpdfoptimC(x = matrix(1.96, nrow = 2, ncol = n), mean = rep(0,      2), varcovM = diag(2), Log = FALSE)
-##       min       lq      mean    median        uq       max neval
-##    75.917  110.387  197.9245  124.1960  157.4325  1256.935   100
-##  4931.640 5188.288 9275.1514 5373.7055 7844.4305 77858.099   100
-##  3612.515 3777.602 5501.5053 3972.8825 4712.0445 19561.479   100
-##  2826.213 3020.449 4884.5568 3207.6715 5140.8520 15737.090   100
-##  3607.748 3752.820 5388.6261 3994.1985 4849.5315 23388.501   100
-##    70.730   82.846  124.5476   90.8290  130.6830   691.755   100
-##    58.110   69.123  150.0763   78.3205  109.9820  4509.591   100</code></pre>
+##       min        lq       mean    median       uq       max neval
+##    65.007   88.8815  112.94501  102.7370  119.446   378.734   100
+##  4103.386 4877.7460 6564.95403 5034.1785 5572.334 78768.581   100
+##  2961.631 3590.1065 4469.34607 3730.5595 3884.968 15111.623   100
+##  2309.317 2767.0435 3100.71843 2896.2115 3019.818 10331.393   100
+##  2978.638 3605.9700 4457.68296 3735.8355 4164.860 11121.145   100
+##    67.470   74.8810   89.00683   81.5105   88.122   193.168   100
+##    56.216   60.0030   78.03703   66.3945   72.707   306.386   100</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-34-1.png" width="672"></div>
 <p>Note that <code>Rcpp</code> functions can be used outside of a package architecture thanks to the <code><a href="https://rdrr.io/pkg/Rcpp/man/sourceCpp.html">Rcpp::sourceCpp()</a></code> function. But, as we have seen that it is always desirable to manage all of one’s code inside a package, it is unlikely that you will need this !</p>
 </div>

@@ -81,7 +81,7 @@
 <code class="sourceCode R"><span class="va">obs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1.96</span>, <span class="fl">2</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="fu">mvtnorm</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html">dmvnorm</a></span><span class="op">(</span><span class="va">obs</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## utilisateur     système      écoulé 
-##       0.009       0.007       0.026</code></pre>
+##       0.008       0.005       0.019</code></pre>
 <p>We could say that we have to increase the complexity of our calculation, but there is a better way: use the <code>microbenchmark</code> package !</p>
 </div>
 <div id="compare-execution-timings-with-microbenchmark." class="section level2" number="3.2">
@@ -97,12 +97,12 @@
                      times <span class="op">=</span> <span class="fl">1000</span><span class="op">)</span>
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: microseconds
-##                                           expr    min      lq     mean  median
-##                 mvtnorm::dmvnorm(rep(1.96, 2)) 38.541 54.0815 84.56644 67.4135
-##  mvnpdf(x = matrix(rep(1.96, 2)), Log = FALSE) 35.913 50.6945 88.76405 60.6305
+##                                           expr    min     lq     mean  median
+##                 mvtnorm::dmvnorm(rep(1.96, 2)) 30.381 34.071 45.10932 37.0820
+##  mvnpdf(x = matrix(rep(1.96, 2)), Log = FALSE) 28.213 31.847 39.93715 34.2815
 ##       uq      max neval
-##  90.1445  798.391  1000
-##  82.7245 8728.613  1000</code></pre>
+##  45.0880 2016.936  1000
+##  41.9385  253.570  1000</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-13-1.png" width="672"></div>
 <p>Both <code>mvnpdf()</code> and <code>dmnvorm()</code> functions being able to take a matrix as input, we can also compare their timings in this setting:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
@@ -114,11 +114,11 @@
 <span class="va">mb</span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##                                                       expr     min       lq
-##         mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))  50.458  61.2235
-##  mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 507.831 545.9085
-##      mean   median       uq     max neval
-##   70.1771  66.4345  76.0815 198.892   100
-##  595.7492 597.9885 626.8220 734.035   100</code></pre>
+##         mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))  54.301  63.1360
+##  mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 532.957 594.6475
+##      mean  median       uq      max neval
+##  105.7365  73.882 103.6795  429.853   100
+##  731.0320 646.768 742.3830 1915.013   100</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-15-1.png" width="672"></div>
 <p>Something happened… And we will find out what exactly is causing this issue in what comes next.</p>
 
