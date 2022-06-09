@@ -61,7 +61,7 @@ ggplot(data2plot) + geom_violin(aes(x=Expression, y=Time, fill=Expression), alph
 ```
 
 
-Botth `mvnpdf()` and `dmnvorm()` functions being able to take a matrix as input, we can also compare their timings in this setting:
+Both `mvnpdf()` and `dmnvorm()` functions being able to take a matrix as input, we can also compare their timings in this setting:
 
 ```{r}
 n <- 100

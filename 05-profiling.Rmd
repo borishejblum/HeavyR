@@ -137,6 +137,7 @@ Finally,  we can profile tthe `dmvnorm()` function:
 
 ```{r, eval=FALSE}
 n <- 10e5
+library(mvtnorm)
 profvis::profvis(mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2)))
 ```
 

@@ -18,7 +18,7 @@ The curious reader is directed towards the online book [*Rcpp for everyone*](htt
 >
   1. To make your package ready for use with `Rcpp`, start by running the following command:
 ```{r, eval=FALSE}
-devtools::use_rcpp()
+usethis::use_rcpp()
 ```
 >
   2. See the changes made 
