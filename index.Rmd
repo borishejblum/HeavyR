@@ -1,7 +1,7 @@
 --- 
 title: 'Advanced `r fontawesome::fa("r-project")` course'
 subtitle: '*Tools for software development and performance*'
-author: "[Robin Genuer](https://robin.genuer.fr/) & [Boris Hejblum](https://borishejblum.science/)"
+author: "***Robin Genuer*** [`r emoji::emoji('globe_with_meridians')`](https://robin.genuer.fr/) & ***Boris Hejblum*** [`r emoji::emoji('globe_with_meridians')`](https://borishejblum.science/)"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
@@ -40,12 +40,14 @@ To take this course, you will need to have the following softwares installed:
 
   - the latest version of `r fontawesome::fa("r-project")` (https://cloud.r-project.org/)
 
-  - the latest version of `RStudio` (https://www.rstudio.com/products/rstudio/download/#download)
+  - the latest version of `RStudio` (https://posit.co/download/rstudio-desktop/#download)
 
   - a *C++ compiler* (such as `gcc` or `clang` - native on UNIX systems, 
 	for Windows users we recommend installing 
 	[Rtools](https://cran.r-project.org/bin/windows/Rtools/), for 
-	Mac users it may be necessary to install the macOS tool chain (namely Xcode Command Line Tools  and gfortran) used by `r fontawesome::fa("r-project")` as detailed  [here](http://thecoatlessprofessor.com/programming/r-compiler-tools-for-rcpp-on-os-x/))
+	Mac users it may be necessary to install the macOS tool chain --- namely `Xcode Command Line Tools` and `gfortran` --- used by `r fontawesome::fa("r-project")` as detailed [here](https://thecoatlessprofessor.com/software-releases/macrtools-v0.0.1-released-automatic-macos-r-compiled-toolchain-installation-from-within-r/)[^1] 
+	
+[^1]: updating and automating [this toolchain installation](http://thecoatlessprofessor.com/programming/r-compiler-tools-for-rcpp-on-os-x/)
 
   - the following `r fontawesome::fa("r-project")` packages: `devtools`, `future.apply`, `itertools`, `microbenchmark`, `mvtnorm`, `profvis`, `Rcpp`, `RcppArmadillo`, `roxygen2`, `testthat`, `usethis`
 
