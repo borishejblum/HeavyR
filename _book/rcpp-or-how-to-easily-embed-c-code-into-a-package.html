@@ -118,17 +118,17 @@ package:</p></li>
 <span><span class="va">mb</span></span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##                                                            expr      min
-##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   44.239
-##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3157.943
-##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2325.110
-##  mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 1748.076
-##  mvnpdf_invC(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2309.612
-##         lq       mean   median       uq       max neval
-##    54.0995   61.69311   59.573   66.912    96.637   100
-##  3324.5055 3546.90385 3417.104 3478.932  6895.708   100
-##  2355.5115 2977.23140 2385.564 2418.283 53883.143   100
-##  1775.3000 1942.26102 1802.463 1824.028  5047.961   100
-##  2341.0180 2457.60314 2360.329 2389.644  5577.681   100</code></pre>
+##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   41.943
+##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3099.149
+##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2304.446
+##  mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 1741.926
+##  mvnpdf_invC(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2310.965
+##        lq       mean   median        uq       max neval
+##    51.742   59.41146   57.195   65.8665    92.988   100
+##  3310.791 3611.30378 3420.097 3493.6305  7399.680   100
+##  2340.198 2455.03531 2372.178 2391.2430  5244.515   100
+##  1768.658 1831.31174 1789.383 1823.3725  4671.745   100
+##  2328.923 2997.06392 2348.131 2389.3775 53593.929   100</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-31-1.png" width="672"></div>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">profvis</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/profvis/man/profvis.html">profvis</a></span><span class="op">(</span><span class="fu">mvnpdfoptim</span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, </span>
@@ -171,13 +171,13 @@ package:</p></li>
 ##  mvnpdfsmartC(x = matrix(1.96, nrow = 2, ncol = n), mean = rep(0,      2), varcovM = diag(2), Log = FALSE)
 ##  mvnpdfoptimC(x = matrix(1.96, nrow = 2, ncol = n), mean = rep(0,      2), varcovM = diag(2), Log = FALSE)
 ##       min        lq       mean    median        uq       max neval
-##    43.665   53.0745   64.02642   61.0080   73.0210   106.805   100
-##  3136.541 3274.6495 3540.97320 3363.7425 3494.0610  6841.260   100
-##  2326.668 2353.1335 2448.28753 2374.9660 2441.3040  5854.185   100
-##  1744.468 1784.9145 2122.83486 1822.8190 1877.2260 12670.476   100
-##  2314.327 2339.6035 2447.17971 2360.4110 2403.2355  6041.883   100
-##    51.619   53.9765   58.91085   56.7645   60.4135   112.504   100
-##    35.465   38.5195   43.10658   41.3690   45.1000    81.180   100</code></pre>
+##    42.394   48.4210   57.36474   55.5960   63.8985    96.801   100
+##  3094.762 3144.7000 3509.26298 3258.9875 3417.6780 13326.927   100
+##  2304.569 2328.6360 2485.07724 2342.4325 2364.6955  5177.316   100
+##  1742.582 1762.3440 1905.75298 1776.3250 1806.8905  5290.394   100
+##  2296.574 2322.5680 2396.43565 2332.6335 2346.9835  4829.636   100
+##    51.004   53.0335   56.28193   55.2885   57.8510    88.396   100
+##    35.342   37.6995   40.92907   39.6060   43.4600    87.125   100</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-34-1.png" width="672"></div>
 <p>Note that <code>Rcpp</code> functions can be used outside of a package architecture thanks to the <code><a href="https://rdrr.io/pkg/Rcpp/man/sourceCpp.html">Rcpp::sourceCpp()</a></code> function. But, as we have seen that it is always desirable to manage all of one’s code inside a package, it is unlikely that you will need this !</p>
 </div>

@@ -36,6 +36,8 @@ We will follow the outline below:
  6. **Parallelize** the code easily
 
 
+## Required tools
+
 To take this course, you will need to have the following softwares installed:
 
   - the latest version of `r fontawesome::fa("r-project")` (https://cloud.r-project.org/)
@@ -51,4 +53,4 @@ To take this course, you will need to have the following softwares installed:
 
   - the following `r fontawesome::fa("r-project")` packages: `devtools`, `future.apply`, `itertools`, `microbenchmark`, `mvtnorm`, `profvis`, `Rcpp`, `RcppArmadillo`, `roxygen2`, `testthat`, `usethis`
 
-  - the software [*git*](https://git-scm.com/)
+  - the software [*git*](https://git-scm.com/) which can be installed following instructions from [*Happy Git With R* by Jenny Brian](https://happygitwithr.com/install-git.html)
