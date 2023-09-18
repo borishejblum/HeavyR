@@ -3,7 +3,9 @@
 
 Here we present how to efficiently create and build a package using *RStudio* IDE, and the `devtools` and `usethis` packages.
 
-More details are provided in the reference material on this subject: the book [R packages](https://r-pkgs.org/) by Hadley Wickham, freely available online.
+More details are provided in the reference material on this subject: the book [*R packages*](https://r-pkgs.org/) by Hadley Wickham & Jennifer Bryan[^1], freely available online.
+
+[^1]: *R Packages* (2^nd^ Edition) by Hadley Wickham, Jennifer Bryan. O'Reilly, 2023. ISBN: 9781098134945. [https://r-pkgs.org/](https://r-pkgs.org/)
 
 ## Initializing a package
 
@@ -32,13 +34,13 @@ From that, we get the **minimal structure for an** `r fontawesome::fa("r-project
   - a folder **R** in which we will add `.R` script files
   
   
-`devtools` also adds three **optional files**:
+`devtools` also adds three ***optional* files**:
 
-  - `.gitignore`, relative to `git`, a version control tool that we will see in detail in the section on GitHub
+  - **.gitignore**, relative to `git`, a version control tool that we will see in detail in the section on GitHub
   
-  - `mypkgr.Rproj` which is a specific file of *RStudio*, and allows to define the characteristics and preferences of the project we just created
+  - **mypkgr.Rproj** which is a specific file of *RStudio*, and allows to define the characteristics and preferences of the project we just created
   
-  - `.Rbuildignore` which allows to ignore some files when we build the package a down the road (for example, the `mypkgr.Rproj` file should not be included in the package)
+  - **.Rbuildignore** which allows to ignore some files when we build the package a down the road (for example, the `mypkgr.Rproj` file should not be included in the package)
   
 
 
@@ -71,8 +73,9 @@ Here is a function proposal that you can download
 [here](https://heavyr.borishejblum.science/AdvancedRcourse_dev_perf_files/mvnpdfRAW.R). `r emoji::emoji("warning")` *WARNING !* if you click too quickly on this link, it will invalidate your participation in the class !
 
 For advice on writing code, see the 
-[R code](https://r-pkgs.org/r.html) section from Hadley Wickam *R packages* online book.
+[R code](https://r-pkgs.org/code.html) section from Wickam & Bryan *R packages* (2023) [^1].
 
+[^1]: *R Packages* (2^nd^ Edition) by Hadley Wickham, Jennifer Bryan. O'Reilly, 2023. ISBN: 9781098134945.
 
 
 ## Documenting a function

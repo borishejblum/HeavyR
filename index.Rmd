@@ -23,9 +23,9 @@ We will show you that the package is also an excellent tool for developing code.
 
 We will follow the outline below:
 
- 1. Build a package
+ 1. Build an `r fontawesome::fa("r-project")` package as a useful tool for code development
 
- 2. **Tracking** changes, **sharing** code, **collaborative** development and automating tests in a package
+ 2. Leverage `git` for **tracking** changes, and `GitHub` for **sharing** code, **collaborative** development, automating tests in a package and broadcast a companion website
 
  3. **Measure** computation time
 
