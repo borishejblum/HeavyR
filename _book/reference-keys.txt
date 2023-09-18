@@ -1,4 +1,3 @@
-required-tools
 building-a-package
 initializing-a-package
 adding-a-function-common-theme-example

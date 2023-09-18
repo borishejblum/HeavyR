@@ -36,7 +36,7 @@ We will follow the outline below:
  6. **Parallelize** the code easily
 
 
-## Required tools
+## Required tools {-}
 
 To take this course, you will need to have the following softwares installed:
 
