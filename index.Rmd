@@ -47,10 +47,23 @@ To take this course, you will need to have the following softwares installed:
   - a *C++ compiler* (such as `gcc` or `clang` - native on UNIX systems, 
 	for Windows users we recommend installing 
 	[Rtools](https://cran.r-project.org/bin/windows/Rtools/), for 
-	Mac users it may be necessary to install the macOS tool chain --- namely `Xcode Command Line Tools` and `gfortran` --- used by `r fontawesome::fa("r-project")` as detailed [here](https://thecoatlessprofessor.com/software-releases/macrtools-v0.0.1-released-automatic-macos-r-compiled-toolchain-installation-from-within-r/)[^1] 
-	
-[^1]: updating and automating [this toolchain installation](http://thecoatlessprofessor.com/programming/r-compiler-tools-for-rcpp-on-os-x/)
+	Mac users it may be necessary to install the macOS tool chain as detailed [here](
+	[ici](https://mac.r-project.org/tools/))
 
   - the following `r fontawesome::fa("r-project")` packages: `devtools`, `future.apply`, `itertools`, `microbenchmark`, `mvtnorm`, `profvis`, `Rcpp`, `RcppArmadillo`, `roxygen2`, `testthat`, `usethis`
 
   - the software [*git*](https://git-scm.com/) which can be installed following instructions from [*Happy Git With R* by Jenny Brian](https://happygitwithr.com/install-git.html)
+  
+In addition, you will need an active internet connection (e.g. through *eduroam*)
+
+
+
+## Prerequisites {-}
+
+To be able to follow along this training, you must be comfortable with the following concepts: 
+
+  - programing with `r fontawesome::fa("r-project")` within the `RStudio` IDE
+  - writing functions in `r fontawesome::fa("r-project")`
+  - control structures, particularly *for* loops
+  - the calculation of the density for a multivariate Gaussian distribution
+
