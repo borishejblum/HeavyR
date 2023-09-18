@@ -25,9 +25,8 @@ pull-request
 issues
 continuous-integration-ci
 github-actions
-r-hub
+build-and-deploy-a-companion-website-for-ones-package
 additional-references
-appendix-2.1-code-coverage
 measuring-and-comparing-execution-times
 measuring-execution-times-with-system.time
 compare-execution-timings-with-microbenchmark.

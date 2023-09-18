@@ -16,7 +16,7 @@ description: "Tools for software development and performance"
 The main goal of this course is to give you tools that ease (high-performing and effcient) code development with `r fontawesome::fa("r-project")`. The *performance* side will come as a second part, and the initial tools introduced are also very useful in situations that do not require
 important computation times.
 
-We will focus the presentation of these development tools focuusing on the notion of **package**. *You are already familiar with this notion*, as you have already
+We will focus the presentation of these development tools on the notion of **package**. *You are already familiar with this notion*, as you have already
 already installed packages from the CRAN for example ! You also know that it is the most standard way in `r fontawesome::fa("r-project")` to distribuute code and make it available.
 We will show you that the package is also an excellent tool for developing code.
 

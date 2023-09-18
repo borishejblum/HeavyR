@@ -11,7 +11,7 @@ The principle of version control is to record the successive changes made to fil
 
   - `git`
   
-  - `svn`
+  - `svn` ("subversion")
 
 
 
@@ -23,6 +23,8 @@ The principle of version control is to record the successive changes made to fil
 `git` works as follows: on a server in the cloud, an **updated** version of the code is available. At any time it is possible to access this version of the code online. Each contributor can download this last **updated** version (in an action called *pull*), 
 before editing it locally. Once changes are made locally, the 
 contributor can then update the online version of the code, so that his changes become available to everyone (in an action called *push*).
+
+![Artwork CC-BY Allison Horst](AdvancedRcourse_dev_perf_files/git_workflow.png){width=100%}
 
 **NB:** `git` was designed for lightweight files (such as text files) and is far from being optimized for heavy and/or compressed files (e.g. `.RData` files).
 
@@ -48,7 +50,7 @@ contributors work simultaneously on the same version of the code).
  >     
       - 2b. write an informative message (for your collaborators -- this includes your future self)
  >     
-      - 2c. click on "Commit" >
+      - 2c. click on "Commit"
 >     
   3. Add a "*.Rproj" line to the ".gitignore" file and make a new commit
 >  
@@ -221,31 +223,53 @@ Another reason to use continuous integration is that it allows you to test your 
 
 ### *GitHub Actions*
 
-*GitHub Actions* let you launch "actions" automatically, every time you push to GitHub. The `usethis::use_github_action_check_standard()` command allows you to initialize *Github Actions* to add the `R CMD CHECK` action to your package.
+*GitHub Actions* let you launch "actions" automatically, every time you push to GitHub. The `usethis::use_github_action("check-standard")` command allows you to initialize *Github Actions* to add the `R CMD CHECK` action to your package.
 
 > `r emoji::emoji("point_right")` ***Your turn !***
 >
->  1. Run the command `usethis::use_github_action_check_standard()`, then *commit* and *push* the changes. See what happens on the GitHub webpage under the "Actions" tab.
+>  1. Run the command `usethis::use_github_action("check-standard")`, then *commit* and *push* the changes. See what happens on the GitHub webpage under the "Actions" tab.
 >
 >  2. Add a badge to your README.Rmd (do nott forget to `knit` it) with the code obtained in the console and *commit* (and *push*) those changes.
 
 
-Have a look at the following webpage which informs about the different *GitHub Actions* available for `r fontawesome::fa("r-project")` packages: [https://github.com/r-lib/actions/blob/v1/examples/README.md](https://github.com/r-lib/actions/blob/v1/examples/README.md)
+Have a look at the following webpage which informs about the different *GitHub Actions* available for `r fontawesome::fa("r-project")` packages: [https://github.com/r-lib/actions/blob/v2-branch/examples/README.md](https://github.com/r-lib/actions/blob/v2-branch/examples/README.md)
 
 
+## Build and deploy a companion website for one's package
 
-### R-hub
+`pkgdown` is an `r fontawesome::fa("r-project")` package that automatically generate a nice website gathering the documentation about your package (including *Vignettes*).
+
+> ***`r emoji::emoji("point_right")` À vous de jouer !***
+> 
+> 1. Executer la commande `usethis::use_pkgdown()` dans la console `r fontawesome::fa("r-project")`.
+>
+> 2. *Commiter* et *pusher* les changements. Rendez-vous sur l'onglet *Actions* de votre répertoire sur *GitHub* et constater les nouveautés.
+
+> ***`r emoji::emoji("point_right")` À vous de jouer !***
+> 
+> Examiner les changement du fichier `DESCRIPTION` suite à l'execution des différentes commandes `usethis::use_...` précedemment.
+> 
+> Modifier le champ *URL* du fichier `DESCRIPTION`.
+
+![Artwork CC-BY Allison Horst](AdvancedRcourse_dev_perf_files/usethis.png){width=100%}
+
+
+## Additional References
+
+ - [*Happy Git With R*](https://happygitwithr.com/) by Jenny Bryan.
+ 
+ - Jennifer Bryan (2018). Excuse Me, Do You Have a Moment to Talk about Version Control? *The American Statistician* 72 (1):20--27.  
+ [DOI: 10.1080/00031305.2017.1399928](https://doi.org/10.1080/00031305.2017.1399928)
+
+
+## Appendix 2.1: R-hub {-}
 
 The *R consortium* provides the [R-hub builder](https://www.r-consortium.org/blog/2016/06/06/first-public-version-of-the-r-hub-builder), and has the ambition to soon provide a continuous integration service especially dedicated to `r fontawesome::fa("r-project")` packages.
 
 It has the advantage to use the exact same infrastructure as the `CRAN` make the *check* of your package foolproof. You can use it through the `devtools::check_rhub()` fucntion.
 
 
-## Additional References
-
- - [*Happy Git With R*](https://happygitwithr.com/) by Jenny Bryan.
-
-## Appendix 2.1: Code coverage
+## Appendix 2.2: Code coverage {-}
 
 The `covr` package proposes a solution to measure the coverage of unit tests associated to a package. The test coverage determines the proportion of the source code that is actually used during the execution of unit tests. Measuring the coverage of the code reinforces the reliability of a code and gives more confidence to its potential users.
 

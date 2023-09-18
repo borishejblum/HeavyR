@@ -73,7 +73,7 @@
 <p><em>RStudio</em> offers 2 integrated solutions for version control:</p>
 <ul>
 <li><p><code>git</code></p></li>
-<li><p><code>svn</code></p></li>
+<li><p><code>svn</code> (“subversion”)</p></li>
 </ul>
 <div id="git" class="section level3" number="2.1.1">
 <h3>
@@ -83,6 +83,9 @@
 <p><code>git</code> works as follows: on a server in the cloud, an <strong>updated</strong> version of the code is available. At any time it is possible to access this version of the code online. Each contributor can download this last <strong>updated</strong> version (in an action called <em>pull</em>),
 before editing it locally. Once changes are made locally, the
 contributor can then update the online version of the code, so that his changes become available to everyone (in an action called <em>push</em>).</p>
+<div class="float">
+<img src="AdvancedRcourse_dev_perf_files/git_workflow.png" style="width:100.0%" alt="Artwork CC-BY Allison Horst"><div class="figcaption">Artwork CC-BY Allison Horst</div>
+</div>
 <p><strong>NB:</strong> <code>git</code> was designed for lightweight files (such as text files) and is far from being optimized for heavy and/or compressed files (e.g. <code>.RData</code> files).</p>
 </div>
 <div id="subversion" class="section level3" number="2.1.2">
@@ -107,7 +110,7 @@ register the current state of your package by making your first commit:</p></li>
 <ul>
 <li><p>2a. Select the files to track (do not select the <code>.Rproj</code> file)</p></li>
 <li><p>2b. write an informative message (for your collaborators – this includes your future self)</p></li>
-<li><p>2c. click on “Commit” &gt;</p></li>
+<li><p>2c. click on “Commit”</p></li>
 </ul>
 <ol start="3" style="list-style-type: decimal">
 <li><p>Add a “*.Rproj” line to the “.gitignore” file and make a new commit</p></li>
@@ -269,36 +272,55 @@ online code
 <h3>
 <span class="header-section-number">2.5.1</span> <em>GitHub Actions</em><a class="anchor" aria-label="anchor" href="#github-actions"><i class="fas fa-link"></i></a>
 </h3>
-<p><em>GitHub Actions</em> let you launch “actions” automatically, every time you push to GitHub. The <code><a href="https://usethis.r-lib.org/reference/use_github_actions.html">usethis::use_github_action_check_standard()</a></code> command allows you to initialize <em>Github Actions</em> to add the <code>R CMD CHECK</code> action to your package.</p>
+<p><em>GitHub Actions</em> let you launch “actions” automatically, every time you push to GitHub. The <code>usethis::use_github_action("check-standard")</code> command allows you to initialize <em>Github Actions</em> to add the <code>R CMD CHECK</code> action to your package.</p>
 <blockquote>
 <p>👉 <strong><em>Your turn !</em></strong></p>
 <ol style="list-style-type: decimal">
-<li><p>Run the command <code><a href="https://usethis.r-lib.org/reference/use_github_actions.html">usethis::use_github_action_check_standard()</a></code>, then <em>commit</em> and <em>push</em> the changes. See what happens on the GitHub webpage under the “Actions” tab.</p></li>
+<li><p>Run the command <code>usethis::use_github_action("check-standard")</code>, then <em>commit</em> and <em>push</em> the changes. See what happens on the GitHub webpage under the “Actions” tab.</p></li>
 <li><p>Add a badge to your README.Rmd (do nott forget to <code>knit</code> it) with the code obtained in the console and <em>commit</em> (and <em>push</em>) those changes.</p></li>
 </ol>
 </blockquote>
-<p>Have a look at the following webpage which informs about the different <em>GitHub Actions</em> available for <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> packages: <a href="https://github.com/r-lib/actions/blob/v1/examples/README.md">https://github.com/r-lib/actions/blob/v1/examples/README.md</a></p>
+<p>Have a look at the following webpage which informs about the different <em>GitHub Actions</em> available for <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> packages: <a href="https://github.com/r-lib/actions/blob/v2-branch/examples/README.md">https://github.com/r-lib/actions/blob/v2-branch/examples/README.md</a></p>
 </div>
-<div id="r-hub" class="section level3" number="2.5.2">
-<h3>
-<span class="header-section-number">2.5.2</span> R-hub<a class="anchor" aria-label="anchor" href="#r-hub"><i class="fas fa-link"></i></a>
-</h3>
+</div>
+<div id="build-and-deploy-a-companion-website-for-ones-package" class="section level2" number="2.6">
+<h2>
+<span class="header-section-number">2.6</span> Build and deploy a companion website for one’s package<a class="anchor" aria-label="anchor" href="#build-and-deploy-a-companion-website-for-ones-package"><i class="fas fa-link"></i></a>
+</h2>
+<p><code>pkgdown</code> is an <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> package that automatically generate a nice website gathering the documentation about your package (including <em>Vignettes</em>).</p>
+<blockquote>
+<p><strong><em>👉 À vous de jouer !</em></strong></p>
+<ol style="list-style-type: decimal">
+<li><p>Executer la commande <code><a href="https://usethis.r-lib.org/reference/use_pkgdown.html">usethis::use_pkgdown()</a></code> dans la console <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg>.</p></li>
+<li><p><em>Commiter</em> et <em>pusher</em> les changements. Rendez-vous sur l’onglet <em>Actions</em> de votre répertoire sur <em>GitHub</em> et constater les nouveautés.</p></li>
+</ol>
+</blockquote>
+<blockquote>
+<p><strong><em>👉 À vous de jouer !</em></strong></p>
+<p>Examiner les changement du fichier <code>DESCRIPTION</code> suite à l’execution des différentes commandes <code>usethis::use_...</code> précedemment.</p>
+<p>Modifier le champ <em>URL</em> du fichier <code>DESCRIPTION</code>.</p>
+</blockquote>
+<div class="float">
+<img src="AdvancedRcourse_dev_perf_files/usethis.png" style="width:100.0%" alt="Artwork CC-BY Allison Horst"><div class="figcaption">Artwork CC-BY Allison Horst</div>
+</div>
+</div>
+<div id="additional-references" class="section level2" number="2.7">
+<h2>
+<span class="header-section-number">2.7</span> Additional References<a class="anchor" aria-label="anchor" href="#additional-references"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li><p><a href="https://happygitwithr.com/"><em>Happy Git With R</em></a> by Jenny Bryan.</p></li>
+<li><p>Jennifer Bryan (2018). Excuse Me, Do You Have a Moment to Talk about Version Control? <em>The American Statistician</em> 72 (1):20–27.<br><a href="https://doi.org/10.1080/00031305.2017.1399928">DOI: 10.1080/00031305.2017.1399928</a></p></li>
+</ul>
+</div>
+<div id="appendix-2.1-r-hub" class="section level2 unnumbered">
+<h2>Appendix 2.1: R-hub<a class="anchor" aria-label="anchor" href="#appendix-2.1-r-hub"><i class="fas fa-link"></i></a>
+</h2>
 <p>The <em>R consortium</em> provides the <a href="https://www.r-consortium.org/blog/2016/06/06/first-public-version-of-the-r-hub-builder">R-hub builder</a>, and has the ambition to soon provide a continuous integration service especially dedicated to <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> packages.</p>
 <p>It has the advantage to use the exact same infrastructure as the <code>CRAN</code> make the <em>check</em> of your package foolproof. You can use it through the <code><a href="https://devtools.r-lib.org/reference/check_rhub.html">devtools::check_rhub()</a></code> fucntion.</p>
 </div>
-</div>
-<div id="additional-references" class="section level2" number="2.6">
-<h2>
-<span class="header-section-number">2.6</span> Additional References<a class="anchor" aria-label="anchor" href="#additional-references"><i class="fas fa-link"></i></a>
-</h2>
-<ul>
-<li>
-<a href="https://happygitwithr.com/"><em>Happy Git With R</em></a> by Jenny Bryan.</li>
-</ul>
-</div>
-<div id="appendix-2.1-code-coverage" class="section level2" number="2.7">
-<h2>
-<span class="header-section-number">2.7</span> Appendix 2.1: Code coverage<a class="anchor" aria-label="anchor" href="#appendix-2.1-code-coverage"><i class="fas fa-link"></i></a>
+<div id="appendix-2.2-code-coverage" class="section level2 unnumbered">
+<h2>Appendix 2.2: Code coverage<a class="anchor" aria-label="anchor" href="#appendix-2.2-code-coverage"><i class="fas fa-link"></i></a>
 </h2>
 <p>The <code>covr</code> package proposes a solution to measure the coverage of unit tests associated to a package. The test coverage determines the proportion of the source code that is actually used during the execution of unit tests. Measuring the coverage of the code reinforces the reliability of a code and gives more confidence to its potential users.</p>
 <blockquote>
@@ -347,13 +369,12 @@ online code
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#continuous-integration-ci"><span class="header-section-number">2.5</span> Continuous Integration (CI)</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#github-actions"><span class="header-section-number">2.5.1</span> GitHub Actions</a></li>
-<li><a class="nav-link" href="#r-hub"><span class="header-section-number">2.5.2</span> R-hub</a></li>
-</ul>
+<a class="nav-link" href="#continuous-integration-ci"><span class="header-section-number">2.5</span> Continuous Integration (CI)</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#github-actions"><span class="header-section-number">2.5.1</span> GitHub Actions</a></li></ul>
 </li>
-<li><a class="nav-link" href="#additional-references"><span class="header-section-number">2.6</span> Additional References</a></li>
-<li><a class="nav-link" href="#appendix-2.1-code-coverage"><span class="header-section-number">2.7</span> Appendix 2.1: Code coverage</a></li>
+<li><a class="nav-link" href="#build-and-deploy-a-companion-website-for-ones-package"><span class="header-section-number">2.6</span> Build and deploy a companion website for one’s package</a></li>
+<li><a class="nav-link" href="#additional-references"><span class="header-section-number">2.7</span> Additional References</a></li>
+<li><a class="nav-link" href="#appendix-2.1-r-hub">Appendix 2.1: R-hub</a></li>
+<li><a class="nav-link" href="#appendix-2.2-code-coverage">Appendix 2.2: Code coverage</a></li>
 </ul>
 
       <div class="book-extra">

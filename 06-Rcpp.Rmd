@@ -24,7 +24,7 @@ usethis::use_rcpp()
   2. See the changes made 
 >
   3. you should also add the following 2 roxygen comments in the general help page of the
-package:
+package, as indicated in the console:
 ```{r, eval=FALSE}
 #' @useDynLib mypkgr
 #' @importFrom Rcpp sourceCpp, .registration = TRUE
