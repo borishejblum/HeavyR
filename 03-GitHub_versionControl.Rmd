@@ -20,19 +20,15 @@ The principle of version control is to record the successive changes made to fil
 
 `git` is a version control software (i.e. a tool that will record the history of successive changes to your code and allow you to share these changes with other people). `git` is a command line program, and it is not necessarily very intuitive to use. 
 
-`git` works as follows: on a server in the cloud, an **updated** version of the code is available. At any time it is possible to access this version of the code online. Each contributor can download this last **updated** version (in an action called *pull*), 
-before editing it locally. Once changes are made locally, the 
-contributor can then update the online version of the code, so that his changes become available to everyone (in an action called *push*).
-
-![Artwork CC-BY Allison Horst](AdvancedRcourse_dev_perf_files/git_workflow.png){width=100%}
+`git` works as follows: on a remote server (e.g. in the cloud), an **updated** version of the code is available. At any time it is possible to access this version of the code online. Each contributor can download this last **updated** version (in an action called *pull*), before editing it locally. Once changes are made locally, the contributor can then update the online version of the code, so that his changes become available to everyone (in an action called *push*).
 
 **NB:** `git` was designed for lightweight files (such as text files) and is far from being optimized for heavy and/or compressed files (e.g. `.RData` files).
 
+![Artwork CC-BY Allison Horst](AdvancedRcourse_dev_perf_files/git_workflow.png){width=100%}
 
 ### `subversion`
 
-`subversion` is the other solution available in *RStudio*. It works in a similar way to git, but with less functionalities that we won't detail here (the major difference is that all 
-contributors work simultaneously on the same version of the code).
+`subversion` is the other solution available in *RStudio*. It works in a similar way to git, but with less features that we won't detail here (the major difference is that all contributors work simultaneously on the same version of the code).
 
 
 
@@ -71,11 +67,11 @@ On the other hand, the temptation to have a *"clean" and tidy* change-history is
 
 ![Artwork CC-BY Allison Horst](AdvancedRcourse_dev_perf_files/github_wickham_bryan_git_quote.png){width=100%}
 
-## GitHub
+## *GitHub*
 
-[GitHub](https://github.com/) is a website offering an online code hosting solution, and is based on `git`. There are many alternative websites and services (gitlab, bitbucket, ...) allowing to host code and also based on `git`. GitHub is very popular in the `r fontawesome::fa("r-project")` community, and is relatively easy to use, even for a novice user.
+[*GitHub*](https://github.com/) is a website offering an online code hosting solution, and is based on `git`. There are many alternative websites and services ([*GitLab*](https://about.gitlab.com/), [*Bitbucket*](https://bitbucket.org/), ...) allowing to host code and also based on `git`. *GitHub* is very popular in the `r fontawesome::fa("r-project")` community, and is relatively easy to use, even for a novice user.
 
-Advantages of using GitHub:
+**Advantages** of using *GitHub*:
  
   - a simple and user-friendly graphical interface to track the history of changes to your code
   
@@ -86,24 +82,17 @@ Advantages of using GitHub:
   - it greatly facilitates collaborative development
   
   
-### Upload one's package `r fontawesome::fa("r-project")` onto GitHub
+### Upload one's package `r fontawesome::fa("r-project")` onto *GitHub*
 
-> `r emoji::emoji("point_right")` ***Your turn !*** 
+> `r emoji::emoji("point_right")` ***Your turn !***
 >
-  1. Go to [https://github.com/](https://github.com/) and create a GitHub account (if you hesitate, a common convention is to use your *firstnamelastname* as username)
->  
-  2. Use `usethis::use_github()` and follow the instructions.
->  
-  3. Add a "README.Rmd" file to your package in order to have a nice home page on GitHub 
-  page on GitHub:
->  
-    - 3a. In *RStudio*, run the command `usethis::use_readme_rmd()`
->  
-    - 3b. using the "Diff" tool in the "Git" tab of *RStudio*, review the changes made by the previous command
- >   
-    - 3c. edit the created "README.Rmd" file, then create the corresponding README.md  file by running `knitr` (click on the wool ball "Knit" at the top left in *RStudio*), before making a 3^rd^ commit containing these changes
->    
-    - 3d. At this point, if you visit your directory page on GitHub, your 3^rd^ commit does not appear for the moment. You have to synchronize the online GitHub directory with your local folder. To do this, you have to click on "Push" from the "Git" tab. Now, the changes of this 3^rd^ commit should be visible online on GitHub.
+> 1. Go to [https://github.com/](https://github.com/) and create a *GitHub* account (if you hesitate, a common convention is to use your *firstnamelastname* as username)
+> 2. Run `usethis::use_github()` into the `r fontawesome::fa("r-project")` console and follow the instructions.
+> 3. Add a `README.Rmd` file to your package in order to have a nice home page on *GitHub*:
+>    - 3a. In *RStudio*, run the command `usethis::use_readme_rmd()`
+>    - 3b. using the "*Diff*" tool in the "*Git*" tab of *RStudio*, review the changes made by the previous command
+>    - 3c. edit the created `README.Rmd` file, then create the corresponding `README.md`  file by running `knitr` (click on the wool ball "*Knit*" at the top left in *RStudio*), before making a 3^rd^ commit containing these changes
+>    - 3d. At this point, if you visit your directory page on *GitHub*, your 3^rd^ commit does not appear for the moment. You have to synchronize the online *GitHub* directory with your local folder. To do this, you have to click on "*Push*" from the "Git" tab. Now, the changes of this 3^rd^ commit should be visible online on *GitHub.*
       
     
     
@@ -111,6 +100,8 @@ Advantages of using GitHub:
 ## Collaborative code production
 
 ![Artwork CC-BY Allison Horst](AdvancedRcourse_dev_perf_files/github_friends.png){width=100%}
+
+
 
 `git` and GitHub are particularly useful and efficient when several people collaborate to develop code together. Indeed, everyone can *pull* and *push* successive changes to the code, simultaneously, while endusing to always be working on the latest version of the code. We will see different concepts useful in the case of such a collaborative work.
 
@@ -120,13 +111,13 @@ Advantages of using GitHub:
 >
   2. A few moments later, the added collaborator receives an email inviting him to accept the addition (check your spam folder). Click on the link and accept.
 >
-  3. In *RStudio*, create a new project form `git` using the url of your buddy's project.
+  3. In *RStudio*, create a new project form `git` using the `https` url of your buddy's project.
    
 ### *Branches*
 
-One of the most useful features of git is *branches*. This allows you to make important changes in the changes in the code without disrupting the current operation. It is particularly useful to explore a development path that you don't know if it will be successful in the end.
+A useful features of `git` is *branches*. This allows you to make important changes in the changes in the code without disrupting the current operation. It is particularly useful to explore a development path that you don't know if it will be successful in the end.
 
-By the way, you have already been using branches since the beginning of this part. Indeed, the default branch is called "*master*" (or sometimes "*main*").
+By the way, you have already been using branches since the beginning of this part. Indeed, the default branch is called "*main*" (or sometimes "*master*").
 
 Thanks to this system of branches, we obtain a tree of the different *commits* over time (where the nodes correspond to the separation of the branches).
 
@@ -163,12 +154,9 @@ online code
 In order to solve the conflict, you have to manually and carefully edit each file one by one, choosing whether to keep the local or the online version of the code, before you can *commit* again, and finally successfully *push* your changes online.
 
 > `r emoji::emoji("point_right")` ***Your turn !*** 
->
-  1. Edit the `README.Rmd` file of your paired buddy, then *commit* your change, and finally *push* them.
->
-  2. Once your buddy has modified your own `README.Rmd` modify the file on the same line (make sure by discussing it together), **WITHOUT* *pulling* your buddy's changes first! *Comment* and try to *push* these changes.
->
-  3. Resolve the conflict.
+> 1. Edit the `README.Rmd` file of your paired buddy, then *commit* your change, and finally *push* them.
+> 2. Once your buddy has modified your own `README.Rmd` modify the file on the same line (make sure by discussing it together), **WITHOUT* *pulling* your buddy's changes first! *Comment* and try to *push* these changes.
+> 3. Resolve the conflict.
 
 **NB:** In real life you want to avoid this situation and always *pull* before *pushing*, here we purposedly do the opposite for the sake of providing an example and demystifying conflicts.
 
@@ -265,9 +253,9 @@ Have a look at the following webpage which informs about the different *GitHub A
 
 ## Appendix 2.1: R-hub {-}
 
-The *R consortium* provides the [R-hub builder](https://www.r-consortium.org/blog/2016/06/06/first-public-version-of-the-r-hub-builder), and has the ambition to soon provide a continuous integration service especially dedicated to `r fontawesome::fa("r-project")` packages.
+The *R consortium* provides the [R-hub builder](https://www.r-consortium.org/blog/2016/06/06/first-public-version-of-the-r-hub-builder), and has the ambition to one day provide a continuous integration service especially dedicated to `r fontawesome::fa("r-project")` packages.
 
-It has the advantage to use the exact same infrastructure as the `CRAN` make the *check* of your package foolproof. You can use it through the `devtools::check_rhub()` fucntion.
+It has the advantage to use the exact same infrastructure as the `CRAN` make the *check* of your package foolproof. You can use it through the `devtools::check_rhub()` function.
 
 
 ## Appendix 2.2: Code coverage {-}
