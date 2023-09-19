@@ -118,17 +118,17 @@ package, as indicated in the console:</p></li>
 <span><span class="va">mb</span></span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##                                                            expr      min
-##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   75.278
-##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4991.764
-##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3829.250
-##  mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2972.257
-##  mvnpdf_invC(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3786.168
-##        lq      mean   median        uq        max neval cld
-##   118.601  145.0457  136.291  165.4125    674.599   100  a 
-##  5159.294 5875.7598 5308.847 5882.7970  14120.429   100   b
-##  3951.267 4487.4964 4085.267 4482.6460  10070.843   100   b
-##  3100.270 4897.4040 3204.432 3351.0880 159327.853   100   b
-##  3899.438 4236.7431 4034.561 4320.1560   8962.194   100   b</code></pre>
+##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   79.470
+##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 5000.922
+##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3805.376
+##  mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2951.266
+##  mvnpdf_invC(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3789.778
+##        lq      mean   median       uq       max neval  cld
+##   114.514  133.0648  132.689  142.505   594.251   100 a   
+##  5142.736 5664.5425 5200.219 5360.393 11979.983   100  b  
+##  3913.496 4075.0913 3998.627 4075.626  8920.937   100   c 
+##  3079.301 3353.1024 3154.077 3295.544  8166.041   100    d
+##  3892.069 4323.2852 3988.669 4134.547  9515.485   100   c</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-30-1.png" width="672"></div>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">profvis</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/profvis/man/profvis.html">profvis</a></span><span class="op">(</span><span class="fu">mvnpdfoptim</span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, </span>
@@ -170,14 +170,14 @@ package, as indicated in the console:</p></li>
 ##                                             mvnpdf_invC(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE)
 ##  mvnpdfsmartC(x = matrix(1.96, nrow = 2, ncol = n), mean = rep(0,      2), varcovM = diag(2), Log = FALSE)
 ##  mvnpdfoptimC(x = matrix(1.96, nrow = 2, ncol = n), mean = rep(0,      2), varcovM = diag(2), Log = FALSE)
-##       min        lq       mean    median       uq       max neval   cld
-##    76.506  119.8795  149.50654  143.3545  169.881   388.743   100 ab   
-##  4936.950 5137.6885 6422.33770 6397.0870 6960.505 11648.638   100   c  
-##  3770.988 3905.6575 4930.12623 4675.1115 5526.858 11133.675   100    d 
-##  2969.392 3101.3355 3919.61338 3790.5275 4525.609  8202.000   100     e
-##  3770.659 3890.3665 4946.06655 4542.7245 5500.750 14250.683   100    d 
-##    91.700  100.8165  677.59894  120.6670  139.410 17875.876   100 a    
-##    36.983   50.0450   68.01426   58.5100   66.304   526.361   100  b</code></pre>
+##       min        lq       mean    median        uq        max neval cld
+##    72.553  125.4000  208.23778  140.1020  165.1925   6409.173   100  a 
+##  4944.754 5207.6255 6244.48072 5498.5110 6992.0550  13341.248   100   b
+##  3811.674 4013.9335 4865.79816 4576.5190 5619.9585  10903.690   100   b
+##  2966.447 3174.2770 4189.28927 4038.7835 4550.8395  10748.505   100   b
+##  3798.737 3957.7900 6184.83393 4291.6620 5484.4365 153429.829   100   b
+##    90.378  102.8550  665.67961  127.6645  138.9510  19999.491   100  a 
+##    35.217   54.0225   66.36966   62.3325   69.7015    354.467   100  a</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-33-1.png" width="672"></div>
 <p>Note that <code>Rcpp</code> functions can be used outside of a package architecture thanks to the <code><a href="https://rdrr.io/pkg/Rcpp/man/sourceCpp.html">Rcpp::sourceCpp()</a></code> function. But, as we have seen that it is always desirable to manage all of one’s code inside a package, it is unlikely that you will need this !</p>
 </div>

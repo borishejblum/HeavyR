@@ -3,7 +3,9 @@
 
 The first step before optimizing a code is to measure its execution time, in order to compare timings between different implementations.
 
+For this section and the following we refer to the book [*Advanced R*](https://adv-r.hadley.nz/) by Hadley Wickham [^2], freely available online.
 
+[^2]: *Advanced R* (2^nd^ Edition) by Hadley Wickham. The R series, CRC press, 2019. ISBN: 9780815384571 [https://adv-r.hadley.nz/](https://adv-r.hadley.nz/)
  
 ## Measuring execution times with `system.time()`
 
