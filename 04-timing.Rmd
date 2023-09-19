@@ -29,13 +29,13 @@ obs <- rep(1.96, 2)
 system.time(mvtnorm::dmvnorm(obs))
 ```
 
-We could say that we have to increase the complexity of our calculation, but there is a better way: use the `microbenchmark` package !
+We could imagine that we need to increase the complexity of our calculation to be able to compare them, but there is actually a better way: use the `microbenchmark` package !
 
 
 
 ## Compare execution times with `microbenchmark()`
 
-As its name indicates, this package allows to compare execution times even when they are very fast. Moreover, each benchmarked expression will be repeatedly evaluated a certain number of times, thus stabilizing the timing estimations.
+As its name indicates, this package allows to compare execution times even when they are very fast. Moreover, each benchmarked expression will be repeatedly evaluated a certain number of times, thus stabilizing its timing estimations.
 
 ```{r}
 library(microbenchmark)
