@@ -1,5 +1,5 @@
 
-# *Profiling* code
+# Profiling code
 
 ```{r, echo=FALSE}
 library(mypkgr)
@@ -9,7 +9,7 @@ library(ggplot2)
 
 *Profiling* is about determining which part of the code take the most time to compute (and also memory-wise). Once you have found the block of code that takes the longest time to execute, our goal is only to optimize that small part of the code.
 
-To get a *profiling* of the code below, select the lines of code of interest and go to the "Profile" menu then "Profile Selected Lines". It uses the package `profis`, and it particular its `profvis()` function. 
+To get a *profiling* of the code below, select the lines of code of interest and go to the "Profile" menu then "Profile Selected Lines". It uses the package `profis`, and in particular its `profvis()` function. 
 
 ```{r, eval=FALSE}
 n <- 10e4
@@ -17,6 +17,8 @@ pdfval <- mvnpdf(x=matrix(1.96, nrow = 2, ncol = n), Log=FALSE)
 ```
 
 *OK, OK, we get it !* Concatenating a vector as you go in a loop is really not a good idea.
+
+
 
 ## Comparison with an improved implementtation of `mnvpdf()`.
 
@@ -35,9 +37,8 @@ To confirm that `mvnpdfsmart()` is indeed much faster than `mvnpdf()` we can mak
 
 ```{r}
 n <- 1000
-mb <- microbenchmark(mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), 
-                            Log = FALSE),
-                     mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), 
+mb <- microbenchmark(mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE),
+                     mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n),
                                  Log = FALSE),
                      times=100L)
 mb
@@ -60,7 +61,7 @@ ggplot(data2plot) + geom_violin(aes(x=Expression, y=Time, fill=Expression), alph
   theme_bw()
 ```
 
-We can also check whether `mvnpdfsmart` becomes competitive with `dmvnorm()`:
+We can also check whether `mvnpdfsmart()` becomes competitive with `dmvnorm()`:
 
 ```{r}
 n <- 1000
@@ -91,16 +92,17 @@ ggplot(data2plot) + geom_violin(aes(x=Expression, y=Time, fill=Expression), alph
 
 There is still work to be done...
 
+
+
 ## Comparison with an optimized pure `R` implementation
 
-After several research and test and trials and errors, Boris arrived at an [optimized version ](https://heavyr.borishejblum.science/AdvancedRcourse_dev_perf_files/mvnpdfoptim.R) using `r fontawesome::fa("r-project")` capabilities.
+After several research, tests, trials and errors, Boris arrived at an [optimized version](https://heavyr.borishejblum.science/AdvancedRcourse_dev_perf_files/mvnpdfoptim.R) using `r fontawesome::fa("r-project")` capabilities.
 
 Include this `mvnpdfoptim()` function in your package, and then profile it:
 
 ```{r, eval=FALSE}
-library(profvis)
 n <- 10e4
-profvis(mvnpdfoptim(x=matrix(1.96, nrow = 2, ncol = n), Log=FALSE))
+profvis::profvis(mvnpdfoptim(x=matrix(1.96, nrow = 2, ncol = n), Log=FALSE))
 ```
 
 And the `microbenchmark()` that goes with it:

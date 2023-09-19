@@ -1,12 +1,13 @@
+
 # Measuring and comparing execution times
 
 The first step before optimizing a code is to measure its execution time, in order to compare timings between different implementations.
- 
- 
+
+
  
 ## Measuring execution times with `system.time()`
 
-To measure the execution time of an R command, you can use the native `system.time()` function like this:
+To measure the execution time of an `r fontawesome::fa("r-project")` command, you can use the native `system.time()` function like this:
 
 ```{r, echo=FALSE}
 library(mypkgr)
@@ -17,7 +18,7 @@ obs <- matrix(rep(1.96, 2), nrow=2, ncol=1)
 system.time(mvnpdf(x=obs, Log=FALSE))
 ```
 
-The problem that appears in this example is that the execution is so fast that `system.time()` displays `0` (or a very close value) that will be impossible to marginally compare to a hopefully faster implementation. Also, we see that there is some variability when we run the command several times.
+The problem that appears in this example is that the execution is so fast that `system.time()` displays `0` (or a very close value) that will be impossible to compare to an hopefully faster implementation. Also, we see that there is some variability when we run the command several times.
 
 Thus if we want to compare our code with the `mvtnorm::dmvnorm()` function, we can't use `system.time()`:
 
@@ -29,15 +30,15 @@ system.time(mvtnorm::dmvnorm(obs))
 We could say that we have to increase the complexity of our calculation, but there is a better way: use the `microbenchmark` package !
 
 
-## Compare execution timings with `microbenchmark()`.
 
-As its name indicates, this package allows you to compare execution timings even when they are very quick. Moreover, each benchmarked expression will be repeatedly evaluated a certain number of times, thus stabilizing the timing estimations.
+## Compare execution times with `microbenchmark()`
+
+As its name indicates, this package allows to compare execution times even when they are very fast. Moreover, each benchmarked expression will be repeatedly evaluated a certain number of times, thus stabilizing the timing estimations.
 
 ```{r}
 library(microbenchmark)
 mb <- microbenchmark(mvtnorm::dmvnorm(rep(1.96, 2)),
-                     mvnpdf(x = matrix(rep(1.96,2)), 
-                            Log = FALSE),
+                     mvnpdf(x = matrix(rep(1.96,2)), Log = FALSE),
                      times = 1000)
 mb
 ```
@@ -61,7 +62,7 @@ ggplot(data2plot) + geom_violin(aes(x=Expression, y=Time, fill=Expression), alph
 ```
 
 
-Both `mvnpdf()` and `dmnvorm()` functions being able to take a matrix as input, we can also compare their timings in this setting:
+Both `mvnpdf()` and `dmnvorm()` functions being able to take a matrix as input, we can also compare their speeds in this setting:
 
 ```{r}
 n <- 100
