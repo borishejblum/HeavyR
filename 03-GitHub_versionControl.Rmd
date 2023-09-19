@@ -63,7 +63,8 @@ contributors work simultaneously on the same version of the code).
 
 ### Good *commit* practices
 
-Ideally, each commit should solve only one problem. It should fix it in its entirety (be **complete**), and contain only changes related to that very problem (be **minimal**). It is especially useful to write **informative** commit messages (be kind and help your collaborators, which includes your **future self**). You should also be concise, and describe the reasons for the changes rather than the the changes themselves (visible in the *Diff*). **NB:** it is sometimes difficult to follow these guidelines to the letter, and they are merely an ideal guide. They certainly should not prevent you from should from regularly making *commits*. 
+Ideally, each commit should solve only one problem. It should fix it in its entirety (be **complete**), and contain only changes related to that very problem (be **minimal**). It is especially useful to write **informative** commit messages (be kind and help your collaborators, which includes your **future self**). You should also be concise, and describe the reasons for the changes rather than the the changes themselves (visible in the *Diff*).  
+**NB:** it is sometimes difficult to follow these guidelines to the letter, and they are merely an ideal guide. They certainly should not prevent you from should from regularly making *commits*. 
 
 On the other hand, the temptation to have a *"clean" and tidy* change-history is natural, but it is a source of unnecessary problems. It contradicts the traceability goal of version control. Since code development is generally a complex, messy, and non-linear intellectual process, it is normal that the recording of changes reflects this path. In practice, your future self will be the first user of your change history, so the priority is to make it easier for you in the future when solving bugs or extending functionality.
 

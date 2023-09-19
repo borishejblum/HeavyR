@@ -6,8 +6,6 @@ interactively-test-the-package
 automatically-test-your-package
 checking-your-package
 install-your-package
-appendix-1.1-add-an-s3-method
-appendix-1.2-submit-ones-package-on-cran
 version-control-with-git-and-github
 principles-of-version-control
 git

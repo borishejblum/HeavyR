@@ -13,7 +13,7 @@ More details are provided in the reference material on this subject: the book [*
 
 A simple way, built into *RStudio*, to **initialize a package** is to follow those steps:
 
-> `r emoji::emoji("point_right")` Your turn (already)!
+> `r emoji::emoji("point_right")` **Your turn** (already)!
 >
 >  1. create a new project (top left `File` drop down menu in *RStudio*)
 >  
@@ -35,7 +35,7 @@ From that, we get the **minimal structure for an** `r fontawesome::fa("r-project
   
 `devtools` also adds three ***optional* files**:
 
-  - **.gitignore**, relative to `git`, a version control tool that we will see in detail in the following section on git & GitHub
+  - **.gitignore**, relative to `git`, a version control tool that we will see in detail in the following section on `git` & *GitHub*
   
   - **mypkgr.Rproj** which is a specific file of *RStudio*, and allows to define the characteristics and preferences of the project we just created
   
@@ -47,7 +47,10 @@ From that, we get the **minimal structure for an** `r fontawesome::fa("r-project
 
 We first invite you to code the following function, which we will use throughout the course:
 
-We want to compute the value of the density of a multivariate normal distribution on $\mathbb{R}^p$ at $n$ points. Our function must be applicable for any multivariate normal distribution (i.e. any mean vector in $\mathbb{R}^p$ and variance-covariance matrix of order $p$), and we wish to compute all the values of the density evaluated at the $n$ points in a single call of the function.
+We want to compute the value of the density of a multivariate normal distribution on $\mathbb{R}^p$ at $n$ points. Our function must be applicable for any multivariate normal distribution (i.e. any mean vector $\boldsymbol\mu$ in $\mathbb{R}^p$ and variance-covariance matrix $\boldsymbol\Sigma$ of order $p$), and we wish to compute all the values of the density evaluated at the $n$ points $\mathbf{x}$ in a single call of the function.
+
+As a reminder, the density function for a multivariateGaussian distribution is:
+$$\displaystyle (2\pi )^{-p/2}\det({\boldsymbol {\Sigma }})^{-1/2}\,\exp \left(-{\frac {1}{2}}(\mathbf {x} -{\boldsymbol {\mu }})^{\mathsf {T}}{\boldsymbol {\Sigma }}^{-1}(\mathbf {x} -{\boldsymbol {\mu }})\right)$$
 
 So you need to create a function `mvnpdf()` in a file named `mvnpdf.R` in the `R/` folder of your package, which :
 
@@ -63,13 +66,13 @@ So you need to create a function `mvnpdf()` in a file named `mvnpdf.R` in the `R
       
   - returns a list containing the matrix `x`, and a vector of length $n$ of the multivariate normal distribution density values at those points.
 
-> `r emoji::emoji("point_right")` Your turn !  
+> `r emoji::emoji("point_right")` ***Your turn !***  
 
 
 
 Here is a function proposal that you can download [here](https://heavyr.borishejblum.science/AdvancedRcourse_dev_perf_files/mvnpdfRAW.R). `r emoji::emoji("warning")` *WARNING !* if you click too quickly on this link, it will invalidate your participation in the class !
 
-For advice on writing code, see the [R code](https://r-pkgs.org/code.html) section from Wickham & Bryan *R packages* (2023).
+For advice on writing code, see the [R code](https://r-pkgs.org/code.html) section from Wickham & Bryan *R packages* (2023) by Wickham & Bryan[^1].
 
 
 
@@ -85,7 +88,7 @@ For the sake of your future self, do yourself a favor and take the time to docum
 
 We strongly advise you to use the `roxygen2` package to document your packages. The main advantage being to have the help of a function in the same file as the code defining this function.
 
-> `r emoji::emoji("point_right")` ***Your turn!***  
+> `r emoji::emoji("point_right")` ***Your turn !***  
 >
   1. Start by inserting the skeleton of the helper with "Insert Roxygen
   Skeleton" located in the "Code" menu or the *Magic Wand* sub-menu in
@@ -142,7 +145,7 @@ During code development, you can thus:
   
   - Re-load the package `Ctrl+Shift+L`
   
-  - Experiment it in the console
+  - Experiment with it in the console
   
   - And so on...
 
@@ -156,9 +159,9 @@ To initialize automatic testing capabilities in your package, execute the follow
 usethis::use_testthat()
 ```
 
-This command creates a `tests` folder which includes a `testthat.R` file -- not to be modified -- and a `testthat` folder in which we will add our automated tests. This tool is based on the theory of `unit tests`.
+This command creates a `tests` folder which includes a `testthat.R` file -- not to be modified -- and a `testthat/` folder in which we will add our automated tests. This tool is based on the theory of `unit tests`.
 
-For example, here is the content of a file, containing two tests, that should be named `test-mvnpdf.R` and be put into the `testthat` folder. You do it by hand or use the helper function `usethis::use_test()` that will create the file at the right place for you. Then copy-paste the following:
+For example, here is the content of a file, containing two tests, that should be named `test-mvnpdf.R` and be put into the `testthat` folder (instead of doing this by hand, you can simply use the helper function `usethis::use_test()` that will create the file at the right place for you):
 
 ```{r, eval=FALSE}
 test_that("correct result for univariate gaussian", {
@@ -185,7 +188,7 @@ so that we can immediately identify and prevent the same error from happening ag
 
 ## *Checking* your package
 
-Running a *check* means ensuring that everything in your package is correct and will work as expected, and that it can be installed properly. "Passing `R CMD CHECK`" is **mandatory** for successfully uploading your package on CRAN.
+Running a *check* means ensuring that everything in your package is correct and will work as expected, and that it can be installed properly under various OS. "Passing `R CMD CHECK`" is **mandatory** for successfully uploading your package on CRAN.
 
 To perform `R CMD CHECK` on your package, you can click on "Check" (`Ctrl+Shift+E`) from the "Build" tab, or run `devtools::check()`.
 
@@ -198,12 +201,12 @@ For the moment, the package exists only in the environment associated with the *
 
 To do this, click on "Install" (`Ctrl+Shift+B`) from the "Build" tab, or alternatively you can run `devtools::install()`.
 
-And finally, you can configure *RStudio*'s behavior so that at the time of installation, it simultaneously documents the package: go to the "More" menu from the "Build" tab, then "Configure Build Tools". Then click on "Configure" and check the box at the bottom "Install and Restart".
+And finally, you can configure *RStudio*'s behavior so that at the time of installation, it simultaneously documents the package: go to the "*More*" menu from the "*Build*" tab, then "*Configure Build Tools...*". Then click on "*Configure*" next to "*Generate documentation with Roxygen*", and check the box "*Install and Restart*".
 
 
 
 
-## Appendix 1.1: add an `S3 method`
+## Appendix 1.1: add an `S3 method` {-}
 
 In most packages, we often have to implement so called `S3 methods` so that, from a result object `res`, one can run `print(res)`, `summary(res)`, `plot(res)`, ...
 
@@ -227,9 +230,7 @@ plot.mvnpdf <- function(x, ...) {
 }
 ```
 
-`r emoji::emoji("warning")` *WARNING !* 
-
-In order for this *S3 method* to do what we want it to do when we apply it to the result of our function `mvnpdf()`, we have to declare that `mvnpdf()` returns a result of class `mvnpdf`.
+`r emoji::emoji("warning")` *WARNING !* In order for this *S3 method* to do what we want it to do when we apply it to the result of our function `mvnpdf()`, we have to declare that `mvnpdf()` returns a result of class `mvnpdf`.
 
 Test this function, by executing the example.\
 *Don't forget to re-install the package ("Install" or `Ctrl+Shift+B`)*.
@@ -239,7 +240,7 @@ Look at the contents of the `man` folder and the changes that have been made to 
 *Here is a proposed solution*: the [file](https://heavyr.borishejblum.science/AdvancedRcourse_dev_perf_files/mvnpdf.R) contains the complete code of the `mvnpdf()` function and the associated `plot()` method.
 
 
-## Appendix 1.2: submit one's package on [CRAN](https://cran.r-project.org/web/packages/available_packages_by_name.html)
+## Appendix 1.2: submit one's package on [CRAN](https://cran.r-project.org/web/packages/available_packages_by_name.html) {-}
 
 Run the two following commands: `devtools::check()` followed `devtools::submit_cran()`.
 For more details, see Wickham & Bryan's recommended pipeline in their book [*R packages*](https://r-pkgs.org/release.html#release-process)
