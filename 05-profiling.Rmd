@@ -9,11 +9,15 @@ library(ggplot2)
 
 *Profiling* is about determining which part of the code take the most time to compute (and also memory-wise). Once you have found the block of code that takes the longest time to execute, our goal is only to optimize that small part of the code.
 
-To get a *profiling* of the code below, select the lines of code of interest and go to the "Profile" menu then "Profile Selected Lines". It uses the package `profis`, and in particular its `profvis()` function. 
+To get a *profiling* of the code below, select the lines of code of interest and go to the "Profile" menu then "Profile Selected Lines". It uses the package `profvis`, and in particular its `profvis()` function. 
 
 ```{r, eval=FALSE}
 n <- 10e4
 pdfval <- mvnpdf(x=matrix(1.96, nrow = 2, ncol = n), Log=FALSE)
+```
+```{r, echo=FALSE}
+n <- 10e4
+profvis::profvis(mvnpdf(x=matrix(1.96, nrow = 2, ncol = n), Log=FALSE))
 ```
 
 *OK, OK, we get it !* Concatenating a vector as you go in a loop is really not a good idea.
@@ -29,6 +33,10 @@ Now profile the following command:
 ```{r, eval=FALSE}
 n <- 10e4
 pdfval <- mvnpdfsmart(x=matrix(1.96, nrow = 2, ncol = n), Log=FALSE)
+```
+```{r, echo=FALSE}
+n <- 10e4
+profvis::profvis(mvnpdfsmart(x=matrix(1.96, nrow = 2, ncol = n), Log=FALSE))
 ```
 
 We have indeed removed the main computational bottleneck, and we can now learn in a more detailed way what takes time in our function.
@@ -94,13 +102,13 @@ There is still work to be done...
 
 
 
-## Comparison with an optimized pure `R` implementation
+## Comparison with an optimized pure `r fontawesome::fa("r-project")` implementation
 
 After several research, tests, trials and errors, Boris arrived at an [optimized version](https://heavyr.borishejblum.science/AdvancedRcourse_dev_perf_files/mvnpdfoptim.R) using `r fontawesome::fa("r-project")` capabilities.
 
 Include this `mvnpdfoptim()` function in your package, and then profile it:
 
-```{r, eval=FALSE}
+```{r}
 n <- 10e4
 profvis::profvis(mvnpdfoptim(x=matrix(1.96, nrow = 2, ncol = n), Log=FALSE))
 ```
@@ -137,7 +145,7 @@ ggplot(data2plot) + geom_violin(aes(x=Expression, y=Time, fill=Expression), alph
 
 Finally,  we can profile the `dmvnorm()` function:
 
-```{r, eval=FALSE}
+```{r}
 n <- 10e5
 library(mvtnorm)
 profvis::profvis(mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2)))

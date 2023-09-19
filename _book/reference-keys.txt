@@ -30,7 +30,7 @@ measuring-execution-times-with-system.time
 compare-execution-times-with-microbenchmark
 profiling-code
 comparison-with-an-improved-implementtation-of-mnvpdf.
-comparison-with-an-optimized-pure-r-implementation
+comparison-with-an-optimized-pure-implementation
 rcpp-or-how-to-easily-embed-c-code-into-a-package
 first-function-in-rcpp
 optimize-thanks-to-c
