@@ -141,7 +141,7 @@
 <span><span class="op">}</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="fu">colmedian_apply</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## utilisateur     système      écoulé 
-##       3.167       0.004       3.228</code></pre>
+##       2.817       0.001       2.817</code></pre>
 <p>In reality, a (good) <code>for</code> loop is no slower – provided it is nicely programmed:</p>
 <div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">colmedian_for</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span></span>
@@ -153,7 +153,7 @@
 <span><span class="op">}</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="fu">colmedian_for</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## utilisateur     système      écoulé 
-##       3.001       0.003       3.013</code></pre>
+##       2.663       0.000       2.662</code></pre>
 <blockquote>
 <p>👉 <strong><em>Your turn !</em></strong>
 Try to further improve this computation time through parallelizing your code for each of the 100,000 variables. Is there a gain in computation time?</p>
@@ -237,7 +237,7 @@ iterators::nextElem(myiter)
 </h3>
 <p>To run your code (exactly the same code, this is one of the advantages of the <code>future*</code> family packages), you need to set up a “plan” of computations:</p>
 <ul>
-<li><p>On a computer (or a single computer server) under Unix (Linux, Mac OS), you can use <code>plan(multicore(workers = XX))</code> which is often more efficient. The multisession plan always works.</p></li>
+<li><p>On a computer (or a single computer server) under Unix (Linux, Mac OS), you can use <code>plan(multicore(workers = XX))</code> which is often more efficient. The <code>multisession</code> plan always works.</p></li>
 <li><p>on a HPC cluster (like CURTA in Bordeaux), we refer to the package <a href="https://cran.r-project.org/web/packages/future.batchtools/vignettes/future.batchtools.html"><code>future.batchtools</code></a></p></li>
 </ul>
 </div>

@@ -194,7 +194,7 @@ iterators::nextElem(myiter)
 
 To run your code (exactly the same code, this is one of the advantages of the `future*` family packages), you need to set up a "plan" of computations:
 
-- On a computer (or a single computer server) under Unix (Linux, Mac OS), you can use `plan(multicore(workers = XX))` which is often more efficient. The multisession plan always works.
+- On a computer (or a single computer server) under Unix (Linux, Mac OS), you can use `plan(multicore(workers = XX))` which is often more efficient. The `multisession` plan always works.
 
 - on a HPC cluster (like CURTA in Bordeaux), we refer to the package [`future.batchtools`](https://cran.r-project.org/web/packages/future.batchtools/vignettes/future.batchtools.html)
 

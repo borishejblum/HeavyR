@@ -1,6 +1,6 @@
 # Measuring and comparing execution times
 
-The first step before optimizing a code is to measure its execution time, in order to compare ttimings between different implementations.
+The first step before optimizing a code is to measure its execution time, in order to compare timings between different implementations.
  
  
  
@@ -31,7 +31,7 @@ We could say that we have to increase the complexity of our calculation, but the
 
 ## Compare execution timings with `microbenchmark()`.
 
-As its name indicates, this package allows you to compare execution timings even when they are very quick. Moreover, each bencmarked expression will be repeatedly evaluated a certain number of times, thus stabilizing the timing estimations.
+As its name indicates, this package allows you to compare execution timings even when they are very quick. Moreover, each benchmarked expression will be repeatedly evaluated a certain number of times, thus stabilizing the timing estimations.
 
 ```{r}
 library(microbenchmark)

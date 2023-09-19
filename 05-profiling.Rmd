@@ -133,7 +133,7 @@ ggplot(data2plot) + geom_violin(aes(x=Expression, y=Time, fill=Expression), alph
   theme_bw()
 ```
 
-Finally,  we can profile tthe `dmvnorm()` function:
+Finally,  we can profile the `dmvnorm()` function:
 
 ```{r, eval=FALSE}
 n <- 10e5
