@@ -16,8 +16,10 @@
 <meta name="twitter:description" content="6.1 Introduction to parallel execution in  Apart from optimizing the code and the algorithms, another way to get a high performing code is to take advantage of the parallel architectures of modern...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.1/transition.js"></script><script src="libs/bs3compat-0.5.1/tabs.js"></script><script src="libs/bs3compat-0.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script><script src="libs/d3-3.5.6/d3.min.js"></script><link href="libs/profvis-0.3.6.9000/profvis.css" rel="stylesheet">
+<script src="libs/profvis-0.3.6.9000/profvis.js"></script><script src="libs/profvis-0.3.6.9000/scroll.js"></script><link href="libs/highlight-6.2.0/textmate.css" rel="stylesheet">
+<script src="libs/highlight-6.2.0/highlight.js"></script><script src="libs/profvis-binding-0.3.8/profvis.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
@@ -96,7 +98,7 @@
 <li><p>Compare the execution time with that of a sequential function on the first 100 integers, using the command :<br><code>microbenchmark(log_par(1:100), log_seq(1:100), times=10)</code></p></li>
 </ol>
 </blockquote>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/joshuaulrich/microbenchmark/">microbenchmark</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://future.apply.futureverse.org">future.apply</a></span><span class="op">)</span></span>
 <span></span>
@@ -119,7 +121,7 @@
 <span></span>
 <span><span class="fu"><a href="https://future.futureverse.org/reference/plan.html">plan</a></span><span class="op">(</span><span class="fu"><a href="https://future.futureverse.org/reference/multisession.html">multisession</a></span><span class="op">(</span>workers <span class="op">=</span> <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">mb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span><span class="op">(</span><span class="fu">log_par</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">100</span><span class="op">)</span>, <span class="fu">log_seq</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">100</span><span class="op">)</span>, times <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-35-1.png" width="672"></div>
+<div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-37-1.png" width="672"></div>
 <p>The parallel version runs much slower… Because in fact, if the individual tasks are too fast, <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> will spend more time communicating with the cores than doing the actual computations.</p>
 <p><strong>A loop iteration must be relatively long for parallel computing to provide a significant gain in computation time!</strong></p>
 <p>By increasing <span class="math inline">\(n\)</span>, we observe a reduction in the difference between the 2 implementations (the parallel computation time increases very slowly compared to the increase of the sequential function).</p>
@@ -130,20 +132,25 @@
 <span class="header-section-number">6.3</span> Efficient parallelization<a class="anchor" aria-label="anchor" href="#efficient-parallelization"><i class="fas fa-link"></i></a>
 </h2>
 <p>We will now look at another use case. Let’s say we have a large array of data with 10 observations for 100,000 variables (e.g. genetic measurements), and we want to compute the median for each of these variables.</p>
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">1e6</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1]     10 100000</code></pre>
 <p>For an experienced <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> user, such an operation is easily implemented using <code><a href="https://rdrr.io/r/base/apply.html">apply()</a></code>:</p>
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">colmedian_apply</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span></span>
 <span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">2</span>, <span class="va">median</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="fu">colmedian_apply</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<<<<<<< HEAD
 <pre><code>## utilisateur     système      écoulé 
 ##       2.877       0.000       2.877</code></pre>
+=======
+<pre><code>##    user  system elapsed 
+##   1.650   0.007   1.665</code></pre>
+>>>>>>> 0adfb9352ed8bf8fefede7e5073aab56f7e15398
 <p>In reality, a (good) <code>for</code> loop is no slower – provided it is nicely programmed:</p>
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">colmedian_for</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span></span>
 <span>  <span class="va">ans</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> </span>
 <span>  <span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
@@ -152,15 +159,20 @@
 <span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">ans</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="fu">colmedian_for</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<<<<<<< HEAD
 <pre><code>## utilisateur     système      écoulé 
 ##       2.663       0.000       2.663</code></pre>
+=======
+<pre><code>##    user  system elapsed 
+##   1.486   0.007   1.497</code></pre>
+>>>>>>> 0adfb9352ed8bf8fefede7e5073aab56f7e15398
 <blockquote>
 <p>👉 <strong><em>Your turn !</em></strong>
 Try to further improve this computation time through parallelizing your code for each of the 100,000 variables. Is there a gain in computation time?</p>
 </blockquote>
 <!-- 2. Propose an alternative implementation using the `itertools::isplitIndices()` function which allows you to separate your data (the $n$ numbers) into as many groups (or batchs) as you have cores. Compare again the computation times.
 -->
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">colmedian_par</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span></span>
 <span>  <span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://future.apply.futureverse.org/reference/future_lapply.html">future_sapply</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, FUN <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">i</span><span class="op">)</span> <span class="op">{</span></span>
 <span>          <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">x</span><span class="op">[</span>, <span class="va">i</span><span class="op">]</span><span class="op">)</span></span>
@@ -169,24 +181,24 @@ Try to further improve this computation time through parallelizing your code for
 <span><span class="op">}</span></span>
 <span><span class="fu"><a href="https://future.futureverse.org/reference/plan.html">plan</a></span><span class="op">(</span><span class="fu"><a href="https://future.futureverse.org/reference/multisession.html">multisession</a></span><span class="op">(</span>workers <span class="op">=</span> <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="fu">colmedian_par</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code>## utilisateur     système      écoulé 
-##       0.290       0.029       2.232</code></pre>
-<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<pre><code>##    user  system elapsed 
+##   0.131   0.016   0.898</code></pre>
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span><span class="op">(</span><span class="fu">colmedian_apply</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, </span>
 <span>                     <span class="fu">colmedian_for</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,</span>
 <span>                     <span class="fu">colmedian_par</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, </span>
 <span>                     times <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
 <span><span class="va">mb</span></span></code></pre></div>
-<pre><code>## Unit: seconds
-##                expr      min       lq     mean   median       uq      max neval
-##  colmedian_apply(x) 3.030181 3.051711 3.142026 3.145349 3.198180 3.310637    10
-##    colmedian_for(x) 2.934196 2.978490 3.084515 2.995450 3.126081 3.663452    10
-##    colmedian_par(x) 1.973684 2.065262 2.136174 2.112498 2.166858 2.373864    10
-##  cld
-##   a 
-##   a 
-##    b</code></pre>
-<div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-40-1.png" width="672"></div>
+<pre><code>## Unit: milliseconds
+##                expr       min        lq      mean    median        uq       max
+##  colmedian_apply(x) 1525.7242 1549.6447 1583.6494 1573.7570 1606.4624 1665.4816
+##    colmedian_for(x) 1483.1305 1484.9787 1537.9923 1523.8811 1594.6236 1610.8442
+##    colmedian_par(x)  697.0566  706.9566  731.2215  727.0438  744.7557  796.5849
+##  neval cld
+##     10  a 
+##     10  a 
+##     10   b</code></pre>
+<div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-42-1.png" width="672"></div>
 <!--
 ###  Iterators
 
@@ -253,13 +265,13 @@ iterators::nextElem(myiter)
 <li><p>Compare the execuution timings for 10 000 observations</p></li>
 </ol>
 </blockquote>
-<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://future.futureverse.org/reference/plan.html">plan</a></span><span class="op">(</span><span class="fu"><a href="https://future.futureverse.org/reference/multisession.html">multisession</a></span><span class="op">(</span>workers <span class="op">=</span> <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">10000</span></span>
 <span><span class="va">mb</span> <span class="op">&lt;-</span> <span class="fu">microbenchmark</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span><span class="op">(</span></span>
 <span>  <span class="fu">mvtnorm</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html">dmvnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, nrow <span class="op">=</span> <span class="va">n</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>  <span class="fu">mypkgr</span><span class="fu">::</span><span class="fu"><a href="https://borishejblum.github.io/mypkgr/reference/mvnpdf.html">mvnpdfoptim</a></span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, nrow <span class="op">=</span> <span class="fl">2</span>, ncol <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, Log<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>,</span>
-<span>  <span class="fu">mypkgr</span><span class="fu">::</span><span class="fu"><a href="https://borishejblum.github.io/mypkgr/reference/mvnpdf.html">mvnpdfoptim_par</a></span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, nrow <span class="op">=</span> <span class="fl">2</span>, ncol <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, Log<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>,</span>
+<span>  <span class="fu">mypkgr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mypkgr/man/mvnpdf.html">mvnpdfoptim</a></span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, nrow <span class="op">=</span> <span class="fl">2</span>, ncol <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, Log<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>,</span>
+<span>  <span class="fu">mypkgr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mypkgr/man/mvnpdf.html">mvnpdfoptim_par</a></span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, nrow <span class="op">=</span> <span class="fl">2</span>, ncol <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, Log<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>,</span>
 <span>  times<span class="op">=</span><span class="fl">20</span><span class="op">)</span></span>
 <span><span class="va">mb</span></span></code></pre></div>
 <pre><code>## Unit: microseconds
@@ -267,11 +279,11 @@ iterators::nextElem(myiter)
 ##                               mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))
 ##           mypkgr::mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE)
 ##  mypkgr::mvnpdfoptim_par(x = matrix(1.96, nrow = 2, ncol = n),      Log = FALSE)
-##        min          lq       mean     median         uq       max neval cld
-##     349.23    420.4655   1047.597    738.295   1555.049   3062.23    20 a  
-##   31463.98  33396.7340  48078.652  47259.266  60660.334  72412.99    20  b 
-##  204687.87 228952.0495 275985.645 270375.455 293345.898 501213.59    20   c</code></pre>
-<div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-43-1.png" width="672"></div>
+##        min        lq       mean    median         uq       max neval cld
+##    266.664   295.446   320.5216   316.725   333.4325    471.09    20  a 
+##  17733.115 17938.853 20139.8704 18294.139 22606.5800  28649.37    20  a 
+##  40946.946 41825.412 54884.0309 42054.684 43039.8935 291770.39    20   b</code></pre>
+<div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-45-1.png" width="672"></div>
 <p>You can download our proposed implementation for <code>mvnpdfoptim_par</code> <a href="https://heavyr.borishejblum.science/AdvancedRcourse_dev_perf_files/mvnpdfoptim_par.R">here</a>.</p>
 </div>
 <div id="conclusion" class="section level2" number="6.5">
