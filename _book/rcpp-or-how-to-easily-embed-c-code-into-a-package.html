@@ -16,7 +16,7 @@
 <meta name="twitter:description" content="Rcpp (“R-C-Plus-Plus”) is a package which facilitates the interface between C++ and . is an interpreted language, a feature that makes a number of things easy (including giving us access to the...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.1/transition.js"></script><script src="libs/bs3compat-0.5.1/tabs.js"></script><script src="libs/bs3compat-0.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script><script src="libs/d3-3.5.6/d3.min.js"></script><link href="libs/profvis-0.3.6.9000/profvis.css" rel="stylesheet">
 <script src="libs/profvis-0.3.6.9000/profvis.js"></script><script src="libs/profvis-0.3.6.9000/scroll.js"></script><link href="libs/highlight-6.2.0/textmate.css" rel="stylesheet">
 <script src="libs/highlight-6.2.0/highlight.js"></script><script src="libs/profvis-binding-0.3.8/profvis.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
@@ -110,7 +110,7 @@ NULL
 <li>Evaluate the performance gain of this new implementation <code>mvnpdf_invC</code>.</li>
 </ol>
 </blockquote>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">1000</span></span>
 <span><span class="va">mb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span><span class="op">(</span><span class="fu">mvtnorm</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html">dmvnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, nrow <span class="op">=</span> <span class="va">n</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>                     <span class="fu">mvnpdf</span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, nrow <span class="op">=</span> <span class="fl">2</span>, ncol <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, Log<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>,</span>
@@ -121,27 +121,27 @@ NULL
 <span><span class="va">mb</span></span>
 <span><span class="co">## Unit: microseconds</span></span>
 <span><span class="co">##                                                            expr      min</span></span>
-<span><span class="co">##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   72.781</span></span>
-<span><span class="co">##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 5007.053</span></span>
-<span><span class="co">##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3826.226</span></span>
-<span><span class="co">##  mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2962.980</span></span>
-<span><span class="co">##  mvnpdf_invC(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3812.745</span></span>
-<span><span class="co">##         lq     mean    median        uq       max neval  cld</span></span>
-<span><span class="co">##    94.4085  123.862  116.1635  132.9225   412.464   100 a   </span></span>
-<span><span class="co">##  5091.3675 5429.625 5173.6865 5257.9005 11914.650   100  b  </span></span>
-<span><span class="co">##  3892.2800 4058.579 3948.1470 4093.2070  9063.308   100   c </span></span>
-<span><span class="co">##  3046.2980 3520.126 3116.4705 3267.5815 12594.931   100    d</span></span>
-<span><span class="co">##  3895.4405 4093.118 3964.4215 4076.6490  8473.270   100   c</span></span></code></pre></div>
+<span><span class="co">##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   43.706</span></span>
+<span><span class="co">##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3115.590</span></span>
+<span><span class="co">##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2302.601</span></span>
+<span><span class="co">##  mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 1730.323</span></span>
+<span><span class="co">##  mvnpdf_invC(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2291.285</span></span>
+<span><span class="co">##         lq      mean   median       uq      max neval  cld</span></span>
+<span><span class="co">##    47.9495   57.5148   55.309   61.869  102.336   100 a   </span></span>
+<span><span class="co">##  3177.6435 3343.9338 3220.775 3275.613 6585.215   100  b  </span></span>
+<span><span class="co">##  2331.3625 2526.5578 2348.542 2379.886 8670.188   100   c </span></span>
+<span><span class="co">##  1762.2825 1905.5033 1780.343 1804.472 5286.540   100    d</span></span>
+<span><span class="co">##  2324.2490 2428.3964 2346.943 2389.316 5861.319   100   c</span></span></code></pre></div>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-32-1.png" width="672"></div>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">profvis</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/profvis/man/profvis.html">profvis</a></span><span class="op">(</span><span class="fu">mvnpdfoptim</span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, </span>
 <span>    nrow <span class="op">=</span> <span class="fl">2</span>, ncol <span class="op">=</span> <span class="fl">1000</span><span class="op">)</span>, Log<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Error in parse_rprof_lines(lines, expr_source): No parsing data available. Maybe your function was too fast?</code></pre>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">profvis</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/profvis/man/profvis.html">profvis</a></span><span class="op">(</span><span class="fu">mvnpdfoptim</span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, </span>
 <span>    nrow <span class="op">=</span> <span class="fl">100</span>, ncol <span class="op">=</span> <span class="fl">1000</span><span class="op">)</span>, Log<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div class="profvis html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-1464ef08051549149e71" style="width:100%;height:600px;"></div>
-<script type="application/json" data-for="htmlwidget-1464ef08051549149e71">{"x":{"message":{"prof":{"time":[1,1,1],"depth":[3,2,1],"label":["FUN","apply","mvnpdfoptim"],"filenum":[null,1,null],"linenum":[null,15,null],"memalloc":[38.0309143066406,38.0309143066406,38.0309143066406],"meminc":[0,0,0],"filename":[null,"mypkgr/R/mvnpdfoptim.R",null]},"interval":10,"files":[{"filename":"mypkgr/R/mvnpdfoptim.R","content":"#' @rdname mvnpdf\n#' @export\nmvnpdfoptim <- function(x, mean =  rep(0, nrow(x)),\n                        varcovM = diag(nrow(x)), Log=TRUE){\n\n  if(!is.matrix(x)){\n    x <- matrix(x, ncol=1)\n  }\n\n  n <- ncol(x)\n  p <- nrow(x)\n  x0 <- x-mean\n\n  Rinv <- backsolve(chol(varcovM), x=diag(p))\n  xRinv <- apply(X=x0, MARGIN=2, FUN=crossprod, y=Rinv)\n  logSqrtDetvarcovM <- sum(log(diag(Rinv)))\n\n  quadform <- apply(X=xRinv, MARGIN=2, FUN=crossprod)\n  y <- (-0.5*quadform + logSqrtDetvarcovM -p*log(2*pi)/2)\n\n  if(!Log){\n    y <- exp(y)\n  }\n\n  res <- list(x = x, y = y)\n  class(res) <- \"mvnpdf\"\n  return(res)\n}","normpath":"/home/rg/mypkgr/R/mvnpdfoptim.R"}],"prof_output":"/tmp/RtmpO5nFhO/file4cf4880cd04.prof","highlight":{"output":["^output\\$"],"gc":["^<GC>$"],"stacktrace":["^\\.\\.stacktraceo(n|ff)\\.\\.$"]},"split":"h"}},"evals":[],"jsHooks":[]}</script>
+<div class="profvis html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-7bbeb43197436d8c27e9" style="width:100%;height:600px;"></div>
+<script type="application/json" data-for="htmlwidget-7bbeb43197436d8c27e9">{"x":{"message":{"prof":{"time":[1,1],"depth":[2,1],"label":["apply","mvnpdfoptim"],"filenum":[1,null],"linenum":[15,null],"memalloc":[37.72907257080078,37.72907257080078],"meminc":[0,0],"filename":["mypkgr/R/mvnpdfoptim.R",null]},"interval":10,"files":[{"filename":"mypkgr/R/mvnpdfoptim.R","content":"#' @rdname mvnpdf\n#' @export\nmvnpdfoptim <- function(x, mean =  rep(0, nrow(x)),\n                        varcovM = diag(nrow(x)), Log=TRUE){\n\n  if(!is.matrix(x)){\n    x <- matrix(x, ncol=1)\n  }\n\n  n <- ncol(x)\n  p <- nrow(x)\n  x0 <- x-mean\n\n  Rinv <- backsolve(chol(varcovM), x=diag(p))\n  xRinv <- apply(X=x0, MARGIN=2, FUN=crossprod, y=Rinv)\n  logSqrtDetvarcovM <- sum(log(diag(Rinv)))\n\n  quadform <- apply(X=xRinv, MARGIN=2, FUN=crossprod)\n  y <- (-0.5*quadform + logSqrtDetvarcovM -p*log(2*pi)/2)\n\n  if(!Log){\n    y <- exp(y)\n  }\n\n  res <- list(x = x, y = y)\n  class(res) <- \"mvnpdf\"\n  return(res)\n}","normpath":"/Users/boris/Documents/GitHub/mypkgr/R/mvnpdfoptim.R"}],"prof_output":"/var/folders/xf/7fd_l5mx7qv95f6bp_qllv1m0000gn/T//RtmpnB0ZxN/file33ce2aea6fea.prof","highlight":{"output":["^output\\$"],"gc":["^<GC>$"],"stacktrace":["^\\.\\.stacktraceo(n|ff)\\.\\.$"]},"split":"h"}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="optimize-thanks-to-c" class="section level2" number="5.2">
 <h2>
@@ -157,7 +157,7 @@ NULL
 </blockquote>
 <p>You can download our proposal for <code>mvnpdfsmartC.cpp</code> <a href="https://heavyr.borishejblum.science/AdvancedRcourse_dev_perf_files/mvnpdfsmartC.cpp">here</a>.</p>
 <p>For (relatively small) additional speed gain (at the cost of code readability!), you can have a look at our optimized Armadillo <code>C++</code> implementation in <a href="https://heavyr.borishejblum.science/AdvancedRcourse_dev_perf_files/mvnpdfoptimC.cpp"><code>mvnpdfoptimC.cpp</code></a>.</p>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">1000</span></span>
 <span><span class="va">mb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span><span class="op">(</span><span class="fu">mvtnorm</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html">dmvnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, nrow <span class="op">=</span> <span class="va">n</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>                     <span class="fu">mvnpdf</span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, nrow <span class="op">=</span> <span class="fl">2</span>, ncol <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, Log<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>,</span>
@@ -177,14 +177,14 @@ NULL
 ##                                             mvnpdf_invC(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE)
 ##  mvnpdfsmartC(x = matrix(1.96, nrow = 2, ncol = n), mean = rep(0,      2), varcovM = diag(2), Log = FALSE)
 ##  mvnpdfoptimC(x = matrix(1.96, nrow = 2, ncol = n), mean = rep(0,      2), varcovM = diag(2), Log = FALSE)
-##       min       lq       mean    median        uq       max neval  cld
-##    74.249  111.482  136.64799  130.3945  148.1355   449.662   100 a   
-##  5010.121 5129.993 6017.59700 5276.3400 6921.7170 11754.106   100  b  
-##  3846.376 3960.023 4946.21776 4713.8010 5517.7840 10824.836   100   c 
-##  2988.789 3112.253 3912.17136 3464.5265 4509.6020  9866.471   100    d
-##  3830.514 3900.601 4725.05121 4185.8390 5526.0640  8964.682   100   c 
-##    86.905   99.086  121.31232  117.0590  126.4520   454.440   100 a   
-##    36.716   48.872   61.39705   55.0855   62.2380   341.261   100 a</code></pre>
+##       min        lq       mean    median        uq      max neval  cld
+##    43.501   52.3570   62.67711   59.0810   67.8140  139.605   100 a   
+##  3109.358 3203.9245 3354.93980 3269.6270 3364.9315 6535.236   100  b  
+##  2304.774 2347.8855 2556.26267 2367.9550 2395.4660 6432.859   100   c 
+##  1742.172 1775.6895 1854.35989 1792.2945 1822.1015 6111.870   100    d
+##  2294.934 2328.4925 2484.41304 2351.2885 2379.5785 5863.246   100   c 
+##    51.332   53.2385   57.73456   55.4320   58.9375  126.403   100 a   
+##    35.424   38.3760   42.01516   40.8565   43.2345   91.594   100 a</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-35-1.png" width="672"></div>
 <p>Note that <code>Rcpp</code> functions can be used outside of a package architecture thanks to the <code><a href="https://rdrr.io/pkg/Rcpp/man/sourceCpp.html">Rcpp::sourceCpp()</a></code> function. But, as we have seen that it is always desirable to manage all of one’s code inside a package, it is unlikely that you will need this !</p>
 </div>
