@@ -90,11 +90,11 @@
 <span><span class="va">mb</span></span></code></pre></div>
 <pre><code>## Unit: milliseconds
 ##                                                            expr      min
-##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4.922998
-##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3.754541
-##        lq     mean   median       uq      max neval cld
-##  5.003986 6.225733 5.076578 6.657125 15.21034   100  a 
-##  3.849884 4.495753 3.904785 4.044493 13.76249   100   b</code></pre>
+##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4.862875
+##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3.768957
+##        lq     mean   median       uq       max neval cld
+##  5.011576 5.916190 5.077927 5.360703 13.970920   100  a 
+##  3.855671 4.151119 3.923841 4.014358  8.955779   100   b</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-19-1.png" width="672"></div>
 <p>We can also check whether <code>mvnpdfsmart()</code> becomes competitive with <code><a href="https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html">dmvnorm()</a></code>:</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
@@ -106,13 +106,13 @@
 <span><span class="va">mb</span></span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##                                                            expr      min
-##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   71.564
-##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4930.734
-##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3772.381
-##        lq     mean    median       uq      max neval cld
-##   128.200  396.654  168.0045  205.229 22247.03   100 a  
-##  5263.931 7077.373 5735.2150 7548.637 28320.60   100  b 
-##  4011.878 4979.221 4365.5815 5202.584 11836.26   100   c</code></pre>
+##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   70.448
+##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4881.024
+##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3728.760
+##        lq      mean    median        uq       max neval cld
+##    88.888  116.2336  118.1385  133.3915   245.542   100 a  
+##  4937.195 5499.3219 4983.4050 5058.5160 10483.413   100  b 
+##  3790.369 3934.3388 3844.6310 3884.5515  6840.864   100   c</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-21-1.png" width="672"></div>
 <p>There is still work to be done…</p>
 </div>
@@ -136,15 +136,15 @@
 <span><span class="va">mb</span></span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##                                                            expr      min
-##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   72.455
-##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4937.624
-##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3779.949
-##  mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2986.151
-##        lq      mean   median       uq       max neval  cld
-##   100.896  140.2213  130.609  157.509   545.948   100 a   
-##  5056.694 5974.8195 5187.910 5766.985 12720.424   100  b  
-##  3869.677 4672.9022 3974.369 4424.573 11298.971   100   c 
-##  3079.180 3619.9431 3173.468 3399.070 12860.684   100    d</code></pre>
+##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   73.778
+##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4988.374
+##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3770.424
+##  mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2982.419
+##         lq      mean    median        uq       max neval  cld
+##    98.5945  134.8679  135.0175  159.8385   294.514   100 a   
+##  5375.2240 6014.7535 5526.9630 5633.9465 17120.531   100  b  
+##  3984.0155 4405.3600 4261.1715 4410.3565  9773.293   100   c 
+##  3174.7735 3533.7616 3430.7540 3589.5860  8972.569   100    d</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-24-1.png" width="672"></div>
 <p>Finally, we can profile the <code><a href="https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html">dmvnorm()</a></code> function:</p>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
