@@ -143,7 +143,7 @@
 <span><span class="op">}</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="fu">colmedian_apply</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##    user  system elapsed 
-##   1.629   0.007   1.638</code></pre>
+##   1.596   0.004   1.600</code></pre>
 <p>In reality, a (good) <code>for</code> loop is no slower – provided it is nicely programmed:</p>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">colmedian_for</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span></span>
@@ -155,7 +155,7 @@
 <span><span class="op">}</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="fu">colmedian_for</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##    user  system elapsed 
-##   1.482   0.006   1.490</code></pre>
+##   1.460   0.003   1.463</code></pre>
 <blockquote>
 <p>👉 <strong><em>Your turn !</em></strong>
 Try to further improve this computation time through parallelizing your code for each of the 100,000 variables. Is there a gain in computation time?</p>
@@ -283,7 +283,7 @@ iterators::nextElem(myiter)
 <p>Parallel computation saves time, but first you have to optimize your code. When parallelizing a code, the gain on the execution time depends above all on the ratio between the communication time and the effective computation time for each task.</p>
 
 <!--
-# Miscelaneouus
+# Miscelaneous
 
 ## Debugging with `browser()`
 

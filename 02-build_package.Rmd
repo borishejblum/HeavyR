@@ -130,7 +130,7 @@ The generated help page will then be accessible, once the package is installed, 
 
 ## Interactively test the package
 
-To test the package, you have to load it in `r fontawesome::fa("r-project")` using "Load All" (or Ctrl+Shift+L) in the "More" menu from the "Build" tab, or alternatively `devtools::load_all()`).
+To test the package, you have to load it in `r fontawesome::fa("r-project")` using "*Load All*" (or `Ctrl+Shift+L`) in the "*More*" menu from the "*Build*" tab, or alternatively `devtools::load_all()`).
 
 You can then use your package directly in `r fontawesome::fa("r-project")`: look at the function help page with `?mvnpdf` and for example execute the commands given in the example section of this help page.
 
@@ -189,7 +189,7 @@ so that we can immediately identify and prevent the same error from happening ag
 
 Running a *check* means ensuring that everything in your package is correct and will work as expected, and that it can be installed properly under various OS. "Passing `R CMD CHECK`" is **mandatory** for successfully uploading your package on CRAN.
 
-To perform `R CMD CHECK` on your package, you can click on "Check" (`Ctrl+Shift+E`) from the "Build" tab, or run `devtools::check()`.
+To perform `R CMD CHECK` on your package, you can click on "*Check*" (`Ctrl+Shift+E`) from the "*Build*" tab, or run `devtools::check()`.
 
 During the *check*, the automated unit tests that we have developed previously are executed. This is the advantage of having written these tests, we don't need to worry about it, simply react and adjust the code when errors are returned and flagged.
 
