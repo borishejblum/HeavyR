@@ -47,8 +47,7 @@ To take this course, you will need to have the following softwares installed:
   - a *C++ compiler* (such as `gcc` or `clang` - native on UNIX systems, 
 	for Windows users we recommend installing 
 	[Rtools](https://cran.r-project.org/bin/windows/Rtools/), for 
-	Mac users it may be necessary to install the macOS tool chain as detailed [here](
-	[ici](https://mac.r-project.org/tools/))
+	Mac users it may be necessary to install the macOS tool chain as detailed [here](https://mac.r-project.org/tools/)
 
   - the following `r fontawesome::fa("r-project")` packages: `devtools`, `future.apply`, `itertools`, `microbenchmark`, `mvtnorm`, `profvis`, `Rcpp`, `RcppArmadillo`, `roxygen2`, `testthat`, `usethis`
 
