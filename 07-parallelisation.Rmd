@@ -21,9 +21,11 @@ There is a significant number of algorithms that are so-called "*embarrassingly 
   6. Stop the worker processes
 
 
-Depending on the platform, several communication protocols are available between the cores. Under UNIX systems, the *Fork* protocol is the most used, but it is not available under Windows where the *PSOCK* protocol is used instead. Finally, for distributed computing architecture where the cores are not necessarily on the same physical processor, the *MPI* protocol is generally used. The advantage of the `future` and `future.apply` package API is that the same code can be executed whatever the hardware configuration.
+Depending on the platform, several communication protocols are available between the cores. Under UNIX systems, the *Fork* protocol is the most used, but it is not available under Windows where the *PSOCK* protocol is used instead. Finally, for distributed computing architecture where the cores are not necessarily on the same physical processor, the *MPI* protocol is generally used. The advantage of the `future` and `future.apply` package is that the same code can be executed whatever the hardware configuration.
 
-Since `R 2.14.0`, the [`parallel` package](https://stat.ethz.ch/R-manual/R-devel/library/parallel/doc/parallel.pdf) is directly included in `r fontawesome::fa("r-project")` and allows to start and stop a cluster of several worker processes (step 1 and 6). In addition to the `parallel` package, we will use the `future` package which allows to manage the worker processes and the communication and articulation with the `future.apply` package, which in turn allows to manage the dialogue with the workers (sending, receiving and collecting the results -- steps 2, 3, 4 and 5).
+Since `R 2.14.0`, the `parallel` package is directly included in `r fontawesome::fa("r-project")` and allows to start and stop a cluster of several worker processes (step 1 and 6). In addition to the `parallel` package, we will use the `future` package which allows to manage the worker processes and the communication and articulation with the `future.apply` package, which in turn allows to manage the dialogue with the workers (sending, receiving and collecting the results -- steps 2, 3, 4 and 5).
+
+
 
 ## First `r fontawesome::fa("r-project")` parallel function 
 
@@ -35,7 +37,7 @@ Since `R 2.14.0`, the [`parallel` package](https://stat.ethz.ch/R-manual/R-devel
 >
 >  2. Using the function `future::plan(multisession(workers = XX))`, declare a "*plan*" of parallel computations on your computer (taking care to **always leave at least one core available** to handle other processes).
 >
->  3. Using one of the *apply* functions `future.apply::future_*apply()`, compute the log of $n$ numbers in parallel and concatenate the results into a vector.
+>  3. Using one of the *\*apply* functions `future.apply::future_*apply()`, compute the log of $n$ numbers in parallel and concatenate the results into a vector.
 >
 >  4. Compare the execution time with that of a sequential function on the first 100 integers, using the command :  
 `microbenchmark(log_par(1:100), log_seq(1:100), times=10)`
@@ -130,7 +132,7 @@ system.time(colmedian_for(x))
 
 
 > `r emoji::emoji("point_right")` ***Your turn !*** 
-> Try to further improve this computation time through parallelizing your code for each of the 100,000 variables. Is there a gain in computation time?
+> Try to further improve this computation time by parallelizing your code for each of the 100,000 variables. Is there a gain in computation time?
 
 <!-- 2. Propose an alternative implementation using the `itertools::isplitIndices()` function which allows you to separate your data (the $n$ numbers) into as many groups (or batchs) as you have cores. Compare again the computation times.
 -->
@@ -206,7 +208,7 @@ To run your code (exactly the same code, this is one of the advantages of the `f
 >
 >  1. From the function `mvnpdfoptim()` and/or `mvnpdfsmart()`, propose an implementation parallelizing the computations on the observations (columns of $x$)
 >  
->  2. Compare the execuution timings for 10 000 observations
+>  2. Compare the execution times for 10 000 observations
 
 
 ```{r, cache=TRUE}
