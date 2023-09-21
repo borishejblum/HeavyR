@@ -62,6 +62,9 @@ The principle of version control is to record the successive changes made to fil
 > 4. Visualize the changes and their history using the visualization tools 
   "Diff" and "History" tools accessible from the "Git" tab
   
+
+<!-- AJOUTER use_git_config(user.name = "Jane", user.email = "jane@example.org") pour ceux qui n'ont jamais utiliser git -->
+
   
 ![Artwork CC-BY Allison Horst](AdvancedRcourse_dev_perf_files/github_fall.png){width=100%}
   
