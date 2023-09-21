@@ -23,7 +23,7 @@ A simple way, built into *RStudio*, to **initialize a package** is to follow tho
 >  
 >  4. give a name to your package, for example `mypkgr`.
   
-**NB:** if you a using [Posit Cloud](https://posit.cloud/) and not your local computer, you need to rather execute the following command into the `r fontawesome::fa("r-project")` console: `usethis::create_package("./")` and accept the proposed overwrites.
+**NB:** if you a using [Posit Cloud](https://posit.cloud/) and not your local computer, you need to rather execute the following command into the `r fontawesome::fa("r-project")` console: `usethis::create_package(".")` and accept the proposed overwrites.
   
 From that, we get the **minimal structure for an** `r fontawesome::fa("r-project")` package, namely:
 
