@@ -215,9 +215,8 @@ To run your code (exactly the same code, this is one of the advantages of the `f
 plan(multisession(workers = 3))
 n <- 10000
 mb <- microbenchmark::microbenchmark(
-  mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2)),
-  mypkgr::mvnpdfoptim(x=matrix(1.96, nrow = 2, ncol = n), Log=FALSE),
-  mypkgr::mvnpdfoptim_par(x=matrix(1.96, nrow = 2, ncol = n), Log=FALSE),
+  mypkgr::mvnpdfsmart(x=matrix(1.96, nrow = 2, ncol = n), Log=FALSE),
+  mypkgr::mvnpdfsmart_par(x=matrix(1.96, nrow = 2, ncol = n), Log=FALSE),
   times=20)
 mb
 ```
@@ -241,8 +240,18 @@ ggplot(data2plot) + geom_violin(aes(x=Expression, y=Time, fill=Expression), alph
   ggtitle("Spoiler alert 2")
 ```
 
-You can download our proposed implementation for `mvnpdfoptim_par` [here](https://heavyr.borishejblum.science/AdvancedRcourse_dev_perf_files/mvnpdfoptim_par.R).
+You can download our proposed implementation for `mvnpdfsmart_par` [here](https://heavyr.borishejblum.science/AdvancedRcourse_dev_perf_files/mvnpdfsmart_par.R).
 
+In this example, the computation time of one iteration is really too fast for the parallel version to be efficient. We artificially add some time on each iteration to illustrate the gain of parallel computing for this example.
+
+```{r, cache=TRUE}
+plan(multisession(workers = 3))
+n <- 10000
+system.time(mypkgr::mvnpdfsmart_sleepy(x=matrix(1.96, nrow = 2, ncol = n), Log=FALSE))
+system.time(mypkgr::mvnpdfsmart_sleepy_par(x=matrix(1.96, nrow = 2, ncol = n), Log=FALSE))
+```
+
+You can finally clone (or download or fork) our [GitHub repository](https://github.com/borishejblum/mypkgr) to get all the different implementations directly.
 
 ## Conclusion
 
