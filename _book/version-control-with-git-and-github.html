@@ -102,22 +102,36 @@
 <blockquote>
 <p>👉 <strong><em>Your turn !</em></strong></p>
 <ol style="list-style-type: decimal">
-<li><p>Start by enabling <code>git</code> from the “Git/SVN” tab of “Project Options” located in the “Tools” menu and follow the instructions. You can also use <code><a href="https://usethis.r-lib.org/reference/use_git.html">usethis::use_git()</a></code>.</p></li>
-<li><p>From the “Git” tab that now appears next to the “Build” tab,
+<li><p>Start by enabling <code>git</code> from the “<em>Git/SVN</em>” tab of “<em>Project Options</em>” located in the “Tools” menu and follow the instructions. You can also run <code><a href="https://rdrr.io/pkg/usethis/man/use_git.html">usethis::use_git()</a></code> in the <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> console alternatively.</p></li>
+<li><p>From the “<em>Git</em>” tab that now appears next to the “<em>Build</em>” tab,
 register the current state of your package by making your first commit:</p></li>
 </ol>
 <ul>
 <li><p>2a. Select the files to track (do not select the <code>.Rproj</code> file)</p></li>
 <li><p>2b. write an informative message (for your collaborators – this includes your future self)</p></li>
 <li><p>2c. click on “Commit”</p></li>
+<li>
+<p>2d. if this is the first time you are using git on your computer, you might be prompted with an error that looks something like that:</p>
+<pre class="git"><code>         *** Please tell me who you are.
+
+         Run
+
+         git config --global user.email "you@example.com"
+         git config --global user.name "Your Name"</code></pre>
+<p>To solve this, run the following command into the <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> console with <strong>your user.name</strong> and <strong>your email</strong> filled in: <code>usethis::use_git_config(user.name = "FirstName LastName", user.email = "your@email.com")</code></p>
+</li>
 </ul>
 <ol start="3" style="list-style-type: decimal">
-<li><p>Add a “*.Rproj” line to the “.gitignore” file and make a new commit</p></li>
-<li><p>Visualize the changes and their history using the visualization tools
-“Diff” and “History” tools accessible from the “Git” tab</p></li>
+<li>Add a “*.Rproj” line to the “.gitignore” file and make a new commit</li>
+<li>Visualize the changes and their history using the visualization tools
+“Diff” and “History” tools accessible from the “Git” tab</li>
 </ol>
 </blockquote>
+<<<<<<< HEAD
 <!-- AJOUTER usethis::use_git_config(user.name = "Jane", user.email = "jane@example.org") pour ceux qui n'ont jamais utiliser git -->
+=======
+<!-- AJOUTER use_git_config(user.name = "Jane", user.email = "jane@example.org") pour ceux qui n'ont jamais utiliser git -->
+>>>>>>> d1f247872039f0110902e4b803f4bbd8bedaf20a
 <div class="float">
 <img src="AdvancedRcourse_dev_perf_files/github_fall.png" style="width:100.0%" alt="Artwork CC-BY Allison Horst"><div class="figcaption">Artwork CC-BY Allison Horst</div>
 </div>
@@ -152,10 +166,10 @@ register the current state of your package by making your first commit:</p></li>
 <p>👉 <strong><em>Your turn !</em></strong></p>
 <ol style="list-style-type: decimal">
 <li>Go to <a href="https://github.com/">https://github.com/</a> and create a <em>GitHub</em> account (if you hesitate, a common convention is to use your <em>firstnamelastname</em> as username)</li>
-<li>Run <code><a href="https://usethis.r-lib.org/reference/use_github.html">usethis::use_github()</a></code> into the <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> console and follow the instructions.</li>
+<li>Run <code><a href="https://rdrr.io/pkg/usethis/man/use_github.html">usethis::use_github()</a></code> into the <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> console and follow the instructions.</li>
 <li>Add a <code>README.Rmd</code> file to your package in order to have a nice home page on <em>GitHub</em>:
 <ul>
-<li>3a. In <em>RStudio</em>, run the command <code><a href="https://usethis.r-lib.org/reference/use_readme_rmd.html">usethis::use_readme_rmd()</a></code>
+<li>3a. In <em>RStudio</em>, run the command <code><a href="https://rdrr.io/pkg/usethis/man/use_readme_rmd.html">usethis::use_readme_rmd()</a></code>
 </li>
 <li>3b. using the “<em>Diff</em>” tool in the “<em>Git</em>” tab of <em>RStudio</em>, review the changes made by the previous command</li>
 <li>3c. edit the created <code>README.Rmd</code> file, then create the corresponding <code>README.md</code> file by running <code>knitr</code> (click on the wool ball “<em>Knit</em>” at the top left in <em>RStudio</em>), before making a 3<sup>rd</sup> commit containing these changes</li>
@@ -219,9 +233,15 @@ online code
 <blockquote>
 <p>👉 <strong><em>Your turn !</em></strong></p>
 <ol style="list-style-type: decimal">
+<<<<<<< HEAD
 <li><p>Edit the <code>README.Rmd</code> file of your paired buddy, then <em>commit</em> your change, and finally <em>push</em> them.</p></li>
 <li><p>Once your buddy has modified your own <code>README.Rmd</code> modify the file on the same line (make sure by discussing it together), **WITHOUT* <em>pulling</em> your buddy’s changes first! <em>Commit</em> and try to <em>push</em> these changes.</p></li>
 <li><p>Resolve the conflict.</p></li>
+=======
+<li>Edit the <code>README.Rmd</code> file of your paired buddy, then <em>commit</em> your change, and finally <em>push</em> them.</li>
+<li>Once your buddy has modified your own <code>README.Rmd</code> modify the file on the same line (make sure by discussing it together), <strong>WITHOUT</strong> <em>pulling</em> your buddy’s changes first! <em>Commit</em> and try to <em>push</em> these changes.</li>
+<li>Resolve the conflict.</li>
+>>>>>>> d1f247872039f0110902e4b803f4bbd8bedaf20a
 </ol>
 </blockquote>
 <p><strong>NB:</strong> In real life you want to avoid this situation and always <em>pull</em> before <em>pushing</em>, here we purposedly do the opposite for the sake of providing an example and demystifying conflicts.</p>
@@ -256,7 +276,7 @@ online code
 <blockquote>
 <p>👉 <strong><em>Your turn !</em></strong></p>
 <ol style="list-style-type: decimal">
-<li><p>Use <code><a href="https://usethis.r-lib.org/reference/use_github_links.html">usethis::use_github_links()</a></code> to add the following 2 lines to your package <code>DESCRIPTION</code> file:<br><code>URL: http://github.com/*username*/mypkg</code><br><code>BugReports: http://github.com/*username*/mypkg/issues</code></p></li>
+<li><p>Use <code><a href="https://rdrr.io/pkg/usethis/man/use_github_links.html">usethis::use_github_links()</a></code> to add the following 2 lines to your package <code>DESCRIPTION</code> file:<br><code>URL: http://github.com/*username*/mypkg</code><br><code>BugReports: http://github.com/*username*/mypkg/issues</code></p></li>
 <li><p>View the new changes, then <em>commit</em> them.</p></li>
 <li><p>Create an <em>issue</em> on your paired buddy’s project</p></li>
 </ol>
@@ -279,7 +299,7 @@ online code
 <p>👉 <strong><em>Your turn !</em></strong></p>
 <ol style="list-style-type: decimal">
 <li><p>Run the command <code>usethis::use_github_action("check-standard")</code>, then <em>commit</em> and <em>push</em> the changes. See what happens on the GitHub webpage under the “Actions” tab.</p></li>
-<li><p>Add a badge to your README.Rmd (do nott forget to <code>knit</code> it) with the code obtained in the console and <em>commit</em> (and <em>push</em>) those changes.</p></li>
+<li><p>Add a badge to your README.Rmd (do not forget to <code>knit</code> it) with the code obtained in the console and <em>commit</em> (and <em>push</em>) those changes.</p></li>
 </ol>
 </blockquote>
 <p>Have a look at the following webpage which informs about the different <em>GitHub Actions</em> available for <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> packages: <a href="https://github.com/r-lib/actions/blob/v2-branch/examples/README.md">https://github.com/r-lib/actions/blob/v2-branch/examples/README.md</a></p>
@@ -293,7 +313,7 @@ online code
 <blockquote>
 <p><strong><em>👉 À vous de jouer !</em></strong></p>
 <ol style="list-style-type: decimal">
-<li><p>Executer la commande <code><a href="https://usethis.r-lib.org/reference/use_pkgdown.html">usethis::use_pkgdown()</a></code> dans la console <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg>.</p></li>
+<li><p>Executer la commande <code><a href="https://rdrr.io/pkg/usethis/man/use_pkgdown.html">usethis::use_pkgdown()</a></code> dans la console <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg>.</p></li>
 <li><p><em>Commiter</em> et <em>pusher</em> les changements. Rendez-vous sur l’onglet <em>Actions</em> de votre répertoire sur <em>GitHub</em> et constater les nouveautés.</p></li>
 </ol>
 </blockquote>
@@ -319,7 +339,7 @@ online code
 <h2>Appendix 2.1: R-hub<a class="anchor" aria-label="anchor" href="#appendix-2.1-r-hub"><i class="fas fa-link"></i></a>
 </h2>
 <p>The <em>R consortium</em> provides the <a href="https://www.r-consortium.org/blog/2016/06/06/first-public-version-of-the-r-hub-builder">R-hub builder</a>, and has the ambition to one day provide a continuous integration service especially dedicated to <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> packages.</p>
-<p>It has the advantage to use the exact same infrastructure as the <code>CRAN</code> make the <em>check</em> of your package foolproof. You can use it through the <code><a href="https://devtools.r-lib.org/reference/check_rhub.html">devtools::check_rhub()</a></code> function.</p>
+<p>It has the advantage to use the exact same infrastructure as the <code>CRAN</code> make the <em>check</em> of your package foolproof. You can use it through the <code><a href="https://rdrr.io/pkg/devtools/man/check_rhub.html">devtools::check_rhub()</a></code> function.</p>
 </div>
 <div id="appendix-2.2-code-coverage" class="section level2 unnumbered">
 <h2>Appendix 2.2: Code coverage<a class="anchor" aria-label="anchor" href="#appendix-2.2-code-coverage"><i class="fas fa-link"></i></a>
@@ -328,7 +348,7 @@ online code
 <blockquote>
 <p>👉 <strong><em>Your turn !</em></strong></p>
 <ol style="list-style-type: decimal">
-<li>Run the command <code><a href="https://usethis.r-lib.org/reference/use_coverage.html">usethis::use_coverage()</a></code>, add a nice badge to your README.md with the code you got in the R console</li>
+<li>Run the command <code><a href="https://rdrr.io/pkg/usethis/man/use_coverage.html">usethis::use_coverage()</a></code>, add a nice badge to your README.md with the code you got in the R console</li>
 </ol>
 </blockquote>
 <blockquote>
