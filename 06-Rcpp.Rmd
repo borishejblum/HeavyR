@@ -18,16 +18,16 @@ The curious reader is directed towards the online book [*Rcpp for everyone*](htt
 > `r emoji::emoji("point_right")` ***Your turn !*** 
 >
 > 1. To make your package ready for use with `Rcpp`, start by running the following command:
-    ```{r, eval=FALSE}
-    usethis::use_rcpp()
-    ```
+>    ```{r, eval=FALSE}
+>    usethis::use_rcpp()
+>    ```
 > 2. See the changes made 
 > 3. You should also add the following 2 Roxygen comments in the general help page of the package, as indicated in the console:
-    ```{r, eval=FALSE}
-    #' @useDynLib mypkgr
-    #' @importFrom Rcpp sourceCpp, .registration = TRUE
-    NULL
-    ```
+>    ```{r, eval=FALSE}
+>    #' @useDynLib mypkgr
+>    #' @importFrom Rcpp sourceCpp, .registration = TRUE
+>    NULL
+>    ```
 
 We are now going to create a first function in `Rcpp` to invert a matrix. For this, we will use the [`C++` library `Armadillo`](https://arma.sourceforge.net/docs.html). It is a modern and simple linear algebra *library*, highly optimized, and interfaced with `r fontawesome::fa("r-project")` via the `RcppArmadillo` package.
 

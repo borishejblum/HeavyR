@@ -77,7 +77,7 @@
 <code class="sourceCode R"><span><span class="va">obs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1.96</span>, <span class="fl">2</span><span class="op">)</span>, nrow<span class="op">=</span><span class="fl">2</span>, ncol<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="fu">mvnpdf</span><span class="op">(</span>x<span class="op">=</span><span class="va">obs</span>, Log<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## utilisateur     système      écoulé 
-##       0.002       0.001       0.001</code></pre>
+##       0.001       0.000       0.002</code></pre>
 <p>The problem that appears in this example is that the execution is so fast that <code><a href="https://rdrr.io/r/base/system.time.html">system.time()</a></code> displays <code>0</code> (or a very close value) that will be impossible to compare to an hopefully faster implementation. Also, we see that there is some variability when we run the command several times.</p>
 <p>Thus if we want to compare our code with the <code><a href="https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html">mvtnorm::dmvnorm()</a></code> function, we can’t use <code><a href="https://rdrr.io/r/base/system.time.html">system.time()</a></code>:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
@@ -99,12 +99,12 @@
 <span>                     times <span class="op">=</span> <span class="fl">1000</span><span class="op">)</span></span>
 <span><span class="va">mb</span></span></code></pre></div>
 <pre><code>## Unit: microseconds
-##                                           expr    min      lq     mean  median
-##                 mvtnorm::dmvnorm(rep(1.96, 2)) 38.804 41.6015 44.71330 43.2055
-##  mvnpdf(x = matrix(rep(1.96, 2)), Log = FALSE) 34.179 37.1860 42.56512 38.8310
-##      uq      max neval cld
-##  45.052  122.428  1000   a
-##  40.755 2392.178  1000   a</code></pre>
+##                                           expr    min      lq     mean median
+##                 mvtnorm::dmvnorm(rep(1.96, 2)) 39.153 42.0695 47.37262 43.624
+##  mvnpdf(x = matrix(rep(1.96, 2)), Log = FALSE) 34.378 37.2750 40.10213 38.861
+##       uq      max neval cld
+##  45.7255 2432.418  1000  a 
+##  40.6160   94.208  1000   b</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-13-1.png" width="672"></div>
 <p>Both <code>mvnpdf()</code> and <code>dmnvorm()</code> functions being able to take a matrix as input, we can also compare their speeds in this setting:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
@@ -116,11 +116,11 @@
 <span><span class="va">mb</span></span></code></pre></div>
 <pre><code>## Unit: microseconds
 ##                                                       expr     min       lq
-##         mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))  43.441  47.8310
-##  mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 437.535 446.8185
-##       mean   median      uq     max neval cld
-##   56.31053  52.8705  58.001 225.796   100  a 
-##  474.71004 453.0735 493.687 640.749   100   b</code></pre>
+##         mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))  46.169  54.4920
+##  mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 448.235 460.6235
+##       mean  median       uq      max neval cld
+##   83.07672  73.203 104.9360  188.553   100  a 
+##  614.04531 482.865 669.4535 1477.299   100   b</code></pre>
 <div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-15-1.png" width="672"></div>
 <p>Something happened… And we will find out what exactly is causing this issue in what comes next.</p>
 
