@@ -243,9 +243,9 @@ Have a look at the following webpage which informs about the different *GitHub A
 
 > ***`r emoji::emoji("point_right")` À vous de jouer !***
 > 
-> 1. Executer la commande `usethis::use_pkgdown()` dans la console `r fontawesome::fa("r-project")`.
+> 1. Run `usethis::use_pkgdown_github_pages()` into the `r fontawesome::fa("r-project")` console.
 >
-> 2. *Commiter* et *pusher* les changements. Rendez-vous sur l'onglet *Actions* de votre répertoire sur *GitHub* et constater les nouveautés.
+> 2. *Commit* & *push* the changes. Go to your *GitHub* *Actions* taband see what is new.
 
 > ***`r emoji::emoji("point_right")` À vous de jouer !***
 > 
@@ -277,10 +277,9 @@ The `covr` package proposes a solution to measure the coverage of unit tests ass
 
 > `r emoji::emoji("point_right")` ***Your turn !*** 
 >
->  1. Run the command `usethis::use_coverage()`, add a nice badge to your README.md with the code you got in the R console
-
->  
->  2. *Commit* and *push* these changes.
+> 1. Run the command `usethis::use_coverage()`, add a nice badge to your README.md with the code you got in the R console.
+> 2. Run the command `use_github_action("test-coverage")` to trigger *GitHub Actions* to compute the coverage of your package.
+> 3. *Commit* and *push* these changes.
 
 For more information feel free to look at the [`covr` vignette](https://cran.r-project.org/web/packages/covr/vignettes/how_it_works.html).
 
