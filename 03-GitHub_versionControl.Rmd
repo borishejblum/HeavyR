@@ -166,8 +166,9 @@ online code
 In order to solve the conflict, you have to manually and carefully edit each file one by one, choosing whether to keep the local or the online version of the code, before you can *commit* again, and finally successfully *push* your changes online.
 
 > `r emoji::emoji("point_right")` ***Your turn !*** 
+> 
 > 1. Edit the `README.Rmd` file of your paired buddy, then *commit* your change, and finally *push* them.
-> 2. Once your buddy has modified your own `README.Rmd` modify the file on the same line (make sure by discussing it together), **WITHOUT* *pulling* your buddy's changes first! *Comment* and try to *push* these changes.
+> 2. Once your buddy has modified your own `README.Rmd` modify the file on the same line (make sure by discussing it together), **WITHOUT** *pulling* your buddy's changes first! *Commit* and try to *push* these changes.
 > 3. Resolve the conflict.
 
 **NB:** In real life you want to avoid this situation and always *pull* before *pushing*, here we purposedly do the opposite for the sake of providing an example and demystifying conflicts.
