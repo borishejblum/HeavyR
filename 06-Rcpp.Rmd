@@ -72,12 +72,7 @@ ggplot(data2plot) + geom_violin(aes(x=Expression, y=Time, fill=Expression), alph
   theme_bw()
 ```
 
-```{r, eval=TRUE, echo = TRUE, error = TRUE}
-profvis::profvis(mvnpdfoptim(x=matrix(1.96, 
-    nrow = 2, ncol = 1000), Log=FALSE))
-profvis::profvis(mvnpdfoptim(x=matrix(1.96, 
-    nrow = 100, ncol = 1000), Log=FALSE))
-```
+
 
 ## Optimize thanks to `C++`
 
