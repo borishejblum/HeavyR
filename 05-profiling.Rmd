@@ -145,9 +145,8 @@ ggplot(data2plot) + geom_violin(aes(x=Expression, y=Time, fill=Expression), alph
 
 Finally,  we can profile the `dmvnorm()` function:
 
-```{r, eval=TRUE}
+```{r, eval=FALSE}
 n <- 10e8
-library(mvtnorm)
-profvis::profvis(mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2)))
+profvis::profvis(my_dmvnorm(matrix(1.96, nrow = n, ncol = 2)))
 ```
 

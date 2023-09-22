@@ -13,11 +13,11 @@ description: "Tools for software development and performance"
 
 # Course syllabus {-}
 
-The main goal of this course is to give you tools that ease (high-performing and effcient) code development with `r fontawesome::fa("r-project")`. The *performance* side will come as a second part, and the initial tools introduced are also very useful in situations that do not require
+The main goal of this course is to give you tools that ease (high-performing and efficient) code development with `r fontawesome::fa("r-project")`. The *performance* side will come as a second part, and the initial tools introduced are also very useful in situations that do not require
 important computation times.
 
 We will focus the presentation of these development tools on the notion of **package**. *You are already familiar with this notion*, as you have already
-already installed packages from the CRAN for example ! You also know that it is the most standard way in `r fontawesome::fa("r-project")` to distribuute code and make it available.
+already installed packages from the CRAN for example ! You also know that it is the most standard way in `r fontawesome::fa("r-project")` to distribute code and make it available.
 We will show you that the package is also an excellent tool for developing code.
 
 
@@ -49,7 +49,7 @@ To take this course, you will need to have the following softwares installed:
 	[Rtools](https://cran.r-project.org/bin/windows/Rtools/), for 
 	Mac users it may be necessary to install the macOS tool chain as detailed [here](https://mac.r-project.org/tools/)
 
-  - the following `r fontawesome::fa("r-project")` packages: `devtools`, `future.apply`, `itertools`, `microbenchmark`, `mvtnorm`, `profvis`, `Rcpp`, `RcppArmadillo`, `roxygen2`, `testthat`, `usethis`
+  - the following `r fontawesome::fa("r-project")` packages: `devtools`, `future.apply`, `microbenchmark`, `mvtnorm`, `profvis`, `Rcpp`, `RcppArmadillo`, `roxygen2`, `testthat`, `usethis`
 
   - the software [*git*](https://git-scm.com/) which can be installed following instructions from [*Happy Git With R* by Jennifer Bryan](https://happygitwithr.com/install-git.html)
   
@@ -62,7 +62,7 @@ In addition, you will need an active internet connection (e.g. through *eduroam*
 
 To be able to follow along this training, you must be comfortable with the following concepts: 
 
-  - programing with `r fontawesome::fa("r-project")` within the `RStudio` IDE
+  - programming with `r fontawesome::fa("r-project")` within the `RStudio` IDE
   - writing functions in `r fontawesome::fa("r-project")`
   - control structures, particularly *for* loops
   - `apply` functions, and `sapply()` in particular
