@@ -154,7 +154,7 @@ Let's take the following example: the developer $D_1$ and the developer $D_2$ ha
 `"Sync Error.`  
 `Please resolve all conflicted files, commit, then try syncing again."`
 
-Chaque fichier étant source de conflit a alors été automatiquement édité comme suit :
+Each file that is a source of conflicts has then been automatically edited with:
 ```{git, eval = FALSE}
 <<<<<<< HEAD
 local code
@@ -241,17 +241,17 @@ Have a look at the following webpage which informs about the different *GitHub A
 
 `pkgdown` is an `r fontawesome::fa("r-project")` package that automatically generate a nice website gathering the documentation about your package (including *Vignettes*).
 
-> ***`r emoji::emoji("point_right")` À vous de jouer !***
+> ***`r emoji::emoji("point_right")` Your turn !***
 > 
 > 1. Run `usethis::use_pkgdown_github_pages()` into the `r fontawesome::fa("r-project")` console.
 >
-> 2. *Commit* & *push* the changes. Go to your *GitHub* *Actions* taband see what is new.
+> 2. *Commit* & *push* the changes. Go to your *GitHub* *Actions* tab and see what is new.
 
-> ***`r emoji::emoji("point_right")` À vous de jouer !***
+> ***`r emoji::emoji("point_right")` Your turn !***
 > 
-> Examiner les changement du fichier `DESCRIPTION` suite à l'execution des différentes commandes `usethis::use_...` précedemment.
+> Examine the different changes to `DESCRIPTION` sfollowing the various `usethis::use_...` run previously.
 > 
-> Modifier le champ *URL* du fichier `DESCRIPTION`.
+> If needed, modify the *URL* field from the `DESCRIPTION` file.
 
 ![Artwork CC-BY Allison Horst](AdvancedRcourse_dev_perf_files/usethis.png){width=100%}
 

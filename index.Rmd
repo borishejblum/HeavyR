@@ -65,6 +65,6 @@ To be able to follow along this training, you must be comfortable with the follo
   - programming with `r fontawesome::fa("r-project")` within the `RStudio` IDE
   - writing functions in `r fontawesome::fa("r-project")`
   - control structures, particularly *for* loops
-  - `apply` functions, and `sapply()` in particular
+  - `apply` family, and `sapply()` in particular
   - the calculation of the density for a multivariate Gaussian distribution
 
