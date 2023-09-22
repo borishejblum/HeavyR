@@ -145,8 +145,10 @@ ggplot(data2plot) + geom_violin(aes(x=Expression, y=Time, fill=Expression), alph
 
 Finally,  we can profile the `dmvnorm()` function:
 
-```{r, eval=FALSE}
-n <- 10e8
-profvis::profvis(my_dmvnorm(matrix(1.96, nrow = n, ncol = 2)))
+```{r, eval=TRUE}
+n <- 10e6
+profvis::profvis(mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2)))
+profvis::profvis(mypkgr::my_dmvnorm(matrix(1.96, nrow = n, ncol = 2)))
 ```
 
+You can download the `my_dmvnorm()` function [here]([here](https://github.com/borishejblum/mypkgr/blob/1df7c6ba37df4ec7406167953beea917757d0481/R/my_dmvnorm.R) and include it in your package, in order to have the source code available in the profile result.
