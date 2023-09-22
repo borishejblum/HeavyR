@@ -171,7 +171,7 @@ In order to solve the conflict, you have to manually and carefully edit each fil
 > 2. Once your buddy has modified your own `README.Rmd` modify the file on the same line (make sure by discussing it together), **WITHOUT** *pulling* your buddy's changes first! *Commit* and try to *push* these changes.
 > 3. Resolve the conflict.
 
-**NB:** In real life you want to avoid this situation and always *pull* before *pushing*, here we purposedly do the opposite for the sake of providing an example and demystifying conflicts.
+**NB:** In real life you want to avoid this situation and always *pull* before *pushing*, here we purposely do the opposite for the sake of providing an example and demystifying conflicts.
 
 
 ### *Fork*

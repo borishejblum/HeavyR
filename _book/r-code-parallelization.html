@@ -143,8 +143,13 @@
 <span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span>X <span class="op">=</span> <span class="va">x</span>, MARGIN <span class="op">=</span> <span class="fl">2</span>, FUN <span class="op">=</span> <span class="va">median</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="fu">colmedian_apply</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<<<<<<< HEAD
+<pre><code>## utilisateur     système      écoulé 
+##       2.918       0.000       2.918</code></pre>
+=======
 <pre><code>##    user  system elapsed 
 ##   1.609   0.003   1.613</code></pre>
+>>>>>>> 9e6d68fe39098f6c1684a230b9479f371dd004bd
 <p>In reality, a (good) <code>for</code> loop is no slower – provided it is nicely programmed:</p>
 <div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">colmedian_for</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span></span>
@@ -156,8 +161,13 @@
 <span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">ans</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="fu">colmedian_for</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<<<<<<< HEAD
+<pre><code>## utilisateur     système      écoulé 
+##       2.593       0.000       2.593</code></pre>
+=======
 <pre><code>##    user  system elapsed 
 ##   1.486   0.002   1.493</code></pre>
+>>>>>>> 9e6d68fe39098f6c1684a230b9479f371dd004bd
 <blockquote>
 <p>👉 <strong><em>Your turn !</em></strong>
 Try to further improve this computation time by parallelizing your code for each of the 100,000 variables. Is there a gain in computation time?</p>
