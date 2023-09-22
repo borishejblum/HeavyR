@@ -21,11 +21,12 @@ There is a significant number of algorithms that are so-called "*embarrassingly 
   6. Stop the worker processes
 
 
-Depending on the platform, several communication protocols are available between the cores. Under UNIX systems, the *Fork* protocol is the most used, but it is not available under Windows where the *PSOCK* protocol is used instead. Finally, for distributed computing architecture where the cores are not necessarily on the same physical processor, the *MPI* protocol is generally used. The advantage of the `future` and `future.apply` package is that the same code can be executed whatever the hardware configuration.
+Depending on the platform, several communication protocols are available between the cores. Under UNIX systems, the *Fork* protocol is the most used (it has the benefit of sharing memory), but it is not available under Windows where the *PSOCK* protocol is used instead (with duplicated memory). Finally, for distributed computing architecture where the cores are not necessarily on the same physical processor, the *MPI* protocol is generally used. The advantage of the `future` and `future.apply` package is that the same code can be executed whatever the hardware configuration.
 
 Since `R 2.14.0`, the `parallel` package is directly included in `r fontawesome::fa("r-project")` and allows to start and stop a cluster of several worker processes (step 1 and 6). In addition to the `parallel` package, we will use the `future` package which allows to manage the worker processes and the communication and articulation with the `future.apply` package, which in turn allows to manage the dialogue with the workers (sending, receiving and collecting the results -- steps 2, 3, 4 and 5).
 
 
+**NB: ** the free plan on *Posit Cloud* only includes 1 core.
 
 ## First `r fontawesome::fa("r-project")` parallel function 
 
@@ -33,7 +34,7 @@ Since `R 2.14.0`, the `parallel` package is directly included in `r fontawesome:
 >
 > Start by writing a simple function that computes the logarithm of $n$ numbers:
 >
->  1. Determine how many cores are available on your computer with the function `future::availableCores()`.
+>  1. Determine how many cores are available on your computer with the function `future::availableCores()` (under Linux, prefer `parallel::detectCores(logical=FALSE)` to avoid overthreading).
 >
 >  2. Using the function `future::plan(multisession(workers = XX))`, declare a "*plan*" of parallel computations on your computer (taking care to **always leave at least one core available** to handle other processes).
 >
@@ -111,7 +112,7 @@ For an experienced `r fontawesome::fa("r-project")` user, such an operation is e
 
 ```{r}
 colmedian_apply <- function(x){
-  return(apply(x, 2, median))
+  return(apply(X = x, MARGIN = 2, FUN = median))
 }
 system.time(colmedian_apply(x))
 ```
@@ -120,8 +121,9 @@ In reality, a (good) `for` loop is no slower -- provided it is nicely programmed
 
 ```{r}
 colmedian_for <- function(x){
-  ans <- rep(0, ncol(x)) 
-  for (i in 1:ncol(x)) {
+  p <- ncol(x)
+  ans <- numeric(p)
+  for (i in 1:p) {
     ans[i] <- median(x[, i]) 
   }
   return(ans)
@@ -256,3 +258,8 @@ You can finally clone (or download or fork) our [GitHub repository](https://gith
 ## Conclusion
 
 Parallel computation saves time, but first you have to optimize your code. When parallelizing a code, the gain on the execution time depends above all on the ratio between the communication time and the effective computation time for each task.
+
+## Annexe 6.1: Progress bar {-}
+
+package `pbapply`
+

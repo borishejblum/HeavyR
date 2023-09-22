@@ -258,7 +258,7 @@ Have a look at the following webpage which informs about the different *GitHub A
 
 ## Additional References
 
- - [*Happy Git With R*](https://happygitwithr.com/) by Jenny Bryan.
+ - [*Happy Git With R*](https://happygitwithr.com/) by Jennifer Bryan.
  
  - Jennifer Bryan (2018). Excuse Me, Do You Have a Moment to Talk about Version Control? *The American Statistician* 72 (1):20--27.  
  [DOI: 10.1080/00031305.2017.1399928](https://doi.org/10.1080/00031305.2017.1399928)
@@ -277,9 +277,9 @@ The `covr` package proposes a solution to measure the coverage of unit tests ass
 
 > `r emoji::emoji("point_right")` ***Your turn !*** 
 >
-> 1. Run the command `usethis::use_coverage()`, add a nice badge to your README.md with the code you got in the R console.
-> 2. Run the command `use_github_action("test-coverage")` to trigger *GitHub Actions* to compute the coverage of your package.
-> 3. *Commit* and *push* these changes.
+> 1. Run the command `use_github_action("test-coverage")` to trigger *GitHub Actions* to compute the coverage of your package.
+> 2. *Commit* and *push* these changes.
 
-For more information feel free to look at the [`covr` vignette](https://cran.r-project.org/web/packages/covr/vignettes/how_it_works.html).
+For more information feel free to look at the [`covr` package](). To be able to display your coverage rate on your README, run the command `usethis::use_coverage()` in the `r fontawesome::fa("r-project")` and add a nice badge with the code you got in the R console.  
+**NB:** for this new badge to display properly, you need to log into the [codecov.io](https://app.codecov.io) website and follow the instructions for enabling your repository to upload its coverage results through *GitHub Actions* (requires some advanced interactions with *GitHub Actions*).
 
