@@ -242,7 +242,7 @@ ggplot(data2plot) + geom_violin(aes(x=Expression, y=Time, fill=Expression), alph
   ggtitle("Spoiler alert 2")
 ```
 
-You can download our proposed implementation for `mvnpdfsmart_par` [here](https://heavyr.borishejblum.science/AdvancedRcourse_dev_perf_files/mvnpdfsmart_par.R).
+You can download our proposed implementation for `mvnpdfsmart_par` [here](https://github.com/borishejblum/mypkgr/blob/ddd6a36c1c8b60c21a51bcb8760caa73459c57af/R/mvnpdfsmart_par.R).
 
 In this example, the computation time of one iteration is really too fast for the parallel version to be efficient. We artificially add some time on each iteration to illustrate the gain of parallel computing for this example.
 
