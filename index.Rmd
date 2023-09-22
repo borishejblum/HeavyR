@@ -51,7 +51,7 @@ To take this course, you will need to have the following softwares installed:
 
   - the following `r fontawesome::fa("r-project")` packages: `devtools`, `future.apply`, `itertools`, `microbenchmark`, `mvtnorm`, `profvis`, `Rcpp`, `RcppArmadillo`, `roxygen2`, `testthat`, `usethis`
 
-  - the software [*git*](https://git-scm.com/) which can be installed following instructions from [*Happy Git With R* by Jenny Brian](https://happygitwithr.com/install-git.html)
+  - the software [*git*](https://git-scm.com/) which can be installed following instructions from [*Happy Git With R* by Jennifer Bryan](https://happygitwithr.com/install-git.html)
   
 In addition, you will need an active internet connection (e.g. through *eduroam*)
 
@@ -65,5 +65,6 @@ To be able to follow along this training, you must be comfortable with the follo
   - programing with `r fontawesome::fa("r-project")` within the `RStudio` IDE
   - writing functions in `r fontawesome::fa("r-project")`
   - control structures, particularly *for* loops
+  - `apply` functions, and `sapply()` in particular
   - the calculation of the density for a multivariate Gaussian distribution
 

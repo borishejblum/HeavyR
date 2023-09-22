@@ -9,7 +9,7 @@ library(ggplot2)
 
 *Profiling* is about determining which part of the code take the most time to compute (and also memory-wise). Once you have found the block of code that takes the longest time to execute, our goal is only to optimize that small part of the code.
 
-To get a *profiling* of the code below, select the lines of code of interest and go to the "Profile" menu then "Profile Selected Lines". It uses the package `profvis`, and in particular its `profvis()` function. 
+To get a *profiling* of the code below, select the lines of code of interest and go to the "*Profile*" menu then "*Profile Selected Lines*". It uses the package `profvis`, and in particular its `profvis()` function. 
 
 ```{r, eval=FALSE}
 n <- 10e4
@@ -145,8 +145,8 @@ ggplot(data2plot) + geom_violin(aes(x=Expression, y=Time, fill=Expression), alph
 
 Finally,  we can profile the `dmvnorm()` function:
 
-```{r}
-n <- 10e5
+```{r, eval=TRUE}
+n <- 10e8
 library(mvtnorm)
 profvis::profvis(mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2)))
 ```
