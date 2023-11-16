@@ -4,15 +4,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 3 Measuring and comparing execution times | Advanced  course</title>
+<title>Chapter 3 Measuring and comparing execution times | endeav</title>
 <meta name="author" content="Robin Genuer 🌐 &amp; Boris Hejblum 🌐">
 <meta name="description" content="The first step before optimizing a code is to measure its execution time, in order to compare timings between different implementations. For this section and the following we refer to the book...">
-<meta name="generator" content="bookdown 0.35 with bs4_book()">
-<meta property="og:title" content="Chapter 3 Measuring and comparing execution times | Advanced  course">
+<meta name="generator" content="bookdown 0.36 with bs4_book()">
+<meta property="og:title" content="Chapter 3 Measuring and comparing execution times | endeav">
 <meta property="og:type" content="book">
 <meta property="og:description" content="The first step before optimizing a code is to measure its execution time, in order to compare timings between different implementations. For this section and the following we refer to the book...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 3 Measuring and comparing execution times | Advanced  course">
+<meta name="twitter:title" content="Chapter 3 Measuring and comparing execution times | endeav">
 <meta name="twitter:description" content="The first step before optimizing a code is to measure its execution time, in order to compare timings between different implementations. For this section and the following we refer to the book...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -33,8 +33,8 @@
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
-        <a href="index.html" title="&lt;em&gt;Tools for software development and performance&lt;/em&gt;">Advanced <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> course</a>:
-        <small class="text-muted"><em>Tools for software development and performance</em></small>
+        <a href="index.html" title="&lt;em&gt;a course on code efficiency and software development with R&lt;/em&gt;">endeav<svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></a>:
+        <small class="text-muted"><em>a course on code efficiency and software development with R</em></small>
       </h1>
       <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
@@ -77,19 +77,14 @@
 <code class="sourceCode R"><span><span class="va">obs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1.96</span>, <span class="fl">2</span><span class="op">)</span>, nrow<span class="op">=</span><span class="fl">2</span>, ncol<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="fu">mvnpdf</span><span class="op">(</span>x<span class="op">=</span><span class="va">obs</span>, Log<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##    user  system elapsed 
-##   0.001   0.001   0.002</code></pre>
+##   0.001   0.001   0.003</code></pre>
 <p>The problem that appears in this example is that the execution is so fast that <code><a href="https://rdrr.io/r/base/system.time.html">system.time()</a></code> displays <code>0</code> (or a very close value) that will be impossible to compare to an hopefully faster implementation. Also, we see that there is some variability when we run the command several times.</p>
 <p>Thus if we want to compare our code with the <code><a href="https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html">mvtnorm::dmvnorm()</a></code> function, we can’t use <code><a href="https://rdrr.io/r/base/system.time.html">system.time()</a></code>:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">obs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fl">1.96</span>, <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="fu">mvtnorm</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html">dmvnorm</a></span><span class="op">(</span><span class="va">obs</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<<<<<<< HEAD
-<pre><code>## utilisateur     système      écoulé 
-##       0.005       0.000       0.005</code></pre>
-=======
 <pre><code>##    user  system elapsed 
 ##   0.003   0.001   0.007</code></pre>
->>>>>>> 9e6d68fe39098f6c1684a230b9479f371dd004bd
 <p>We could imagine that we need to increase the complexity of our calculation to be able to compare them, but there is actually a better way: use the <code>microbenchmark</code> package !</p>
 </div>
 <div id="compare-execution-times-with-microbenchmark" class="section level2" number="3.2">
@@ -108,22 +103,13 @@
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mb</span></span></code></pre></div>
 <pre><code>## Unit: microseconds
-<<<<<<< HEAD
-##                                           expr    min      lq     mean  median
-##                 mvtnorm::dmvnorm(rep(1.96, 2)) 38.582 41.5975 43.63839 42.9435
-##  mvnpdf(x = matrix(rep(1.96, 2)), Log = FALSE) 34.173 36.8040 41.55870 38.4410
-##       uq      max neval cld
-##  44.5510  164.342  1000   a
-##  40.0585 2406.695  1000   a</code></pre>
-=======
 ##                                           expr    min     lq     mean median
-##                 mvtnorm::dmvnorm(rep(1.96, 2)) 20.049 21.115 22.38333 21.607
-##  mvnpdf(x = matrix(rep(1.96, 2)), Log = FALSE) 18.409 19.352 22.07780 19.803
+##                 mvtnorm::dmvnorm(rep(1.96, 2)) 19.926 20.828 21.65546 21.279
+##  mvnpdf(x = matrix(rep(1.96, 2)), Log = FALSE) 18.286 19.270 21.45723 19.639
 ##       uq      max neval cld
-##  23.1035   65.928  1000   a
-##  20.9510 1652.136  1000   a</code></pre>
->>>>>>> 9e6d68fe39098f6c1684a230b9479f371dd004bd
-<div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-13-1.png" width="672"></div>
+##  21.9555   64.247  1000   a
+##  20.2130 1595.884  1000   a</code></pre>
+<div class="inline-figure"><img src="endeavR_files/figure-html/unnamed-chunk-13-1.png" width="672"></div>
 <p>Both <code>mvnpdf()</code> and <code>dmnvorm()</code> functions being able to take a matrix as input, we can also compare their speeds in this setting:</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">100</span></span>
@@ -133,22 +119,13 @@
 <span>                     times<span class="op">=</span><span class="fl">100</span><span class="op">)</span></span>
 <span><span class="va">mb</span></span></code></pre></div>
 <pre><code>## Unit: microseconds
-<<<<<<< HEAD
-##                                                       expr     min       lq
-##         mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))  45.626  51.1845
-##  mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 444.839 455.9080
-##       mean  median      uq      max neval cld
-##   67.37566  56.400  69.422  207.092   100  a 
-##  572.56001 465.702 559.105 1237.556   100   b</code></pre>
-=======
 ##                                                       expr     min      lq
-##         mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))  23.124  23.821
-##  mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 264.614 268.878
-##       mean   median      uq     max neval cld
-##   25.49421  24.5385  25.379  84.296   100  a 
-##  273.09936 270.9075 274.905 315.782   100   b</code></pre>
->>>>>>> 9e6d68fe39098f6c1684a230b9479f371dd004bd
-<div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-15-1.png" width="672"></div>
+##         mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))  23.288  24.026
+##  mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 265.311 268.714
+##       mean  median       uq     max neval cld
+##   25.62459  24.641  25.6045  83.394   100  a 
+##  272.10757 270.477 273.0600 312.338   100   b</code></pre>
+<div class="inline-figure"><img src="endeavR_files/figure-html/unnamed-chunk-15-1.png" width="672"></div>
 <p>Something happened… And we will find out what exactly is causing this issue in what comes next.</p>
 
 </div>
@@ -179,7 +156,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Advanced <svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> course</strong>: <em>Tools for software development and performance</em>" was written by <strong><em>Robin Genuer</em></strong> <a href="https://robin.genuer.fr/">🌐</a> &amp; <strong><em>Boris Hejblum</em></strong> <a href="https://borishejblum.science/">🌐</a>. It was last built on 2023-09-22.</p>
+    <p>"<strong>endeav<svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg></strong>: <em>a course on code efficiency and software development with R</em>" was written by <strong><em>Robin Genuer</em></strong> <a href="https://robin.genuer.fr/">🌐</a> &amp; <strong><em>Boris Hejblum</em></strong> <a href="https://borishejblum.science/">🌐</a>. It was last built on 2023-11-16.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

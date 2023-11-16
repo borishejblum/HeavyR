@@ -71,7 +71,7 @@ So you need to create a function `mvnpdf()` in a file named `mvnpdf.R` in the `R
 
 
 
-Here is a function proposal that you can download [here](https://heavyr.borishejblum.science/AdvancedRcourse_dev_perf_files/mvnpdfRAW.R). `r emoji::emoji("warning")` *WARNING !* if you click too quickly on this link, it will invalidate your participation in the class !
+Here is a function proposal that you can download [here](https://endevr.borishejblum.science/endeavR_files/mvnpdfRAW.R). `r emoji::emoji("warning")` *WARNING !* if you click too quickly on this link, it will invalidate your participation in the class !
 
 For advice on writing code, see the [R code](https://r-pkgs.org/code.html) section from Wickham & Bryan *R packages* (2023) by Wickham & Bryan[^1].
 
@@ -111,7 +111,7 @@ We strongly advise you to use the `roxygen2` package to document your packages. 
 >      
 >      - the `NAMESPACE` file is modified
       
-**In case of problems OR out of curiosity but only once you are done**, you can have a look at this [proposal](https://heavyr.borishejblum.science/AdvancedRcourse_dev_perf_files/mvnpdfRox.R).
+**In case of problems OR out of curiosity but only once you are done**, you can have a look at this [proposal](https://endeavr.borishejblum.science/endeavR_files/mvnpdfRox.R).
       
 For more details on package documentation and `roxygen2` tags, see the [Object documentation](https://r-pkgs.org/man.html) section from Wickham & Bryan *R packages* (2023)
 
@@ -236,7 +236,7 @@ Test this function, by executing the example.\
 
 Look at the contents of the `man` folder and the changes that have been made to `NAMESPACE`.
 
-*Here is a proposed solution*: the [file](https://heavyr.borishejblum.science/AdvancedRcourse_dev_perf_files/mvnpdf.R) contains the complete code of the `mvnpdf()` function and the associated `plot()` method.
+*Here is a proposed solution*: the [file](https://endeavr.borishejblum.science/endeavR_files/mvnpdf.R) contains the complete code of the `mvnpdf()` function and the associated `plot()` method.
 
 
 ## Appendix 1.2: submit one's package on [CRAN](https://cran.r-project.org/web/packages/available_packages_by_name.html) {-}

@@ -1,6 +1,6 @@
 --- 
-title: 'Advanced `r fontawesome::fa("r-project")` course'
-subtitle: '*Tools for software development and performance*'
+title: 'endeav`r fontawesome::fa("r-project")`'
+subtitle: '*a course on code efficiency and software development with R*'
 author: "***Robin Genuer*** [`r emoji::emoji('globe_with_meridians')`](https://robin.genuer.fr/) & ***Boris Hejblum*** [`r emoji::emoji('globe_with_meridians')`](https://borishejblum.science/)"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
@@ -8,7 +8,7 @@ documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-description: "Tools for software development and performance"
+description: "endeavR endevR"
 ---
 
 # Course syllabus {-}

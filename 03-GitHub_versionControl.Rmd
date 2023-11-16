@@ -24,7 +24,7 @@ The principle of version control is to record the successive changes made to fil
 
 **NB:** `git` was designed for lightweight files (such as text files) and is far from being optimized for heavy and/or compressed files (e.g. `.RData` files).
 
-![Artwork CC-BY Allison Horst](AdvancedRcourse_dev_perf_files/git_workflow.png){width=100%}
+![Artwork CC-BY Allison Horst](endeavR_files/git_workflow.png){width=100%}
 
 ### `subversion`
 
@@ -66,7 +66,7 @@ The principle of version control is to record the successive changes made to fil
 <!-- AJOUTER usethis::use_git_config(user.name = "Jane", user.email = "jane@example.org") pour ceux qui n'ont jamais utiliser git -->
 
   
-![Artwork CC-BY Allison Horst](AdvancedRcourse_dev_perf_files/github_fall.png){width=100%}
+![Artwork CC-BY Allison Horst](endeavR_files/github_fall.png){width=100%}
   
 
 ### Good *commit* practices
@@ -77,7 +77,7 @@ Ideally, each commit should solve only one problem. It should fix it in its enti
 On the other hand, the temptation to have a *"clean" and tidy* change-history is natural, but it is a source of unnecessary problems. It contradicts the traceability goal of version control. Since code development is generally a complex, messy, and non-linear intellectual process, it is normal that the recording of changes reflects this path. In practice, your future self will be the first user of your change history, so the priority is to make it easier for you in the future when solving bugs or extending functionality.
 
 
-![Artwork CC-BY Allison Horst](AdvancedRcourse_dev_perf_files/github_wickham_bryan_git_quote.png){width=100%}
+![Artwork CC-BY Allison Horst](endeavR_files/github_wickham_bryan_git_quote.png){width=100%}
 
 ## *GitHub*
 
@@ -111,7 +111,7 @@ On the other hand, the temptation to have a *"clean" and tidy* change-history is
 
 ## Collaborative code production
 
-![Artwork CC-BY Allison Horst](AdvancedRcourse_dev_perf_files/github_friends.png){width=100%}
+![Artwork CC-BY Allison Horst](endeavR_files/github_friends.png){width=100%}
 
 
 
@@ -253,7 +253,7 @@ Have a look at the following webpage which informs about the different *GitHub A
 > 
 > If needed, modify the *URL* field from the `DESCRIPTION` file.
 
-![Artwork CC-BY Allison Horst](AdvancedRcourse_dev_perf_files/usethis.png){width=100%}
+![Artwork CC-BY Allison Horst](endeavR_files/usethis.png){width=100%}
 
 
 ## Additional References
