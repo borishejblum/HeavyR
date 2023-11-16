@@ -16,7 +16,7 @@
 <meta name="twitter:description" content="Rcpp (“R-C-Plus-Plus”) is a package which facilitates the interface between C++ and . is an interpreted language, a feature that makes a number of things easy (including giving us access to the...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.1/transition.js"></script><script src="libs/bs3compat-0.5.1/tabs.js"></script><script src="libs/bs3compat-0.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script><script src="libs/d3-3.5.6/d3.min.js"></script><link href="libs/profvis-0.3.6.9000/profvis.css" rel="stylesheet">
 <script src="libs/profvis-0.3.6.9000/profvis.js"></script><script src="libs/profvis-0.3.6.9000/scroll.js"></script><link href="libs/highlight-6.2.0/textmate.css" rel="stylesheet">
 <script src="libs/highlight-6.2.0/highlight.js"></script><script src="libs/profvis-binding-0.3.8/profvis.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
@@ -77,13 +77,13 @@
 <ol style="list-style-type: decimal">
 <li>
 <p>To make your package ready for use with <code>Rcpp</code>, start by running the following command:</p>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_rcpp.html">use_rcpp</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </li>
 <li><p>See the changes made</p></li>
 <li>
 <p>You should also add the following 2 Roxygen comments in the general help page of the package, as indicated in the console:</p>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#' @useDynLib mypkgr</span></span>
 <span><span class="co">#' @importFrom Rcpp sourceCpp, .registration = TRUE</span></span>
 <span><span class="cn">NULL</span></span></code></pre></div>
@@ -108,7 +108,7 @@
 <li>Evaluate the performance gain of this new implementation <code>mvnpdf_invC</code>.</li>
 </ol>
 </blockquote>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">1000</span></span>
 <span><span class="va">mb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span><span class="op">(</span><span class="fu">mvtnorm</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html">dmvnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, nrow <span class="op">=</span> <span class="va">n</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>                     <span class="fu">mvnpdf</span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, nrow <span class="op">=</span> <span class="fl">2</span>, ncol <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, Log<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>,</span>
@@ -119,6 +119,7 @@
 <span><span class="va">mb</span></span>
 <span><span class="co">## Unit: microseconds</span></span>
 <span><span class="co">##                                                            expr      min</span></span>
+<<<<<<< HEAD
 <span><span class="co">##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   42.681</span></span>
 <span><span class="co">##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3281.394</span></span>
 <span><span class="co">##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2297.804</span></span>
@@ -131,6 +132,20 @@
 <span><span class="co">##  1755.989 1781.58489 1773.4960 1792.048 2035.445   100    d</span></span>
 <span><span class="co">##  2321.297 2437.66771 2340.1365 2363.220 5236.028   100   c</span></span></code></pre></div>
 <div class="inline-figure"><img src="endeavR_files/figure-html/unnamed-chunk-33-1.png" width="672"></div>
+=======
+<span><span class="co">##              mvtnorm::dmvnorm(matrix(1.96, nrow = n, ncol = 2))   73.951</span></span>
+<span><span class="co">##       mvnpdf(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 4985.464</span></span>
+<span><span class="co">##  mvnpdfsmart(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3867.760</span></span>
+<span><span class="co">##  mvnpdfoptim(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 2961.902</span></span>
+<span><span class="co">##  mvnpdf_invC(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE) 3836.220</span></span>
+<span><span class="co">##         lq      mean    median       uq       max neval  cld</span></span>
+<span><span class="co">##    94.3915  119.0736  115.0505  129.052   494.768   100 a   </span></span>
+<span><span class="co">##  5080.0300 5380.7359 5135.5530 5205.025 10114.041   100  b  </span></span>
+<span><span class="co">##  3908.4185 4163.0221 3973.3640 4078.151  8673.556   100   c </span></span>
+<span><span class="co">##  3036.5205 3219.3998 3097.7145 3203.831  7999.887   100    d</span></span>
+<span><span class="co">##  3901.4160 4062.9850 3948.0900 4057.170  8609.950   100   c</span></span></code></pre></div>
+<div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-33-1.png" width="672"></div>
+>>>>>>> 87679bbe4ea94dd1476b27a8d8e07cab59378508
 </div>
 <div id="optimize-thanks-to-c" class="section level2" number="5.2">
 <h2>
@@ -144,9 +159,15 @@
 <li><p>Evaluate the performance gain of this new implementation <code>mvnpdfsmartC</code>.</p></li>
 </ol>
 </blockquote>
+<<<<<<< HEAD
 <p>You can download our proposal for <code>mvnpdfsmartC.cpp</code> <a href="https://endeavr.borishejblum.science/endeavR_files/mvnpdfsmartC.cpp">here</a>.</p>
 <p>For (relatively small) additional speed gain (at the cost of code readability!), you can have a look at our optimized Armadillo <code>C++</code> implementation in <a href="https://endeavr.borishejblum.science/endeavR_files/mvnpdfoptimC.cpp"><code>mvnpdfoptimC.cpp</code></a>.</p>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+=======
+<p>You can download our proposal for <code>mvnpdfsmartC.cpp</code> <a href="https://heavyr.borishejblum.science/AdvancedRcourse_dev_perf_files/mvnpdfsmartC.cpp">here</a>.</p>
+<p>For (relatively small) additional speed gain (at the cost of code readability!), you can have a look at our optimized Armadillo <code>C++</code> implementation in <a href="https://heavyr.borishejblum.science/AdvancedRcourse_dev_perf_files/mvnpdfoptimC.cpp"><code>mvnpdfoptimC.cpp</code></a>.</p>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+>>>>>>> 87679bbe4ea94dd1476b27a8d8e07cab59378508
 <code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">1000</span></span>
 <span><span class="va">mb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html">microbenchmark</a></span><span class="op">(</span><span class="fu">mvtnorm</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mvtnorm/man/Mvnorm.html">dmvnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, nrow <span class="op">=</span> <span class="va">n</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>                     <span class="fu">mvnpdf</span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1.96</span>, nrow <span class="op">=</span> <span class="fl">2</span>, ncol <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, Log<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>,</span>
@@ -166,6 +187,7 @@
 ##                                             mvnpdf_invC(x = matrix(1.96, nrow = 2, ncol = n), Log = FALSE)
 ##  mvnpdfsmartC(x = matrix(1.96, nrow = 2, ncol = n), mean = rep(0,      2), varcovM = diag(2), Log = FALSE)
 ##  mvnpdfoptimC(x = matrix(1.96, nrow = 2, ncol = n), mean = rep(0,      2), varcovM = diag(2), Log = FALSE)
+<<<<<<< HEAD
 ##       min        lq       mean    median        uq       max neval  cld
 ##    41.820   48.2775   55.01257   53.8945   59.6960    97.621   100 a   
 ##  3300.090 3340.2085 3467.68529 3388.8550 3539.6325  6811.576   100  b  
@@ -175,6 +197,17 @@
 ##    51.127   52.9310   55.33729   54.7760   56.5800    94.423   100 a   
 ##    35.752   38.0685   40.27102   39.6060   41.1025   101.352   100 a</code></pre>
 <div class="inline-figure"><img src="endeavR_files/figure-html/unnamed-chunk-35-1.png" width="672"></div>
+=======
+##       min       lq       mean    median        uq       max neval  cld
+##    78.267  122.689  149.48924  149.8740  172.6815   297.467   100 a   
+##  4981.499 5222.819 6366.00866 5663.4955 7003.8750 13502.899   100  b  
+##  3862.344 4035.678 4835.13281 4236.4315 5603.9220 14996.822   100   c 
+##  2997.487 3147.720 3929.23594 3784.3760 4489.0080  8179.338   100    d
+##  3856.185 3975.889 4948.09523 4663.6795 5566.6815 11832.464   100   c 
+##    89.533  100.254  150.30259  122.4955  137.9820  1853.288   100 a   
+##    36.067   52.465   63.21689   60.4755   71.7435   134.317   100 a</code></pre>
+<div class="inline-figure"><img src="AdvancedRcourse_dev_perf_files/figure-html/unnamed-chunk-35-1.png" width="672"></div>
+>>>>>>> 87679bbe4ea94dd1476b27a8d8e07cab59378508
 <p>Note that <code>Rcpp</code> functions can be used outside of a package architecture thanks to the <code><a href="https://rdrr.io/pkg/Rcpp/man/sourceCpp.html">Rcpp::sourceCpp()</a></code> function. But, as we have seen that it is always desirable to manage all of one’s code inside a package, it is unlikely that you will need this !</p>
 </div>
 <div id="annexe-5.1-premature-optimization-is-a-bad-idea" class="section level2 unnumbered">
